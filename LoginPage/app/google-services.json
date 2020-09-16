@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "836559914997",
+    "firebase_url": "https://loginpage-1cbea.firebaseio.com",
+    "project_id": "loginpage-1cbea",
+    "storage_bucket": "loginpage-1cbea.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:836559914997:android:ffcedf5e6c44400540c2bc",
+        "android_client_info": {
+          "package_name": "com.greenhelix.loginpage"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "836559914997-r4o6bv6bv3dlq1dosatm9ikdt6d928gs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.greenhelix.loginpage",
+            "certificate_hash": "63f13de46b9c324859f60c87d799d7c4172534a0"
+          }
+        },
+        {
+          "client_id": "836559914997-qskpp83tnqi9tnlnrernt5t28tk51frn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWwv34lGLZKtnpsvywmUW4jvXUamHIKbg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "836559914997-qskpp83tnqi9tnlnrernt5t28tk51frn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
