@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2020-09-28T10:01:29.070Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36" etag="FDvgF1-kxSbaveb5kzCY" version="13.6.3" type="github">
+<mxfile host="app.diagrams.net" modified="2020-09-28T10:08:41.809Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.121 Safari/537.36" etag="DCuaKof6Ej0EpfqeLEcA" version="13.6.3" type="github">
   <diagram name="Page-1" id="0783ab3e-0a74-02c8-0abd-f7b4e66b4bec">
-    <mxGraphModel dx="3651" dy="1566" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="#ffffff" math="0" shadow="0">
+    <mxGraphModel dx="2130" dy="913" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="#ffffff" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -367,9 +367,9 @@
           <mxGeometry x="2950" y="550" width="120" height="40" as="geometry" />
         </mxCell>
         <mxCell id="533KfLhe4TkgOQvLPKHS-222" value="" style="pointerEvents=1;shadow=0;dashed=0;html=1;strokeColor=none;fillColor=#505050;labelPosition=center;verticalLabelPosition=bottom;verticalAlign=top;outlineConnect=0;align=center;shape=mxgraph.office.devices.printer;" vertex="1" parent="1">
-          <mxGeometry x="2530" y="760" width="100" height="90" as="geometry" />
+          <mxGeometry x="2601.11" y="890" width="77.78" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="533KfLhe4TkgOQvLPKHS-224" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="533KfLhe4TkgOQvLPKHS-223" target="533KfLhe4TkgOQvLPKHS-222">
+        <mxCell id="533KfLhe4TkgOQvLPKHS-238" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="533KfLhe4TkgOQvLPKHS-223" target="533KfLhe4TkgOQvLPKHS-237">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="533KfLhe4TkgOQvLPKHS-223" value="Data" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;arcSize=50;" vertex="1" parent="1">
@@ -401,6 +401,24 @@
         </mxCell>
         <mxCell id="533KfLhe4TkgOQvLPKHS-236" value="롯데택배 계약시" style="shape=umlFrame;whiteSpace=wrap;html=1;width=120;height=30;" vertex="1" parent="1">
           <mxGeometry x="1730" y="690" width="760" height="340" as="geometry" />
+        </mxCell>
+        <mxCell id="533KfLhe4TkgOQvLPKHS-241" value="Drop" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="533KfLhe4TkgOQvLPKHS-237" target="533KfLhe4TkgOQvLPKHS-222">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="533KfLhe4TkgOQvLPKHS-237" value="Excel File" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;comic=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=12;align=center;arcSize=50;" vertex="1" parent="1">
+          <mxGeometry x="2605" y="790" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="533KfLhe4TkgOQvLPKHS-239" value="" style="rounded=0;html=1;jettySize=auto;orthogonalLoop=1;fontSize=11;endArrow=block;endFill=0;endSize=8;strokeWidth=1;shadow=0;labelBackgroundColor=none;edgeStyle=orthogonalEdgeStyle;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" target="533KfLhe4TkgOQvLPKHS-240">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2640" y="750" as="sourcePoint" />
+            <mxPoint x="2820" y="750" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="533KfLhe4TkgOQvLPKHS-240" value="Format Program" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;glass=0;strokeWidth=1;shadow=0;" vertex="1" parent="1">
+          <mxGeometry x="2710" y="730" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="533KfLhe4TkgOQvLPKHS-242" value="변환 프로그램" style="shape=umlFrame;whiteSpace=wrap;html=1;width=120;height=30;" vertex="1" parent="1">
+          <mxGeometry x="2690" y="680" width="580" height="310" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
