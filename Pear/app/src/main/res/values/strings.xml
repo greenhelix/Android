@@ -1,12 +1,72 @@
 <resources>
+    <!--login++++++++++++++++++++++++++++++++++++++++-->
     <string name="app_name">Pear</string>
     <string name="login_head">혁규 농원</string>
-    <string name="main_head_name01">반갑습니다!</string>
-    <string name="main_head_name02">오늘은 00월 00일 0요일입니다.</string>
-    <string name="main_head_name03">작업을 선택해주세요!</string>
-    <string name="main_btn_name01">주문 입력</string>
-    <string name="main_btn_name02">주문 현황</string>
-    <string name="main_btn_name03">통 계</string>
-    <string name="main_btn_name04">직접 배달</string>
-
+    <!--main+++++++++++++++++++++++++++++++++++++++++-->
+    <string name="main_head_text01">반갑습니다!</string>
+    <string name="main_head_text02">오늘은 00월 00일 0요일입니다.</string>
+    <string name="main_head_text03">작업을 선택해주세요!</string>
+    <string name="main_btn_text01">주문 입력</string>
+    <string name="main_btn_text02">주문 현황</string>
+    <string name="main_btn_text03">통 계</string>
+    <string name="main_btn_text04">직접 배달</string>
+    <string name="main_btn_text05">설 정</string>
+    <string name="main_btn_text06">로그아웃</string>
+    <!--order kind++++++++++++++++++++++++++++++++++-->
+    <string name= "order_kind_head_text01">주문 형태 선택</string>
+    <string name= "order_kind_btn_text01">직접 입력</string>
+    <string name= "order_kind_btn_text02">카메라 입력</string>
+    <!--order+++++++++++++++++++++++++++++++++++++++-->
+    <string name="order_head_text">주문자 정보 입력</string>
+    <string name="order_sender_text">보낸 사람 </string>
+    <string name="order_sender_tel_text">보내는 사람 연락처</string>
+    <string name="order_recipient_text">받는 사람 </string>
+    <string name="order_recipient_tel_text">받는 사람 연락처</string>
+    <string name="order_address_text">주소</string>
+    <string name="order_number_text01">주문</string>
+    <string name="order_number_text02">번</string>
+    <!--order camera+++++++++++++++++++++++++++++++++-->
+    <string name="order_camera_head_text01">카메라로 주문정보 찍기!</string>
+    <string name="order_camera_message_text01">밝은 곳에서 촬영하시거나 플래쉬를 켜주세요.</string>
+    <string name="order_camera_btn_text01">알겠습니다.</string>
+    <!--order check and modify++++++++++++++++++++++-->
+    <string name="order_check_head_text01">주문정보 확인 및 수정</string>
+    <!--order list++++++++++++++++++++++++++++++++++-->
+    <string name="order_list_head_text01">주문자 리스트</string>
+    <!--pear select+++++++++++++++++++++++++++++++++-->
+    <string name="pear_kind_head_text">배 종류</string>
+    <string name="pear_kind_01_text">원황</string>
+    <string name="pear_kind_02_text">화산</string>
+    <string name="pear_kind_03_text">황금</string>
+    <string name="pear_kind_04_text">만풍</string>
+    <string name="pear_kind_05_text">신고</string>
+    <string name="pear_kind_06_text">장식</string>
+    <string name="pear_amount_head_text">배 갯수</string>
+    <string name="pear_amount_01_text">7과</string>
+    <string name="pear_amount_02_text">8과</string>
+    <string name="pear_amount_03_text">9과</string>
+    <string name="pear_amount_04_text">10과</string>
+    <string name="pear_amount_05_text">11과</string>
+    <string name="pear_amount_06_text">12과</string>
+    <string name="box_amount_head_text">상자 갯수</string>
+    <string name="box_amount_unit_text">상자</string>
+    <!--pear order renewal complete+++++++++++++++++-->
+    <string name="order_renewal_complete_head_text">주문 갱신 완료!</string>
+    <string name="order_renewal_btn_text01">주문 현황 확인</string>
+    <string name="order_renewal_btn_text02">메인으로 가기</string>
+    <!--order status+++++++++++++++++++++++++++++++-->
+    <string name="order_status_text01">준비 중</string>
+    <string name="order_status_text02">준비 완료</string>
+    <string name="order_status_text03">배송 중</string>
+    <string name="order_status_text04">완 료</string>
+    <!--common button+++++++++++++++++++++++++++++++-->
+    <string name= "before_btn_text">이 전</string>
+    <string name= "after_btn_text">다 음</string>
+    <string name= "modify_btn_text">수 정</string>
+    <string name= "delete_btn_text">삭 제</string>
+    <string name= "complete_btn_text">완 료</string>
+    <string name= "pear_select_btn_text">배 선택</string>
+    <string name= "order_renewal_btn_text">주문 갱신</string>
+    <string name= "order_status_btn_text">완료 삭제</string>
+    <string name= "go_main_btn_text">메 인</string>
 </resources>
