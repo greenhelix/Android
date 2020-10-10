@@ -3,8 +3,17 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+    <color name="pearBackground">#9EE4AD</color>
     <color name="white_btn_color">#ffffffff</color>
-    <color name="green_btn_color">#4CAF50</color>
+    <color name="green_btn_color">#23DA66</color>
+    <color name="orange_btn_color">#FF9800</color>
+    <color name="pear_btn_color">#E6BE45</color>
+    <color name="status_color01">#F44336</color>
+    <color name="status_color02">#4CAF50</color>
+    <color name="status_color03">#FDE301</color>
+    <color name="status_color04">#673AB7</color>
+    <color name="amount_btn_color">#72DAE8</color>
     <color name="text_white">#ffffffff</color>
+    <color name="swipe_color">#2196F3</color>
 
 </resources>
