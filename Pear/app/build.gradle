@@ -25,6 +25,13 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+//    파이어베이스 로그인
+    implementation 'com.google.firebase:firebase-auth:19.4.0'
+//    파이어베이스 코어
+    implementation 'com.google.firebase:firebase-core:17.5.0'
+//    구글
+    implementation 'com.google.android.gms:play-services-auth:18.1.0'
+//    기타
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'

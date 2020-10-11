@@ -123,10 +123,8 @@
         android:layout_height="35dp"
         android:backgroundTint="@color/amount_btn_color"
         android:text="@string/pear_amount_01_text"
-        tools:layout_editor_absoluteX="54dp"
-        tools:layout_editor_absoluteY="103dp" />
-
-    <!--+++++++++++++++++++++++++++++++++++++++++++++++ !-->
+        tools:layout_editor_absoluteX="135dp"
+        tools:layout_editor_absoluteY="48dp" />
 
     <Button
         android:id="@+id/test13"
@@ -138,6 +136,25 @@
         android:textStyle="bold"
         tools:layout_editor_absoluteX="87dp"
         tools:layout_editor_absoluteY="565dp" />
+
+    <Button
+        android:id="@+id/test14"
+        android:layout_width="240dp"
+        android:layout_height="35dp"
+        android:text="@string/modify_btn_text"
+        android:textSize="13dp"
+        tools:layout_editor_absoluteX="65dp"
+        tools:layout_editor_absoluteY="86dp" />
+
+    <Button
+        android:id="@+id/test15"
+        android:layout_width="240dp"
+        android:layout_height="35dp"
+        android:text="@string/delete_btn_text"
+        android:textSize="13dp"
+        tools:layout_editor_absoluteX="65dp"
+        tools:layout_editor_absoluteY="121dp" />
+    <!--+++++++++++++++++++++++++++++++++++++++++++++++ !-->
 
     <Button
         android:id="@+id/before"
