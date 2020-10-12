@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/pearBackground"
+    >
+
+    <TextView
+        android:id="@+id/tv_check_head"
+        style="@style/headline_text"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="25dp"
+        android:text="@string/order_check_head_text01"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--        android:id="@+id/card_constraintlayout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="500dp"-->
+<!--        android:layout_marginTop="24dp"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/btn_check_next"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/tv_check_head"-->
+<!--        app:layout_constraintVertical_bias="0.036">-->
+
+        <RelativeLayout
+            android:id="@+id/card_layout"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@+id/tv_check_head"
+            app:layout_constraintBottom_toTopOf="@+id/btn_check_next"
+            >
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </androidx.recyclerview.widget.RecyclerView>
+        </RelativeLayout>
+
+    <Button
+        android:id="@+id/btn_check_before"
+        style="@style/bottom_btn_before_style"
+        android:background="@drawable/bottom_btn_shape"
+        android:text="@string/before_btn_text"
+        tools:ignore="MissingConstraints"
+        />
+    <Button
+        android:id="@+id/btn_check_next"
+        style="@style/bottom_btn_next_style"
+        android:background="@drawable/bottom_btn_shape"
+        android:text="@string/after_btn_text"
+        tools:ignore="MissingConstraints"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
