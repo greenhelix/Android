@@ -9,15 +9,31 @@
     <TextView
         android:id="@+id/tv_order_kind_head"
         style="@style/headline_text2"
-        android:text="@string/order_camera_head_text01"
-        android:textStyle="bold"
         android:layout_marginStart="80dp"
         android:layout_marginTop="160dp"
-        android:layout_marginEnd="80dp"
+        android:layout_marginEnd="70dp"
+        android:text="@string/order_camera_head_text01"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <!--    Dialog창 띄우기 별내 slack참고-->
+    <ImageButton
+        android:id="@+id/btn_order_camera"
+        android:background="@drawable/camera_img"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="105dp"
+        android:layout_marginTop="71dp"
+        android:layout_marginEnd="106dp"
+        android:layout_marginBottom="267dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_order_kind_head"
         />
 
 
