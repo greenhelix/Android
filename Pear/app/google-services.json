@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1030408306869",
+    "firebase_url": "https://pear-57581.firebaseio.com",
+    "project_id": "pear-57581",
+    "storage_bucket": "pear-57581.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1030408306869:android:bbd8f90f89fff09c6a7efc",
+        "android_client_info": {
+          "package_name": "com.greenhelix.pear"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1030408306869-grao3vkofd1s8kfakg1l7bv8c3gqioc6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.greenhelix.pear",
+            "certificate_hash": "63f13de46b9c324859f60c87d799d7c4172534a0"
+          }
+        },
+        {
+          "client_id": "1030408306869-svbcvnmeejqr15i2ieqrjd81q2kcds46.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDg3-MF6z-LAfy_rbXfDd4idK0SBQXS8C8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1030408306869-svbcvnmeejqr15i2ieqrjd81q2kcds46.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer-array name="tel">
+        <item>010</item>
+        <item>011</item>
+        <item>001</item>
+
+    </integer-array>
+
+</resources>
