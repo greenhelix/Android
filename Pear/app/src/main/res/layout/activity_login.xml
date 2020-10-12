@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/pearback01">
+    android:background="@drawable/pear_background_mobile">
 
     <TextView
         android:id="@+id/textView"
@@ -30,7 +30,7 @@
         android:layout_marginStart="72dp"
         android:layout_marginEnd="72dp"
         android:layout_marginBottom="13dp"
-        android:background="@drawable/round_shape_style"
+        android:background="@drawable/bottom_btn_shape"
         android:gravity="center"
         android:hint="구글 메일을 입력하세요."
         android:inputType="textEmailAddress"
@@ -45,7 +45,7 @@
         android:layout_marginStart="72dp"
         android:layout_marginEnd="74dp"
         android:layout_marginBottom="17dp"
-        android:background="@drawable/round_shape_style"
+        android:background="@drawable/bottom_btn_shape"
         android:gravity="center"
         android:hint="비밀번호를 입력하세요."
         android:inputType="textPassword"
@@ -60,11 +60,11 @@
         android:layout_height="45dp"
         android:layout_marginStart="49dp"
         android:layout_marginEnd="46dp"
-        android:layout_marginBottom="196dp"
+        android:layout_marginBottom="192dp"
         android:background="@color/white_btn_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.45"
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

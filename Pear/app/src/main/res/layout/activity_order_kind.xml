@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/pearBackground"
+    >
+
+    <TextView
+        android:id="@+id/tv_order_kind_head"
+        style="@style/headline_text"
+        android:layout_marginStart="85dp"
+        android:layout_marginTop="160dp"
+        android:layout_marginEnd="85dp"
+        android:text="@string/order_kind_head_text01"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/select_order_direct"
+        style="@style/select_long_btn_style"
+        android:layout_marginStart="85dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginEnd="85dp"
+        android:background="@drawable/basic_btn_shape"
+        android:text="@string/order_kind_btn_text01"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_order_kind_head" />
+
+    <Button
+        android:id="@+id/select_order_camera"
+        style="@style/select_long_btn_style"
+        android:layout_marginStart="85dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="85dp"
+        android:layout_marginBottom="270dp"
+        android:background="@drawable/basic_btn_shape"
+        android:text="@string/order_kind_btn_text02"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/select_order_direct" />
+
+    <Button
+        android:id="@+id/btn_select_order_before"
+        style="@style/bottom_btn_before_style"
+        android:background="@drawable/bottom_btn_shape"
+        android:text="@string/before_btn_text"
+        tools:ignore="MissingConstraints"/>
+
+    <ImageView
+        android:layout_width="289dp"
+        android:layout_height="405dp"
+        android:src="@drawable/pear01"
+        tools:layout_editor_absoluteX="185dp"
+        tools:layout_editor_absoluteY="532dp"
+        tools:ignore="MissingConstraints"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

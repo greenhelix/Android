@@ -73,7 +73,7 @@
         android:background="@color/green_btn_color"
         android:text="@string/complete_btn_text"
         android:textColor="@color/text_white"
-        android:textSize="20sp"
+        android:textSize="20dp"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="87dp"
         tools:layout_editor_absoluteY="452dp" />
@@ -143,6 +143,7 @@
         android:layout_height="35dp"
         android:text="@string/modify_btn_text"
         android:textSize="13dp"
+        android:background="@drawable/bottom_btn_shape"
         tools:layout_editor_absoluteX="65dp"
         tools:layout_editor_absoluteY="86dp" />
 
@@ -159,25 +160,21 @@
     <Button
         android:id="@+id/before"
         android:layout_width="100dp"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:layout_marginStart="30dp"
         android:layout_marginBottom="65dp"
-        android:backgroundTint="@color/white_btn_color"
+        android:background="@drawable/bottom_btn_shape"
+        android:backgroundTint="@color/orange_btn_color"
         android:text="@string/before_btn_text"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/after"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="65dp"
-        android:backgroundTint="@color/white_btn_color"
+        android:id="@+id/btn_next"
+        android:background="@drawable/bottom_btn_shape"
         android:text="@string/after_btn_text"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        style="@style/bottom_btn_next_style"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

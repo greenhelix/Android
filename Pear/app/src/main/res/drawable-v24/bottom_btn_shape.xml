@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--최 하단의 원형 버튼들의 모양을 정의한다. 기본 버튼 색은 흰색으로 되어있다. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android" >
+    <corners android:radius="50dp"/>
+    <solid android:color="#FFFFFF"/>
+</shape>

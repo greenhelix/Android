@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/pearBackground">
+
+    <TextView
+        android:id="@+id/tv_order_direct_head"
+        style="@style/headline_text"
+        android:text="@string/order_head_text"
+        tools:layout_editor_absoluteX="47dp"
+        tools:layout_editor_absoluteY="40dp" />
+
+    <TextView
+        android:id="@+id/tv_order_direct_sender"
+        style="@style/headline_text2"
+        android:text="@string/order_sender_text"
+        tools:layout_editor_absoluteX="50dp"
+        tools:layout_editor_absoluteY="119dp" />
+
+    <TextView
+        android:id="@+id/tv_order_direct_sender_tel"
+        style="@style/headline_text2"
+        android:text="@string/order_sender_tel_text"
+        tools:layout_editor_absoluteX="50dp"
+        tools:layout_editor_absoluteY="200dp" />
+
+    <TextView
+        android:id="@+id/tv_order_direct_recipient"
+        style="@style/headline_text2"
+        android:text="@string/order_recipient_text"
+        tools:layout_editor_absoluteX="50dp"
+        tools:layout_editor_absoluteY="300dp" />
+
+    <TextView
+        android:id="@+id/tv_order_direct_recipient_tel"
+        style="@style/headline_text2"
+        android:text="@string/order_recipient_tel_text"
+        tools:layout_editor_absoluteX="50dp"
+        tools:layout_editor_absoluteY="400dp" />
+
+    <TextView
+        android:id="@+id/tv_order_direct_address"
+        style="@style/headline_text2"
+        android:text="@string/order_address_text"
+        tools:layout_editor_absoluteX="50dp"
+        tools:layout_editor_absoluteY="500dp" />
+
+    <Button
+        android:id="@+id/btn_direct_before"
+        style="@style/bottom_btn_before_style"
+        android:background="@drawable/bottom_btn_shape"
+        android:text="@string/before_btn_text"
+        tools:ignore="MissingConstraints"
+        />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
