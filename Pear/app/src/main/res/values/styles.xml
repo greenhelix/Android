@@ -6,6 +6,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+
 <!--    헤드 라인 텍스트 스타일-->
     <style name="headline_text">
         <item name="android:layout_height">wrap_content</item>
@@ -23,6 +24,9 @@
         <item name="android:textColor">@color/head</item>
     </style>
 
+    <style name="headline_text3">
+
+    </style>
 
 
 <!--    기본 최하단 다음 버튼 스타일-->
@@ -32,7 +36,7 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/head</item>
         <item name="android:layout_marginStart">30dp</item>
-        <item name="android:layout_marginBottom">65dp</item>
+        <item name="android:layout_marginBottom">30dp</item>
         <item name="layout_constraintBottom_toBottomOf">parent</item>
         <item name="layout_constraintStart_toStartOf">parent</item>
     </style>
@@ -43,7 +47,7 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/head</item>
         <item name="android:layout_marginEnd">30dp</item>
-        <item name="android:layout_marginBottom">65dp</item>
+        <item name="android:layout_marginBottom">30dp</item>
         <item name="layout_constraintBottom_toBottomOf">parent</item>
         <item name="layout_constraintEnd_toEndOf">parent</item>
     </style>
@@ -70,5 +74,23 @@
         <item name="android:textSize">20dp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/head</item>
+    </style>
+<!--+++++++++++++++++++++++++++++++++++++++++++++++++++-->
+<!--    직접 주문입력 창 스타일-->
+    <style name="input_text_300">
+        <item name="android:layout_width">300dp</item>
+        <item name="android:layout_height">35dp</item>
+        <item name="android:paddingLeft">10dp</item>
+    </style>
+
+    <style name="input_tel_linear">
+        <item name="android:layout_width">300dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+    <style name="input_text_85">
+        <item name="android:layout_width">80dp</item>
+        <item name="android:layout_height">35dp</item>
+        <item name="android:textAlignment">center</item>
     </style>
 </resources>

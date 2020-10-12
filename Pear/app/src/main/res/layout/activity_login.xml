@@ -61,7 +61,7 @@
         android:layout_marginStart="49dp"
         android:layout_marginEnd="46dp"
         android:layout_marginBottom="192dp"
-        android:background="@color/white_btn_color"
+        android:background="@color/white_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.45"

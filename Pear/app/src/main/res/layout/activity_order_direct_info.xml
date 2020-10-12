@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,139 +10,256 @@
     <TextView
         android:id="@+id/tv_direct_head"
         style="@style/headline_text"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="85dp"
         android:text="@string/order_head_text"
-        tools:layout_editor_absoluteX="47dp"
-        tools:layout_editor_absoluteY="40dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_direct_sender"
         style="@style/headline_text2"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="262dp"
         android:text="@string/order_sender_text"
-        tools:layout_editor_absoluteX="50dp"
-        tools:layout_editor_absoluteY="119dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_direct_head" />
 
     <EditText
         android:id="@+id/et_direct_sender"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:background="@color/white_btn_color"
+        style="@style/input_text_300"
         android:hint="이름을 적어주세요."
-        tools:layout_editor_absoluteX="50dp"
-        tools:layout_editor_absoluteY="153dp" />
+        android:inputType="textAutoComplete"
+        android:background="@drawable/basic_input_shape"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="60dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_direct_sender" />
 
     <TextView
         android:id="@+id/tv_direct_sender_tel"
-        style="@style/headline_text2"
         android:text="@string/order_sender_tel_text"
-        tools:layout_editor_absoluteX="50dp"
-        tools:layout_editor_absoluteY="200dp" />
+        style="@style/headline_text2"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="163dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_direct_sender" />
 
     <LinearLayout
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        tools:layout_editor_absoluteX="55dp"
-        tools:layout_editor_absoluteY="248dp">
+        android:id="@+id/tel_linear"
+        style="@style/input_tel_linear"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="60dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_direct_sender_tel">
 
         <Spinner
             android:id="@+id/sp_direct_sender_tel1"
-            android:layout_width="50dp"
-            android:layout_height="20dp"
-            android:layout_marginRight="10dp"
-            android:background="@color/white_btn_color"
+            style="@style/input_text_85"
+            android:background="@drawable/basic_input_shape"
             android:entries="@array/tel"
             />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:text="ㅡ"
+            android:textSize="15dp" />
+
         <EditText
             android:id="@+id/et_direct_sender_tel2"
-            android:layout_width="50dp"
-            android:layout_height="20dp"
-            android:layout_marginRight="10dp"
-            android:background="@color/white_btn_color" />
+            style="@style/input_text_85"
+            android:background="@drawable/basic_input_shape"
+            android:inputType="phone"
+            android:maxLength="4"
+            android:nextFocusRight="@id/et_direct_sender_tel3"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:text="ㅡ"
+            android:textSize="15dp"
+            />
 
         <EditText
             android:id="@+id/et_direct_sender_tel3"
-            android:layout_width="50dp"
-            android:layout_height="20dp"
-            android:background="@color/white_btn_color" />
+            style="@style/input_text_85"
+            android:background="@drawable/basic_input_shape"
+            android:inputType="phone"
+            android:maxLength="4"
+            />
 
     </LinearLayout>
 
     <TextView
         android:id="@+id/tv_order_direct_recipient"
         style="@style/headline_text2"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="262dp"
         android:text="@string/order_recipient_text"
-        tools:layout_editor_absoluteX="50dp"
-        tools:layout_editor_absoluteY="300dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tel_linear" />
 
     <EditText
         android:id="@+id/et_direct_recipient"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:background="@color/white_btn_color"
         android:hint="이름을 적어주세요."
-        tools:layout_editor_absoluteX="50dp"
-        tools:layout_editor_absoluteY="344dp" />
+        style="@style/input_text_300"
+        android:background="@drawable/basic_input_shape"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="60dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_order_direct_recipient"
+        />
 
     <TextView
         android:id="@+id/tv_order_direct_recipient_tel"
         style="@style/headline_text2"
         android:text="@string/order_recipient_tel_text"
-        tools:layout_editor_absoluteX="50dp"
-        tools:layout_editor_absoluteY="400dp" />
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="163dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_direct_recipient"
+        />
 
     <LinearLayout
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        tools:layout_editor_absoluteX="47dp"
-        tools:layout_editor_absoluteY="443dp">
+        android:id="@+id/tel_linear2"
+        style="@style/input_tel_linear"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="60dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_order_direct_recipient_tel">
 
         <Spinner
             android:id="@+id/sp_direct_recipient_tel1"
-            android:layout_width="50dp"
-            android:layout_height="20dp"
-            android:layout_marginRight="10dp"
-            android:background="@color/white_btn_color"
-            android:entries="@array/tel" />
+            style="@style/input_text_85"
+            android:background="@drawable/basic_input_shape"
+            android:entries="@array/tel"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:text="ㅡ"
+            android:textSize="15dp" />
 
         <EditText
             android:id="@+id/et_direct_recipient_tel2"
-            android:layout_width="50dp"
-            android:layout_height="20dp"
-            android:layout_marginRight="10dp"
-            android:background="@color/white_btn_color" />
+            style="@style/input_text_85"
+            android:background="@drawable/basic_input_shape"
+            android:inputType="phone"
+            android:maxLength="4"
+            android:nextFocusRight="@id/et_direct_sender_tel3"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:text="ㅡ"
+            android:textSize="15dp"
+            />
 
         <EditText
             android:id="@+id/et_direct_recipient_tel3"
-            android:layout_width="50dp"
-            android:layout_height="20dp"
-            android:background="@color/white_btn_color" />
+            style="@style/input_text_85"
+            android:background="@drawable/basic_input_shape"
+            android:inputType="phone"
+            android:maxLength="4"
+            />
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/tv_direct_address"
-        style="@style/headline_text2"
-        android:text="@string/order_address_text"
-        tools:layout_editor_absoluteX="50dp"
-        tools:layout_editor_absoluteY="477dp" />
 
-    <Button
-        android:id="@+id/btn_direct_address"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="주소찾기"
-        tools:layout_editor_absoluteX="277dp"
-        tools:layout_editor_absoluteY="470dp" />
+
+    <LinearLayout
+        android:id="@+id/address_linear"
+        style="@style/input_tel_linear"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="60dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tel_linear2">
+
+        <TextView
+            android:id="@+id/tv_direct_address"
+            style="@style/headline_text2"
+            android:text="@string/order_address_text"
+            android:layout_marginRight="10dp"
+            />
+
+        <Button
+            android:id="@+id/btn_direct_address"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:background="@drawable/basic_input_shape"
+            android:backgroundTint="@color/grey_btn_color"
+            android:text="주소찾기"
+
+            />
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/tv_direct_address_num"
+        style="@style/input_text_85"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="60dp"
+        android:background="@drawable/basic_input_shape"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/address_linear" />
 
     <TextView
         android:id="@+id/tv_direct_address_show"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:background="@color/white_btn_color"
-        tools:layout_editor_absoluteX="47dp"
-        tools:layout_editor_absoluteY="518dp" />
+        style="@style/input_text_300"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="60dp"
+        android:background="@drawable/basic_input_shape"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_direct_address_num" />
+
+    <EditText
+        android:id="@+id/tv_direct_address_detail"
+        style="@style/input_text_300"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="60dp"
+        android:background="@drawable/basic_input_shape"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_direct_address_show" />
 
     <Button
         android:id="@+id/btn_direct_before"
