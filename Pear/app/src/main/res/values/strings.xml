@@ -23,7 +23,7 @@
     <string name="order_recipient_text">받는 사람 </string>
     <string name="order_recipient_tel_text">받는 사람 연락처</string>
     <string name="order_address_text">주소</string>
-    <string name="order_number_text01">주문</string>
+    <string name="order_number_text01">주문 00 번</string>
     <string name="order_number_text02">번</string>
     <!--order camera+++++++++++++++++++++++++++++++++-->
     <string name="order_camera_head_text01">카메라로 주문정보 찍기!</string>

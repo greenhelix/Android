@@ -20,46 +20,43 @@
         app:layout_constraintTop_toTopOf="parent"
         />
 
-<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--        android:id="@+id/card_constraintlayout"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="500dp"-->
-<!--        android:layout_marginTop="24dp"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/btn_check_next"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/tv_check_head"-->
-<!--        app:layout_constraintVertical_bias="0.036">-->
+    <RelativeLayout
+        android:id="@+id/card_layout"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/tv_check_head"
+        app:layout_constraintBottom_toTopOf="@+id/btn_check_next"
+        >
 
-        <RelativeLayout
-            android:id="@+id/card_layout"
+        <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_height="500dp"
-            android:layout_marginTop="24dp"
-            app:layout_constraintTop_toBottomOf="@+id/tv_check_head"
-            app:layout_constraintBottom_toTopOf="@+id/btn_check_next"
-            >
+            android:layout_height="match_parent"
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            />
 
-            </androidx.recyclerview.widget.RecyclerView>
-        </RelativeLayout>
+
+    </RelativeLayout>
 
     <Button
         android:id="@+id/btn_check_before"
         style="@style/bottom_btn_before_style"
+        android:layout_marginTop="17dp"
         android:background="@drawable/bottom_btn_shape"
         android:text="@string/before_btn_text"
+        app:layout_constraintTop_toBottomOf="@+id/card_layout"
         tools:ignore="MissingConstraints"
         />
+
     <Button
         android:id="@+id/btn_check_next"
         style="@style/bottom_btn_next_style"
+        android:layout_marginTop="17dp"
         android:background="@drawable/bottom_btn_shape"
         android:text="@string/after_btn_text"
+        app:layout_constraintTop_toBottomOf="@+id/card_layout"
         tools:ignore="MissingConstraints"
         />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
