@@ -1,13 +1,6 @@
 <resources>
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-    </style>
 
-<!--    헤드 라인 텍스트 스타일-->
+<!--텍스트 스타일-->
     <style name="headline_text">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
@@ -15,8 +8,6 @@
         <item name="android:textSize">40dp</item>
         <item name="android:textColor">@color/head</item>
     </style>
-
-<!--    헤드라인 레벨 2 텍스트 스타일-->
     <style name="headline_text2">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -24,12 +15,7 @@
         <item name="android:textColor">@color/head</item>
     </style>
 
-    <style name="headline_text3">
-
-    </style>
-
-
-<!--    기본 최하단 다음 버튼 스타일-->
+<!--최하단 버튼 스타일-->
     <style name="bottom_btn_before_style" >
         <item name="android:layout_width">100dp</item>
         <item name="android:layout_height">40dp</item>
@@ -40,7 +26,6 @@
         <item name="layout_constraintBottom_toBottomOf">parent</item>
         <item name="layout_constraintStart_toStartOf">parent</item>
     </style>
-
     <style name="bottom_btn_next_style" >
         <item name="android:layout_width">100dp</item>
         <item name="android:layout_height">40dp</item>
@@ -51,6 +36,13 @@
         <item name="layout_constraintBottom_toBottomOf">parent</item>
         <item name="layout_constraintEnd_toEndOf">parent</item>
     </style>
+    <style name="select_long_btn_style">
+        <item name="android:layout_width">250dp</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/head</item>
+    </style>
 
 <!--메인화면 버튼 양식-->
     <style name="main_big_btn_style">
@@ -59,22 +51,18 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">20dp</item>
     </style>
-
     <style name="main_small_btn_style">
         <item name="android:layout_width">130dp</item>
         <item name="android:layout_height">40dp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">15dp</item>
     </style>
-<!--+++++++++++++++++++++++++++++++++++++++++++++++++++-->
-
     <style name="round_btn_style">
         <item name="android:layout_width">120dp</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">15dp</item>
     </style>
-
     <style name="long_btn_style">
         <item name="android:layout_width">200dp</item>
         <item name="android:layout_height">40dp</item>
@@ -86,24 +74,12 @@
         <item name="layout_constraintEnd_toEndOf">parent</item>
     </style>
 
-
-<!--+++++++++++++++++++++++++++++++++++++++++++++++++++-->
-<!--    화면이동 선택 버튼 긴 것 -->
-    <style name="select_long_btn_style">
-        <item name="android:layout_width">250dp</item>
-        <item name="android:layout_height">60dp</item>
-        <item name="android:textSize">20dp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/head</item>
-    </style>
-<!--+++++++++++++++++++++++++++++++++++++++++++++++++++-->
 <!--    직접 주문입력 창 스타일-->
     <style name="input_text_300">
         <item name="android:layout_width">300dp</item>
         <item name="android:layout_height">35dp</item>
         <item name="android:paddingLeft">10dp</item>
     </style>
-
     <style name="input_tel_linear">
         <item name="android:layout_width">300dp</item>
         <item name="android:layout_height">wrap_content</item>
@@ -113,5 +89,13 @@
         <item name="android:layout_width">80dp</item>
         <item name="android:layout_height">35dp</item>
         <item name="android:textAlignment">center</item>
+    </style>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
     </style>
 </resources>
