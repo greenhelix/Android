@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/pearBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/pear_kind_head_text"
+            android:textSize="30dp" />
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:columnCount="3"
+            >
+            <Button
+                android:layout_width="110dp"
+                android:layout_height="60dp"
+                android:text="@string/pear_kind_01_text"
+                android:textSize="20dp"
+                android:backgroundTint="@color/pear_btn_color"
+                />
+            <Button
+                android:layout_width="110dp"
+                android:layout_height="60dp"
+                android:text="@string/pear_kind_02_text"
+                android:textSize="20dp"
+                android:backgroundTint="@color/pear_btn_color"
+                />
+            <Button
+                android:layout_width="110dp"
+                android:layout_height="60dp"
+                android:text="@string/pear_kind_03_text"
+                android:textSize="20dp"
+                android:backgroundTint="@color/pear_btn_color"
+                />
+            <Button
+                android:layout_width="110dp"
+                android:layout_height="60dp"
+                android:text="@string/pear_kind_04_text"
+                android:textSize="20dp"
+                android:backgroundTint="@color/pear_btn_color"
+                />
+            <Button
+                android:layout_width="110dp"
+                android:layout_height="60dp"
+                android:text="@string/pear_kind_05_text"
+                android:textSize="20dp"
+                android:backgroundTint="@color/pear_btn_color"
+                />
+            <Button
+                android:layout_width="110dp"
+                android:layout_height="60dp"
+                android:text="@string/pear_kind_06_text"
+                android:textSize="20dp"
+                android:backgroundTint="@color/pear_btn_color"
+                />
+
+
+        </GridLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/pear_amount_head_text"
+            android:textSize="30dp" />
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:columnCount="3"
+            >
+            <Button
+                android:layout_width="110dp"
+                android:layout_height="60dp"
+                android:text="@string/pear_amount_01_text"
+                android:textSize="20dp"
+                android:backgroundTint="@color/amount_btn_color"
+                />
+            <Button
+                android:layout_width="110dp"
+                android:layout_height="60dp"
+                android:text="@string/pear_amount_02_text"
+                android:textSize="20dp"
+                android:backgroundTint="@color/amount_btn_color"
+                />
+            <Button
+                android:layout_width="110dp"
+                android:layout_height="60dp"
+                android:text="@string/pear_amount_03_text"
+                android:textSize="20dp"
+                android:backgroundTint="@color/amount_btn_color"
+                />
+            <Button
+                android:layout_width="110dp"
+                android:layout_height="60dp"
+                android:text="@string/pear_amount_04_text"
+                android:textSize="20dp"
+                android:backgroundTint="@color/amount_btn_color"
+                />
+            <Button
+                android:layout_width="110dp"
+                android:layout_height="60dp"
+                android:text="@string/pear_amount_05_text"
+                android:textSize="20dp"
+                android:backgroundTint="@color/amount_btn_color"
+                />
+            <Button
+                android:layout_width="110dp"
+                android:layout_height="60dp"
+                android:text="@string/pear_amount_06_text"
+                android:textSize="20dp"
+                android:backgroundTint="@color/amount_btn_color"
+                />
+        </GridLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/box_amount_head_text"
+            android:textSize="30dp" />
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:useDefaultMargins="true"
+            >
+            <EditText
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:background="@color/white_color"
+                android:inputType="number"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/box_amount_unit_text"
+                android:textSize="30dp" />
+
+
+
+        </GridLayout>
+
+
+    </LinearLayout>
+
+
+    <Button
+        style="@style/bottom_btn_before_style"
+        android:background="@drawable/bottom_btn_shape"
+        android:text="@string/before_btn_text"
+        tools:ignore="MissingConstraints"
+        />
+
+    <Button
+        style="@style/bottom_btn_next_style"
+        android:background="@drawable/bottom_btn_shape"
+        android:text="@string/after_btn_text"
+        tools:ignore="MissingConstraints"
+        />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

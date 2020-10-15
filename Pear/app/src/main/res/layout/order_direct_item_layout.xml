@@ -6,7 +6,7 @@
     android:layout_width="350dp"
     android:layout_height="100dp"
     android:layout_gravity="center"
-    android:backgroundTint="@color/pearBackground"
+    android:backgroundTint="@color/greenBackground"
     >
     <LinearLayout
         android:layout_width="match_parent"
@@ -68,7 +68,8 @@
                 android:layout_marginTop="1dp"
                 android:src="@drawable/ic_baseline_send_20"
                 app:layout_constraintStart_toEndOf="@+id/textView2"
-                app:layout_constraintTop_toBottomOf="@+id/parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                />
 
             <TextView
                 android:id="@+id/textView4"
@@ -105,6 +106,8 @@
             />
 
     </LinearLayout>
+
+
 
 
 

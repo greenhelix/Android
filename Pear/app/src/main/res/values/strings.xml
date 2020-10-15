@@ -32,7 +32,8 @@
     <!--order check and modify++++++++++++++++++++++-->
     <string name="order_check_head_text01">주문정보 확인 및 수정</string>
     <!--order list++++++++++++++++++++++++++++++++++-->
-    <string name="order_list_head_text01">주문자 리스트</string>
+    <string name="order_list_head_text">주문자 리스트</string>
+    <string name="order_list_next_text">배송물품 선택</string>
     <!--pear select+++++++++++++++++++++++++++++++++-->
     <string name="pear_kind_head_text">배 종류</string>
     <string name="pear_kind_01_text">원황</string>

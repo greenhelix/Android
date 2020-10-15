@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/greenBackground">
+
+    <TextView
+        android:id="@+id/tv_list_head"
+        style="@style/headline_text"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="163dp"
+        android:text="@string/order_list_head_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/white_color"
+        android:stretchColumns="*"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_list_head">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/grey_btn_color">
+
+            <TextView android:text="주문 번호" />
+
+            <TextView android:text="받는 사람" />
+
+            <TextView android:text="주소" />
+
+            <TextView android:text="보낸 사람" />
+
+            <TextView android:text="선택" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="1"
+                android:textAlignment="center" />
+
+            <TextView android:text="김익환" />
+
+            <TextView android:text="경기도" />
+
+            <TextView android:text="윤소정" />
+
+            <CheckBox />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="2"
+                android:textAlignment="center" />
+
+            <TextView android:text="김익환" />
+
+            <TextView android:text="경기도" />
+
+            <TextView android:text="윤소정" />
+
+            <CheckBox />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="3"
+                android:textAlignment="center" />
+
+            <TextView android:text="김익환" />
+
+            <TextView android:text="경기도" />
+
+            <TextView android:text="윤소정" />
+
+            <CheckBox />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="4"
+                android:textAlignment="center" />
+
+            <TextView android:text="김익환" />
+
+            <TextView android:text="경기도" />
+
+            <TextView android:text="윤소정" />
+
+            <CheckBox />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="5"
+                android:textAlignment="center" />
+
+            <TextView android:text="김익환" />
+
+            <TextView android:text="경기도" />
+
+            <TextView android:text="윤소정" />
+
+            <CheckBox />
+        </TableRow>
+
+
+    </TableLayout>
+
+    <Button
+        style="@style/bottom_btn_before_style"
+        android:layout_marginStart="30dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/bottom_btn_shape"
+        android:text="@string/before_btn_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        style="@style/long_btn_style"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/bottom_btn_shape"
+        android:backgroundTint="@color/pear_btn_color"
+        android:text="@string/order_list_next_text"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
