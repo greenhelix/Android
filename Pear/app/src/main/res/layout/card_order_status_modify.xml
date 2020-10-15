@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="350dp"
+    android:layout_height="400dp"
+    android:background="@color/white_color"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/white_color">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp"
+            android:text="@string/order_number_text01"
+            android:textSize="20dp"
+            android:backgroundTint="@color/grey_btn_color"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="15dp"
+                    android:text="주문자"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="15dp"
+                    android:textSize="20dp"
+                    android:text="주문자"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="15dp"
+                    android:text="연락처"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="15dp"
+                    android:text="010-1234-5678"
+                    />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:src="@drawable/ic_baseline_send_20"
+                />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginRight="70dp"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+
+                    android:text="받는 사람"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textSize="20dp"
+                    android:text="김아무개"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:text="연락처"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="010-1234-4567"
+                    />
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:text="주소"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:textSize="10dp"
+                android:text="경기도 남양주시 별내 5로 81 KCC스위첸 아파트 111동 10호"
+                android:maxLines="2"
+                android:maxWidth="300dp"
+                />
+        </LinearLayout>
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:rowCount="4"
+            android:columnCount="2">
+
+            <Button
+                android:layout_width="300dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:text="@string/modify_btn_text"
+                android:background="@drawable/basic_btn_shape"
+                android:backgroundTint="@color/grey_btn_color"
+                android:layout_columnSpan="2"
+                />
+            <Button
+                android:layout_width="140dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/basic_btn_shape"
+                android:backgroundTint="@color/status_color01"
+                android:text="@string/order_status_text01"
+                android:layout_marginLeft="25dp"
+                />
+            <Button
+                android:layout_width="140dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/basic_btn_shape"
+                android:backgroundTint="@color/status_color02"
+                android:text="@string/order_status_text02"
+                />
+            <Button
+                android:layout_width="140dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/basic_btn_shape"
+                android:backgroundTint="@color/status_color03"
+                android:text="@string/order_status_text03"
+                android:layout_marginLeft="25dp"
+                />
+            <Button
+                android:layout_width="140dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/basic_btn_shape"
+                android:backgroundTint="@color/status_color04"
+                android:text="@string/order_status_text04"
+                />
+            <Button
+                android:layout_width="300dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="15dp"
+                android:layout_gravity="center"
+                android:text="@string/delete_btn_text"
+                android:background="@drawable/basic_btn_shape"
+                android:backgroundTint="@color/orange_btn_color"
+                android:layout_columnSpan="2"
+                />
+
+        </GridLayout>
+
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>
