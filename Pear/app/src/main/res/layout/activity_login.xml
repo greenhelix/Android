@@ -60,11 +60,23 @@
         android:layout_height="45dp"
         android:layout_marginStart="49dp"
         android:layout_marginEnd="46dp"
-        android:layout_marginBottom="192dp"
+        android:layout_marginBottom="10dp"
         android:background="@color/white_color"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btn_google_logout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.45"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <Button
+        android:id="@+id/btn_google_logout"
+        android:layout_width="265dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginEnd="63dp"
+        android:layout_marginBottom="137dp"
+        android:background="@color/white_color"
+        android:text="로그아웃"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
