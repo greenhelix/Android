@@ -28,6 +28,8 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
 //    파이어베이스 로그인
     implementation 'com.google.firebase:firebase-auth:19.4.0'
+//    파이어베이스 ML
+    implementation 'com.google.firebase:firebase-ml-vision:24.1.0'
 //    파이어베이스 코어
     implementation 'com.google.firebase:firebase-core:17.5.0'
     implementation platform('com.google.firebase:firebase-bom:25.12.0')

@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/select_order_direct"
+        android:id="@+id/btn_order_direct"
         style="@style/select_long_btn_style"
         android:layout_marginStart="85dp"
         android:layout_marginTop="120dp"
@@ -33,7 +33,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_order_kind_head" />
 
     <Button
-        android:id="@+id/select_order_camera"
+        android:id="@+id/btn_order_camera"
         style="@style/select_long_btn_style"
         android:layout_marginStart="85dp"
         android:layout_marginTop="10dp"
@@ -44,7 +44,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/select_order_direct" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_order_direct" />
 
     <Button
         android:id="@+id/btn_select_order_before"
