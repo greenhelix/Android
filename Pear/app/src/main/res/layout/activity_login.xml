@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/pear_background_mobile">
+    android:background="@drawable/pear_background_mobile"
+    tools:context=".LoginActivity"
+    >
 
     <TextView
         android:id="@+id/textView"
@@ -58,25 +60,24 @@
         android:id="@+id/btn_google_login"
         android:layout_width="265dp"
         android:layout_height="45dp"
-        android:layout_marginStart="49dp"
-        android:layout_marginEnd="46dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="64dp"
         android:background="@color/white_color"
-        app:layout_constraintBottom_toTopOf="@+id/btn_google_logout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.45"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_login_password" />
 
-    <Button
-        android:id="@+id/btn_google_logout"
-        android:layout_width="265dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="65dp"
-        android:layout_marginEnd="63dp"
-        android:layout_marginBottom="137dp"
-        android:background="@color/white_color"
-        android:text="로그아웃"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+    <!--    <Button-->
+<!--        android:id="@+id/btn_google_logout"-->
+<!--        android:layout_width="265dp"-->
+<!--        android:layout_height="45dp"-->
+<!--        android:layout_marginStart="65dp"-->
+<!--        android:layout_marginEnd="63dp"-->
+<!--        android:layout_marginBottom="137dp"-->
+<!--        android:background="@color/white_color"-->
+<!--        android:text="로그아웃"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent" />-->
 </androidx.constraintlayout.widget.ConstraintLayout>
