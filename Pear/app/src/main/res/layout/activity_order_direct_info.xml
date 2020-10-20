@@ -5,7 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/greenBackground">
+    android:background="@color/greenBackground"
+    tools:context=".DirectOrderActivity"
+    >
 
     <TextView
         android:id="@+id/tv_direct_head"
@@ -251,7 +253,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_direct_address_num" />
 
     <EditText
-        android:id="@+id/tv_direct_address_detail"
+        android:id="@+id/et_direct_address_detail"
         style="@style/input_text_300"
         android:layout_marginStart="50dp"
         android:layout_marginTop="5dp"

@@ -1,17 +1,14 @@
 package com.greenhelix.pear;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -26,7 +23,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
-
 public class LoginActivity extends AppCompatActivity {
 
     // xml 버튼 할당
@@ -35,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
     private GoogleSignInClient client;
     private FirebaseAuth fAuth;
     private int SIGNINCODE = 1;
-    Intent logout ;
+    Intent logout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
