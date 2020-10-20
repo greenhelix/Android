@@ -6,8 +6,8 @@
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <!--카메라 허용-->
-    <uses-permission android:name="android.permission.CAMERA" android:required="true"/>
-    <uses_feature android:name="android.hardware.camera2.any" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" android:required="true" />
 
     <!--저장권한 - 읽기 쓰기가 둘다 가능하다. write만써도 다 됨-->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
