@@ -31,6 +31,8 @@
         <activity android:name=".MainActivity" ></activity>
         <activity android:name=".OrderKindActivity"></activity>
         <activity android:name=".CameraOrderActivity"></activity>
+        <activity android:name=".DirectOrderActivity"></activity>
+
 
 
 <!--        파일 제공자를 구성한다-->
