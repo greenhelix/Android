@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <!--카메라 허용-->
-    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.CAMERA" android:required="true" />
     <uses-feature android:name="android.hardware.camera" android:required="true" />
 
     <!--저장권한 - 읽기 쓰기가 둘다 가능하다. write만써도 다 됨-->
@@ -25,11 +25,13 @@
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"></category>
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" >
-        </activity>
+        <activity android:name=".MainActivity" ></activity>
+        <activity android:name=".OrderKindActivity"></activity>
+        <activity android:name=".CameraOrderActivity"></activity>
+
 
 <!--        파일 제공자를 구성한다-->
         <provider

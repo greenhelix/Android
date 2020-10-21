@@ -6,25 +6,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/greenBackground"
+    tools:context=".OrderKindActivity"
     >
 
     <TextView
         android:id="@+id/tv_order_kind_head"
         style="@style/headline_text"
-        android:layout_marginStart="85dp"
-        android:layout_marginTop="160dp"
-        android:layout_marginEnd="85dp"
+        android:layout_marginTop="156dp"
+        android:layout_marginBottom="120dp"
         android:text="@string/order_kind_head_text01"
+        app:layout_constraintBottom_toTopOf="@+id/btn_order_direct"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btn_order_direct"
         style="@style/select_long_btn_style"
-        android:layout_marginStart="85dp"
         android:layout_marginTop="120dp"
-        android:layout_marginEnd="85dp"
         android:background="@drawable/basic_btn_shape"
         android:text="@string/order_kind_btn_text01"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,16 +34,15 @@
     <Button
         android:id="@+id/btn_order_camera"
         style="@style/select_long_btn_style"
-        android:layout_marginStart="85dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="85dp"
-        android:layout_marginBottom="270dp"
         android:background="@drawable/basic_btn_shape"
         android:text="@string/order_kind_btn_text02"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_order_direct" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_order_direct"
+        app:layout_constraintVertical_bias="0.068" />
 
     <Button
         android:id="@+id/btn_select_order_before"
@@ -55,9 +54,10 @@
     <ImageView
         android:layout_width="289dp"
         android:layout_height="405dp"
+        android:layout_marginStart="156dp"
         android:src="@drawable/pear01"
-        tools:layout_editor_absoluteX="185dp"
-        tools:layout_editor_absoluteY="532dp"
-        tools:ignore="MissingConstraints"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_order_camera"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        Log.d("Main", "Mainactivity정상 oncreate되었습니다.");
 
         //로그아웃
         btnMainLogout =findViewById(R.id.btn_main_logout);
@@ -37,7 +37,19 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
                 Log.d("LogOut","정상로그아웃 FirebaseAuth");
-                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                finish();
+            }
+        });
+
+        //주문입력
+        btnMainOrderDirect = findViewById(R.id.btn_main_order_write);
+        btnMainOrderDirect.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("Order", "버튼이 정상적으로 눌렸습니다.");
+                Intent account = new Intent(MainActivity.this, OrderKindActivity.class);
+                startActivity(account);
                 finish();
             }
         });

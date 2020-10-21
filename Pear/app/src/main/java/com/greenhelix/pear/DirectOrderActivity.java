@@ -27,8 +27,8 @@ public class DirectOrderActivity extends AppCompatActivity {
     TextView address_detail2;
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_direct_info);
 
         sender_name.findViewById(R.id.et_direct_sender);

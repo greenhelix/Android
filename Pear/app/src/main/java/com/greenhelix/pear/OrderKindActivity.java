@@ -3,6 +3,7 @@ package com.greenhelix.pear;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -16,10 +17,10 @@ public class OrderKindActivity extends AppCompatActivity {
     Button btnOrderMain;
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_kind);
-
+        Log.d("Kind", "주문형태 입력화면 정상 OnCreate 되었습니다.");
         btnOrderDirect = findViewById(R.id.btn_order_direct);
         btnOrderCamera = findViewById(R.id.btn_order_camera);
         btnOrderMain = findViewById(R.id.btn_select_order_before);
@@ -27,7 +28,7 @@ public class OrderKindActivity extends AppCompatActivity {
         btnOrderDirect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent move = new Intent(getApplicationContext(), DirectOrderActivity.class);
+                Intent move = new Intent(OrderKindActivity.this, DirectOrderActivity.class);
                 startActivity(move);
                 finish();
             }
@@ -36,7 +37,7 @@ public class OrderKindActivity extends AppCompatActivity {
         btnOrderCamera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent move = new Intent(getApplicationContext(), CameraOrderActivity.class);
+                Intent move = new Intent(OrderKindActivity.this, CameraOrderActivity.class);
                 startActivity(move);
                 finish();
             }

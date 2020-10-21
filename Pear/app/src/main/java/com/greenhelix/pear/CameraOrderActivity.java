@@ -1,109 +1,107 @@
 package com.greenhelix.pear;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
-import android.os.PersistableBundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-
+import android.widget.Toast;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.FileProvider;
-
-import java.io.File;
-import java.io.IOError;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 public class CameraOrderActivity extends AppCompatActivity {
 
     ImageButton btnCameraOpen;
     ImageView ivCameraImage;
     static final int REQUEST_IMAGE_CAPTURE = 1;
-    static final int REQUEST_TAKE_PHOTO = 1;
-    String currentPhotoPath;
-
-
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_camera);
 
-        btnCameraOpen.findViewById(R.id.btn_order_camera);
+        //선언부분이 이런형태야 된다. 이상한데 까먹지말자. (형변환?해줘야하는듯?)
+        ivCameraImage = (ImageView) findViewById(R.id.iv_order_camera_image);
+        btnCameraOpen = (ImageButton) findViewById(R.id.btn_camera);
+
+
         btnCameraOpen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dispatchTakePictureIntent();
-
+                //카메라 권한 허가 부분!! 꼭 잊어버리지말자.
+                int permissionCheck = ContextCompat.checkSelfPermission
+                        (CameraOrderActivity.this, Manifest.permission.CAMERA);
+                if(permissionCheck == PackageManager.PERMISSION_DENIED){
+                    //권한이 없다면!
+                    ActivityCompat.requestPermissions
+                            (CameraOrderActivity.this, new String[]{Manifest.permission.CAMERA},0);
+                }else{
+                    dispatchTakePictureIntent();
+                }
             }
         });
     }
 
-
-    /*찍은 사진을 파일로 만들어서 디바이스 저장소에 저장하는 메서드이다. */
-    private File createImageFile() throws IOException{
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String imageFileName = "JPEG_"+timeStamp+"_";
-        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-        File image = File.createTempFile(
-                imageFileName,
-                ".jpg",
-                storageDir
-        );
-
-        currentPhotoPath = image.getAbsolutePath();
-        return image;
-    }
-
-    /*카메라 앱을 불러서 사진 촬영한 뒤, 인텐트에 넣어둔다.*/
-    /*이제 이 이미지 파일을  intent를 통해 호출할 수 있게 한다.*/
-    private void dispatchTakePictureIntent(){
-        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        if(takePictureIntent.resolveActivity(getPackageManager()) != null){
-
-            File photoFile = null;
-
-            try{
-                photoFile = createImageFile();
-
-            }catch (IOException ex) {
-                Log.e("camera", "사진을 이미지로 넣는 과정 문제"+ex);
+    //권한 여부 확인하고 이 오버라이드 메서드로 권한 부여 물어본다.
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        //super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(requestCode == 0){
+            if(grantResults[0] == 0){
+                Toast.makeText(this, "카메라 권한 승인",Toast.LENGTH_SHORT).show();
+            }else{
+                Toast.makeText(this, "카메라 권한 거절",Toast.LENGTH_SHORT).show();
             }
-
-            if(photoFile != null){
-//              Uri형태로 사진을 만드는데, Fileprovider를 통해서 생성한다. 해당 사진 파일을 uri로 변환하는 과정
-                Uri photoURI = FileProvider.getUriForFile(this,
-                        "com.greenhelix.pear",
-                        photoFile);
-                takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
-                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
-            }
-
         }
     }
 
-    /*Uri로 저장된 이미지를 bitmap으로 형변환하여 imageview에 띄어준다.*/
-    /*imageview는 나타나게 되고, imagebutton은 사라지게 만든다. */
+    //카메라권한이 있는 경우 카메라를 불러서 사진을 찍는다. 그리고 인텐트를 통해서 사진정보를 onActivityResult으로 보낸다.
+    private void dispatchTakePictureIntent() {
+        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+        }
+    }
+
+//    Uri로 저장된 이미지를 bitmap으로 형변환하여 imageview에 띄어준다.
+//    imageview는 나타나게 되고, imagebutton은 사라지게 만든다.
+//    위의 사진을 찍은 메서드가 완료되면 이쪽으로 사진 정보를 보내서 변환시킨다. 원하는 형태로 바꾸는 부분이다.
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK){
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
-            Log.d("camera","이미지 비트맵: "+imageBitmap);
-            Log.d("camera","정상처리되었습니다.");
+            Log.i("camera","이미지 비트맵: "+imageBitmap);
+            Log.i("camera","정상처리되었습니다.");
             btnCameraOpen.setVisibility(View.INVISIBLE);
             ivCameraImage.setVisibility(View.VISIBLE);
             ivCameraImage.setImageBitmap(imageBitmap);
         }
     }
 
+    /*찍은 사진을 파일로 만들어서 디바이스 저장소에 저장하는 메서드이다. */
+//    static final int REQUEST_TAKE_PHOTO = 1;
+//    String currentPhotoPath;
+//    private File createImageFile() throws IOException{
+//        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmm").format(new Date());
+//        String imageFileName = "JPEG_"+timeStamp+"_";
+//        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+//        File image = File.createTempFile(
+//                imageFileName,
+//                ".jpg",
+//                storageDir
+//        );
+//
+//        currentPhotoPath = image.getAbsolutePath();
+//        return image;
+//    }
 }

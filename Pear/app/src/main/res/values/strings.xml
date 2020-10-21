@@ -26,7 +26,7 @@
     <string name="order_number_text01">주문 00 번</string>
     <string name="order_number_text02">번</string>
     <!--order camera+++++++++++++++++++++++++++++++++-->
-    <string name="order_camera_head_text01">카메라로 주문정보 찍기!</string>
+    <string name="order_camera_head_text01">주문정보 촬영!</string>
     <string name="order_camera_message_text01">밝은 곳에서 촬영하시거나 플래쉬를 켜주세요.</string>
     <string name="order_camera_btn_text01">알겠습니다.</string>
     <!--order check and modify++++++++++++++++++++++-->

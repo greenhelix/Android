@@ -48,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
                 .build();
         client = GoogleSignIn.getClient(this, googleOpt);
 
-        // 버튼 클릭 활성화
+        // 버튼 클릭 활성화g
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
