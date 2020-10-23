@@ -46,31 +46,33 @@ public class ImageML extends AppCompatActivity implements ImageAnalysis.Analyzer
 
         //가져온 비트맵 이미지를 파이어베이스 비전에 넣어준다.
         FirebaseVisionImage test = FirebaseVisionImage.fromBitmap(firebaseBitmapImage);
-        // 파이어베이스 인식기를 선언해준다.
-        FirebaseVisionTextRecognizer detector = FirebaseVision.getInstance()
-                .getCloudTextRecognizer();
         //파이어베이스 텍스트인식 옵션을 주는 곳이다. 여기서 한글인식을 설정하는듯
         FirebaseVisionCloudTextRecognizerOptions txtOptions = new FirebaseVisionCloudTextRecognizerOptions.Builder()
-                .setLanguageHints(Arrays.asList("ko-KR","안녕"))
+                .setLanguageHints(Arrays.asList("ko","안녕"))
                 .build();
+        // 파이어베이스 인식기를 선언해준다.
+        FirebaseVisionTextRecognizer detector = FirebaseVision.getInstance()
+                .getCloudTextRecognizer(txtOptions);
 
+        Log.d(LOG_TAG,"처리중 -------->"+test+"처리중...."+detector);
         // 비트맵 이미지를 프로세스 돌리고 잘 작동하는지 확인.
         Task<FirebaseVisionText> result = detector.processImage(test)
                 .addOnSuccessListener(new OnSuccessListener<FirebaseVisionText>() {
                     @Override
                     public void onSuccess(FirebaseVisionText firebaseVisionText) {
                         Log.d(LOG_TAG,"텍스트인식기 정상가동");
+                        Log.d(LOG_TAG,"전체 인식 글자 : "+ firebaseVisionText.getText());
                         for(FirebaseVisionText.TextBlock block : firebaseVisionText.getTextBlocks()) {
                             //그래픽으로 묶어주는 모습보여준는것?
                             Rect boudingBox = block.getBoundingBox();
                             Point[] cornerPoints = block.getCornerPoints();
                             String text = block.getText();
-
+                            Log.d(LOG_TAG, "문단 :  "+text);
                             for (FirebaseVisionText.Line line : block.getLines()) {
-                                Log.d(LOG_TAG, "라인을 가져온다.");
+                                Log.d(LOG_TAG, "줄 :  "+line.getText());
 
                                 for (FirebaseVisionText.Element element : line.getElements()) {
-                                    Log.d(LOG_TAG, "각 단어들을 가져온다.");
+                                    Log.d(LOG_TAG, "단어 :  "+element.getText());
                                 }//요소
                             }//라인
                         }//블록
