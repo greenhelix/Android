@@ -15,12 +15,13 @@ public class OrderKindActivity extends AppCompatActivity {
     Button btnOrderDirect;
     Button btnOrderCamera;
     Button btnOrderMain;
+    private static final String LOG_TAG = "ik";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_kind);
-        Log.d("Kind", "주문형태 입력화면 정상 OnCreate 되었습니다.");
+        Log.d(LOG_TAG, "주문형태 입력화면 정상 OnCreate 되었습니다.");
         btnOrderDirect = findViewById(R.id.btn_order_direct);
         btnOrderCamera = findViewById(R.id.btn_order_camera);
         btnOrderMain = findViewById(R.id.btn_select_order_before);

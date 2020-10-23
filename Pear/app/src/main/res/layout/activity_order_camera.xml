@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/greenBackground"
-    tools:context=".CameraOrderActivity"
-    >
-
+    tools:context=".CameraOrderActivity">
 
     <!--    Dialog창 띄우기 별내 slack참고-->
-
     <TextView
         android:id="@+id/tv_order_kind_head"
         style="@style/headline_text"
@@ -22,21 +20,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!--    constraintVertical_bias값을 조금씩 올리면 버튼이 내려간다.-->
+
     <ImageButton
         android:id="@+id/btn_camera"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_marginTop="60dp"
-        android:layout_marginEnㅎd="104dp"
         android:background="@drawable/camera_img"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_order_kind_head"
-        app:layout_constraintVertical_bias="0.15" />
-<!--    constraintVertical_bias값을 조금씩 올리면 버튼이 내려간다.-->
+        app:layout_constraintVertical_bias="0.089" />
 
     <ImageView
         android:id="@+id/iv_order_camera_image"
@@ -46,17 +44,24 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.463" />
 
     <Button
+        android:id="@+id/btn_order_camera_next"
         style="@style/bottom_btn_next_style"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="65dp"
         android:background="@drawable/bottom_btn_shape"
         android:text="@string/after_btn_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.945"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_order_camera_image"
-        tools:ignore="MissingConstraints"
-        />
+        app:layout_constraintVertical_bias="0.27"
+        tools:ignore="MissingConstraints" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

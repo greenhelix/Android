@@ -32,6 +32,7 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth fAuth;
     private int SIGNINCODE = 1;
     Intent logout;
+    private static final String LOG_TAG = "ik";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,10 +60,10 @@ public class LoginActivity extends AppCompatActivity {
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if(user == null){
-            Log.d("Log", "로그인 아웃 정상처리 현재 사용자: "+user);
+            Log.d(LOG_TAG, "로그인 아웃 정상처리 현재 사용자: "+user);
         }
         else{
-            Log.d("Log", "로그인 되어있습니다.");
+            Log.d(LOG_TAG, "로그인 되어있습니다.");
         }
 
     }
@@ -118,7 +119,7 @@ public class LoginActivity extends AppCompatActivity {
             String personEmail = account.getEmail();
             Intent access = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(access);
-            Log.d("Log", "현재 로그인 이메일"+ personEmail);
+            Log.d(LOG_TAG, "현재 로그인 이메일"+ personEmail);
             finish();
         }
     }

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -21,7 +22,12 @@ public class CameraOrderActivity extends AppCompatActivity {
 
     ImageButton btnCameraOpen;
     ImageView ivCameraImage;
+    Button btnCameraNext;
+
     static final int REQUEST_IMAGE_CAPTURE = 1;
+    private static final String LOG_TAG = "ik";
+    private static final String BIT_IMAGE = "BitmapImage";
+    Bitmap imageBitmap;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -31,7 +37,7 @@ public class CameraOrderActivity extends AppCompatActivity {
         //선언부분이 이런형태야 된다. 이상한데 까먹지말자. (형변환?해줘야하는듯?)
         ivCameraImage = (ImageView) findViewById(R.id.iv_order_camera_image);
         btnCameraOpen = (ImageButton) findViewById(R.id.btn_camera);
-
+        btnCameraNext = findViewById(R.id.btn_order_camera_next);
 
         btnCameraOpen.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,6 +54,17 @@ public class CameraOrderActivity extends AppCompatActivity {
                 }
             }
         });
+
+        btnCameraNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent imageSend = new Intent(CameraOrderActivity.this, ImageML.class);
+                imageSend.putExtra(BIT_IMAGE,imageBitmap);
+                startActivity(imageSend);
+            }
+        });
+
     }
 
     //권한 여부 확인하고 이 오버라이드 메서드로 권한 부여 물어본다.
@@ -63,7 +80,7 @@ public class CameraOrderActivity extends AppCompatActivity {
         }
     }
 
-    //카메라권한이 있는 경우 카메라를 불러서 사진을 찍는다. 그리고 인텐트를 통해서 사진정보를 onActivityResult으로 보낸다.
+//카메라권한이 있는 경우 카메라를 불러서 사진을 찍는다. 그리고 인텐트를 통해서 사진정보를 onActivityResult으로 보낸다.
     private void dispatchTakePictureIntent() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
@@ -79,9 +96,9 @@ public class CameraOrderActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK){
             Bundle extras = data.getExtras();
-            Bitmap imageBitmap = (Bitmap) extras.get("data");
-            Log.i("camera","이미지 비트맵: "+imageBitmap);
-            Log.i("camera","정상처리되었습니다.");
+            imageBitmap = (Bitmap) extras.get("data");
+            Log.d(LOG_TAG,"이미지 비트맵: "+imageBitmap.toString());
+            Log.d(LOG_TAG,"정상처리되었습니다.");
             btnCameraOpen.setVisibility(View.INVISIBLE);
             ivCameraImage.setVisibility(View.VISIBLE);
             ivCameraImage.setImageBitmap(imageBitmap);
@@ -104,4 +121,5 @@ public class CameraOrderActivity extends AppCompatActivity {
 //        currentPhotoPath = image.getAbsolutePath();
 //        return image;
 //    }
+
 }

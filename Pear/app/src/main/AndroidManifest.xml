@@ -32,7 +32,8 @@
         <activity android:name=".OrderKindActivity"></activity>
         <activity android:name=".CameraOrderActivity"></activity>
         <activity android:name=".DirectOrderActivity"></activity>
-
+        <activity android:name=".OrderListActivity"></activity>
+        <activity android:name=".ImageML"></activity>
 
 
 <!--        파일 제공자를 구성한다-->
