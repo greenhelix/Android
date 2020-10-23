@@ -6,17 +6,24 @@
     android:layout_height="match_parent"
     android:background="@color/greenBackground"
     tools:context=".MainActivity">
-
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="537dp"
+        android:layout_height="816dp"
+        android:layout_marginTop="220dp"
+        android:src="@drawable/pear01"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="-37dp" />
     <TextView
         android:id="@+id/tv_main_head1"
-        android:layout_marginStart="39dp"
+        style="@style/headline_text"
         android:layout_marginTop="100dp"
-        android:layout_marginEnd="174dp"
         android:layout_marginBottom="3dp"
         android:text="@string/main_head_text01"
-        style="@style/headline_text"
         app:layout_constraintBottom_toTopOf="@+id/tv_main_head2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.147"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,8 +31,6 @@
         android:id="@+id/tv_main_head2"
         android:layout_width="334dp"
         android:layout_height="33dp"
-        android:layout_marginStart="38dp"
-        android:layout_marginEnd="39dp"
         android:text="@string/main_head_text02"
         android:textColor="@color/head"
         android:textSize="25dp"
@@ -39,8 +44,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="60dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginTop="52dp"
         android:text="@string/main_head_text03"
         android:textColor="@color/head"
         android:textSize="20dp"
@@ -53,44 +57,46 @@
     <Button
         android:id="@+id/btn_main_order_write"
         style="@style/main_big_btn_style"
-        android:layout_marginTop="3dp"
-        android:layout_marginLeft="60dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/basic_btn_shape"
         android:text="@string/main_btn_text01"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_main_head3" />
 
     <Button
         android:id="@+id/btn_main_order_status"
         style="@style/main_big_btn_style"
-        android:layout_marginTop="3dp"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="64dp"
         android:background="@drawable/basic_btn_shape"
         android:text="@string/main_btn_text02"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btn_main_order_write"
         app:layout_constraintTop_toBottomOf="@+id/tv_main_head3" />
 
     <Button
         android:id="@+id/btn_main_static"
         style="@style/main_big_btn_style"
-        android:layout_marginTop="9dp"
         android:layout_marginLeft="60dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/basic_btn_shape"
         android:text="@string/main_btn_text03"
-        app:layout_constraintTop_toBottomOf="@+id/btn_main_order_write"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_main_order_write" />
 
 
     <Button
         android:id="@+id/btn_main_direct"
         style="@style/main_big_btn_style"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="9dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/basic_btn_shape"
         android:text="@string/main_btn_text04"
         app:layout_constraintStart_toEndOf="@+id/btn_main_static"
         app:layout_constraintTop_toBottomOf="@+id/btn_main_order_status" />
-
 
     <Button
         android:id="@+id/btn_main_setting"
@@ -114,14 +120,6 @@
         app:layout_constraintStart_toEndOf="@+id/btn_main_setting"
         />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="537dp"
-        android:layout_height="816dp"
-        android:layout_marginTop="170dp"
-        android:src="@drawable/pear01"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="-44dp"
-        tools:ignore="MissingConstraints" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
