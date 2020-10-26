@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -34,11 +35,12 @@ public class ImageML extends AppCompatActivity implements ImageAnalysis.Analyzer
     private static final String LOG_TAG = "ik";
 
     Bitmap firebaseBitmapImage;
-
+    TextView resultShow;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setContentView(R.layout.ml_kit_result);
+        resultShow.findViewById(R.id.tv_mlResult);
         Intent getImage = getIntent();
         firebaseBitmapImage = (Bitmap)getImage.getParcelableExtra(BIT_IMAGE);
         Log.d(LOG_TAG, "비트맵이미지 수령 완료"+firebaseBitmapImage);
@@ -49,6 +51,7 @@ public class ImageML extends AppCompatActivity implements ImageAnalysis.Analyzer
         //파이어베이스 텍스트인식 옵션을 주는 곳이다. 여기서 한글인식을 설정하는듯
         FirebaseVisionCloudTextRecognizerOptions txtOptions = new FirebaseVisionCloudTextRecognizerOptions.Builder()
                 .setLanguageHints(Arrays.asList("ko","안녕"))
+                .setModelType(2)
                 .build();
         // 파이어베이스 인식기를 선언해준다.
         FirebaseVisionTextRecognizer detector = FirebaseVision.getInstance()
@@ -109,12 +112,12 @@ public class ImageML extends AppCompatActivity implements ImageAnalysis.Analyzer
     }
     @Override
     @androidx.camera.core.ExperimentalGetImage
-    public void analyze(ImageProxy image, int rotationDegrees) {
+    public void analyze(ImageProxy image, int degrees) {
         if (image == null || image.getImage() == null) {
             return;
         }
         Image mediaImage = image.getImage();
-        int rotation = degreesToFirebaseRotation(rotationDegrees);
+        int rotation = degreesToFirebaseRotation(degrees);
         FirebaseVisionImage fbimage =
                 FirebaseVisionImage.fromMediaImage(mediaImage, rotation);
         // Pass image to an ML Vision API

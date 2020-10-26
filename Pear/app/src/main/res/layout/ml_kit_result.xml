@@ -6,27 +6,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/greenBackground"
+    tools:context=".ImageML"
     >
 
-    <ImageView
-        android:id="@+id/iv_order_camera_image"
-        android:layout_width="300dp"
+    <TextView
+        android:id="@+id/tv_mlResult"
+        android:layout_width="match_parent"
         android:layout_height="500dp"
-        android:layout_marginStart="46dp"
-        android:layout_marginTop="83dp"
-        android:layout_marginEnd="47dp"
         android:background="@color/white_color"
+        android:text="hello"
+        android:textColor="#000000"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        style="@style/bottom_btn_next_style"
-        android:layout_marginTop="17dp"
-        android:background="@drawable/bottom_btn_shape"
-        android:text="@string/after_btn_text"
-        app:layout_constraintTop_toBottomOf="@+id/card_layout"
-        tools:ignore="MissingConstraints"
-        />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.322" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

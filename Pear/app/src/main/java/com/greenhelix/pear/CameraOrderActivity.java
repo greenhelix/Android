@@ -105,21 +105,5 @@ public class CameraOrderActivity extends AppCompatActivity {
         }
     }
 
-    /*찍은 사진을 파일로 만들어서 디바이스 저장소에 저장하는 메서드이다. */
-//    static final int REQUEST_TAKE_PHOTO = 1;
-//    String currentPhotoPath;
-//    private File createImageFile() throws IOException{
-//        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmm").format(new Date());
-//        String imageFileName = "JPEG_"+timeStamp+"_";
-//        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-//        File image = File.createTempFile(
-//                imageFileName,
-//                ".jpg",
-//                storageDir
-//        );
-//
-//        currentPhotoPath = image.getAbsolutePath();
-//        return image;
-//    }
 
 }
