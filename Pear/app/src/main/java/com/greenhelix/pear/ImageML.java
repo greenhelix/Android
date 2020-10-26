@@ -1,10 +1,12 @@
 package com.greenhelix.pear;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.util.Log;
@@ -28,14 +30,18 @@ import com.google.firebase.ml.vision.text.FirebaseVisionCloudTextRecognizerOptio
 import com.google.firebase.ml.vision.text.FirebaseVisionText;
 import com.google.firebase.ml.vision.text.FirebaseVisionTextRecognizer;
 
+import java.io.IOException;
 import java.util.Arrays;
 
 public class ImageML extends AppCompatActivity implements ImageAnalysis.Analyzer {
     private static final String BIT_IMAGE = "BitmapImage";
+    private static final String URI_IMAGE = "URIImage";
     private static final String LOG_TAG = "ik";
 
-    Bitmap firebaseBitmapImage;
+//    Bitmap firebaseBitmapImage;
+    Uri firebaseUriImage;
     TextView resultShow;
+    FirebaseVisionImage image;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,13 +49,20 @@ public class ImageML extends AppCompatActivity implements ImageAnalysis.Analyzer
 
         Log.d(LOG_TAG,"ImageML정상 가동되었습니다., OnCreate에 들어왔습니다.");
         resultShow = (TextView)findViewById(R.id.tv_mlResult);
-        Intent getImage = getIntent();
-        firebaseBitmapImage = (Bitmap)getImage.getParcelableExtra(BIT_IMAGE);
-        Log.d(LOG_TAG, "비트맵이미지 수령 완료"+firebaseBitmapImage);
+//        Intent getImage = getIntent();
+        firebaseUriImage = (Uri)getIntent().getParcelableExtra(URI_IMAGE);
+        Log.d(LOG_TAG, "URI 이미지 수령 완료"+firebaseUriImage);
 
 
         //가져온 비트맵 이미지를 파이어베이스 비전에 넣어준다.
-        FirebaseVisionImage test = FirebaseVisionImage.fromBitmap(firebaseBitmapImage);
+//        FirebaseVisionImage test = FirebaseVisionImage.fromFilePath(context,firebaseUriImage);
+
+        try {
+            image = FirebaseVisionImage.fromFilePath(this, firebaseUriImage);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         //파이어베이스 텍스트인식 옵션을 주는 곳이다. 여기서 한글인식을 설정하는듯
         FirebaseVisionCloudTextRecognizerOptions txtOptions = new FirebaseVisionCloudTextRecognizerOptions.Builder()
                 .setLanguageHints(Arrays.asList("ko","안녕"))
@@ -59,9 +72,9 @@ public class ImageML extends AppCompatActivity implements ImageAnalysis.Analyzer
         FirebaseVisionTextRecognizer detector = FirebaseVision.getInstance()
                 .getCloudTextRecognizer(txtOptions);
 
-        Log.d(LOG_TAG,"처리중 -------->"+test+"처리중...."+detector);
+        Log.d(LOG_TAG,"처리중 -------->"+image+"처리중...."+detector);
         // 비트맵 이미지를 프로세스 돌리고 잘 작동하는지 확인.
-        Task<FirebaseVisionText> result = detector.processImage(test)
+        Task<FirebaseVisionText> result = detector.processImage(image)
                 .addOnSuccessListener(new OnSuccessListener<FirebaseVisionText>() {
                     @Override
                     public void onSuccess(FirebaseVisionText firebaseVisionText) {
@@ -91,12 +104,10 @@ public class ImageML extends AppCompatActivity implements ImageAnalysis.Analyzer
                             }
                         }
                 );
-        // 가이드에서는 바로 getText를 쓴다.
-//        String resultText = result.getResult().getText();
-//        for(FirebaseVisionText.TextBlock block: result.getResult().getTextBlocks())
-
 
     }
+
+
     private int degreesToFirebaseRotation(int degrees) {
         switch (degrees) {
             case 0:
@@ -122,8 +133,6 @@ public class ImageML extends AppCompatActivity implements ImageAnalysis.Analyzer
         int rotation = degreesToFirebaseRotation(degrees);
         FirebaseVisionImage fbimage =
                 FirebaseVisionImage.fromMediaImage(mediaImage, rotation);
-        // Pass image to an ML Vision API
-        // ...
     }
 }
 

@@ -39,17 +39,16 @@
 
 <!--        파일 제공자를 구성한다-->
         <provider
+            android:name="androidx.core.content.FileProvider"
             android:authorities="com.greenhelix.pear"
             android:exported="false"
-            android:grantUriPermissions="true"
-            android:name="androidx.core.content.FileProvider">
-
+            android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths"
-                ></meta-data>
-
+                android:resource="@xml/file_paths"></meta-data>
         </provider>
+
+
     </application>
 
 </manifest>
