@@ -40,7 +40,9 @@ public class ImageML extends AppCompatActivity implements ImageAnalysis.Analyzer
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ml_kit_result);
-        resultShow.findViewById(R.id.tv_mlResult);
+
+        Log.d(LOG_TAG,"ImageML정상 가동되었습니다., OnCreate에 들어왔습니다.");
+        resultShow = (TextView)findViewById(R.id.tv_mlResult);
         Intent getImage = getIntent();
         firebaseBitmapImage = (Bitmap)getImage.getParcelableExtra(BIT_IMAGE);
         Log.d(LOG_TAG, "비트맵이미지 수령 완료"+firebaseBitmapImage);

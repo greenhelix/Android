@@ -18,6 +18,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
 public class CameraOrderActivity extends AppCompatActivity {
 
     ImageButton btnCameraOpen;
@@ -27,7 +31,10 @@ public class CameraOrderActivity extends AppCompatActivity {
     static final int REQUEST_IMAGE_CAPTURE = 1;
     private static final String LOG_TAG = "ik";
     private static final String BIT_IMAGE = "BitmapImage";
+    private static final String ARRAY_IMAGE = "ByteArrayImage";
+
     Bitmap imageBitmap;
+    byte[] imageArray;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -60,7 +67,9 @@ public class CameraOrderActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent imageSend = new Intent(CameraOrderActivity.this, ImageML.class);
+
                 imageSend.putExtra(BIT_IMAGE,imageBitmap);
+                imageSend.putExtra(ARRAY_IMAGE, imageArray);
                 startActivity(imageSend);
             }
         });
@@ -97,12 +106,28 @@ public class CameraOrderActivity extends AppCompatActivity {
         if(requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK){
             Bundle extras = data.getExtras();
             imageBitmap = (Bitmap) extras.get("data");
+
+            InputStream iStream =   getContentResolver().openInputStream(extras);
+            byte[] inputData = getBytes(iStream);
+            imageArray = (byte[])
+
             Log.d(LOG_TAG,"이미지 비트맵: "+imageBitmap.toString());
             Log.d(LOG_TAG,"정상처리되었습니다.");
             btnCameraOpen.setVisibility(View.INVISIBLE);
             ivCameraImage.setVisibility(View.VISIBLE);
             ivCameraImage.setImageBitmap(imageBitmap);
         }
+    }
+    public byte[] getBytes(InputStream inputStream) throws IOException {
+        ByteArrayOutputStream byteBuffer = new ByteArrayOutputStream();
+        int bufferSize = 1024;
+        byte[] buffer = new byte[bufferSize];
+
+        int len = 0;
+        while ((len = inputStream.read(buffer)) != -1) {
+            byteBuffer.write(buffer, 0, len);
+        }
+        return byteBuffer.toByteArray();
     }
 
 

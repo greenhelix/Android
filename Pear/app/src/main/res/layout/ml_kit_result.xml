@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="500dp"
         android:background="@color/white_color"
-        android:text="hello"
+        android:text="hellodfdfdf"
         android:textColor="#000000"
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
