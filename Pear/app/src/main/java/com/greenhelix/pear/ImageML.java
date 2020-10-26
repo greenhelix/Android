@@ -79,20 +79,12 @@ public class ImageML extends AppCompatActivity implements ImageAnalysis.Analyzer
                     @Override
                     public void onSuccess(FirebaseVisionText firebaseVisionText) {
                         Log.d(LOG_TAG,"텍스트인식기 정상가동");
-                        Log.d(LOG_TAG,"전체 인식 글자 : "+ firebaseVisionText.getText());
                         for(FirebaseVisionText.TextBlock block : firebaseVisionText.getTextBlocks()) {
                             //그래픽으로 묶어주는 모습보여준는것?
                             Rect boudingBox = block.getBoundingBox();
                             Point[] cornerPoints = block.getCornerPoints();
                             String text = block.getText();
                             Log.d(LOG_TAG, "문단 :  "+text);
-                            for (FirebaseVisionText.Line line : block.getLines()) {
-                                Log.d(LOG_TAG, "줄 :  "+line.getText());
-
-                                for (FirebaseVisionText.Element element : line.getElements()) {
-                                    Log.d(LOG_TAG, "단어 :  "+element.getText());
-                                }//요소
-                            }//라인
                         }//블록
                     }//성공시
                 })
@@ -136,3 +128,10 @@ public class ImageML extends AppCompatActivity implements ImageAnalysis.Analyzer
     }
 }
 
+//for (FirebaseVisionText.Line line : block.getLines()) {
+//                                Log.d(LOG_TAG, "줄 :  "+line.getText());
+//
+//                                for (FirebaseVisionText.Element element : line.getElements()) {
+//                                    Log.d(LOG_TAG, "단어 :  "+element.getText());
+//                                }//요소
+//                            }//라인

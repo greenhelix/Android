@@ -35,7 +35,7 @@ public class CameraOrderActivity extends AppCompatActivity {
     ImageView ivCameraImage;
     Button btnCameraNext;
     Uri photoURI;
-    String currentPhotoPath;
+    String currentPhotoPath; 
     static final int REQUEST_TAKE_PHOTO = 1;
     private static final String LOG_TAG = "ik";
     private static final String BIT_IMAGE = "BitmapImage";
