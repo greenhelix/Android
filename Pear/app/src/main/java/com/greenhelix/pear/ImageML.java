@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -32,8 +33,8 @@ import com.google.firebase.ml.vision.text.FirebaseVisionTextRecognizer;
 
 import java.io.IOException;
 import java.util.Arrays;
-
-public class ImageML extends AppCompatActivity implements ImageAnalysis.Analyzer {
+//implements ImageAnalysis.Analyzer
+public class ImageML extends AppCompatActivity  {
     private static final String BIT_IMAGE = "BitmapImage";
     private static final String URI_IMAGE = "URIImage";
     private static final String LOG_TAG = "ik";
@@ -42,6 +43,9 @@ public class ImageML extends AppCompatActivity implements ImageAnalysis.Analyzer
     Uri firebaseUriImage;
     TextView resultShow;
     FirebaseVisionImage image;
+    String re;
+    Button btnMLShow;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +53,15 @@ public class ImageML extends AppCompatActivity implements ImageAnalysis.Analyzer
 
         Log.d(LOG_TAG,"ImageML정상 가동되었습니다., OnCreate에 들어왔습니다.");
         resultShow = (TextView)findViewById(R.id.tv_mlResult);
+        btnMLShow = (Button)findViewById(R.id.btn_show_ml_result);
+        btnMLShow.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Log.d(LOG_TAG, "글자 잘 가져옴"+re);
+                resultShow.setText(re);
+            }
+        });
+
 //        Intent getImage = getIntent();
         firebaseUriImage = (Uri)getIntent().getParcelableExtra(URI_IMAGE);
         Log.d(LOG_TAG, "URI 이미지 수령 완료"+firebaseUriImage);
@@ -85,6 +98,7 @@ public class ImageML extends AppCompatActivity implements ImageAnalysis.Analyzer
                             Point[] cornerPoints = block.getCornerPoints();
                             String text = block.getText();
                             Log.d(LOG_TAG, "문단 :  "+text);
+                            re += text;
                         }//블록
                     }//성공시
                 })
@@ -100,32 +114,32 @@ public class ImageML extends AppCompatActivity implements ImageAnalysis.Analyzer
     }
 
 
-    private int degreesToFirebaseRotation(int degrees) {
-        switch (degrees) {
-            case 0:
-                return FirebaseVisionImageMetadata.ROTATION_0;
-            case 90:
-                return FirebaseVisionImageMetadata.ROTATION_90;
-            case 180:
-                return FirebaseVisionImageMetadata.ROTATION_180;
-            case 270:
-                return FirebaseVisionImageMetadata.ROTATION_270;
-            default:
-                throw new IllegalArgumentException(
-                        "Rotation must be 0, 90, 180, or 270.");
-        }
-    }
-    @Override
-    @androidx.camera.core.ExperimentalGetImage
-    public void analyze(ImageProxy image, int degrees) {
-        if (image == null || image.getImage() == null) {
-            return;
-        }
-        Image mediaImage = image.getImage();
-        int rotation = degreesToFirebaseRotation(degrees);
-        FirebaseVisionImage fbimage =
-                FirebaseVisionImage.fromMediaImage(mediaImage, rotation);
-    }
+//    private int degreesToFirebaseRotation(int degrees) {
+//        switch (degrees) {
+//            case 0:
+//                return FirebaseVisionImageMetadata.ROTATION_0;
+//            case 90:
+//                return FirebaseVisionImageMetadata.ROTATION_90;
+//            case 180:
+//                return FirebaseVisionImageMetadata.ROTATION_180;
+//            case 270:
+//                return FirebaseVisionImageMetadata.ROTATION_270;
+//            default:
+//                throw new IllegalArgumentException(
+//                        "Rotation must be 0, 90, 180, or 270.");
+//        }
+//    }
+//    @Override
+//    @androidx.camera.core.ExperimentalGetImage
+//    public void analyze(ImageProxy image, int degrees) {
+//        if (image == null || image.getImage() == null) {
+//            return;
+//        }
+//        Image mediaImage = image.getImage();
+//        int rotation = degreesToFirebaseRotation(degrees);
+//        FirebaseVisionImage fbimage =
+//                FirebaseVisionImage.fromMediaImage(mediaImage, rotation);
+//    }
 }
 
 //for (FirebaseVisionText.Line line : block.getLines()) {
