@@ -108,12 +108,9 @@ public class ImageML extends AppCompatActivity  {
                             public void onFailure(@NonNull Exception e) {
                                 Log.d(LOG_TAG,"텍스트인식기 가동실패");
                             }
-                        }
-                );
-
+                        });
     }
-
-
+}
 //    private int degreesToFirebaseRotation(int degrees) {
 //        switch (degrees) {
 //            case 0:
@@ -140,8 +137,6 @@ public class ImageML extends AppCompatActivity  {
 //        FirebaseVisionImage fbimage =
 //                FirebaseVisionImage.fromMediaImage(mediaImage, rotation);
 //    }
-}
-
 //for (FirebaseVisionText.Line line : block.getLines()) {
 //                                Log.d(LOG_TAG, "줄 :  "+line.getText());
 //
