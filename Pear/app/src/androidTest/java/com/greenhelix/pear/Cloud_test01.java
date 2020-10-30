@@ -33,51 +33,31 @@ import static org.junit.Assert.assertEquals;
 @RunWith(AndroidJUnit4.class)
 public class Cloud_test01 {
     private static final String TEST = "ik_test";
-    @Test
-    FirebaseFirestore dbTest = FirebaseFirestore.getInstance();
-    Map<String, Object> test = new HashMap<>();
-    test.put("t1","hey");
-    test.put("t2","show");
-    test.put("t3","wow");
+    Log.d(TEST, "테스트 시작 ==========================");
 
-    dbTest.collection("tests").add(test)
-            .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                @Override
-                public void onSuccess(DocumentReference documentReference) {
-                    Log.d(TEST,"show ID: "+documentReference.getId());
-                }
-            })
-            .addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Log.d(TEST, "Error !!", e);
-                }
-            });
+
 }
-
-
-
-
-//데이터 불러오기 테스
-//        FirebaseFirestore dbTest = FirebaseFirestore.getInstance();
-//        FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
-//                .setPersistenceEnabled(true)
-//                .build();
-//        dbTest.setFirestoreSettings(settings);
+//    FirebaseFirestore dbTest = FirebaseFirestore.getInstance();
+//    Map<String, Object> test = new HashMap<>();
+//    test.put("t1","hey");
+//    test.put("t2","show");
+//    test.put("t3","wow");
 //
-//
-//        DocumentReference showData=dbTest.document("pear_orders/order1");
-//        Log.d(TEST, "문서가져옴"+showData.toString());
-//
-//        showData.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-//            @Override
-//            public void onSuccess(DocumentSnapshot documentSnapshot) {
-//                if(documentSnapshot.exists()){
-//                    e1 = documentSnapshot.getString("sender");
-//                    e2 = documentSnapshot.getString("recipient");
+//    dbTest.collection("tests").add(test)
+//            .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+//                @Override
+//                public void onSuccess(DocumentReference documentReference) {
+//                    Log.d(TEST,"show ID: "+documentReference.getId());
 //                }
-//            }
-//        });
-//        Log.d(TEST,"show: "+e1+" ::"+e2);
-//
+//            })
+//            .addOnFailureListener(new OnFailureListener() {
+//                @Override
+//                public void onFailure(@NonNull Exception e) {
+//                    Log.d(TEST, "Error !!", e);
+//                }
+//            });
+//}
+
+
+
 
