@@ -22,7 +22,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme"
+        android:networkSecurityConfig="@xml/network_sercurity_config">
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -35,6 +36,7 @@
         <activity android:name=".DirectOrderActivity"></activity>
         <activity android:name=".OrderListActivity"></activity>
         <activity android:name=".ImageML"></activity>
+        <activity android:name=".CloudStore"></activity>
 
 
 <!--        파일 제공자를 구성한다-->

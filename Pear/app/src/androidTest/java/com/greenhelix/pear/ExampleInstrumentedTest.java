@@ -1,6 +1,7 @@
 package com.greenhelix.pear;
 
 import android.content.Context;
+import android.util.Log;
 
 import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
@@ -22,5 +23,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
         assertEquals("com.greenhelix.pear", appContext.getPackageName());
+        Log.d("ik_test", "테스트 정상가동");
     }
 }
