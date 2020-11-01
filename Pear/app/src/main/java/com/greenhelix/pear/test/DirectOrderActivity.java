@@ -2,9 +2,7 @@ package com.greenhelix.pear.test;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextWatcher;
 import android.util.Log;
-
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -23,13 +21,14 @@ public class DirectOrderActivity extends AppCompatActivity {
     EditText address_num, address_detail1, address_detail2;
     Button direct_Next;
 
-
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_direct_info);
-        Log.d(LOG_TAG, "직접 입력화면 정상 OnCreate 되었습니다.");
 
+
+        Log.d(LOG_TAG, "직접 입력화면 정상 OnCreate 되었습니다.");
+        finish();
         //보내는사람
         sender_name = findViewById(R.id.et_direct_sender);
         //보내는사람 연락처
@@ -48,15 +47,6 @@ public class DirectOrderActivity extends AppCompatActivity {
         address_detail2= findViewById(R.id.et_direct_address_detail);
 
         direct_Next = findViewById(R.id.btn_direct_next);
-
+        Log.d(LOG_TAG, "변수선언완료");
     }//onCreate
 }//class
-
-//        direct_Next.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent directData = new Intent(DirectOrderActivity.this, DirectShow.class);
-//                startActivity(directData);
-//                finish();
-//            }
-//        });

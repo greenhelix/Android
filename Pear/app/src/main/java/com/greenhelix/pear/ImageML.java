@@ -62,6 +62,7 @@ public class ImageML extends AppCompatActivity  {
 
         // Intent getImage = getIntent();
         firebaseUriImage = (Uri)getIntent().getParcelableExtra(URI_IMAGE);
+        finish();
         Log.d(LOG_TAG, "URI 이미지 수령 완료"+firebaseUriImage);
 
         try {

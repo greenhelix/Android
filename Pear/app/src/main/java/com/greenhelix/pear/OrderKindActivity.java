@@ -32,9 +32,9 @@ public class OrderKindActivity extends AppCompatActivity {
         btnOrderDirect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent move1 = new Intent(OrderKindActivity.this, DirectOrderActivity.class);
+                Intent move1 = new Intent(getApplicationContext(), DirectOrderActivity.class);
                 startActivity(move1);
-                finish();
+
             }
         });
         // 카메라 입력

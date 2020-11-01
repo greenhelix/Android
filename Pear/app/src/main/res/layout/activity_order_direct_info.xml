@@ -12,56 +12,51 @@
     <TextView
         android:id="@+id/tv_direct_head"
         style="@style/headline_text"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginEnd="85dp"
+        android:layout_marginTop="60dp"
         android:text="@string/order_head_text"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.465"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_direct_sender"
         style="@style/headline_text2"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="26dp"
-        android:layout_marginEnd="262dp"
+        android:layout_marginTop="24dp"
         android:text="@string/order_sender_text"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.145"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_direct_head" />
 
     <EditText
         android:id="@+id/et_direct_sender"
         style="@style/input_text_300"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/basic_input_shape"
         android:hint="이름을 적어주세요."
         android:inputType="textAutoComplete"
-        android:background="@drawable/basic_input_shape"
-        android:layout_marginTop="5dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="60dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.451"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_direct_sender" />
 
     <TextView
         android:id="@+id/tv_direct_sender_tel"
-        android:text="@string/order_sender_tel_text"
         style="@style/headline_text2"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="163dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/order_sender_tel_text"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.218"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_direct_sender" />
 
     <LinearLayout
         android:id="@+id/tel_linear"
         style="@style/input_tel_linear"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="60dp"
+        android:layout_marginTop="12dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.451"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_direct_sender_tel">
 
@@ -69,8 +64,7 @@
             android:id="@+id/sp_direct_sender_tel1"
             style="@style/input_text_85"
             android:background="@drawable/basic_input_shape"
-            android:entries="@array/tel"
-            />
+            android:entries="@array/tel" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -86,8 +80,7 @@
             android:background="@drawable/basic_input_shape"
             android:inputType="phone"
             android:maxLength="4"
-            android:nextFocusRight="@id/et_direct_sender_tel3"
-            />
+            android:nextFocusRight="@id/et_direct_sender_tel3" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -95,62 +88,55 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:text="ㅡ"
-            android:textSize="15dp"
-            />
+            android:textSize="15dp" />
 
         <EditText
             android:id="@+id/et_direct_sender_tel3"
             style="@style/input_text_85"
             android:background="@drawable/basic_input_shape"
             android:inputType="phone"
-            android:maxLength="4"
-            />
+            android:maxLength="4" />
 
     </LinearLayout>
 
     <TextView
         android:id="@+id/tv_order_direct_recipient"
         style="@style/headline_text2"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="262dp"
+        android:layout_marginTop="16dp"
         android:text="@string/order_recipient_text"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.142"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tel_linear" />
 
     <EditText
         android:id="@+id/et_direct_recipient"
-        android:hint="이름을 적어주세요."
         style="@style/input_text_300"
+        android:layout_marginTop="16dp"
         android:background="@drawable/basic_input_shape"
-        android:layout_marginTop="5dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="60dp"
+        android:hint="이름을 적어주세요."
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.451"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_order_direct_recipient"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/tv_order_direct_recipient" />
 
     <TextView
         android:id="@+id/tv_order_direct_recipient_tel"
         style="@style/headline_text2"
+        android:layout_marginTop="16dp"
         android:text="@string/order_recipient_tel_text"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="163dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.19"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_direct_recipient"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/et_direct_recipient" />
+
 
     <LinearLayout
         android:id="@+id/tel_linear2"
         style="@style/input_tel_linear"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="60dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.451"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_order_direct_recipient_tel">
 
@@ -158,8 +144,7 @@
             android:id="@+id/sp_direct_recipient_tel1"
             style="@style/input_text_85"
             android:background="@drawable/basic_input_shape"
-            android:entries="@array/tel"
-            />
+            android:entries="@array/tel" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -175,8 +160,7 @@
             android:background="@drawable/basic_input_shape"
             android:inputType="phone"
             android:maxLength="4"
-            android:nextFocusRight="@id/et_direct_sender_tel3"
-            />
+            android:nextFocusRight="@id/et_direct_sender_tel3" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -184,37 +168,32 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:text="ㅡ"
-            android:textSize="15dp"
-            />
+            android:textSize="15dp" />
 
         <EditText
             android:id="@+id/et_direct_recipient_tel3"
             style="@style/input_text_85"
             android:background="@drawable/basic_input_shape"
             android:inputType="phone"
-            android:maxLength="4"
-            />
+            android:maxLength="4" />
 
     </LinearLayout>
-
 
 
     <LinearLayout
         android:id="@+id/address_linear"
         style="@style/input_tel_linear"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="60dp"
+        android:layout_marginTop="12dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.451"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tel_linear2">
 
         <TextView
             android:id="@+id/tv_direct_address"
             style="@style/headline_text2"
-            android:text="@string/order_address_text"
             android:layout_marginRight="10dp"
-            />
+            android:text="@string/order_address_text" />
 
         <Button
             android:id="@+id/btn_direct_address"
@@ -228,36 +207,30 @@
 
     </LinearLayout>
 
-
     <EditText
         android:id="@+id/et_direct_address_num"
         style="@style/input_text_85"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="60dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/basic_input_shape"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.137"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/address_linear" />
 
     <EditText
         android:id="@+id/et_direct_address_show"
         style="@style/input_text_300"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="60dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/basic_input_shape"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_direct_address_num" />
 
     <EditText
         android:id="@+id/et_direct_address_detail"
         style="@style/input_text_300"
-        android:layout_marginStart="50dp"
         android:layout_marginTop="5dp"
-        android:layout_marginEnd="60dp"
         android:background="@drawable/basic_input_shape"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
