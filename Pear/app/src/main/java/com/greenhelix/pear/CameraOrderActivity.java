@@ -109,7 +109,7 @@ public class CameraOrderActivity extends AppCompatActivity {
         }
     }
 
-
+    // 카메라로 찍은 사진을 파일로 만든다.
     private File createImageFile() throws IOException {
         // Create an image file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd").format(new Date());
@@ -126,7 +126,7 @@ public class CameraOrderActivity extends AppCompatActivity {
         return image;
     }
 
-
+    // 카메라로 찎은 사진을 File메서드를 통해서 파일로 만든다.
     private void dispatchTakePictureIntent() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         // Ensure that there's a camera activity to handle the intent
