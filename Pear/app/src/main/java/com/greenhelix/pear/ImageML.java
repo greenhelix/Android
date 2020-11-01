@@ -35,7 +35,6 @@ import java.io.IOException;
 import java.util.Arrays;
 //implements ImageAnalysis.Analyzer
 public class ImageML extends AppCompatActivity  {
-    private static final String BIT_IMAGE = "BitmapImage";
     private static final String URI_IMAGE = "URIImage";
     private static final String LOG_TAG = "ik";
 
@@ -43,7 +42,7 @@ public class ImageML extends AppCompatActivity  {
     Uri firebaseUriImage;
     TextView resultShow;
     FirebaseVisionImage image;
-    String re;
+    String re ="";
     Button btnMLShow;
 
     @Override
@@ -57,8 +56,8 @@ public class ImageML extends AppCompatActivity  {
         btnMLShow.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Log.d(LOG_TAG, "글자 잘 가져옴"+re);
                 resultShow.setText(re);
+                Log.d(LOG_TAG, "글자 잘 가져옴" + re);
             }
         });
 
@@ -94,8 +93,6 @@ public class ImageML extends AppCompatActivity  {
                         Log.d(LOG_TAG,"텍스트인식기 정상가동");
                         for(FirebaseVisionText.TextBlock block : firebaseVisionText.getTextBlocks()) {
                             //그래픽으로 묶어주는 모습보여준는것?
-                            Rect boudingBox = block.getBoundingBox();
-                            Point[] cornerPoints = block.getCornerPoints();
                             String text = block.getText();
                             Log.d(LOG_TAG, "문단 :  "+text);
                             re += text;

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/greenBackground"
-    tools:context=".DirectOrderActivity"
+    tools:context=".test.DirectOrderActivity"
     >
 
     <TextView
@@ -229,8 +229,8 @@
     </LinearLayout>
 
 
-    <TextView
-        android:id="@+id/tv_direct_address_num"
+    <EditText
+        android:id="@+id/et_direct_address_num"
         style="@style/input_text_85"
         android:layout_marginStart="50dp"
         android:layout_marginTop="5dp"
@@ -241,8 +241,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/address_linear" />
 
-    <TextView
-        android:id="@+id/tv_direct_address_show"
+    <EditText
+        android:id="@+id/et_direct_address_show"
         style="@style/input_text_300"
         android:layout_marginStart="50dp"
         android:layout_marginTop="5dp"
@@ -250,7 +250,7 @@
         android:background="@drawable/basic_input_shape"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_direct_address_num" />
+        app:layout_constraintTop_toBottomOf="@+id/et_direct_address_num" />
 
     <EditText
         android:id="@+id/et_direct_address_detail"
@@ -261,7 +261,7 @@
         android:background="@drawable/basic_input_shape"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_direct_address_show" />
+        app:layout_constraintTop_toBottomOf="@+id/et_direct_address_show" />
 
     <Button
         android:id="@+id/btn_direct_before"

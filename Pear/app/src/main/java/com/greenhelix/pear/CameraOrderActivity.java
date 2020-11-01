@@ -38,7 +38,6 @@ public class CameraOrderActivity extends AppCompatActivity {
     String currentPhotoPath; 
     static final int REQUEST_TAKE_PHOTO = 1;
     private static final String LOG_TAG = "ik";
-    private static final String BIT_IMAGE = "BitmapImage";
     private static final String URI_IMAGE = "URIImage";
 
     @Override
@@ -47,9 +46,9 @@ public class CameraOrderActivity extends AppCompatActivity {
         setContentView(R.layout.activity_order_camera);
 
         //선언부분이 이런형태야 된다. 이상한데 까먹지말자. (형변환?해줘야하는듯?)
-        ivCameraImage = (ImageView) findViewById(R.id.iv_order_camera_image);
-        btnCameraOpen = (ImageButton) findViewById(R.id.btn_camera);
-        btnCameraNext = findViewById(R.id.btn_order_camera_next);
+        ivCameraImage = (ImageView)findViewById(R.id.iv_order_camera_image);
+        btnCameraOpen = (ImageButton)findViewById(R.id.btn_camera);
+        btnCameraNext = (Button)findViewById(R.id.btn_order_camera_next);
 
         btnCameraOpen.setOnClickListener(new View.OnClickListener() {
             @Override

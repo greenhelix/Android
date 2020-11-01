@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/greenBackground"
-    tools:context=".CloudStore">
+    tools:context=".test.DirectOrderActivity">
 
     <TextView
-        android:id="@+id/test_show"
+        android:id="@+id/tv_test_show"
         android:layout_width="352dp"
         android:layout_height="563dp"
         android:background="@color/head"
@@ -16,18 +16,19 @@
         android:text="TextView"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/click"
+        app:layout_constraintBottom_toTopOf="@+id/btn_click"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.812" />
 
     <Button
-        android:id="@+id/click"
+        android:id="@+id/btn_click"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="72dp"
         android:text="SHOW!DATA"
+        android:onClick="getData"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
