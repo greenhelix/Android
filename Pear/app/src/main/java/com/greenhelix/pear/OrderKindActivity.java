@@ -27,21 +27,22 @@ public class OrderKindActivity extends AppCompatActivity {
         btnOrderDirect = findViewById(R.id.btn_order_direct);
         btnOrderCamera = findViewById(R.id.btn_order_camera);
         btnOrderMain = findViewById(R.id.btn_select_order_before);
-
+        
+        //직접 입력
         btnOrderDirect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent move = new Intent(OrderKindActivity.this, DirectOrderActivity.class);
-                startActivity(move);
+                Intent move1 = new Intent(OrderKindActivity.this, DirectOrderActivity.class);
+                startActivity(move1);
                 finish();
             }
         });
-
+        // 카메라 입력
         btnOrderCamera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent move = new Intent(OrderKindActivity.this, CameraOrderActivity.class);
-                startActivity(move);
+                Intent move2 = new Intent(OrderKindActivity.this, CameraOrderActivity.class);
+                startActivity(move2);
                 finish();
             }
         });

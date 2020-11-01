@@ -33,12 +33,11 @@ import com.google.firebase.ml.vision.text.FirebaseVisionTextRecognizer;
 
 import java.io.IOException;
 import java.util.Arrays;
-//implements ImageAnalysis.Analyzer
+
 public class ImageML extends AppCompatActivity  {
     private static final String URI_IMAGE = "URIImage";
     private static final String LOG_TAG = "ik";
 
-//    Bitmap firebaseBitmapImage;
     Uri firebaseUriImage;
     TextView resultShow;
     FirebaseVisionImage image;
@@ -61,13 +60,9 @@ public class ImageML extends AppCompatActivity  {
             }
         });
 
-//        Intent getImage = getIntent();
+        // Intent getImage = getIntent();
         firebaseUriImage = (Uri)getIntent().getParcelableExtra(URI_IMAGE);
         Log.d(LOG_TAG, "URI 이미지 수령 완료"+firebaseUriImage);
-
-
-        //가져온 비트맵 이미지를 파이어베이스 비전에 넣어준다.
-//        FirebaseVisionImage test = FirebaseVisionImage.fromFilePath(context,firebaseUriImage);
 
         try {
             image = FirebaseVisionImage.fromFilePath(this, firebaseUriImage);
@@ -75,7 +70,7 @@ public class ImageML extends AppCompatActivity  {
             e.printStackTrace();
         }
 
-        //파이어베이스 텍스트인식 옵션을 주는 곳이다. 여기서 한글인식을 설정하는듯
+        // 파이어베이스 텍스트인식 옵션을 주는 곳이다. 여기서 한글인식을 설정하는듯
         FirebaseVisionCloudTextRecognizerOptions txtOptions = new FirebaseVisionCloudTextRecognizerOptions.Builder()
                 .setLanguageHints(Arrays.asList("ko","안녕"))
                 .setModelType(2)

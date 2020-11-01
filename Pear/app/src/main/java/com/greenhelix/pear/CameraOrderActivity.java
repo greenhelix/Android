@@ -3,7 +3,6 @@ package com.greenhelix.pear;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -20,12 +19,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
-
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.URI;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -99,7 +94,6 @@ public class CameraOrderActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == REQUEST_TAKE_PHOTO && resultCode == RESULT_OK){
 
-
             Log.d(LOG_TAG,"이미지 URI: "+photoURI.toString());
             Log.d(LOG_TAG,"정상처리되었습니다.");
             btnCameraOpen.setVisibility(View.INVISIBLE);
@@ -115,9 +109,9 @@ public class CameraOrderActivity extends AppCompatActivity {
         String imageFileName = "텍스트인식" + timeStamp + "_";
         File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
         File image = File.createTempFile(
-                imageFileName,  /* prefix */
-                ".jpg",         /* suffix */
-                storageDir      /* directory */
+                imageFileName,/* prefix */
+                ".jpg",/* suffix */
+                storageDir/* directory */
         );
 
         // Save a file: path for use with ACTION_VIEW intents
@@ -179,4 +173,3 @@ public class CameraOrderActivity extends AppCompatActivity {
 //    }
 //    return byteBuffer.toByteArray();
 //}
-

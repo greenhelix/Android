@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/greenBackground"
-    tools:context=".test.DirectOrderActivity">
+    tools:context=".test.DirectShow">
 
     <TextView
         android:id="@+id/tv_test_show"
@@ -28,7 +28,6 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="72dp"
         android:text="SHOW!DATA"
-        android:onClick="getData"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

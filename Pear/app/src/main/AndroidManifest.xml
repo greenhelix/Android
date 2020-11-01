@@ -38,6 +38,8 @@
         <activity android:name=".ImageML"></activity>
 
         <activity android:name=".test.DirectOrderActivity"></activity>
+        <activity android:name=".test.DirectShow"></activity>
+
         <activity android:name=".CloudStore"></activity>
 
 
