@@ -56,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
                 Log.d(LOG_TAG, "직접주문 버튼이 정상적으로 눌렸습니다.");
                 Intent account = new Intent(MainActivity.this, OrderKindActivity.class);
                 startActivity(account);
-                finish();
             }
         });
 

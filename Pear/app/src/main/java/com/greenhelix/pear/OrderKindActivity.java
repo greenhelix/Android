@@ -2,7 +2,6 @@ package com.greenhelix.pear;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Debug;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -17,7 +16,7 @@ public class OrderKindActivity extends AppCompatActivity {
 
     Button btnOrderDirect;
     Button btnOrderCamera;
-    Button btnOrderMain;
+    Button btnOrderBefore;
     private static final String LOG_TAG = "ik";
 
     @Override
@@ -27,7 +26,7 @@ public class OrderKindActivity extends AppCompatActivity {
         Log.d(LOG_TAG, "주문형태 입력화면 정상 OnCreate 되었습니다.");
         btnOrderDirect = findViewById(R.id.btn_order_direct);
         btnOrderCamera = findViewById(R.id.btn_order_camera);
-        btnOrderMain = findViewById(R.id.btn_select_order_before);
+        btnOrderBefore = findViewById(R.id.btn_select_order_before);
         
         //직접 입력
         btnOrderDirect.setOnClickListener(new View.OnClickListener() {
@@ -42,7 +41,14 @@ public class OrderKindActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent move2 = new Intent(OrderKindActivity.this, CameraOrderActivity.class);
-                startActivityForResult(move2, 2);
+                startActivity(move2);
+            }
+        });
+
+        btnOrderBefore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
 

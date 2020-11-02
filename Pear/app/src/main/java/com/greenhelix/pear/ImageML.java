@@ -43,26 +43,43 @@ public class ImageML extends AppCompatActivity  {
     FirebaseVisionImage image;
     String re ="";
     Button btnMLShow;
+    Button btnMLBefore;
+    Button btnMLNext;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ml_kit_result);
-
+        getIntent();
         Log.d(LOG_TAG,"ImageML정상 가동되었습니다., OnCreate에 들어왔습니다.");
         resultShow = (TextView)findViewById(R.id.tv_mlResult);
         btnMLShow = (Button)findViewById(R.id.btn_show_ml_result);
+        btnMLBefore = (Button)findViewById(R.id.btn_ml_before);
+        btnMLNext = (Button)findViewById(R.id.btn_ml_next);
         btnMLShow.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 resultShow.setText(re);
-                Log.d(LOG_TAG, "글자 잘 가져옴" + re);
+                Log.d(LOG_TAG, "글자 잘 가져옴  " + re);
+            }
+        });
+
+        btnMLBefore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        btnMLNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(LOG_TAG,"다음 버튼 눌렸습니다.");
             }
         });
 
         // Intent getImage = getIntent();
         firebaseUriImage = (Uri)getIntent().getParcelableExtra(URI_IMAGE);
-        finish();
         Log.d(LOG_TAG, "URI 이미지 수령 완료"+firebaseUriImage);
 
         try {
@@ -102,6 +119,7 @@ public class ImageML extends AppCompatActivity  {
                                 Log.d(LOG_TAG,"텍스트인식기 가동실패");
                             }
                         });
+
     }
 }
 //    private int degreesToFirebaseRotation(int degrees) {

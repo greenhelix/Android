@@ -29,6 +29,7 @@ public class CameraOrderActivity extends AppCompatActivity {
     ImageButton btnCameraOpen;
     ImageView ivCameraImage;
     Button btnCameraNext;
+    Button btnCameraBefore;
     Uri photoURI;
     String currentPhotoPath; 
     static final int REQUEST_TAKE_PHOTO = 2;
@@ -44,6 +45,7 @@ public class CameraOrderActivity extends AppCompatActivity {
         ivCameraImage = (ImageView)findViewById(R.id.iv_order_camera_image);
         btnCameraOpen = (ImageButton)findViewById(R.id.btn_camera);
         btnCameraNext = (Button)findViewById(R.id.btn_order_camera_next);
+        btnCameraBefore = (Button)findViewById(R.id.btn_order_camera_before);
 
         btnCameraOpen.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,10 +66,16 @@ public class CameraOrderActivity extends AppCompatActivity {
         btnCameraNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent imageSend = new Intent(CameraOrderActivity.this, ImageML.class);
                 imageSend.putExtra(URI_IMAGE, photoURI);
                 startActivity(imageSend);
+            }
+        });
+
+        btnCameraBefore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
 
@@ -93,7 +101,6 @@ public class CameraOrderActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == REQUEST_TAKE_PHOTO && resultCode == RESULT_OK){
-
             Log.d(LOG_TAG,"이미지 URI: "+photoURI.toString());
             Log.d(LOG_TAG,"정상처리되었습니다.");
             btnCameraOpen.setVisibility(View.INVISIBLE);
@@ -142,8 +149,6 @@ public class CameraOrderActivity extends AppCompatActivity {
             }
         }
     }
-
-
 }
 //카메라권한이 있는 경우 카메라를 불러서 사진을 찍는다. 그리고 인텐트를 통해서 사진정보를 onActivityResult으로 보낸다.
 /*근본적으로 이 메서드는 미리보기!이미지를 위해 있는 간단한 메서드이다. */

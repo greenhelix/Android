@@ -49,19 +49,20 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.463" />
 
+
+    <Button
+        android:id="@+id/btn_order_camera_before"
+        style="@style/bottom_btn_before_style"
+        android:background="@drawable/bottom_btn_shape"
+        android:text="@string/before_btn_text"
+        tools:ignore="MissingConstraints"
+        />
     <Button
         android:id="@+id/btn_order_camera_next"
         style="@style/bottom_btn_next_style"
-        android:layout_marginTop="65dp"
         android:background="@drawable/bottom_btn_shape"
         android:text="@string/after_btn_text"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.945"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_order_camera_image"
-        app:layout_constraintVertical_bias="0.27"
-        tools:ignore="MissingConstraints" />
-
+        tools:ignore="MissingConstraints"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -34,6 +34,24 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_mlResult" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_mlResult"
+        app:layout_constraintVertical_bias="0.202" />
+
+    <Button
+        android:id="@+id/btn_ml_before"
+        style="@style/bottom_btn_before_style"
+        android:background="@drawable/bottom_btn_shape"
+        android:text="@string/before_btn_text"
+        tools:ignore="MissingConstraints"
+        />
+    <Button
+        android:id="@+id/btn_ml_next"
+        style="@style/bottom_btn_next_style"
+        android:background="@drawable/bottom_btn_shape"
+        android:text="@string/after_btn_text"
+        tools:ignore="MissingConstraints"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
