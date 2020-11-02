@@ -2,6 +2,7 @@ package com.greenhelix.pear;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Debug;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -34,7 +35,6 @@ public class OrderKindActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent move1 = new Intent(getApplicationContext(), DirectOrderActivity.class);
                 startActivity(move1);
-
             }
         });
         // 카메라 입력
@@ -42,8 +42,7 @@ public class OrderKindActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent move2 = new Intent(OrderKindActivity.this, CameraOrderActivity.class);
-                startActivity(move2);
-                finish();
+                startActivityForResult(move2, 2);
             }
         });
 
