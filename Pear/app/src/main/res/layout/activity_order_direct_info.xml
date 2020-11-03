@@ -13,61 +13,72 @@
         android:id="@+id/tv_direct_head"
         style="@style/headline_text"
         android:text="@string/order_head_text"
-        app:layout_constraintBottom_toTopOf="@+id/et_direct_sender"
+        app:layout_constraintBottom_toTopOf="@id/et_direct_sender"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.50" />
+        app:layout_constraintVertical_bias="0.50"
+        />
 
     <TextView
         android:id="@+id/tv_direct_sender"
         style="@style/headline_text2"
         android:text="@string/order_sender_text"
-        app:layout_constraintBottom_toTopOf="@+id/et_direct_sender"
+        app:layout_constraintBottom_toTopOf="@id/et_direct_sender"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.15"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_direct_head" />
+        app:layout_constraintTop_toBottomOf="@id/tv_direct_head"
+        />
 
     <EditText
         android:id="@+id/et_direct_sender"
         style="@style/input_text_300"
         android:layout_marginBottom="3dp"
-        android:autofillHints=""
         android:background="@drawable/basic_input_shape"
         android:hint="이름을 적어주세요."
         android:inputType="textAutoComplete"
-        app:layout_constraintBottom_toTopOf="@+id/tv_direct_sender_tel"
+        android:maxLength="5"
+        android:singleLine="true"
+        android:nextFocusForward="@+id/et_direct_sender_tel1"
+        app:layout_constraintBottom_toTopOf="@id/tv_direct_sender_tel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.451"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_direct_sender"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toBottomOf="@id/tv_direct_sender"
+        tools:ignore="MissingConstraints"
+        />
 
     <TextView
         android:id="@+id/tv_direct_sender_tel"
         style="@style/headline_text2"
         android:text="@string/order_sender_tel_text"
-        app:layout_constraintBottom_toTopOf="@+id/tel_linear"
+        app:layout_constraintBottom_toTopOf="@id/tel_linear"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.213"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_direct_sender" />
+        app:layout_constraintTop_toBottomOf="@id/et_direct_sender"
+        />
 
     <LinearLayout
         android:id="@+id/tel_linear"
         style="@style/input_tel_linear"
-        app:layout_constraintBottom_toTopOf="@+id/tv_order_direct_recipient"
+        app:layout_constraintBottom_toTopOf="@id/tv_order_direct_recipient"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.451"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_direct_sender_tel">
+        app:layout_constraintTop_toBottomOf="@id/tv_direct_sender_tel"
+        >
 
         <EditText
-            android:id="@+id/et_direct_sender_tel1"
+            android:id="@id/et_direct_sender_tel1"
             style="@style/input_text_85"
             android:background="@drawable/basic_input_shape"
-            android:maxLength="3" />
+            android:inputType="phone"
+            android:maxLength="3"
+            android:singleLine="true"
+            android:imeOptions="actionNext"
+            />
 
         <TextView
             android:layout_width="wrap_content"
@@ -75,7 +86,8 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:text="ㅡ"
-            android:textSize="15dp" />
+            android:textSize="15dp"
+            />
 
         <EditText
             android:id="@+id/et_direct_sender_tel2"
@@ -83,7 +95,9 @@
             android:background="@drawable/basic_input_shape"
             android:inputType="phone"
             android:maxLength="4"
-            android:nextFocusRight="@id/et_direct_sender_tel3" />
+            android:singleLine="true"
+            android:imeOptions="actionNext"
+            />
 
         <TextView
             android:layout_width="wrap_content"
@@ -91,14 +105,18 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:text="ㅡ"
-            android:textSize="15dp" />
+            android:textSize="15dp"
+            />
 
         <EditText
             android:id="@+id/et_direct_sender_tel3"
             style="@style/input_text_85"
             android:background="@drawable/basic_input_shape"
             android:inputType="phone"
-            android:maxLength="4" />
+            android:maxLength="4"
+            android:nextFocusForward="@id/et_direct_recipient"
+            android:singleLine="true"
+            />
 
     </LinearLayout>
 
@@ -108,10 +126,11 @@
         android:layout_height="0dp"
         android:layout_marginBottom="32dp"
         android:text="@string/order_recipient_text"
-        app:layout_constraintBottom_toTopOf="@+id/et_direct_recipient"
+        app:layout_constraintBottom_toTopOf="@id/et_direct_recipient"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.145"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        />
 
     <EditText
         android:id="@+id/et_direct_recipient"
@@ -119,21 +138,28 @@
         android:layout_marginTop="8dp"
         android:background="@drawable/basic_input_shape"
         android:hint="이름을 적어주세요."
+        android:inputType="textAutoComplete"
+        android:maxLength="5"
+        android:maxLines="1"
+        android:nextFocusForward="@id/et_direct_recipient_tel1"
+        android:singleLine="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.451"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_order_direct_recipient"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toBottomOf="@id/tv_order_direct_recipient"
+        tools:ignore="MissingConstraints"
+        />
 
     <TextView
         android:id="@+id/tv_order_direct_recipient_tel"
         style="@style/headline_text2"
         android:text="@string/order_recipient_tel_text"
-        app:layout_constraintBottom_toTopOf="@+id/tel_linear2"
+        app:layout_constraintBottom_toTopOf="@id/tel_linear2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.19"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_direct_recipient" />
+        app:layout_constraintTop_toBottomOf="@id/et_direct_recipient"
+        />
 
 
     <LinearLayout
@@ -141,17 +167,21 @@
         style="@style/input_tel_linear"
         android:layout_marginTop="48dp"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/address_linear"
+        app:layout_constraintBottom_toTopOf="@id/address_linear"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.451"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_direct_recipient">
+        app:layout_constraintTop_toBottomOf="@id/et_direct_recipient"
+        >
 
         <EditText
             android:id="@+id/et_direct_recipient_tel1"
             style="@style/input_text_85"
             android:background="@drawable/basic_input_shape"
-            android:maxLength="3" />
+            android:maxLength="3"
+            android:inputType="phone"
+            android:imeOptions="actionNext"
+            />
 
         <TextView
             android:layout_width="wrap_content"
@@ -159,7 +189,8 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:text="ㅡ"
-            android:textSize="15dp" />
+            android:textSize="15dp"
+            />
 
         <EditText
             android:id="@+id/et_direct_recipient_tel2"
@@ -167,7 +198,8 @@
             android:background="@drawable/basic_input_shape"
             android:inputType="phone"
             android:maxLength="4"
-            android:nextFocusRight="@id/et_direct_sender_tel3" />
+            android:imeOptions="actionNext"
+            />
 
         <TextView
             android:layout_width="wrap_content"
@@ -175,14 +207,17 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:text="ㅡ"
-            android:textSize="15dp" />
+            android:textSize="15dp"
+            />
 
         <EditText
             android:id="@+id/et_direct_recipient_tel3"
             style="@style/input_text_85"
             android:background="@drawable/basic_input_shape"
             android:inputType="phone"
-            android:maxLength="4" />
+            android:maxLength="4"
+            android:nextFocusForward="@id/et_direct_address_num"
+            />
 
     </LinearLayout>
 
@@ -190,16 +225,18 @@
         android:id="@+id/address_linear"
         style="@style/input_tel_linear"
         android:layout_marginBottom="4dp"
-        app:layout_constraintBottom_toTopOf="@+id/et_direct_address_num"
+        app:layout_constraintBottom_toTopOf="@id/et_direct_address_num"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.462"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        >
 
         <TextView
             android:id="@+id/tv_direct_address"
             style="@style/headline_text2"
             android:layout_marginRight="10dp"
-            android:text="@string/order_address_text" />
+            android:text="@string/order_address_text"
+            />
 
         <Button
             android:id="@+id/btn_direct_address"
@@ -208,7 +245,6 @@
             android:background="@drawable/basic_input_shape"
             android:backgroundTint="@color/grey_btn_color"
             android:text="주소찾기"
-
             />
 
     </LinearLayout>
@@ -218,9 +254,13 @@
         style="@style/input_text_85"
         android:layout_marginBottom="8dp"
         android:background="@drawable/basic_input_shape"
-        app:layout_constraintBottom_toTopOf="@+id/et_direct_address_show"
+        android:inputType="number"
+        android:maxLength="10"
+        android:nextFocusForward="@id/et_direct_address_show"
+        android:singleLine="true"
+        app:layout_constraintBottom_toTopOf="@id/et_direct_address_show"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.14"
+        app:layout_constraintHorizontal_bias="0.134"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
@@ -229,23 +269,30 @@
         android:layout_marginTop="48dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/basic_input_shape"
-        app:layout_constraintBottom_toTopOf="@+id/et_direct_address_detail"
+        app:layout_constraintBottom_toTopOf="@id/et_direct_address_detail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.462"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/address_linear" />
+        app:layout_constraintTop_toBottomOf="@id/address_linear"
+        android:inputType="text"
+        android:nextFocusForward="@id/et_direct_address_detail"
+        android:singleLine="true"
+        />
 
     <EditText
         android:id="@+id/et_direct_address_detail"
         style="@style/input_text_300"
         android:layout_marginBottom="50dp"
         android:background="@drawable/basic_input_shape"
-        app:layout_constraintBottom_toTopOf="@+id/btn_direct_next"
+        android:singleLine="true"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@id/btn_direct_next"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.462"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_direct_address_show"
-        app:layout_constraintVertical_bias="0.28" />
+        app:layout_constraintTop_toBottomOf="@id/et_direct_address_show"
+        app:layout_constraintVertical_bias="0.28"
+        />
 
     <Button
         android:id="@+id/btn_direct_before"
@@ -261,7 +308,4 @@
         android:text="@string/after_btn_text"
         tools:ignore="MissingConstraints"
         />
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

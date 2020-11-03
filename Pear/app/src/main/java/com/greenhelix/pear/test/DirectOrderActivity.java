@@ -49,19 +49,18 @@ public class DirectOrderActivity extends AppCompatActivity {
             }
         });
 
-        try {
-            sender_name = (EditText) findViewById(R.id.et_direct_sender);
-            sender_tel1 = (EditText) findViewById(R.id.et_direct_sender_tel1);
-            sender_tel2 = (EditText) findViewById(R.id.et_direct_sender_tel2);
-            sender_tel3 = (EditText) findViewById(R.id.et_direct_sender_tel3);
-            recipient_name = (EditText) findViewById(R.id.et_direct_recipient);
-            recipient_tel1 = (EditText) findViewById(R.id.et_direct_recipient_tel1);
-            recipient_tel2 = (EditText) findViewById(R.id.et_direct_recipient_tel2);
-            recipient_tel3 = (EditText) findViewById(R.id.et_direct_recipient_tel3);
-            address_num = (EditText) findViewById(R.id.et_direct_address_num);
-            address_detail1 = (EditText) findViewById(R.id.et_direct_address_show);
-            address_detail2 = (EditText) findViewById(R.id.et_direct_address_detail);
-
+        try { //예외처리
+            sender_name.findViewById(R.id.et_direct_sender);
+            sender_tel1.findViewById(R.id.et_direct_sender_tel1);
+            sender_tel2.findViewById(R.id.et_direct_sender_tel2);
+            sender_tel3.findViewById(R.id.et_direct_sender_tel3);
+            recipient_name.findViewById(R.id.et_direct_recipient);
+            recipient_tel1.findViewById(R.id.et_direct_recipient_tel1);
+            recipient_tel2.findViewById(R.id.et_direct_recipient_tel2);
+            recipient_tel3.findViewById(R.id.et_direct_recipient_tel3);
+            address_num.findViewById(R.id.et_direct_address_num);
+            address_detail1.findViewById(R.id.et_direct_address_show);
+            address_detail2.findViewById(R.id.et_direct_address_detail);
         }catch (NullPointerException e){
             Log.d(LOG_TAG, "아무것도 안쓴상태"+e);
         }
@@ -92,10 +91,6 @@ public class DirectOrderActivity extends AppCompatActivity {
         super.onStart();
         Log.d(LOG_TAG, "보내는 사람 리스트:: " +senderList);
         Log.d(LOG_TAG, "받는 사람 리스트:: " +recipientList);
-    }
-
-    public int EtNullCheck(EditText a)throws NullPointerException{
-        return a.getText().toString().length();
     }
 
 
