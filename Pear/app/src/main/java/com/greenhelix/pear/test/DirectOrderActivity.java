@@ -65,25 +65,6 @@ public class DirectOrderActivity extends AppCompatActivity {
             Log.d(LOG_TAG, "아무것도 안쓴상태"+e);
         }
         setResult(1);
-
-        //예외처리
-//        if(EtNullCheck(sender_name) + EtNullCheck(sender_tel1) + EtNullCheck(sender_tel2) + EtNullCheck(sender_tel3) == 0){
-//            Log.d(LOG_TAG, "보내는 사람 값이 없는 상태");
-//        }else{
-//            senderList.add(0,sender_name.getText().toString());
-//            senderList.add(1,sender_tel1.getText().toString());
-//            senderList.add(2,sender_tel2.getText().toString());
-//            senderList.add(3,sender_tel3.getText().toString());
-//        }
-//        if(EtNullCheck(recipient_name) + EtNullCheck(recipient_tel1) +EtNullCheck(recipient_tel2) + EtNullCheck(recipient_tel3) == 0){
-//            Log.d(LOG_TAG, "받는 사람 값이 없는 상태");
-//        }else{
-//            recipientList.add(0,recipient_name.getText().toString());
-//            recipientList.add(1,recipient_tel1.getText().toString());
-//            recipientList.add(2,recipient_tel2.getText().toString());
-//            recipientList.add(3,recipient_tel3.getText().toString());
-//        }
-
     }//OnCreate
 
     @Override
