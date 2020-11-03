@@ -38,6 +38,7 @@
         android:background="@drawable/basic_input_shape"
         android:hint="이름을 적어주세요."
         android:inputType="textAutoComplete"
+        android:text=""
         android:maxLength="5"
         android:singleLine="true"
         android:nextFocusForward="@+id/et_direct_sender_tel1"
@@ -306,6 +307,7 @@
         style="@style/bottom_btn_next_style"
         android:background="@drawable/bottom_btn_shape"
         android:text="@string/after_btn_text"
+        android:onClick="showData"
         tools:ignore="MissingConstraints"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>
