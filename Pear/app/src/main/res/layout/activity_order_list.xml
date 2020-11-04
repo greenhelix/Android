@@ -30,9 +30,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_list_head">
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp" />
+
 <!--컬럼-->
         <TableRow
             android:layout_width="match_parent"
@@ -40,24 +38,25 @@
             android:background="@color/grey_btn_color">
 
             <TextView android:text="번호"
-                android:textAlignment="center"
+                android:textAlignment="textStart"
                 />
 
             <TextView android:text="받는 사람"
-                android:textAlignment="center"
+                android:textAlignment="textStart"
                 />
 
             <TextView android:text="보낸 사람"
-                android:textAlignment="center"
+                android:textAlignment="textStart"
                 />
 
             <TextView android:text="선택"
-                android:textAlignment="center"
+                android:textAlignment="textStart"
                 />
         </TableRow>
     </TableLayout>
 
     <Button
+        android:id="@+id/btn_cloud_befpre"
         style="@style/bottom_btn_before_style"
         android:layout_marginStart="30dp"
         android:layout_marginBottom="30dp"
@@ -68,6 +67,7 @@
         tools:ignore="MissingConstraints" />
 
     <Button
+        android:id="@+id/btn_cloud_next"
         style="@style/long_btn_style"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="30dp"
