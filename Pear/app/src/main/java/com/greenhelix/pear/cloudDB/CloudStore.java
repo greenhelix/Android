@@ -1,6 +1,7 @@
 package com.greenhelix.pear.cloudDB;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TableLayout;
@@ -23,19 +24,27 @@ public class CloudStore extends AppCompatActivity {
 
     List<String> senderData = new ArrayList<>();
     List<String> recipientData = new ArrayList<>();
-
+    Boolean isItCamera = false;
+    Boolean isItDirect = false;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_list);
         senderData = getIntent().getExtras().getStringArrayList("direct_sender");
         recipientData = getIntent().getExtras().getStringArrayList("direct_recipient");
+        TableLayout table = (TableLayout) findViewById(R.id.tableLayout);
+        if(senderData!= null) isItDirect = true;
+        if(isItDirect){
+            directAddRow(table);
+        }
+        if(isItCamera){
+            cameraAddRow();
+        }
 
-        directAddRow();
 
     }
-    public void directAddRow(){
-        TableLayout table = (TableLayout) findViewById(R.id.tableLayout);
+    //직접주문입력 화면, 주문 테이블 생성
+    public void directAddRow(TableLayout t){
 
         TableRow row = new TableRow(this);
 
@@ -49,18 +58,21 @@ public class CloudStore extends AppCompatActivity {
         recipient.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
         row.addView(recipient);
 
-        TextView recipientAdr = new TextView(this);
-        recipientAdr.setText(recipientData.get(5));
-        recipientAdr.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-        row.addView(recipientAdr);
-
         TextView sender = new TextView(this);
         sender.setText(senderData.get(0));
         sender.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
         row.addView(sender);
 
+        addCheck(row);
+
+        t.addView(row);
+    }
+
+    public void addCheck(TableRow row){
         CheckBox check = new CheckBox(this);
         row.addView(check);
-        table.addView(row);
+    }
+    public void cameraAddRow(){
+
     }
 }

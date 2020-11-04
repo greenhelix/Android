@@ -39,102 +39,22 @@
             android:layout_height="wrap_content"
             android:background="@color/grey_btn_color">
 
-            <TextView android:text="주문 번호" />
+            <TextView android:text="번호"
+                android:textAlignment="center"
+                />
 
-            <TextView android:text="받는 사람" />
+            <TextView android:text="받는 사람"
+                android:textAlignment="center"
+                />
 
-            <TextView android:text="주소" />
+            <TextView android:text="보낸 사람"
+                android:textAlignment="center"
+                />
 
-            <TextView android:text="보낸 사람" />
-
-            <TextView android:text="선택" />
+            <TextView android:text="선택"
+                android:textAlignment="center"
+                />
         </TableRow>
-<!--데이터 부분-->
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:text="1"
-                android:textAlignment="center" />
-            <TextView android:text="김익환" />
-
-            <TextView android:text="경기도" />
-
-            <TextView android:text="윤소정" />
-
-            <CheckBox />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_height="wrap_content"
-                android:text="2"
-                android:textAlignment="center" />
-
-            <TextView android:text="김익환" />
-
-            <TextView android:text="경기도" />
-
-            <TextView android:text="윤소정" />
-
-            <CheckBox />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:text="3"
-                android:textAlignment="center" />
-
-            <TextView android:text="김익환" />
-
-            <TextView android:text="경기도" />
-
-            <TextView android:text="윤소정" />
-
-            <CheckBox />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:text="4"
-                android:textAlignment="center" />
-
-            <TextView android:text="김익환" />
-
-            <TextView android:text="경기도" />
-
-            <TextView android:text="윤소정" />
-
-            <CheckBox />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:text="5"
-                android:textAlignment="center" />
-
-            <TextView android:text="김익환" />
-
-            <TextView android:text="경기도" />
-
-            <TextView android:text="윤소정" />
-
-            <CheckBox />
-        </TableRow>
-
-
     </TableLayout>
 
     <Button
