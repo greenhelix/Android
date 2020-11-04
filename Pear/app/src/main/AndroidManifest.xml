@@ -34,10 +34,10 @@
         <activity android:name=".CameraOrderActivity" />
         <activity android:name=".ImageML" />
 
-        <activity android:name=".test.DirectOrderActivity" />
-        <activity android:name=".test.DirectShow" />
+        <activity android:name=".directOrder.DirectOrderActivity" />
+        <activity android:name=".directOrder.DirectShow" />
 
-        <activity android:name=".CloudStore" />
+        <activity android:name=".cloudDB.CloudStore" />
 
 
 <!--        파일 제공자를 구성한다-->

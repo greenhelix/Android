@@ -32,7 +32,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth:20.0.0'
 //    파이어베이스 ML
     implementation 'com.google.firebase:firebase-ml-vision:24.1.0'
-//    파이어베이스 코어
+//    파이어베이스 코어 (firebase analytics)
     implementation 'com.google.firebase:firebase-core:18.0.0'
 //    Bom은 파이어베이스 호환을 항상 따라준다.
     implementation platform('com.google.firebase:firebase-bom:25.12.0')

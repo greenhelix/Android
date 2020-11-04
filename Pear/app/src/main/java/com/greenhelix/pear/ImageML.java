@@ -1,14 +1,7 @@
 package com.greenhelix.pear;
 
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.Point;
-import android.graphics.Rect;
-import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -17,8 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.camera.core.ImageAnalysis;
-import androidx.camera.core.ImageProxy;
+
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -26,7 +18,6 @@ import com.google.android.gms.tasks.Task;
 //파이어베이스
 import com.google.firebase.ml.vision.FirebaseVision;
 import com.google.firebase.ml.vision.common.FirebaseVisionImage;
-import com.google.firebase.ml.vision.common.FirebaseVisionImageMetadata;
 import com.google.firebase.ml.vision.text.FirebaseVisionCloudTextRecognizerOptions;
 import com.google.firebase.ml.vision.text.FirebaseVisionText;
 import com.google.firebase.ml.vision.text.FirebaseVisionTextRecognizer;
@@ -50,7 +41,7 @@ public class ImageML extends AppCompatActivity  {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.ml_kit_result);
+        setContentView(R.layout.camera_order_result);
         getIntent();
         Log.d(LOG_TAG,"ImageML정상 가동되었습니다., OnCreate에 들어왔습니다.");
         resultShow = (TextView)findViewById(R.id.tv_mlResult);

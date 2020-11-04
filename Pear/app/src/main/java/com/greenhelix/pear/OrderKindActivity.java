@@ -9,7 +9,7 @@ import android.widget.Button;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.greenhelix.pear.test.DirectOrderActivity;
+import com.greenhelix.pear.directOrder.DirectOrderActivity;
 
 /*주문 형태 선택 화면 */
 public class OrderKindActivity extends AppCompatActivity {

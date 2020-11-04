@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/greenBackground"
-    tools:context=".test.DirectShow">
+    tools:context=".directOrder.DirectShow">
 
     <TextView
         android:id="@+id/tv_test_show"
@@ -34,7 +34,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_test_show" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_test_show"
+        />
+    <Button
+        android:id="@+id/btn_direct_result_before"
+        style="@style/bottom_btn_before_style"
+        android:background="@drawable/bottom_btn_shape"
+        android:text="@string/before_btn_text"
+        tools:ignore="MissingConstraints"
+        />
+    <Button
+        android:id="@+id/btn_direct_result_next"
+        style="@style/bottom_btn_next_style"
+        android:background="@drawable/bottom_btn_shape"
+        android:text="@string/after_btn_text"
+        tools:ignore="MissingConstraints"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
