@@ -39,6 +39,8 @@
 
         <activity android:name=".cloudDB.CloudStore" />
 
+        <activity android:name=".SelectPearActivity"/>
+
 
 <!--        파일 제공자를 구성한다-->
         <provider

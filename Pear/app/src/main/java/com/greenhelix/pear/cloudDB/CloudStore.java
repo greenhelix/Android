@@ -117,7 +117,11 @@ public class CloudStore extends AppCompatActivity {
         orderInfo.put("sender_tel",senderData.get(1)+senderData.get(2)+senderData.get(3));
         orderInfo.put("recipient",recipientData.get(0));
         orderInfo.put("recipient_tel",recipientData.get(1)+recipientData.get(2)+recipientData.get(3));
-        String[] reAdr = new String[]{recipientData.get(4),recipientData.get(5),recipientData.get(6)};
+//        String[] reAdr = new String[]{recipientData.get(4),recipientData.get(5),recipientData.get(6)};//array가 안된다고 한다.
+        ArrayList<String> reAdr = new ArrayList<>();
+        reAdr.add(recipientData.get(4));
+        reAdr.add(recipientData.get(5));
+        reAdr.add(recipientData.get(6));
         orderInfo.put("recipient_addr",reAdr);
 
         db.collection("pear_orders").document("order"+1)
