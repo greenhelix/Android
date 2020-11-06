@@ -31,7 +31,7 @@ public class CloudStore extends AppCompatActivity {
     Boolean isItCamera = false;
     Boolean isItDirect = false;
     Button goSelectPear;
-    Button goSelect전혀ㅂ몰라
+    Button goBefore;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,14 +48,23 @@ public class CloudStore extends AppCompatActivity {
         if(isItCamera){
             cameraAddRow();
         }
-
+        //배송물품 선택 버튼
+        /*화면이동과 클라우드DB 에 해당 정보를 저장한다.*/
         goSelectPear = (Button) findViewById(R.id.btn_cloud_next);
-        
-        
+
+        //이전버튼
+        goBefore = (Button) findViewById(R.id.btn_cloud_befpre);
+        goBefore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
     }
     //직접주문입력 화면, 주문 테이블 생성
     public void directAddRow(TableLayout t){
-
+        // 체크박수 중앙 위치 방법 까다로워서 그냥 다 왼쪽정렬시킴.
         TableRow row = new TableRow(this);
 
         TextView index = new TextView(this);
@@ -83,6 +92,7 @@ public class CloudStore extends AppCompatActivity {
         CheckBox check = new CheckBox(this);
         row.addView(check);
     }
+    //카메라 입력시 로직 공간
     public void cameraAddRow(){
 
     }
