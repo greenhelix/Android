@@ -1,7 +1,9 @@
 package com.greenhelix.pear.cloudDB;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,19 +13,27 @@ import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.greenhelix.pear.R;
+import com.greenhelix.pear.SelectPearActivity;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class CloudStore extends AppCompatActivity {
 
     private static final String TEST = "ik_test";
+    private static final String LOG_TAG = "ik";
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     List<String> senderData = new ArrayList<>();
@@ -96,6 +106,40 @@ public class CloudStore extends AppCompatActivity {
     public void cameraAddRow(){
 
     }
+    /*화면이동과 클라우드DB 에 해당 정보를 저장한다.*/
+    public void saveAndPass(View v){
+        //cloud DB save - document생성 (물품은 비어있는값),(주문자,수령인 정보는 저장)
+        Map<String, Object> orderInfo = new HashMap<>();
+        //SenderData. cameraData -> arrayList [0,1,2,3][0,1,2,3,4,5,6]
+        String sender = String.valueOf(senderData.get(0));//그냥안들어가면 이렇게 변환.
+        //그냥들어가는ㅇ지 String변환해야하는지 확인
+        orderInfo.put("sender",senderData.get(0));
+        orderInfo.put("sender_tel",senderData.get(1)+senderData.get(2)+senderData.get(3));
+        orderInfo.put("recipient",recipientData.get(0));
+        orderInfo.put("recipient_tel",recipientData.get(1)+recipientData.get(2)+recipientData.get(3));
+        String[] reAdr = new String[]{recipientData.get(4),recipientData.get(5),recipientData.get(6)};
+        orderInfo.put("recipient_addr",reAdr);
 
+        db.collection("pear_orders").document("order"+1)
+                .set(orderInfo)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(getApplicationContext(), "저장성공!",Toast.LENGTH_SHORT).show();
+                        Log.d(LOG_TAG, "저장이 되었네요^^");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(getApplicationContext(), "실패실패!!!",Toast.LENGTH_SHORT).show();
+                        Log.d(LOG_TAG, "저장이 안되었네요!!");
+                        e.printStackTrace();
+                    }
+                });
+        //인텐트
+        Intent next = new Intent(CloudStore.this, SelectPearActivity.class);
+        startActivity(next);
+    }
 
 }

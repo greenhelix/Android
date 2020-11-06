@@ -69,6 +69,7 @@
     <Button
         android:id="@+id/btn_cloud_next"
         style="@style/long_btn_style"
+        android:onClick="saveAndPass"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="30dp"
         android:background="@drawable/bottom_btn_shape"
