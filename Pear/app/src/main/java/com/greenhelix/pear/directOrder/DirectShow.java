@@ -38,6 +38,8 @@ public class DirectShow extends AppCompatActivity {
             public void onClick(View v) {
                 senderData = getIntent().getExtras().getStringArrayList("sender");
                 recipientData = getIntent().getExtras().getStringArrayList("recipient");
+                senderData.add("주문"+2);
+                tvShow.append("번호 : "+senderData.get(4)+"\n");
                 tvShow.append("보내는 사람 \n");
                 tvShow.append("보내는 사람 이름 : "+senderData.get(0)+"\n");
                 tvShow.append("보내는 사람 전화번호 : "+senderData.get(1)+"-"+senderData.get(2)+"-"+senderData.get(3)+"\n");

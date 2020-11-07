@@ -25,7 +25,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.greenhelix.pear.R;
 import com.greenhelix.pear.SelectPearActivity;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,6 +37,7 @@ public class CloudStore extends AppCompatActivity {
     private static final String TEST = "ik_test";
     private static final String LOG_TAG = "ik";
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private static final String ORDER_DOC = "order";
 
     List<String> senderData = new ArrayList<>();
     List<String> recipientData = new ArrayList<>();
@@ -109,22 +112,19 @@ public class CloudStore extends AppCompatActivity {
     /*화면이동과 클라우드DB 에 해당 정보를 저장한다.*/
     public void saveAndPass(View v){
         //cloud DB save - document생성 (물품은 비어있는값),(주문자,수령인 정보는 저장)
-        Map<String, Object> orderInfo = new HashMap<>();
         //SenderData. cameraData -> arrayList [0,1,2,3][0,1,2,3,4,5,6]
-        String sender = String.valueOf(senderData.get(0));//그냥안들어가면 이렇게 변환.
-        //그냥들어가는ㅇ지 String변환해야하는지 확인
-        orderInfo.put("sender",senderData.get(0));
+        Map<String, Object> orderInfo = new HashMap<>();
+        orderInfo.put("sender",senderData.get(0)); //그냥들어가는지 String변환해야하는지 확인완료.
         orderInfo.put("sender_tel",senderData.get(1)+senderData.get(2)+senderData.get(3));
         orderInfo.put("recipient",recipientData.get(0));
         orderInfo.put("recipient_tel",recipientData.get(1)+recipientData.get(2)+recipientData.get(3));
-//        String[] reAdr = new String[]{recipientData.get(4),recipientData.get(5),recipientData.get(6)};//array가 안된다고 한다.
         ArrayList<String> reAdr = new ArrayList<>();
         reAdr.add(recipientData.get(4));
         reAdr.add(recipientData.get(5));
         reAdr.add(recipientData.get(6));
         orderInfo.put("recipient_addr",reAdr);
-
-        db.collection("pear_orders").document("order"+1)
+        String time = new SimpleDateFormat("yyMMddHHmm").format(Calendar.getInstance().getTime());
+        db.collection("pear_orders").document(ORDER_DOC+time)
                 .set(orderInfo)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override

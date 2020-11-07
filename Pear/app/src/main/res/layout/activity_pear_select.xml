@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/pearBackground"
-    tools:context = ""
+    tools:context = ".SelectPearActivity"
     >
 
     <LinearLayout
@@ -29,6 +29,7 @@
             android:columnCount="3"
             >
             <Button
+                android:id="@+id/btn_pearKind1"
                 android:layout_width="110dp"
                 android:layout_height="60dp"
                 android:text="@string/pear_kind_01_text"
@@ -36,6 +37,7 @@
                 android:backgroundTint="@color/pear_btn_color"
                 />
             <Button
+                android:id="@+id/btn_pearKind2"
                 android:layout_width="110dp"
                 android:layout_height="60dp"
                 android:text="@string/pear_kind_02_text"
@@ -43,6 +45,7 @@
                 android:backgroundTint="@color/pear_btn_color"
                 />
             <Button
+                android:id="@+id/btn_pearKind3"
                 android:layout_width="110dp"
                 android:layout_height="60dp"
                 android:text="@string/pear_kind_03_text"
@@ -50,6 +53,7 @@
                 android:backgroundTint="@color/pear_btn_color"
                 />
             <Button
+                android:id="@+id/btn_pearKind4"
                 android:layout_width="110dp"
                 android:layout_height="60dp"
                 android:text="@string/pear_kind_04_text"
@@ -57,6 +61,7 @@
                 android:backgroundTint="@color/pear_btn_color"
                 />
             <Button
+                android:id="@+id/btn_pearKind5"
                 android:layout_width="110dp"
                 android:layout_height="60dp"
                 android:text="@string/pear_kind_05_text"
@@ -64,6 +69,7 @@
                 android:backgroundTint="@color/pear_btn_color"
                 />
             <Button
+                android:id="@+id/btn_pearKind6"
                 android:layout_width="110dp"
                 android:layout_height="60dp"
                 android:text="@string/pear_kind_06_text"
@@ -87,6 +93,7 @@
             android:columnCount="3"
             >
             <Button
+                android:id="@+id/btn_pearAmount1"
                 android:layout_width="110dp"
                 android:layout_height="60dp"
                 android:text="@string/pear_amount_01_text"
@@ -94,6 +101,7 @@
                 android:backgroundTint="@color/amount_btn_color"
                 />
             <Button
+                android:id="@+id/btn_pearAmount2"
                 android:layout_width="110dp"
                 android:layout_height="60dp"
                 android:text="@string/pear_amount_02_text"
@@ -101,6 +109,7 @@
                 android:backgroundTint="@color/amount_btn_color"
                 />
             <Button
+                android:id="@+id/btn_pearAmount3"
                 android:layout_width="110dp"
                 android:layout_height="60dp"
                 android:text="@string/pear_amount_03_text"
@@ -108,6 +117,7 @@
                 android:backgroundTint="@color/amount_btn_color"
                 />
             <Button
+                android:id="@+id/btn_pearAmount4"
                 android:layout_width="110dp"
                 android:layout_height="60dp"
                 android:text="@string/pear_amount_04_text"
@@ -115,6 +125,7 @@
                 android:backgroundTint="@color/amount_btn_color"
                 />
             <Button
+                android:id="@+id/btn_pearAmount5"
                 android:layout_width="110dp"
                 android:layout_height="60dp"
                 android:text="@string/pear_amount_05_text"
@@ -122,6 +133,7 @@
                 android:backgroundTint="@color/amount_btn_color"
                 />
             <Button
+                android:id="@+id/btn_pearAmount6"
                 android:layout_width="110dp"
                 android:layout_height="60dp"
                 android:text="@string/pear_amount_06_text"
@@ -144,6 +156,7 @@
             android:useDefaultMargins="true"
             >
             <EditText
+                android:id="@+id/et_pearBox"
                 android:layout_width="100dp"
                 android:layout_height="50dp"
                 android:background="@color/white_color"
@@ -164,6 +177,7 @@
 
 
     <Button
+        android:id="@+id/btn_pearSelctBefore"
         style="@style/bottom_btn_before_style"
         android:background="@drawable/bottom_btn_shape"
         android:text="@string/before_btn_text"
@@ -171,6 +185,7 @@
         />
 
     <Button
+        android:id="@+id/btn_pearSelctAfter"
         style="@style/bottom_btn_next_style"
         android:background="@drawable/bottom_btn_shape"
         android:text="@string/after_btn_text"
