@@ -155,8 +155,9 @@
             android:layout_marginLeft="20dp"
             android:useDefaultMargins="true"
             >
-            <EditText
-                android:id="@+id/et_pearBox"
+
+            <NumberPicker
+                android:id="@+id/np_pearBox"
                 android:layout_width="100dp"
                 android:layout_height="50dp"
                 android:background="@color/white_color"
