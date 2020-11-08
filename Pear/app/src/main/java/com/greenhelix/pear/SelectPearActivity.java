@@ -1,5 +1,7 @@
 package com.greenhelix.pear;
 
+import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.util.Log;
@@ -26,13 +28,15 @@ public class SelectPearActivity extends AppCompatActivity {
 
     Button pearKind1, pearKind2, pearKind3, pearKind4, pearKind5, pearKind6;
     Button pearAmount1 ,pearAmount2,pearAmount3,pearAmount4,pearAmount5,pearAmount6;
-    NumberPicker pearBox;
+    EditText pearBox;
     Button pearBefore, pearAfter;
-
+    final Intent upCloud = new Intent();
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pear_select);
+
+
         pearKind1 = findViewById(R.id.btn_pearKind1);
         pearKind2 = findViewById(R.id.btn_pearKind2);
         pearKind3 = findViewById(R.id.btn_pearKind3);
@@ -45,32 +49,39 @@ public class SelectPearActivity extends AppCompatActivity {
         pearAmount4 = findViewById(R.id.btn_pearAmount4);
         pearAmount5 = findViewById(R.id.btn_pearAmount5);
         pearAmount6 = findViewById(R.id.btn_pearAmount6);
-        pearBox = findViewById(R.id.np_pearBox);
-        pearBox.setMaxValue(100);
-        pearBox.setMinValue(0);
-        pearBox.setOnValueChangedListener(new NumberPicker.OnValueChangeListener(){
-            @Override
-            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-                String box = String.valueOf(newVal);
 
-            }
-        });
-
+        //배 종류 선택
         pickPearKind(pearKind1);
         pickPearKind(pearKind2);
         pickPearKind(pearKind3);
         pickPearKind(pearKind4);
         pickPearKind(pearKind5);
         pickPearKind(pearKind6);
-
+        //배갯수 선택
         pickPearAmount(pearAmount1);
         pickPearAmount(pearAmount2);
         pickPearAmount(pearAmount3);
         pickPearAmount(pearAmount4);
         pickPearAmount(pearAmount5);
         pickPearAmount(pearAmount6);
-    }
 
+        //배 상자 수 선택
+        pearBox = findViewById(R.id.et_pearBox);
+        pearBefore = findViewById(R.id.btn_pearSelctBefore);
+        pearBefore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        pearAfter = findViewById(R.id.btn_pearSelctAfter);
+        pearAfter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+    }
     public void pickPearKind(final Button bt){
             bt.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -120,6 +131,8 @@ public class SelectPearActivity extends AppCompatActivity {
                         pearKind4.setBackgroundTintList(ContextCompat.getColorStateList(getApplicationContext(), R.color.pear_btn_color_off));
                         pearKind5.setBackgroundTintList(ContextCompat.getColorStateList(getApplicationContext(), R.color.pear_btn_color_off));
                     }
+                    upCloud.putExtra("pearKind",bt.getText().toString());
+                    Log.d(LOG_TAG,bt.getText().toString()+" 종류를 선택하였습니다.");
                 }
             });
     }
@@ -172,6 +185,8 @@ public class SelectPearActivity extends AppCompatActivity {
                     pearAmount4.setBackgroundTintList(ContextCompat.getColorStateList(getApplicationContext(), R.color.amount_btn_color_off));
                     pearAmount5.setBackgroundTintList(ContextCompat.getColorStateList(getApplicationContext(), R.color.amount_btn_color_off));
                 }
+                upCloud.putExtra("pearAmound",bt.getText().toString());
+                Log.d(LOG_TAG,bt.getText().toString()+" 를 선택하였습니다.");
             }
         });
     }

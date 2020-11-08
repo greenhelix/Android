@@ -32,21 +32,21 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/tvSender"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
                 android:text="주문자 :"
                 android:textSize="17dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/textView2"
+                app:layout_constraintEnd_toStartOf="@+id/tv_list_senderName"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/tv_list_senderName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
@@ -54,30 +54,30 @@
                 android:text="김아무개"
                 android:textSize="17dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/textView3"
+                app:layout_constraintStart_toEndOf="@+id/tvSender"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="1.0" />
 
             <ImageView
-                android:id="@+id/imageView2"
+                android:id="@+id/deliverImg"
                 android:layout_width="35dp"
                 android:layout_height="21dp"
 
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="1dp"
                 android:src="@drawable/ic_baseline_send_20"
-                app:layout_constraintStart_toEndOf="@+id/textView2"
+                app:layout_constraintStart_toEndOf="@+id/tv_list_senderName"
                 app:layout_constraintTop_toTopOf="parent"
                 />
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/tvRecipient"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:text="받는사람 :"
                 android:textSize="17dp"
-                app:layout_constraintStart_toEndOf="@+id/imageView2"
+                app:layout_constraintStart_toEndOf="@+id/deliverImg"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
@@ -88,7 +88,7 @@
                 android:paddingRight="10dp"
                 android:text="김개똥이"
                 android:textSize="17dp"
-                app:layout_constraintStart_toEndOf="@+id/textView4"
+                app:layout_constraintStart_toEndOf="@+id/tvRecipient"
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

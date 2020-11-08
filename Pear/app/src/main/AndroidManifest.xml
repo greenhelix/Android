@@ -29,7 +29,7 @@
         </activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".OrderKindActivity" />
-        <activity android:name=".OrderListActivity" />
+        <activity android:name=".listShow.OrderListActivity" />
 
         <activity android:name=".CameraOrderActivity" />
         <activity android:name=".ImageML" />
