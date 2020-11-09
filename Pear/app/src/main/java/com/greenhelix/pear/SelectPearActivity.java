@@ -19,6 +19,8 @@ import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.greenhelix.pear.cloudDB.CloudStore;
 import com.greenhelix.pear.listShow.OrderListActivity;
@@ -34,7 +36,9 @@ public class SelectPearActivity extends AppCompatActivity {
     /*배송 상품 선택 화면*/
     private static final String LOG_TAG = "ik";
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
-
+    private CollectionReference pearOrderRef = db.collection("pear_orders");
+//    private DocumentReference ordersRef = db.collection("pear_orders");
+    private static final String ORDER_DOC = "direct";
     Button pearKind1, pearKind2, pearKind3, pearKind4, pearKind5, pearKind6;
     Button pearAmount1 ,pearAmount2,pearAmount3,pearAmount4,pearAmount5,pearAmount6;
     EditText pearBox;
@@ -200,9 +204,8 @@ public class SelectPearActivity extends AppCompatActivity {
         });
     }
 
-    // 배정보 DB 전송후 화면이동
+    // 직접주문 배정보 DB 전송후 화면이동
     public void pearUpdateAndPass(View v){
-        // document id 를 intent로 받는다.
         String id = getIntent().getExtras().getString("index");
         Log.d(LOG_TAG, "ID: "+id+":: 정상적으로 문서 id를 가져왔습니다.");
 
@@ -212,29 +215,29 @@ public class SelectPearActivity extends AppCompatActivity {
         pearInfo.add(pearBox.getText().toString());
         Log.d(LOG_TAG, "배송상품 정보는 "+pearInfo+" 입니다.");
         orderPear.put("pear_box", pearInfo.get(2));
-
-        db.collection("pear_orders").document(id)
-                .set(orderPear)
+        pearOrderRef.document(ORDER_DOC+id).update(orderPear)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
                         Toast.makeText(getApplicationContext(), "저장성공!",Toast.LENGTH_SHORT).show();
-                        Log.d(LOG_TAG, "저장이 되었네요^^");
+                        Log.d(LOG_TAG, "~~~~~~저장이 되었네요^^");
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Toast.makeText(getApplicationContext(), "실패실패!!!",Toast.LENGTH_SHORT).show();
-                        Log.d(LOG_TAG, "저장이 안되었네요!!");
+                        Log.d(LOG_TAG, "!!!!!!!!!저장이 안되었네요!!");
                         e.printStackTrace();
                     }
                 });
+
         //upload 완료
         Log.d(LOG_TAG, "DB에 업로드 하였습니다. 화면을 넘어가겠습니다.");
 
         //화면이동
         Intent upCloud = new Intent(SelectPearActivity.this, OrderListActivity.class);
         startActivity(upCloud);
+
     }//pearUpdateAndPass END
 }//END

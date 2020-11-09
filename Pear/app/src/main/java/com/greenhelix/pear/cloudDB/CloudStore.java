@@ -37,7 +37,7 @@ public class CloudStore extends AppCompatActivity {
     private static final String TEST = "ik_test";
     private static final String LOG_TAG = "ik";
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private static final String ORDER_DOC = "order";
+    private static final String ORDER_DOC = "direct";
 
     List<String> senderData = new ArrayList<>();
     List<String> recipientData = new ArrayList<>();
