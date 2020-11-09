@@ -27,7 +27,6 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.Orde
         TextView orderNum, senderName, recipientName, orderAddress,pearKinds, pearAmounts, pearBoxes;
         public OrdersHolder(View v){
             super(v);
-
             orderNum = v.findViewById(R.id.tv_list_orderNum);
             senderName = v.findViewById(R.id.tv_list_senderName);
             recipientName = v.findViewById(R.id.tv_list_recipientName);

@@ -114,7 +114,7 @@ public class CloudStore extends AppCompatActivity {
         //cloud DB save - document생성 (물품은 비어있는값),(주문자,수령인 정보는 저장)
         //SenderData. cameraData -> arrayList [0,1,2,3][0,1,2,3,4,5,6]
         Map<String, Object> orderInfo = new HashMap<>();
-        orderInfo.put("sender",senderData.get(0)); //그냥들어가는지 String변환해야하는지 확인완료.
+        orderInfo.put("sender",senderData.get(0)); //그냥들어가는지 String변환해야하는지 확인 완료.
         orderInfo.put("sender_tel",senderData.get(1)+senderData.get(2)+senderData.get(3));
         orderInfo.put("recipient",recipientData.get(0));
         orderInfo.put("recipient_tel",recipientData.get(1)+recipientData.get(2)+recipientData.get(3));

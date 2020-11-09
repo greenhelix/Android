@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.greenhelix.pear.listShow.OrderListActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,13 +31,15 @@ public class SelectPearActivity extends AppCompatActivity {
     Button pearAmount1 ,pearAmount2,pearAmount3,pearAmount4,pearAmount5,pearAmount6;
     EditText pearBox;
     Button pearBefore, pearAfter;
-    final Intent upCloud = new Intent();
+
+    /*Intent를 통해서 배의 종류와 갯수를 onCreate에서 담은뒤, 다음 버튼 클릭시 상자갯수도 담아서 보낸다.*/
+    final Intent upCloud = new Intent(SelectPearActivity.this, OrderListActivity.class);
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pear_select);
-
-
+        //선언부
         pearKind1 = findViewById(R.id.btn_pearKind1);
         pearKind2 = findViewById(R.id.btn_pearKind2);
         pearKind3 = findViewById(R.id.btn_pearKind3);
@@ -78,10 +81,15 @@ public class SelectPearActivity extends AppCompatActivity {
         pearAfter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                //Intent에 상자갯수 담기
+                upCloud.putExtra("pearBoxes", pearBox.getText().toString());
+                Toast.makeText(getApplicationContext(), "배종류와 갯수만큼 "+pearBox+"상자를 담았습니다.",Toast.LENGTH_SHORT).show();
+                Log.d(LOG_TAG, "배 종류, 갯수, 상자수를 담았습니다.");
+                startActivity(upCloud);
             }
         });
     }
+    // 배의 종류를 가져오며, 버튼의 활성화 모습을 적용해준다.
     public void pickPearKind(final Button bt){
             bt.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -131,11 +139,13 @@ public class SelectPearActivity extends AppCompatActivity {
                         pearKind4.setBackgroundTintList(ContextCompat.getColorStateList(getApplicationContext(), R.color.pear_btn_color_off));
                         pearKind5.setBackgroundTintList(ContextCompat.getColorStateList(getApplicationContext(), R.color.pear_btn_color_off));
                     }
+                    // Intent에 배 종류 정보 담기
                     upCloud.putExtra("pearKind",bt.getText().toString());
                     Log.d(LOG_TAG,bt.getText().toString()+" 종류를 선택하였습니다.");
                 }
             });
     }
+    // 배의 갯수를 가져오며, 버튼의 활성화 모습을 적용해준다.
     public void pickPearAmount(final Button bt){
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -185,6 +195,7 @@ public class SelectPearActivity extends AppCompatActivity {
                     pearAmount4.setBackgroundTintList(ContextCompat.getColorStateList(getApplicationContext(), R.color.amount_btn_color_off));
                     pearAmount5.setBackgroundTintList(ContextCompat.getColorStateList(getApplicationContext(), R.color.amount_btn_color_off));
                 }
+                // Intent에 정보 배 갯수 담기
                 upCloud.putExtra("pearAmound",bt.getText().toString());
                 Log.d(LOG_TAG,bt.getText().toString()+" 를 선택하였습니다.");
             }
