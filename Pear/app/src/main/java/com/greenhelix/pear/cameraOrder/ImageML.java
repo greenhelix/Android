@@ -1,4 +1,4 @@
-package com.greenhelix.pear;
+package com.greenhelix.pear.cameraOrder;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -21,6 +21,7 @@ import com.google.firebase.ml.vision.common.FirebaseVisionImage;
 import com.google.firebase.ml.vision.text.FirebaseVisionCloudTextRecognizerOptions;
 import com.google.firebase.ml.vision.text.FirebaseVisionText;
 import com.google.firebase.ml.vision.text.FirebaseVisionTextRecognizer;
+import com.greenhelix.pear.R;
 
 import java.io.IOException;
 import java.util.Arrays;

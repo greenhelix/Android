@@ -27,55 +27,68 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:columnCount="3"
+
             >
             <Button
                 android:id="@+id/btn_pearKind1"
-                android:layout_width="110dp"
-                android:layout_height="60dp"
+                android:layout_width="100dp"
+                android:layout_height="55dp"
+                android:background="@drawable/basic_btn_shape"
+                android:backgroundTint="@color/pear_btn_color"
+                android:layout_margin="4sp"
                 android:text="@string/pear_kind_01_text"
                 android:textSize="20dp"
                 android:enabled="true"
-                android:backgroundTint="@color/pear_btn_color"
                 />
             <Button
                 android:id="@+id/btn_pearKind2"
-                android:layout_width="110dp"
-                android:layout_height="60dp"
+                android:layout_width="100dp"
+                android:layout_height="55dp"
+                android:background="@drawable/basic_btn_shape"
+                android:backgroundTint="@color/pear_btn_color"
+                android:layout_margin="4sp"
                 android:text="@string/pear_kind_02_text"
                 android:textSize="20dp"
-                android:backgroundTint="@color/pear_btn_color"
                 />
             <Button
                 android:id="@+id/btn_pearKind3"
-                android:layout_width="110dp"
-                android:layout_height="60dp"
+                android:layout_width="100dp"
+                android:layout_height="55dp"
+                android:background="@drawable/basic_btn_shape"
+                android:backgroundTint="@color/pear_btn_color"
+                android:layout_margin="4sp"
                 android:text="@string/pear_kind_03_text"
                 android:textSize="20dp"
-                android:backgroundTint="@color/pear_btn_color"
                 />
             <Button
                 android:id="@+id/btn_pearKind4"
-                android:layout_width="110dp"
-                android:layout_height="60dp"
+                android:layout_width="100dp"
+                android:layout_height="55dp"
+                android:background="@drawable/basic_btn_shape"
+                android:backgroundTint="@color/pear_btn_color"
+                android:layout_margin="4sp"
                 android:text="@string/pear_kind_04_text"
                 android:textSize="20dp"
-                android:backgroundTint="@color/pear_btn_color"
                 />
             <Button
                 android:id="@+id/btn_pearKind5"
-                android:layout_width="110dp"
-                android:layout_height="60dp"
+                android:layout_width="100dp"
+                android:layout_height="55dp"
+                android:background="@drawable/basic_btn_shape"
+                android:backgroundTint="@color/pear_btn_color"
+                android:layout_margin="4sp"
                 android:text="@string/pear_kind_05_text"
                 android:textSize="20dp"
-                android:backgroundTint="@color/pear_btn_color"
                 />
             <Button
                 android:id="@+id/btn_pearKind6"
-                android:layout_width="110dp"
-                android:layout_height="60dp"
+                android:layout_width="100dp"
+                android:layout_height="55dp"
+                android:background="@drawable/basic_btn_shape"
+                android:backgroundTint="@color/pear_btn_color"
+                android:layout_margin="4sp"
                 android:text="@string/pear_kind_06_text"
                 android:textSize="20dp"
-                android:backgroundTint="@color/pear_btn_color"
                 />
 
 
@@ -95,51 +108,63 @@
             >
             <Button
                 android:id="@+id/btn_pearAmount1"
-                android:layout_width="110dp"
-                android:layout_height="60dp"
+                android:layout_width="100dp"
+                android:layout_height="55dp"
+                android:background="@drawable/basic_btn_shape"
+                android:backgroundTint="@color/amount_btn_color"
+                android:layout_margin="4sp"
                 android:text="@string/pear_amount_01_text"
                 android:textSize="20dp"
-                android:backgroundTint="@color/amount_btn_color"
                 />
             <Button
                 android:id="@+id/btn_pearAmount2"
-                android:layout_width="110dp"
-                android:layout_height="60dp"
+                android:layout_width="100dp"
+                android:layout_height="55dp"
+                android:background="@drawable/basic_btn_shape"
+                android:backgroundTint="@color/amount_btn_color"
+                android:layout_margin="4sp"
                 android:text="@string/pear_amount_02_text"
                 android:textSize="20dp"
-                android:backgroundTint="@color/amount_btn_color"
                 />
             <Button
                 android:id="@+id/btn_pearAmount3"
-                android:layout_width="110dp"
-                android:layout_height="60dp"
+                android:layout_width="100dp"
+                android:layout_height="55dp"
+                android:background="@drawable/basic_btn_shape"
+                android:backgroundTint="@color/amount_btn_color"
+                android:layout_margin="4sp"
                 android:text="@string/pear_amount_03_text"
                 android:textSize="20dp"
-                android:backgroundTint="@color/amount_btn_color"
                 />
             <Button
                 android:id="@+id/btn_pearAmount4"
-                android:layout_width="110dp"
-                android:layout_height="60dp"
+                android:layout_width="100dp"
+                android:layout_height="55dp"
+                android:background="@drawable/basic_btn_shape"
+                android:backgroundTint="@color/amount_btn_color"
+                android:layout_margin="4sp"
                 android:text="@string/pear_amount_04_text"
                 android:textSize="20dp"
-                android:backgroundTint="@color/amount_btn_color"
                 />
             <Button
                 android:id="@+id/btn_pearAmount5"
-                android:layout_width="110dp"
-                android:layout_height="60dp"
+                android:layout_width="100dp"
+                android:layout_height="55dp"
+                android:background="@drawable/basic_btn_shape"
+                android:backgroundTint="@color/amount_btn_color"
+                android:layout_margin="4sp"
                 android:text="@string/pear_amount_05_text"
                 android:textSize="20dp"
-                android:backgroundTint="@color/amount_btn_color"
                 />
             <Button
                 android:id="@+id/btn_pearAmount6"
-                android:layout_width="110dp"
-                android:layout_height="60dp"
+                android:layout_width="100dp"
+                android:layout_height="55dp"
+                android:background="@drawable/basic_btn_shape"
+                android:backgroundTint="@color/amount_btn_color"
+                android:layout_margin="4sp"
                 android:text="@string/pear_amount_06_text"
                 android:textSize="20dp"
-                android:backgroundTint="@color/amount_btn_color"
                 />
         </GridLayout>
         <TextView
@@ -162,7 +187,10 @@
                 android:layout_width="100dp"
                 android:layout_height="50dp"
                 android:textSize="40dp"
-                android:background="@color/white_color"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:background="@drawable/basic_input_shape"
+                android:backgroundTint="@color/grey_btn_color"
                 android:inputType="number"
                 />
 

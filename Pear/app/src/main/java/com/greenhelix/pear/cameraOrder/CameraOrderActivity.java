@@ -1,4 +1,4 @@
-package com.greenhelix.pear;
+package com.greenhelix.pear.cameraOrder;
 
 import android.Manifest;
 import android.content.Intent;
@@ -19,6 +19,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
+
+import com.greenhelix.pear.R;
+
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
