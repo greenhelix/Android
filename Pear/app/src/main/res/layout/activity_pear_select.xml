@@ -192,6 +192,7 @@
 
     <Button
         android:id="@+id/btn_pearSelctAfter"
+        android:onClick="pearUpdateAndPass"
         style="@style/bottom_btn_next_style"
         android:background="@drawable/bottom_btn_shape"
         android:text="@string/after_btn_text"

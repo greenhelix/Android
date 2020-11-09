@@ -143,6 +143,7 @@ public class CloudStore extends AppCompatActivity {
                 });
         //인텐트
         Intent next = new Intent(CloudStore.this, SelectPearActivity.class);
+        next.putExtra("index",time);
         startActivity(next);
     }
 

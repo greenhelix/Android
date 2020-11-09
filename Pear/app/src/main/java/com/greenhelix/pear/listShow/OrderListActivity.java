@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.greenhelix.pear.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class OrderListActivity extends AppCompatActivity {
@@ -23,5 +24,23 @@ public class OrderListActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pear_list);
+
+        //선언부
+        recyclerOrderView = findViewById(R.id.recycler_order_list);
+        layoutManager = new LinearLayoutManager(this);
+        orderInfo = new ArrayList<>();
+
+        //recyclerview 에 옵션 넣기
+        recyclerOrderView.setLayoutManager(layoutManager);
+        recyclerOrderView.setHasFixedSize(false);
+
+        //데이터 Adapter로부터 가져와서 띄우기
+
     }
+
+    // 수정
+
+    // 삭제
+
+    // snapshot?
 }

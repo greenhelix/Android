@@ -12,15 +12,23 @@ import android.widget.GridLayout;
 import android.widget.NumberPicker;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.greenhelix.pear.cloudDB.CloudStore;
 import com.greenhelix.pear.listShow.OrderListActivity;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class SelectPearActivity extends AppCompatActivity {
     /*배송 상품 선택 화면*/
@@ -31,9 +39,7 @@ public class SelectPearActivity extends AppCompatActivity {
     Button pearAmount1 ,pearAmount2,pearAmount3,pearAmount4,pearAmount5,pearAmount6;
     EditText pearBox;
     Button pearBefore, pearAfter;
-
-    /*Intent를 통해서 배의 종류와 갯수를 onCreate에서 담은뒤, 다음 버튼 클릭시 상자갯수도 담아서 보낸다.*/
-    final Intent upCloud = new Intent(SelectPearActivity.this, OrderListActivity.class);
+    List<String> pearInfo = new ArrayList<>(); //상품 정보를 담아서 DB로 보내기 위해 리스트에 담는다.
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -70,6 +76,7 @@ public class SelectPearActivity extends AppCompatActivity {
 
         //배 상자 수 선택
         pearBox = findViewById(R.id.et_pearBox);
+        //이전 버튼
         pearBefore = findViewById(R.id.btn_pearSelctBefore);
         pearBefore.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,18 +84,10 @@ public class SelectPearActivity extends AppCompatActivity {
                 finish();
             }
         });
+        //다음 버튼
         pearAfter = findViewById(R.id.btn_pearSelctAfter);
-        pearAfter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Intent에 상자갯수 담기
-                upCloud.putExtra("pearBoxes", pearBox.getText().toString());
-                Toast.makeText(getApplicationContext(), "배종류와 갯수만큼 "+pearBox+"상자를 담았습니다.",Toast.LENGTH_SHORT).show();
-                Log.d(LOG_TAG, "배 종류, 갯수, 상자수를 담았습니다.");
-                startActivity(upCloud);
-            }
-        });
-    }
+    }// onCreate END
+
     // 배의 종류를 가져오며, 버튼의 활성화 모습을 적용해준다.
     public void pickPearKind(final Button bt){
             bt.setOnClickListener(new View.OnClickListener() {
@@ -139,9 +138,9 @@ public class SelectPearActivity extends AppCompatActivity {
                         pearKind4.setBackgroundTintList(ContextCompat.getColorStateList(getApplicationContext(), R.color.pear_btn_color_off));
                         pearKind5.setBackgroundTintList(ContextCompat.getColorStateList(getApplicationContext(), R.color.pear_btn_color_off));
                     }
-                    // Intent에 배 종류 정보 담기
-                    upCloud.putExtra("pearKind",bt.getText().toString());
+
                     Log.d(LOG_TAG,bt.getText().toString()+" 종류를 선택하였습니다.");
+                    pearInfo.add(bt.getText().toString());
                 }
             });
     }
@@ -195,10 +194,47 @@ public class SelectPearActivity extends AppCompatActivity {
                     pearAmount4.setBackgroundTintList(ContextCompat.getColorStateList(getApplicationContext(), R.color.amount_btn_color_off));
                     pearAmount5.setBackgroundTintList(ContextCompat.getColorStateList(getApplicationContext(), R.color.amount_btn_color_off));
                 }
-                // Intent에 정보 배 갯수 담기
-                upCloud.putExtra("pearAmound",bt.getText().toString());
                 Log.d(LOG_TAG,bt.getText().toString()+" 를 선택하였습니다.");
+                pearInfo.add(bt.getText().toString());
             }
         });
     }
-}
+
+    // 배정보 DB 전송후 화면이동
+    public void pearUpdateAndPass(View v){
+        // document id 를 intent로 받는다.
+        String id = getIntent().getExtras().getString("index");
+        Log.d(LOG_TAG, "ID: "+id+":: 정상적으로 문서 id를 가져왔습니다.");
+
+        Map<String, Object> orderPear = new HashMap<>();
+        orderPear.put("pear_kind",pearInfo.get(0));
+        orderPear.put("pear_amount",pearInfo.get(1));
+        pearInfo.add(pearBox.getText().toString());
+        Log.d(LOG_TAG, "배송상품 정보는 "+pearInfo+" 입니다.");
+        orderPear.put("pear_box", pearInfo.get(2));
+
+        db.collection("pear_orders").document(id)
+                .set(orderPear)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(getApplicationContext(), "저장성공!",Toast.LENGTH_SHORT).show();
+                        Log.d(LOG_TAG, "저장이 되었네요^^");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(getApplicationContext(), "실패실패!!!",Toast.LENGTH_SHORT).show();
+                        Log.d(LOG_TAG, "저장이 안되었네요!!");
+                        e.printStackTrace();
+                    }
+                });
+        //upload 완료
+        Log.d(LOG_TAG, "DB에 업로드 하였습니다. 화면을 넘어가겠습니다.");
+
+        //화면이동
+        Intent upCloud = new Intent(SelectPearActivity.this, OrderListActivity.class);
+        startActivity(upCloud);
+    }//pearUpdateAndPass END
+}//END
