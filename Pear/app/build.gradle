@@ -39,6 +39,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics:18.0.0'
 //    파이어베이스 클라우드 저장소 추가
     implementation 'com.google.firebase:firebase-firestore:21.2.1'
+//    파이어베이스 클라우드 UI(전용 리싸이클 뷰 사용)
+    implementation 'com.firebaseui:firebase-ui-firestore:6.4.0'
 //    구글
     implementation 'com.google.android.gms:play-services-auth:18.1.0'
     implementation 'com.google.android.gms:play-services-vision:20.1.2'

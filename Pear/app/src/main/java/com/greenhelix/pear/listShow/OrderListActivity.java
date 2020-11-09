@@ -32,7 +32,7 @@ public class OrderListActivity extends AppCompatActivity {
 
         //recyclerview 에 옵션 넣기
         recyclerOrderView.setLayoutManager(layoutManager);
-        recyclerOrderView.setHasFixedSize(false);
+        recyclerOrderView.setHasFixedSize(true);
 
         //데이터 Adapter로부터 가져와서 띄우기
 
