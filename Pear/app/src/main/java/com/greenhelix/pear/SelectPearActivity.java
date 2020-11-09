@@ -43,8 +43,7 @@ public class SelectPearActivity extends AppCompatActivity {
     Button pearAmount1 ,pearAmount2,pearAmount3,pearAmount4,pearAmount5,pearAmount6;
     EditText pearBox;
     Button pearBefore, pearAfter;
-    List<String> pearInfo = new ArrayList<>(); //상품 정보를 담아서 DB로 보내기 위해 리스트에 담는다.
-
+    String kind, amount, box;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -144,7 +143,7 @@ public class SelectPearActivity extends AppCompatActivity {
                     }
 
                     Log.d(LOG_TAG,bt.getText().toString()+" 종류를 선택하였습니다.");
-                    pearInfo.add(bt.getText().toString());
+                    kind = bt.getText().toString();
                 }
             });
     }
@@ -199,7 +198,7 @@ public class SelectPearActivity extends AppCompatActivity {
                     pearAmount5.setBackgroundTintList(ContextCompat.getColorStateList(getApplicationContext(), R.color.amount_btn_color_off));
                 }
                 Log.d(LOG_TAG,bt.getText().toString()+" 를 선택하였습니다.");
-                pearInfo.add(bt.getText().toString());
+                amount = bt.getText().toString();
             }
         });
     }
@@ -210,11 +209,11 @@ public class SelectPearActivity extends AppCompatActivity {
         Log.d(LOG_TAG, "ID: "+id+":: 정상적으로 문서 id를 가져왔습니다.");
 
         Map<String, Object> orderPear = new HashMap<>();
-        orderPear.put("pear_kind",pearInfo.get(0));
-        orderPear.put("pear_amount",pearInfo.get(1));
-        pearInfo.add(pearBox.getText().toString());
-        Log.d(LOG_TAG, "배송상품 정보는 "+pearInfo+" 입니다.");
-        orderPear.put("pear_box", pearInfo.get(2));
+        orderPear.put("pear_kind", kind);
+        orderPear.put("pear_amount", amount);
+        box = pearBox.getText().toString();
+        Log.d(LOG_TAG, "배송상품 정보는 "+kind+", "+amount+","+box+" 입니다.");
+        orderPear.put("pear_box", box);
         pearOrderRef.document(ORDER_DOC+id).update(orderPear)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override

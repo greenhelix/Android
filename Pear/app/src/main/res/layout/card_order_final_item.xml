@@ -2,9 +2,11 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="350dp"
-    android:layout_height="140dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginTop="10dp"
     android:backgroundTint="@color/amount_btn_color"
     >
     <LinearLayout
@@ -19,7 +21,6 @@
             android:layout_height="20dp"
             android:layout_marginTop="5dp"
             android:paddingLeft="10dp"
-            android:text="@string/order_number_text01"
             android:textSize="15dp"
             android:inputType="number"
             />
@@ -51,7 +52,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:layout_marginBottom="4dp"
-                android:text="김아무개"
                 android:textSize="17dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/tvSender"
@@ -87,7 +87,6 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="2dp"
                 android:paddingRight="10dp"
-                android:text="김개똥이"
                 android:textSize="17dp"
                 app:layout_constraintStart_toEndOf="@+id/tvRecipient"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -101,7 +100,7 @@
             android:layout_marginTop="5dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:text="경기도남양주시 별내 8로 달나라 아파트 그래서 어쩌구 저쩌꾸 qmffkqmffmfmfmfmfmfmfm"
+            android:maxLength="20"
             android:textSize="15dp"
             android:maxLines="1"
             />
@@ -117,7 +116,6 @@
                 android:layout_height="40dp"
                 android:paddingTop="5dp"
                 android:layout_marginRight="10dp"
-                android:text="@string/pear_kind_01_text"
                 android:textSize="20dp"
                 android:background="@color/pear_btn_color"
                 android:textAlignment="center"
@@ -129,7 +127,6 @@
                 android:layout_height="40dp"
                 android:paddingTop="5dp"
                 android:layout_marginRight="10dp"
-                android:text="@string/pear_amount_01_text"
                 android:textSize="20dp"
                 android:background="@color/swipe_color"
                 android:textAlignment="center"
@@ -141,7 +138,6 @@
                 android:layout_height="40dp"
                 android:paddingTop="5dp"
                 android:layout_marginRight="10dp"
-                android:text="1 상자"
                 android:textSize="20dp"
                 android:background="@color/white_color"
                 android:textAlignment="center"

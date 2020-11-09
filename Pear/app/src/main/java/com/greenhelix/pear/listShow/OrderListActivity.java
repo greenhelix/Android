@@ -29,7 +29,7 @@ public class OrderListActivity extends AppCompatActivity {
     }
 
     private void setOrdersRecycleView() {
-        Query query  = orderRef.orderBy(FieldPath.documentId(), Query.Direction.ASCENDING);
+        Query query  = orderRef.orderBy("sender", Query.Direction.DESCENDING);
         FirestoreRecyclerOptions<Order> opt = new FirestoreRecyclerOptions.Builder<Order>()
                 .setQuery(query, Order.class)
                 .build();
@@ -46,6 +46,7 @@ public class OrderListActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         adapter.startListening();
+
     }
 
     @Override
