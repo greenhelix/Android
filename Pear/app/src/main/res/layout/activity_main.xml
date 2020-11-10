@@ -112,13 +112,13 @@
         android:text="@string/main_btn_text05"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/btn_main_logout"
+        app:layout_constraintRight_toLeftOf="@id/btn_main_change_user"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.892"
         tools:layout_marginRight="50sp" />
 
     <Button
-        android:id="@+id/btn_main_logout"
+        android:id="@+id/btn_main_change_user"
         style="@style/main_small_btn_style"
         android:background="@drawable/basic_btn_shape"
         android:text="@string/main_btn_text06"

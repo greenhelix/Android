@@ -58,26 +58,22 @@
 
     <com.google.android.gms.common.SignInButton
         android:id="@+id/btn_google_login"
-        android:layout_width="265dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="64dp"
-        android:background="@color/white_color"
+        style="@style/btn_loginView_style"
+        android:background="@drawable/basic_btn_shape"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edt_login_password" />
 
-    <!--    <Button-->
-<!--        android:id="@+id/btn_google_logout"-->
-<!--        android:layout_width="265dp"-->
-<!--        android:layout_height="45dp"-->
-<!--        android:layout_marginStart="65dp"-->
-<!--        android:layout_marginEnd="63dp"-->
-<!--        android:layout_marginBottom="137dp"-->
-<!--        android:background="@color/white_color"-->
-<!--        android:text="로그아웃"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent" />-->
+    <Button
+        android:id="@+id/btn_logout"
+        style="@style/btn_loginView_style"
+        android:background="@drawable/basic_btn_shape"
+        android:onClick="signOut"
+        android:text="로그아웃"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_google_login"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,10 +15,12 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.common.api.Response;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
@@ -31,8 +33,8 @@ public class LoginActivity extends AppCompatActivity {
     private GoogleSignInClient client;
     private FirebaseAuth fAuth;
     private int SIGNINCODE = 1;
-    Intent logout;
     private static final String LOG_TAG = "ik";
+    private AuthCredential authCredential;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
 
         // 각 변수별 할당
         signInButton = findViewById(R.id.btn_google_login);
-//        signOutButton = findViewById(R.id.btn_google_logout);
+        //signOutButton = findViewById(R.id.btn_google_logout);
         fAuth = FirebaseAuth.getInstance();
         final GoogleSignInOptions googleOpt = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -57,21 +59,24 @@ public class LoginActivity extends AppCompatActivity {
                 signIn();
             }
         });
+        signOutButton = findViewById(R.id.btn_logout);
+    } //onCreate END
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if(user == null){
-            Log.d(LOG_TAG, "로그인 아웃 정상처리 현재 사용자: "+user);
-        }
-        else{
-            Log.d(LOG_TAG, "로그인 되어있습니다.");
-        }
-
-    }
     private void signIn(){
-        //인텐트를 통해서 client정보를 결과물로 전달한다.
         Intent signInIntent = client.getSignInIntent();
         startActivityForResult(signInIntent, SIGNINCODE);
     }
+
+    public void signOut(View v){
+        client.signOut()
+                .addOnCompleteListener(this, new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        Log.d(LOG_TAG, "찐짜 로그아웃??");
+                    }
+                });
+    }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -93,7 +98,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void FirebaseGoogleAuth(GoogleSignInAccount acct){
-        AuthCredential authCredential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
+        authCredential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
         fAuth.signInWithCredential(authCredential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -115,12 +120,15 @@ public class LoginActivity extends AppCompatActivity {
      고객로그인의 경우 구분할 수 있는 통로역할*/
     private void updateUI(FirebaseUser fUser){
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
-        if (account != null){
+        if (fUser != null){
             String personEmail = account.getEmail();
             Intent access = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(access);
             Log.d(LOG_TAG, "현재 로그인 이메일"+ personEmail);
             finish();
         }
+
     }
+
 }
+

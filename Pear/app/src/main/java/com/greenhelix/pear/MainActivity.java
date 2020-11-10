@@ -9,12 +9,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.greenhelix.pear.orderStatus.OrderStatusActivity;
 import com.skt.Tmap.TMapTapi;
 
 public class MainActivity extends AppCompatActivity {
@@ -24,7 +21,8 @@ public class MainActivity extends AppCompatActivity {
     Button btnMainOrderStatic;
     Button btnMainOrderDirect;
     Button btnMainOrderSetting;
-    Button btnMainLogout;
+    Button btnMainChangeUser;
+    private GoogleSignInClient client;
     private static final String LOG_TAG = "ik";
 
     @Override
@@ -36,18 +34,6 @@ public class MainActivity extends AppCompatActivity {
         final TMapTapi tmaptapi = new TMapTapi(this);
         tmaptapi.setSKTMapAuthentication ("l7xx67178473a0134850bb0610927c9ba539");
 
-        //로그아웃
-        btnMainLogout =findViewById(R.id.btn_main_logout);
-        btnMainLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut();
-                Log.d(LOG_TAG,"로그아웃 버튼이 정상적으로 눌렸습니다.");
-                startActivity(new Intent(MainActivity.this, LoginActivity.class));
-                finish();
-            }
-        });
-
         //주문입력
         btnMainOrderWrite = findViewById(R.id.btn_main_order_write);
         btnMainOrderWrite.setOnClickListener(new View.OnClickListener() {
@@ -56,6 +42,17 @@ public class MainActivity extends AppCompatActivity {
                 Log.d(LOG_TAG, "직접주문 버튼이 정상적으로 눌렸습니다.");
                 Intent account = new Intent(MainActivity.this, OrderKindActivity.class);
                 startActivity(account);
+            }
+        });
+
+        //주문 현황
+        btnMainOrderStatus = findViewById(R.id.btn_main_order_status);
+        btnMainOrderStatus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(LOG_TAG, "주문현황 버튼이 정상적으로 눌렸습니다.");
+                Intent statusGo = new Intent(MainActivity.this, OrderStatusActivity.class);
+                startActivity(statusGo);
             }
         });
 
@@ -83,7 +80,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //사용자 전환
+        btnMainChangeUser =findViewById(R.id.btn_main_change_user);
+        btnMainChangeUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(MainActivity.this , LoginActivity.class));
+                finish();
+            }
+        });
+    }// onCreate END
 
 
-    }
 }

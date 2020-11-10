@@ -97,7 +97,16 @@
         <item name="android:layout_height">35dp</item>
         <item name="android:textAlignment">center</item>
     </style>
-
+<!--로그인화면 버튼 양식-->
+    <style name="btn_loginView_style">
+        <item name="android:layout_width">265dp</item>
+        <item name="android:layout_height">45dp</item>
+        <item name="android:layout_marginStart">64dp</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_marginEnd">64dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">15dp</item>
+    </style>
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
