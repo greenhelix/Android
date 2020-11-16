@@ -7,12 +7,13 @@
     android:layout_marginStart="8dp"
     android:layout_marginEnd="8dp"
     android:layout_marginTop="10dp"
-    android:backgroundTint="@color/amount_btn_color"
+
     >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:background="@drawable/card_shape"
         >
 
         <TextView
@@ -116,6 +117,7 @@
                 android:layout_height="40dp"
                 android:paddingTop="5dp"
                 android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
                 android:textSize="20dp"
                 android:background="@color/pear_btn_color"
                 android:textAlignment="center"
@@ -127,6 +129,7 @@
                 android:layout_height="40dp"
                 android:paddingTop="5dp"
                 android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
                 android:textSize="20dp"
                 android:background="@color/swipe_color"
                 android:textAlignment="center"
@@ -138,6 +141,7 @@
                 android:layout_height="40dp"
                 android:paddingTop="5dp"
                 android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
                 android:textSize="20dp"
                 android:background="@color/white_color"
                 android:textAlignment="center"
