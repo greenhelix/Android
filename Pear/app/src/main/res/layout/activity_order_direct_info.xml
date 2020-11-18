@@ -246,6 +246,7 @@
             android:background="@drawable/basic_input_shape"
             android:backgroundTint="@color/grey_btn_color"
             android:text="주소찾기"
+            android:onClick="addressAPI"
             />
 
     </LinearLayout>

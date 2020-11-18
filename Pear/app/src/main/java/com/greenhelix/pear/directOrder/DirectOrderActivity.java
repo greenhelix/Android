@@ -10,6 +10,7 @@ import android.widget.EditText;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import com.greenhelix.pear.R;
+import com.greenhelix.pear.server.FirebaseHosting;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -32,6 +33,7 @@ public class DirectOrderActivity extends AppCompatActivity {
         EditText address_detail2;
         Button direct_Next;
         Button direct_Before;
+        Button address_find;
         List<String> senderList = new ArrayList<>();
         List<String> recipientList= new ArrayList<>();
 
@@ -50,9 +52,8 @@ public class DirectOrderActivity extends AppCompatActivity {
         address_num = (EditText) findViewById(R.id.et_direct_address_num);
         address_detail1 = (EditText) findViewById(R.id.et_direct_address_show);
         address_detail2 = (EditText) findViewById(R.id.et_direct_address_detail);
-
+        address_find =(Button) findViewById(R.id.btn_direct_address);
         direct_Next = (Button) findViewById(R.id.btn_direct_next);
-
         direct_Before = (Button) findViewById(R.id.btn_direct_before);
         direct_Before.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,4 +84,13 @@ public class DirectOrderActivity extends AppCompatActivity {
         startActivity(directData);
     }
 
+    public void addressAPI (View v){
+
+        address_find.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), FirebaseHosting.class));
+            }
+        });
+    }
 }//class

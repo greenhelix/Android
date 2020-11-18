@@ -41,6 +41,7 @@
 
         <activity android:name=".SelectPearActivity"/>
         <activity android:name=".listShow.OrderListActivity"/>
+        <activity android:name=".server.FirebaseHosting"/>
 
 
 <!--        파일 제공자를 구성한다-->
