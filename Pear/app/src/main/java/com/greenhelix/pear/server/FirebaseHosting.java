@@ -2,6 +2,7 @@ package com.greenhelix.pear.server;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
@@ -13,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.greenhelix.pear.R;
 
 public class FirebaseHosting extends AppCompatActivity {
-
+    private static final String LOG_TAG = "ik";
     private WebView addressApiView;
     private WebSettings webViewSettings;
     private Handler handler;
@@ -31,7 +32,6 @@ public class FirebaseHosting extends AppCompatActivity {
     public void restartWebView(){
         addressApiView = findViewById(R.id.wv_adr_api);
         addressApiView.setWebChromeClient(new WebChromeClient());
-        addressApiView.addJavascriptInterface(new AndroidBridge(), "Pear");
 
         /*웹뷰세팅부분*/
         webViewSettings = addressApiView.getSettings();
@@ -45,8 +45,8 @@ public class FirebaseHosting extends AppCompatActivity {
 
 
         /*웹뷰 주소 불러오는 부분*/
-
-        addressApiView.loadUrl("https://pear-57581.firebaseapp.com/jusoPopup.html");
+        addressApiView.addJavascriptInterface(new AndroidBridge(), "pearInterface");
+        addressApiView.loadUrl("https://pear-57581.firebaseapp.com/postcodev2.php");
     }// webview 연결 및 옵션 설정 END
 
     private class AndroidBridge{
@@ -55,10 +55,7 @@ public class FirebaseHosting extends AppCompatActivity {
             handler.post(new Runnable() {
                 @Override
                 public void run() {
-                    String addr1 = arg1;
-                    String addr2 = arg2;
-                    String addr3 = arg3;
-
+                    Log.d(LOG_TAG, "** web에서 가져온 문자값 **\n"+arg1+"\n"+arg2+"\n"+arg3);
                     restartWebView();
                 }
             });
@@ -66,4 +63,3 @@ public class FirebaseHosting extends AppCompatActivity {
     }// webview에서 데이터 가져오기 END
 
 }//FirebaseHosting END
-

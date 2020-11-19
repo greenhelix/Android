@@ -89,6 +89,7 @@ public class DirectOrderActivity extends AppCompatActivity {
         address_find.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d(LOG_TAG, "주소찾기가 눌렸습니다.");
                 startActivity(new Intent(getApplicationContext(), FirebaseHosting.class));
             }
         });
