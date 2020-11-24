@@ -1,5 +1,6 @@
 package com.greenhelix.pear.server;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -17,8 +18,6 @@ import com.greenhelix.pear.R;
 public class FirebaseHosting extends AppCompatActivity {
     private static final String LOG_TAG = "ik";
     private WebView addressApiView;
-    private WebSettings webViewSettings;
-    private Handler handler;
 
     private class MyJavaScriptInterface
     {
@@ -34,6 +33,7 @@ public class FirebaseHosting extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +50,7 @@ public class FirebaseHosting extends AppCompatActivity {
             }
         });
         addressApiView.loadUrl("https://pear-57581.web.app/api/address/apiKakao.html");
+        //https://www.juso.go.kr/addrlink/addrMobileLinkUrlSearch.do
 
 //        restartWebView();
 //        handler = new Handler();
