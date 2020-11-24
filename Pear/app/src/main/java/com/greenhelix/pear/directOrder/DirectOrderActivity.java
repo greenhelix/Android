@@ -1,6 +1,7 @@
 package com.greenhelix.pear.directOrder;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -20,22 +21,23 @@ import java.util.List;
 public class DirectOrderActivity extends AppCompatActivity {
 
     private static final String LOG_TAG = "ik";
-        EditText sender_tel1;
-        EditText recipient_tel1;
-        EditText sender_name;
-        EditText sender_tel2;
-        EditText sender_tel3;
-        EditText recipient_name;
-        EditText recipient_tel2;
-        EditText recipient_tel3;
-        EditText address_num;
-        EditText address_detail1;
-        EditText address_detail2;
-        Button direct_Next;
-        Button direct_Before;
-        Button address_find;
-        List<String> senderList = new ArrayList<>();
-        List<String> recipientList= new ArrayList<>();
+    private static final int KAKAO_ADR_API = 8163;
+    EditText sender_tel1;
+    EditText recipient_tel1;
+    EditText sender_name;
+    EditText sender_tel2;
+    EditText sender_tel3;
+    EditText recipient_name;
+    EditText recipient_tel2;
+    EditText recipient_tel3;
+    EditText address_num;
+    EditText address_detail1;
+    EditText address_detail2;
+    Button direct_Next;
+    Button direct_Before;
+    Button address_find;
+    List<String> senderList = new ArrayList<>();
+    List<String> recipientList= new ArrayList<>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -90,8 +92,30 @@ public class DirectOrderActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d(LOG_TAG, "주소찾기가 눌렸습니다.");
-                startActivity(new Intent(getApplicationContext(), FirebaseHosting.class));
+//                Intent apiCon = new Intent(Intent.ACTION_VIEW, Uri.parse("https://pear-57581.web.app/jusoPopup.html"));
+//                startActivity(apiCon);
+                Intent api = new Intent(DirectOrderActivity.this, FirebaseHosting.class);
+                startActivityForResult(api, KAKAO_ADR_API);
             }
         });
     }
-}//class
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        switch (requestCode){
+            case KAKAO_ADR_API:
+                if(resultCode == RESULT_OK){
+                    String addrInfo = data.getExtras().getString("data");
+                    Log.d(LOG_TAG, "주소가 정상적으로 가져와짐! \n "+addrInfo);
+                    if(data != null){
+                        address_detail1.setText(addrInfo);
+                    }
+                }
+                break;
+        }
+
+    }//activity result END
+
+}// DirectOrderActivity class END

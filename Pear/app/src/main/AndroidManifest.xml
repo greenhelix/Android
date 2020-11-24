@@ -26,7 +26,6 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".OrderKindActivity" />
@@ -34,7 +33,7 @@
         <activity android:name=".cameraOrder.CameraOrderActivity" />
         <activity android:name=".cameraOrder.ImageML" />
 
-        <activity android:name=".directOrder.DirectOrderActivity" />
+        <activity android:name=".directOrder.DirectOrderActivity"/>
         <activity android:name=".directOrder.DirectShow" />
 
         <activity android:name=".cloudDB.CloudStore" />
