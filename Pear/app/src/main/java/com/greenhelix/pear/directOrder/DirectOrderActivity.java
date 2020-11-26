@@ -109,7 +109,10 @@ public class DirectOrderActivity extends AppCompatActivity {
                 if (resultCode == RESULT_OK) {
                     String data = intent.getExtras().getString("data");
                     if (data != null) {
-                        address_detail1.setText(data);
+                        Log.d(LOG_TAG, "###  주소값 ### \n"+ data);
+                        String[] address = data.split(",");
+                        address_num.setText(address[0]);
+                        address_detail1.setText(address[1]);
                     }
                 }
                 break;

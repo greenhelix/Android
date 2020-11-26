@@ -246,7 +246,7 @@
         android:background="@drawable/basic_input_shape"
         android:inputType="number"
         android:maxLength="10"
-        android:nextFocusForward="@id/et_direct_address_show"
+        android:nextFocusForward="@id/btn_direct_address"
         android:singleLine="true"
         app:layout_constraintBottom_toTopOf="@id/et_direct_address_show"
         app:layout_constraintEnd_toEndOf="parent"

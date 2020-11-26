@@ -42,6 +42,7 @@ public class AddressAPIkakao extends AppCompatActivity {
                 addressApiView.loadUrl("javascript:sample2_execDaumPostcode();");
             }
         });
-        addressApiView.loadUrl("http://192.168.0.5:3000/addressAPI.html");
+//        addressApiView.loadUrl("http://192.168.0.5:3000/addressAPI.html");
+        addressApiView.loadUrl("https://pear-57581.web.app/addressAPI");
     }
 }
