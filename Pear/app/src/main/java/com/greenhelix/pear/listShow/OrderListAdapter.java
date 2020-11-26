@@ -14,8 +14,8 @@ import java.util.List;
 
 
 /*
-딱히, firestore 부르는 곳이 아니다. 여기는 카드에 실어줄 데이터를 정의해주고, xml과 order DAO와 연동을 해주는
-다리와 같은 느낌의 코드 말그대로 어댑터이다. 통로라고 생각하자
+firestore 부르는 곳이 아니다. 여기는 카드에 실어줄 데이터를 정의해주고, xml과 order DAO와 연동을 해주는
+다리와 같은 느낌의 코드 말그대로 어댑터이다. 통로라고 생각하자(여기서 데이터의 모습을 바꿔줄 수 있다)
 */
 
 public class OrderListAdapter extends FirestoreRecyclerAdapter<Order, OrderListAdapter.OrdersHolder> {
@@ -34,7 +34,7 @@ public class OrderListAdapter extends FirestoreRecyclerAdapter<Order, OrderListA
         holder.orderAddress.setText(address);
         holder.pearKinds.setText(model.getPear_kind());
         holder.pearAmounts.setText(model.getPear_amount());
-        holder.pearBoxes.setText(model.getPear_box());
+        holder.pearBoxes.setText(model.getPear_box()+" 상자");
     }
     @NonNull
     @Override //xml 을 가져와서 onCreate해준다.
