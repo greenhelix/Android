@@ -11,17 +11,19 @@ import android.widget.EditText;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import com.greenhelix.pear.R;
-import com.greenhelix.pear.server.FirebaseHosting;
+//import com.greenhelix.pear.server.FirebaseHosting;
+import com.greenhelix.pear.server.YeongGift;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+
 /*주문 직접 입력 화면*/
 public class DirectOrderActivity extends AppCompatActivity {
 
     private static final String LOG_TAG = "ik";
-    private static final int KAKAO_ADR_API = 8163;
+    private static final int SEARCH_ADDRESS_ACTIVITY = 10000;
     EditText sender_tel1;
     EditText recipient_tel1;
     EditText sender_name;
@@ -54,7 +56,6 @@ public class DirectOrderActivity extends AppCompatActivity {
         address_num = (EditText) findViewById(R.id.et_direct_address_num);
         address_detail1 = (EditText) findViewById(R.id.et_direct_address_show);
         address_detail2 = (EditText) findViewById(R.id.et_direct_address_detail);
-        address_find =(Button) findViewById(R.id.btn_direct_address);
         direct_Next = (Button) findViewById(R.id.btn_direct_next);
         direct_Before = (Button) findViewById(R.id.btn_direct_before);
         direct_Before.setOnClickListener(new View.OnClickListener() {
@@ -64,7 +65,19 @@ public class DirectOrderActivity extends AppCompatActivity {
             }
         });
 
+        address_find = findViewById(R.id.btn_direct_address);
+        if (address_find != null) {
+            address_find.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v)
+                {
+                    Intent i = new Intent(DirectOrderActivity.this, YeongGift.class);
+                    startActivityForResult(i, SEARCH_ADDRESS_ACTIVITY);
+                }
+            });
+        }
     }//OnCreate
+
     public void showData(View v){
 
         senderList.add(sender_name.getText().toString());
@@ -84,38 +97,59 @@ public class DirectOrderActivity extends AppCompatActivity {
         directData.putExtra("sender", (Serializable) senderList);
         directData.putExtra("recipient", (Serializable) recipientList);
         startActivity(directData);
-    }
+    }//showData END
 
-    public void addressAPI (View v){
-
-        address_find.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d(LOG_TAG, "주소찾기가 눌렸습니다.");
-//                Intent apiCon = new Intent(Intent.ACTION_VIEW, Uri.parse("https://pear-57581.web.app/jusoPopup.html"));
-//                startActivity(apiCon);
-                Intent api = new Intent(DirectOrderActivity.this, FirebaseHosting.class);
-                startActivityForResult(api, KAKAO_ADR_API);
-            }
-        });
-    }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        switch (requestCode){
-            case KAKAO_ADR_API:
-                if(resultCode == RESULT_OK){
-                    String addrInfo = data.getExtras().getString("data");
-                    Log.d(LOG_TAG, "주소가 정상적으로 가져와짐! \n "+addrInfo);
-                    if(data != null){
-                        address_detail1.setText(addrInfo);
+    public void onActivityResult(int requestCode, int resultCode, Intent intent)
+    {
+        super.onActivityResult(requestCode, resultCode, intent);
+        switch (requestCode) {
+            case SEARCH_ADDRESS_ACTIVITY:
+                if (resultCode == RESULT_OK) {
+                    String data = intent.getExtras().getString("data");
+                    if (data != null) {
+                        address_detail1.setText(data);
                     }
                 }
                 break;
         }
-
     }//activity result END
 
 }// DirectOrderActivity class END
+
+/*//////////////////////*/
+//    public void addressAPI (View v){
+//
+//        address_find.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Log.d(LOG_TAG, "주소찾기가 눌렸습니다.");
+////                Intent apiCon = new Intent(Intent.ACTION_VIEW, Uri.parse("https://pear-57581.web.app/jusoPopup.html"));
+////                startActivity(apiCon);
+//                Intent api = new Intent(DirectOrderActivity.this, FirebaseHosting.class);
+//                startActivityForResult(api, KAKAO_ADR_API);
+//            }
+//        });
+//    }
+//
+//    public void onActivityResult(int requestCode, int resultCode, Intent intent)
+//    {
+//        super.onActivityResult(requestCode, resultCode, intent);
+//        switch (requestCode) {
+//            case SEARCH_ADDRESS_ACTIVITY:
+//                if (resultCode == RESULT_OK) {
+//                    String data = intent.getExtras().getString("data");
+//                    if (data != null) {
+//                        et_address.setText(data);
+//                    }
+//                }
+//                break;
+//        }
+//    }
+
+
+
+
+
+
