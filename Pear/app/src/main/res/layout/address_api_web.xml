@@ -4,22 +4,12 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    tools:context=".server.YeongGift">
+    tools:context=".server.AddressAPIkakao">
 
     <WebView
         android:id="@+id/wv_adr_api"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
-
-    <TextView
-        android:id="@+id/tv_address"
-        android:layout_width="match_parent"
-        android:layout_height="72sp"
-        android:background="@color/colorAccent"
-        android:textColor="@color/head"
-        android:textSize="20dp"
-        android:text="주소"
+        android:layout_height="match_parent"
         />
 
 </LinearLayout>

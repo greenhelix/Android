@@ -40,8 +40,8 @@
 
         <activity android:name=".SelectPearActivity"/>
         <activity android:name=".listShow.OrderListActivity"/>
-<!--        <activity android:name=".server.FirebaseHosting"/>-->
-        <activity android:name=".server.YeongGift"/>
+        <activity android:name=".server.AddressAPIkakao"/>
+<!--        <activity android:name=".server.ApiAddress"/>-->
 
 
 <!--        파일 제공자를 구성한다-->

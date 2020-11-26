@@ -1,18 +1,18 @@
 package com.greenhelix.pear.directOrder;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import com.greenhelix.pear.R;
-//import com.greenhelix.pear.server.FirebaseHosting;
-import com.greenhelix.pear.server.YeongGift;
+import com.greenhelix.pear.server.AddressAPIkakao;
+
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -45,6 +45,7 @@ public class DirectOrderActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_direct_info);
+
         sender_name = (EditText) findViewById(R.id.et_direct_sender);
         sender_tel1 = (EditText) findViewById(R.id.et_direct_sender_tel1);
         sender_tel2 = (EditText) findViewById(R.id.et_direct_sender_tel2);
@@ -64,14 +65,13 @@ public class DirectOrderActivity extends AppCompatActivity {
                 finish();
             }
         });
-
         address_find = findViewById(R.id.btn_direct_address);
         if (address_find != null) {
             address_find.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v)
                 {
-                    Intent i = new Intent(DirectOrderActivity.this, YeongGift.class);
+                    Intent i = new Intent(DirectOrderActivity.this, AddressAPIkakao.class);
                     startActivityForResult(i, SEARCH_ADDRESS_ACTIVITY);
                 }
             });
@@ -119,19 +119,7 @@ public class DirectOrderActivity extends AppCompatActivity {
 }// DirectOrderActivity class END
 
 /*//////////////////////*/
-//    public void addressAPI (View v){
-//
-//        address_find.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Log.d(LOG_TAG, "주소찾기가 눌렸습니다.");
-////                Intent apiCon = new Intent(Intent.ACTION_VIEW, Uri.parse("https://pear-57581.web.app/jusoPopup.html"));
-////                startActivity(apiCon);
-//                Intent api = new Intent(DirectOrderActivity.this, FirebaseHosting.class);
-//                startActivityForResult(api, KAKAO_ADR_API);
-//            }
-//        });
-//    }
+
 //
 //    public void onActivityResult(int requestCode, int resultCode, Intent intent)
 //    {

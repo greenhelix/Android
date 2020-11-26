@@ -167,7 +167,7 @@
         android:id="@+id/tel_linear2"
         style="@style/input_tel_linear"
         android:layout_marginTop="48dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="15dp"
         app:layout_constraintBottom_toTopOf="@id/address_linear"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.451"
@@ -229,25 +229,13 @@
         app:layout_constraintBottom_toTopOf="@id/et_direct_address_num"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.462"
-        app:layout_constraintStart_toStartOf="parent"
-        >
+        app:layout_constraintStart_toStartOf="parent">
 
         <TextView
             android:id="@+id/tv_direct_address"
             style="@style/headline_text2"
-            android:layout_marginRight="10dp"
-            android:text="@string/order_address_text"
-            />
-
-        <Button
-            android:id="@+id/btn_direct_address"
-            android:layout_width="wrap_content"
-            android:layout_height="25dp"
-            android:background="@drawable/basic_input_shape"
-            android:backgroundTint="@color/grey_btn_color"
-            android:text="주소찾기"
-            android:onClick="addressAPI"
-            />
+            android:layout_marginRight="50dp"
+            android:text="@string/order_address_text" />
 
     </LinearLayout>
 
@@ -264,6 +252,22 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.134"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_direct_address"
+        android:layout_width="105dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="15dp"
+        android:background="@drawable/basic_input_shape"
+        android:backgroundTint="@color/white_color"
+        android:text="주소 검색"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/et_direct_address_show"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/et_direct_address_num"
+        app:layout_constraintTop_toBottomOf="@+id/address_linear"
+        app:layout_constraintVertical_bias="0.333" />
 
     <EditText
         android:id="@+id/et_direct_address_show"
