@@ -17,117 +17,138 @@
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="-36dp" />
 
-    <TextView
-        android:id="@+id/tv_main_head1"
-        style="@style/headline_text"
-        android:layout_marginTop="100dp"
-        android:layout_marginBottom="3dp"
-        android:text="@string/main_head_text01"
-        app:layout_constraintBottom_toTopOf="@+id/tv_main_head2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.147"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/main_liner_1"
+        android:layout_width="match_parent"
+        android:layout_height="89dp"
+        android:layout_marginTop="115dp"
+        android:gravity="start"
+        android:orientation="vertical"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/tv_main_head2"
-        android:layout_width="334dp"
-        android:layout_height="33dp"
-        android:text="@string/main_head_text02"
-        android:textColor="@color/head"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_main_head1" />
+        <TextView
+            android:id="@+id/tv_main_head1"
+            style="@style/headline_text"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="3dp"
+            android:text="@string/main_head_text01" />
 
-    <TextView
-        android:id="@+id/tv_main_head3"
-        android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/tv_main_head2"
+            android:layout_width="334dp"
+            android:layout_height="33dp"
+            android:layout_marginLeft="20dp"
+            android:text="@string/main_head_text02"
+            android:textColor="@color/head"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/main_liner_2"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="52dp"
-        android:text="@string/main_head_text03"
-        android:textColor="@color/head"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_main_head2" />
-
-
-    <Button
-        android:id="@+id/btn_main_order_write"
-        style="@style/main_big_btn_style"
-        android:background="@drawable/basic_btn_shape"
-        android:text="@string/main_btn_text01"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.821"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/btn_main_order_status"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.433" />
-
-    <Button
-        android:id="@+id/btn_main_order_status"
-        style="@style/main_big_btn_style"
-        android:layout_marginRight="60dp"
-        android:background="@drawable/basic_btn_shape"
-        android:text="@string/main_btn_text02"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.433"
-        tools:layout_marginLeft="15dp" />
+        app:layout_constraintTop_toBottomOf="@+id/main_liner_1">
 
-    <Button
-        android:id="@+id/btn_main_static"
-        style="@style/main_big_btn_style"
-        android:background="@drawable/basic_btn_shape"
-        android:text="@string/main_btn_text03"
-        app:layout_constraintBottom_toBottomOf="parent"
+        <TextView
+            android:id="@+id/tv_main_head3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="90dp"
+            android:text="@string/main_head_text03"
+            android:textColor="@color/head"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/main_liner_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:orientation="horizontal"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_main_order_write"
-        app:layout_constraintHorizontal_bias="0.821"
-        app:layout_constraintVertical_bias="0.059"
-        app:layout_constraintRight_toLeftOf="@id/btn_main_direct" />
-
-    <Button
-        android:id="@+id/btn_main_direct"
-        style="@style/main_big_btn_style"
-        android:layout_marginRight="60dp"
-        android:background="@drawable/basic_btn_shape"
-        android:text="@string/main_btn_text04"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_main_order_status"
-        app:layout_constraintVertical_bias="0.059"
-        tools:layout_marginLeft="15dp" />
+        app:layout_constraintTop_toBottomOf="@+id/main_liner_2"
+        >
 
-    <Button
-        android:id="@+id/btn_main_setting"
-        style="@style/main_small_btn_style"
-        android:background="@drawable/basic_btn_shape"
-        android:text="@string/main_btn_text05"
-        app:layout_constraintBottom_toBottomOf="parent"
+        <Button
+            android:id="@+id/btn_main_order_write"
+            style="@style/main_big_btn_style"
+            android:background="@drawable/basic_btn_shape"
+            android:text="@string/main_btn_text01"
+            />
+
+        <Button
+            android:id="@+id/btn_main_order_status"
+            style="@style/main_big_btn_style"
+            android:background="@drawable/basic_btn_shape"
+            android:text="@string/main_btn_text02"
+            android:layout_marginStart="15sp"
+            />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/main_liner_4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:orientation="horizontal"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/btn_main_change_user"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.892"
-        tools:layout_marginRight="50sp" />
-
-    <Button
-        android:id="@+id/btn_main_change_user"
-        style="@style/main_small_btn_style"
-        android:background="@drawable/basic_btn_shape"
-        android:text="@string/main_btn_text06"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/btn_main_setting"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.892"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/main_liner_3"
+        >
+        <Button
+            android:id="@+id/btn_main_static"
+            style="@style/main_big_btn_style"
+            android:background="@drawable/basic_btn_shape"
+            android:text="@string/main_btn_text03"
+            />
+
+        <Button
+            android:id="@+id/btn_main_direct"
+            style="@style/main_big_btn_style"
+            android:background="@drawable/basic_btn_shape"
+            android:text="@string/main_btn_text04"
+            android:layout_marginStart="15sp"
+            />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/main_liner_5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_liner_4"
+        >
+        <Button
+            android:id="@+id/btn_main_setting"
+            style="@style/main_small_btn_style"
+            android:background="@drawable/basic_btn_shape"
+            android:text="@string/main_btn_text05"
+            />
+
+        <Button
+            android:id="@+id/btn_main_change_user"
+            style="@style/main_small_btn_style"
+            android:background="@drawable/basic_btn_shape"
+            android:text="@string/main_btn_text06"
+            android:layout_marginStart="15sp"
+            />
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
