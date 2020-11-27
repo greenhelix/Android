@@ -4,7 +4,7 @@
     <string name="login_head">혁규 농원</string>
     <!--main+++++++++++++++++++++++++++++++++++++++++-->
     <string name="main_head_text01">반갑습니다!</string>
-    <string name="main_head_text02">오늘은 00월 00일 0요일입니다.</string>
+    <string name="main_head_text02">오늘은 %s 입니다.</string>
     <string name="main_head_text03">작업을 선택해주세요!</string>
     <string name="main_btn_text01">주문 입력</string>
     <string name="main_btn_text02">주문 현황</string>

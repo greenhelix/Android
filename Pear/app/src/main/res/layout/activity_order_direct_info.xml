@@ -8,311 +8,331 @@
     android:background="@color/greenBackground"
     tools:context=".directOrder.DirectOrderActivity"
     >
-
-    <TextView
-        android:id="@+id/tv_direct_head"
-        style="@style/headline_text"
-        android:text="@string/order_head_text"
-        app:layout_constraintBottom_toTopOf="@id/et_direct_sender"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/direct_info_linear1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.50"
-        />
-
-    <TextView
-        android:id="@+id/tv_direct_sender"
-        style="@style/headline_text2"
-        android:text="@string/order_sender_text"
-        app:layout_constraintBottom_toTopOf="@id/et_direct_sender"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.15"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_direct_head"
-        />
-
-    <EditText
-        android:id="@+id/et_direct_sender"
-        style="@style/input_text_300"
-        android:layout_marginBottom="3dp"
-        android:background="@drawable/basic_input_shape"
-        android:hint="이름을 적어주세요."
-        android:inputType="textAutoComplete"
-        android:text=""
-        android:maxLength="5"
-        android:singleLine="true"
-        android:nextFocusForward="@+id/et_direct_sender_tel1"
-        app:layout_constraintBottom_toTopOf="@id/tv_direct_sender_tel"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.451"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_direct_sender"
-        tools:ignore="MissingConstraints"
-        />
-
-    <TextView
-        android:id="@+id/tv_direct_sender_tel"
-        style="@style/headline_text2"
-        android:text="@string/order_sender_tel_text"
-        app:layout_constraintBottom_toTopOf="@id/tel_linear"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.213"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_direct_sender"
-        />
-
-    <LinearLayout
-        android:id="@+id/tel_linear"
-        style="@style/input_tel_linear"
-        app:layout_constraintBottom_toTopOf="@id/tv_order_direct_recipient"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.451"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_direct_sender_tel"
         >
-
-        <EditText
-            android:id="@id/et_direct_sender_tel1"
-            style="@style/input_text_85"
-            android:background="@drawable/basic_input_shape"
-            android:inputType="phone"
-            android:maxLength="3"
-            android:singleLine="true"
-            android:imeOptions="actionNext"
-            />
-
+<!--        app:layout_constraintTop_toBottomOf="@id/"-->
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:text="ㅡ"
-            android:textSize="15dp"
+            android:id="@+id/tv_direct_head"
+            style="@style/headline_text"
+            android:text="@string/order_head_text"
             />
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
-        <EditText
-            android:id="@+id/et_direct_sender_tel2"
-            style="@style/input_text_85"
-            android:background="@drawable/basic_input_shape"
-            android:inputType="phone"
-            android:maxLength="4"
-            android:singleLine="true"
-            android:imeOptions="actionNext"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:text="ㅡ"
-            android:textSize="15dp"
-            />
-
-        <EditText
-            android:id="@+id/et_direct_sender_tel3"
-            style="@style/input_text_85"
-            android:background="@drawable/basic_input_shape"
-            android:inputType="phone"
-            android:maxLength="4"
-            android:nextFocusForward="@id/et_direct_recipient"
-            android:singleLine="true"
-            />
-
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/tv_order_direct_recipient"
-        style="@style/headline_text2"
-        android:layout_height="0dp"
-        android:layout_marginBottom="32dp"
-        android:text="@string/order_recipient_text"
-        app:layout_constraintBottom_toTopOf="@id/et_direct_recipient"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.145"
-        app:layout_constraintStart_toStartOf="parent"
-        />
-
-    <EditText
-        android:id="@+id/et_direct_recipient"
-        style="@style/input_text_300"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/basic_input_shape"
-        android:hint="이름을 적어주세요."
-        android:inputType="textAutoComplete"
-        android:maxLength="5"
-        android:maxLines="1"
-        android:nextFocusForward="@id/et_direct_recipient_tel1"
-        android:singleLine="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.451"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_order_direct_recipient"
-        tools:ignore="MissingConstraints"
-        />
-
-    <TextView
-        android:id="@+id/tv_order_direct_recipient_tel"
-        style="@style/headline_text2"
-        android:text="@string/order_recipient_tel_text"
-        app:layout_constraintBottom_toTopOf="@id/tel_linear2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.19"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_direct_recipient"
-        />
-
-
-    <LinearLayout
-        android:id="@+id/tel_linear2"
-        style="@style/input_tel_linear"
-        android:layout_marginTop="48dp"
-        android:layout_marginBottom="15dp"
-        app:layout_constraintBottom_toTopOf="@id/address_linear"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.451"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_direct_recipient"
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/direct_info_linear2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="start"
+        android:orientation="vertical"
+        android:layout_marginStart="30dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/direct_info_linear1"
         >
-
-        <EditText
-            android:id="@+id/et_direct_recipient_tel1"
-            style="@style/input_text_85"
-            android:background="@drawable/basic_input_shape"
-            android:maxLength="3"
-            android:inputType="phone"
-            android:imeOptions="actionNext"
-            />
-
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:text="ㅡ"
-            android:textSize="15dp"
-            />
-
-        <EditText
-            android:id="@+id/et_direct_recipient_tel2"
-            style="@style/input_text_85"
-            android:background="@drawable/basic_input_shape"
-            android:inputType="phone"
-            android:maxLength="4"
-            android:imeOptions="actionNext"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:text="ㅡ"
-            android:textSize="15dp"
-            />
-
-        <EditText
-            android:id="@+id/et_direct_recipient_tel3"
-            style="@style/input_text_85"
-            android:background="@drawable/basic_input_shape"
-            android:inputType="phone"
-            android:maxLength="4"
-            android:nextFocusForward="@id/et_direct_address_num"
-            />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/address_linear"
-        style="@style/input_tel_linear"
-        android:layout_marginBottom="4dp"
-        app:layout_constraintBottom_toTopOf="@id/et_direct_address_num"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.462"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <TextView
-            android:id="@+id/tv_direct_address"
+            android:id="@+id/tv_direct_sender"
             style="@style/headline_text2"
-            android:layout_marginRight="50dp"
-            android:text="@string/order_address_text" />
+            android:text="@string/order_sender_text"
+            />
+        <EditText
+            android:id="@+id/et_direct_sender"
+            style="@style/input_text_300"
+            android:layout_marginBottom="3dp"
+            android:background="@drawable/basic_input_shape"
+            android:hint="이름을 적어주세요."
+            android:inputType="textAutoComplete"
+            android:text=""
+            android:maxLength="5"
+            android:singleLine="true"
+            android:nextFocusForward="@+id/et_direct_sender_tel1"
+            />
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
-    </LinearLayout>
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/direct_info_linear3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="start"
+        android:orientation="vertical"
+        android:layout_marginStart="30dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/direct_info_linear2"
+        >
+        <TextView
+            android:id="@+id/tv_direct_sender_tel"
+            style="@style/headline_text2"
+            android:text="@string/order_sender_tel_text"
+            />
+        <LinearLayout
+            android:id="@+id/tel_linear"
+            style="@style/input_tel_linear"
+            >
 
-    <EditText
-        android:id="@+id/et_direct_address_num"
-        style="@style/input_text_85"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/basic_input_shape"
-        android:inputType="number"
-        android:maxLength="10"
-        android:nextFocusForward="@id/btn_direct_address"
-        android:singleLine="true"
-        app:layout_constraintBottom_toTopOf="@id/et_direct_address_show"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.134"
-        app:layout_constraintStart_toStartOf="parent" />
+            <EditText
+                android:id="@id/et_direct_sender_tel1"
+                style="@style/input_text_85"
+                android:background="@drawable/basic_input_shape"
+                android:inputType="phone"
+                android:maxLength="3"
+                android:singleLine="true"
+                android:imeOptions="actionNext"
+                />
 
-    <Button
-        android:id="@+id/btn_direct_address"
-        android:layout_width="105dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="15dp"
-        android:background="@drawable/basic_input_shape"
-        android:backgroundTint="@color/white_color"
-        android:text="주소 검색"
-        android:textSize="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/et_direct_address_show"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/et_direct_address_num"
-        app:layout_constraintTop_toBottomOf="@+id/address_linear"
-        app:layout_constraintVertical_bias="0.333" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:text="ㅡ"
+                android:textSize="15dp"
+                />
 
-    <EditText
-        android:id="@+id/et_direct_address_show"
-        style="@style/input_text_300"
-        android:layout_marginTop="48dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/basic_input_shape"
-        app:layout_constraintBottom_toTopOf="@id/et_direct_address_detail"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.462"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/address_linear"
-        android:inputType="text"
-        android:nextFocusForward="@id/et_direct_address_detail"
-        android:singleLine="true"
-        />
+            <EditText
+                android:id="@+id/et_direct_sender_tel2"
+                style="@style/input_text_85"
+                android:background="@drawable/basic_input_shape"
+                android:inputType="phone"
+                android:maxLength="4"
+                android:singleLine="true"
+                android:imeOptions="actionNext"
+                />
 
-    <EditText
-        android:id="@+id/et_direct_address_detail"
-        style="@style/input_text_300"
-        android:layout_marginBottom="50dp"
-        android:background="@drawable/basic_input_shape"
-        android:singleLine="true"
-        android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@id/btn_direct_next"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.462"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_direct_address_show"
-        app:layout_constraintVertical_bias="0.28"
-        />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:text="ㅡ"
+                android:textSize="15dp"
+                />
 
-    <Button
-        android:id="@+id/btn_direct_before"
-        style="@style/bottom_btn_before_style"
-        android:background="@drawable/bottom_btn_shape"
-        android:text="@string/before_btn_text"
-        tools:ignore="MissingConstraints"
-        />
-    <Button
-        android:id="@+id/btn_direct_next"
-        style="@style/bottom_btn_next_style"
-        android:background="@drawable/bottom_btn_shape"
-        android:text="@string/after_btn_text"
-        android:onClick="showData"
-        tools:ignore="MissingConstraints"
-        />
+            <EditText
+                android:id="@+id/et_direct_sender_tel3"
+                style="@style/input_text_85"
+                android:background="@drawable/basic_input_shape"
+                android:inputType="phone"
+                android:maxLength="4"
+                android:nextFocusForward="@id/et_direct_recipient"
+                android:singleLine="true"
+                />
+
+        </LinearLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/direct_info_linear4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="start"
+        android:orientation="vertical"
+        android:layout_marginLeft="30dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/direct_info_linear3"
+        >
+        <TextView
+            android:id="@+id/tv_order_direct_recipient"
+            style="@style/headline_text2"
+            android:text="@string/order_recipient_text"
+            />
+        <EditText
+            android:id="@+id/et_direct_recipient"
+            style="@style/input_text_300"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/basic_input_shape"
+            android:hint="이름을 적어주세요."
+            android:inputType="textAutoComplete"
+            android:maxLength="5"
+            android:maxLines="1"
+            android:nextFocusForward="@id/et_direct_recipient_tel1"
+            android:singleLine="true"
+            />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/direct_info_linear5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="start"
+        android:orientation="vertical"
+        android:layout_marginStart="30dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/direct_info_linear4"
+        >
+        <TextView
+            android:id="@+id/tv_order_direct_recipient_tel"
+            style="@style/headline_text2"
+            android:text="@string/order_recipient_tel_text"
+            />
+
+
+        <LinearLayout
+            android:id="@+id/tel_linear2"
+            style="@style/input_tel_linear"
+            >
+
+            <EditText
+                android:id="@+id/et_direct_recipient_tel1"
+                style="@style/input_text_85"
+                android:background="@drawable/basic_input_shape"
+                android:maxLength="3"
+                android:inputType="phone"
+                android:imeOptions="actionNext"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:text="ㅡ"
+                android:textSize="15dp"
+                />
+
+            <EditText
+                android:id="@+id/et_direct_recipient_tel2"
+                style="@style/input_text_85"
+                android:background="@drawable/basic_input_shape"
+                android:inputType="phone"
+                android:maxLength="4"
+                android:imeOptions="actionNext"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:text="ㅡ"
+                android:textSize="15dp"
+                />
+
+            <EditText
+                android:id="@+id/et_direct_recipient_tel3"
+                style="@style/input_text_85"
+                android:background="@drawable/basic_input_shape"
+                android:inputType="phone"
+                android:maxLength="4"
+                android:nextFocusForward="@id/et_direct_address_num"
+                />
+
+        </LinearLayout>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/direct_info_linear6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="start"
+        android:orientation="vertical"
+        android:layout_marginStart="30dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/direct_info_linear5"
+        >
+        <LinearLayout
+            style="@style/input_tel_linear"
+            >
+            <TextView
+                android:id="@+id/tv_direct_address"
+                style="@style/headline_text2"
+                android:text="@string/order_address_text"
+                />
+        </LinearLayout>
+        <LinearLayout
+            style="@style/input_tel_linear"
+            >
+            <EditText
+                android:id="@+id/et_direct_address_num"
+                style="@style/input_text_85"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/basic_input_shape"
+                android:inputType="number"
+                android:maxLength="10"
+                android:nextFocusForward="@id/btn_direct_address"
+                android:singleLine="true"
+                />
+
+            <Button
+                android:id="@+id/btn_direct_address"
+                android:layout_width="105dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="15dp"
+                android:background="@drawable/basic_input_shape"
+                android:backgroundTint="@color/white_color"
+                android:text="주소 검색"
+                android:textSize="15dp"
+                />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/et_direct_address_show"
+            style="@style/input_text_300"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/basic_input_shape"
+            android:inputType="text"
+            android:nextFocusForward="@id/et_direct_address_detail"
+            android:singleLine="true"
+            />
+
+        <EditText
+            android:id="@+id/et_direct_address_detail"
+            style="@style/input_text_300"
+            android:background="@drawable/basic_input_shape"
+            android:singleLine="true"
+            android:inputType="text"
+            />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/direct_info_linear7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:gravity="start"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/direct_info_linear6"
+        >
+        <Button
+            android:id="@+id/btn_direct_before"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="130dp"
+            android:textStyle="bold"
+            android:textColor="@color/head"
+            android:background="@drawable/bottom_btn_shape"
+            android:text="@string/before_btn_text"
+            />
+
+        <Button
+            android:id="@+id/btn_direct_next"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:textStyle="bold"
+            android:textColor="@color/head"
+            android:background="@drawable/bottom_btn_shape"
+            android:text="@string/after_btn_text"
+            android:onClick="showData"
+            />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.constraintlayout.widget.ConstraintLayout>

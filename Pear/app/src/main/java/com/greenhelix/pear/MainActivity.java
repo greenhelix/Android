@@ -8,11 +8,17 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.firebase.auth.FirebaseAuth;
 import com.greenhelix.pear.orderStatus.OrderStatusActivity;
 import com.skt.Tmap.TMapTapi;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,7 +35,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Log.d(LOG_TAG, "Mainactivity oncreate 되었습니다.");
+        Date nowTime = Calendar.getInstance().getTime();
+        String date = new SimpleDateFormat("MM월 dd일 EE요일", Locale.KOREA).format(nowTime);
+        Log.d(LOG_TAG, "포맷한 날짜 = "+date);
+        TextView mainDate = (TextView) findViewById(R.id.tv_main_head2);
+        mainDate.setText(String.format(getString(R.string.main_head_text02),date));
 
         final TMapTapi tmaptapi = new TMapTapi(this);
         tmaptapi.setSKTMapAuthentication ("l7xx67178473a0134850bb0610927c9ba539");
