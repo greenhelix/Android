@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.greenhelix.pear.R;
-import com.greenhelix.pear.listShow.OrderListAdapter;
 
 public class OrderStatusActivity extends AppCompatActivity {
     private static final String LOG_TAG = "ik";
@@ -25,7 +24,7 @@ public class OrderStatusActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_order_status);
+        setContentView(R.layout.order_current_status);
         Log.d(LOG_TAG, "주문현황 화면 정상 OnCreate 되었습니다.");
 
 

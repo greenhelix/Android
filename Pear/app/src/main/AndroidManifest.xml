@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.greenhelix.pear" >
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.greenhelix.pear" >
     
     <!--인터넷 허가-->
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -21,27 +20,26 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:networkSecurityConfig="@xml/network_sercurity_config">
-        <activity android:name=".LoginActivity">
+        <activity android:name=".LoginActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
-        <activity android:name=".OrderKindActivity" />
+        <activity android:name=".MainActivity"  android:screenOrientation="portrait"/>
+        <activity android:name=".OrderKindActivity"  android:screenOrientation="portrait"/>
 
-        <activity android:name=".cameraOrder.CameraOrderActivity" />
-        <activity android:name=".cameraOrder.ImageML" />
+        <activity android:name=".cameraOrder.CameraOrderActivity"  android:screenOrientation="portrait"/>
+        <activity android:name=".cameraOrder.ImageML"  android:screenOrientation="portrait"/>
 
-        <activity android:name=".directOrder.DirectOrderActivity"/>
-        <activity android:name=".directOrder.DirectShow" />
+        <activity android:name=".directOrder.DirectOrderActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".directOrder.DirectShow"  android:screenOrientation="portrait"/>
 
-        <activity android:name=".cloudDB.CloudStore" />
+        <activity android:name=".cloudDB.CloudStore"  android:screenOrientation="portrait"/>
 
-        <activity android:name=".SelectPearActivity"/>
-        <activity android:name=".listShow.OrderListActivity"/>
-        <activity android:name=".server.AddressAPIkakao"/>
-<!--        <activity android:name=".server.ApiAddress"/>-->
+        <activity android:name=".SelectPearActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".listShow.OrderListActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".server.AddressAPIkakao" android:screenOrientation="portrait"/>
 
 
 <!--        파일 제공자를 구성한다-->
