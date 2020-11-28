@@ -2,6 +2,7 @@ package com.greenhelix.pear.orderStatus;
 
 import java.util.ArrayList;
 
+// 클라우드 DB 에서 주문정보를 가져오는 바구니! order와 큰차이 없다.
 public class NowOrder {
 
     private String sender;
@@ -10,21 +11,9 @@ public class NowOrder {
     private String pear_kind;
     private String pear_amount;
     private String pear_box;
-    private String status;
+    private String status; //배송상태
 
-    public NowOrder(){
-
-    }
-    public NowOrder(String sender, String recipient, ArrayList<String> recipient_addr,
-                    String pear_kind, String pear_amount, String pear_box, String status){
-        this.sender = sender;
-        this.recipient = recipient;
-        this.recipient_addr = recipient_addr;
-        this.pear_kind =pear_kind;
-        this.pear_amount =pear_amount;
-        this.pear_box =pear_box;
-        this.status = status;
-    }
+    public NowOrder(){}
 
     public String getSender() {
         return sender;

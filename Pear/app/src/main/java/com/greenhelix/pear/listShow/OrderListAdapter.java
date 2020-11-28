@@ -27,23 +27,29 @@ public class OrderListAdapter extends FirestoreRecyclerAdapter<Order, OrderListA
     /*// 바구니를 여기서 쓴다. //이 부분이 DB DAO에서 정보를 담아서 넣어주는 부분이다.//원하는 형태가 있다면 여기서 변환!*/
     @Override
     protected void onBindViewHolder(@NonNull OrdersHolder holder, int position, @NonNull Order model) {
+        //대기하던 holder부분에 order 의 값들을 넣어준다.(데이터바구니에서 데이터를 꺼내 준비된 틀에 넣는 메서드)
+        //Order.class에서 지정한 Get메서드를 통해 데이터의 값을 가져온다. model.get원하는것().
+        /*아직 주문번호 문서 명으로 해야함아직 안함*/
+
         holder.senderName.setText(model.getSender());
         holder.recipientName.setText(model.getRecipient());
-        List<String> addr = model.getRecipient_addr();  //list타입이라 string으로 변환해서 넣어주었다.
-        String address = Joiner.on("").join(addr);
-        holder.orderAddress.setText(address);
         holder.pearKinds.setText(model.getPear_kind());
         holder.pearAmounts.setText(model.getPear_amount());
-        holder.pearBoxes.setText(model.getPear_box()+" 상자");
+        holder.pearBoxes.setText(String.format("%s 상자", model.getPear_box())); //string.format() 상자단위 붙여주기위해사용
+        List<String> tempAddress = model.getRecipient_addr();  //list타입이라 string으로 변환해서 넣어주었다.
+        String address = Joiner.on("").join(tempAddress);
+        holder.orderAddress.setText(address);
+
     }
     @NonNull
-    @Override //xml 을 가져와서 onCreate해준다.
+    @Override //xml 틀을 가져와서 onCreate해준다.
     public OrdersHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_order_final_item, parent, false);
         return new OrdersHolder(v);
     }
 
     public class OrdersHolder extends RecyclerView.ViewHolder{
+        //holder쪽에서 해당 xml의 값들을 연결해두고 기다린다.
         TextView orderNum, senderName, recipientName, orderAddress, pearKinds, pearAmounts, pearBoxes;
         public OrdersHolder(View v){
             super(v);

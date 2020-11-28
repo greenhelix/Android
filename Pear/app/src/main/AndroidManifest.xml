@@ -28,7 +28,7 @@
         </activity>
         <activity android:name=".MainActivity"  android:screenOrientation="portrait"/>
         <activity android:name=".OrderKindActivity"  android:screenOrientation="portrait"/>
-
+        <activity android:name=".orderStatus.OrderStatusActivity" android:screenOrientation="portrait"/>
         <activity android:name=".cameraOrder.CameraOrderActivity"  android:screenOrientation="portrait"/>
         <activity android:name=".cameraOrder.ImageML"  android:screenOrientation="portrait"/>
 

@@ -1,5 +1,7 @@
 package com.greenhelix.pear.listShow;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 
 //데이터를 담아주는 바구니를 형성하여 가져오는 클래스이다.
@@ -10,7 +12,7 @@ import java.util.ArrayList;
 
 /*이 곳에서 파라미터 명을 정확히 같은것을 써서 넣어줘야한다. 변수 형태도 정확히 써주어야 어댑터로 제대로 이동된다.*/
 public class Order {
-
+    private static final String LOG_TAG = "ik";
     private String sender;
     private String recipient;
     private ArrayList<String> recipient_addr;
@@ -18,21 +20,8 @@ public class Order {
     private String pear_amount;
     private String pear_box;
 
-    public Order(){
-
-    }
-    //가져오는 곳에 파라미터와 이름이 동일해야하며, 일단 보내고 adapter장바구니 부분에서 바꾸면된다!
-    public Order(String sender, String recipient, ArrayList<String> recipient_addr,
-                 String pear_kind, String pear_amount, String pear_box){
-
-        this.sender = sender;
-        this.recipient = recipient;
-        this.recipient_addr = recipient_addr;
-        this.pear_kind =pear_kind;
-        this.pear_amount =pear_amount;
-        this.pear_box =pear_box;
-    }
-
+    //이 메서드가 있어야 주어진 값들을 계속 불러온다.
+    public Order(){}
 
     public String getSender() {
         return sender;
