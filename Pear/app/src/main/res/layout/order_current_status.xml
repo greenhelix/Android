@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/order_status_background"
+    android:background="@color/greenBackground"
     tools:context=".orderStatus.OrderStatusActivity">
 
 

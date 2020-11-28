@@ -4,17 +4,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardBackgroundColor="@android:color/transparent"
-    app:cardElevation="0dp"
+
+    app:cardBackgroundColor="@color/white_color"
+    app:cardElevation="3dp"
+    app:cardCornerRadius="15dp"
     android:layout_marginStart="8dp"
     android:layout_marginEnd="8dp"
     android:layout_marginTop="10dp"
     >
     <LinearLayout
+        android:id="@+id/cardBasicLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@drawable/card_shape"
         >
 
         <TextView
@@ -23,6 +25,7 @@
             android:layout_height="20dp"
             android:layout_marginTop="5dp"
             android:paddingLeft="10dp"
+            android:text="주문번호"
             android:textSize="15dp"
             android:inputType="number"
             />
@@ -54,6 +57,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:layout_marginBottom="4dp"
+                android:text="아무개"
                 android:textSize="17dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/tvNowSender"
@@ -89,12 +93,11 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="2dp"
                 android:paddingRight="10dp"
+                android:text="아무개"
                 android:textSize="17dp"
                 app:layout_constraintStart_toEndOf="@+id/tvNowRecipient"
                 app:layout_constraintTop_toTopOf="parent" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-
         <TextView
             android:id="@+id/tv_status_orderAddress"
             android:layout_width="match_parent"
@@ -103,6 +106,7 @@
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:maxLength="20"
+            android:text="주소 예시 "
             android:textSize="15dp"
             android:maxLines="1"
             />
@@ -110,156 +114,76 @@
         <GridLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="10dp">
+            android:layout_marginEnd="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="end"
+            >
 
-            <TextView
-                android:id="@+id/tv_status_pearKinds"
-                android:layout_width="80dp"
-                android:layout_height="40dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="5dp"
-                android:background="@color/pear_btn_color"
-                android:paddingTop="5dp"
-                android:textAlignment="center"
-                android:textSize="20dp"
 
-                />
-
-            <TextView
-                android:id="@+id/tv_status_pearAmounts"
-                android:layout_width="80dp"
-                android:layout_height="40dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="5dp"
-                android:background="@color/swipe_color"
-                android:paddingTop="5dp"
-                android:textAlignment="center"
-                android:textSize="20dp"
-
-                />
-
-            <TextView
-                android:id="@+id/tv_status_pearBoxes"
-                android:layout_width="80dp"
-                android:layout_height="40dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="5dp"
-                android:background="@color/white_color"
-                android:paddingTop="5dp"
-                android:textAlignment="center"
-                android:textSize="20dp"
-                />
             <TextView
                 android:id="@+id/tv_status"
-                android:layout_width="80dp"
+                android:layout_width="100dp"
                 android:layout_height="40dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="5dp"
-                android:background="@color/status_color01"
+                android:background="@drawable/basic_btn_shape"
+                android:backgroundTint="@color/status_color02"
                 android:paddingTop="5dp"
                 android:textAlignment="center"
                 android:textSize="20dp"
                 />
         </GridLayout>
+
+<!--확장되는 UI를 연관 레이아웃에 넣어준다.-->
+        <RelativeLayout
+            android:id="@+id/cardExpandableLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:rowCount="1"
+                    android:useDefaultMargins="true"
+                    >
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="30dp"
+                        android:background="@drawable/basic_btn_shape"
+                        android:backgroundTint="@color/status_color01"
+                        android:text="@string/order_status_text01"
+                        />
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="30dp"
+                        android:background="@drawable/basic_btn_shape"
+                        android:backgroundTint="@color/status_color02"
+                        android:text="@string/order_status_text02"
+                        />
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="30dp"
+                        android:background="@drawable/basic_btn_shape"
+                        android:backgroundTint="@color/status_color03"
+                        android:text="@string/order_status_text03"
+                        />
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="30dp"
+                        android:background="@drawable/basic_btn_shape"
+                        android:backgroundTint="@color/status_color04"
+                        android:text="@string/order_status_text04"
+                        />
+
+                </GridLayout>
+
+        </RelativeLayout>
     </LinearLayout>
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="vertical"-->
-<!--        android:background="@drawable/card_shape"-->
-<!--        >-->
 
-<!--        <TextView-->
-<!--            android:id="@+id/tv_check_01"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="20dp"-->
-<!--            android:layout_marginTop="5dp"-->
-<!--            android:paddingLeft="10dp"-->
-<!--            android:text="@string/order_number_text01"-->
-<!--            android:textSize="15dp"-->
-<!--            android:inputType="number"-->
-<!--            />-->
-
-<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:paddingLeft="10dp"-->
-<!--            android:layout_marginTop="5dp"-->
-<!--            android:orientation="horizontal">-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/tvSender"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginBottom="4dp"-->
-<!--                android:text="주문자 :"-->
-<!--                android:textSize="17dp"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintEnd_toStartOf="@+id/tv_list_senderName"-->
-<!--                app:layout_constraintHorizontal_bias="0.0"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent"-->
-<!--                app:layout_constraintVertical_bias="0.0" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/tv_list_senderName"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="4dp"-->
-<!--                android:layout_marginBottom="4dp"-->
-<!--                android:text="김아무개"-->
-<!--                android:textSize="17dp"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintStart_toEndOf="@+id/tvSender"-->
-<!--                app:layout_constraintTop_toTopOf="parent"-->
-<!--                app:layout_constraintVertical_bias="1.0" />-->
-
-<!--            <ImageView-->
-<!--                android:id="@+id/deliverImg"-->
-<!--                android:layout_width="35dp"-->
-<!--                android:layout_height="21dp"-->
-
-<!--                android:layout_marginStart="8dp"-->
-<!--                android:layout_marginTop="1dp"-->
-<!--                android:src="@drawable/ic_baseline_send_20"-->
-<!--                app:layout_constraintStart_toEndOf="@+id/tv_list_senderName"-->
-<!--                app:layout_constraintTop_toTopOf="parent"-->
-<!--                />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/tvRecipient"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="16dp"-->
-<!--                android:text="받는사람 :"-->
-<!--                android:textSize="17dp"-->
-<!--                app:layout_constraintStart_toEndOf="@+id/deliverImg"-->
-<!--                app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="8dp"-->
-<!--                android:layout_marginTop="2dp"-->
-<!--                android:paddingRight="10dp"-->
-<!--                android:text="김개똥이"-->
-<!--                android:textSize="17dp"-->
-<!--                app:layout_constraintStart_toEndOf="@+id/tvRecipient"-->
-<!--                app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
-
-
-<!--        <Button-->
-<!--            android:layout_width="150dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginLeft="10dp"-->
-<!--            android:text="@string/order_status_text02"-->
-<!--            android:textSize="20dp"-->
-<!--            android:backgroundTint="@color/status_color02"-->
-<!--            />-->
-
-<!--    </LinearLayout>-->
 
 </androidx.cardview.widget.CardView>

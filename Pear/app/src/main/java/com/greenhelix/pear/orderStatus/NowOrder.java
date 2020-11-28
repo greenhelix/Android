@@ -4,16 +4,32 @@ import java.util.ArrayList;
 
 // 클라우드 DB 에서 주문정보를 가져오는 바구니! order와 큰차이 없다.
 public class NowOrder {
-
-    private String sender;
-    private String recipient;
+    private String sender, recipient, pear_kind, pear_amount, pear_box, status;
     private ArrayList<String> recipient_addr;
-    private String pear_kind;
-    private String pear_amount;
-    private String pear_box;
-    private String status; //배송상태
+    private Boolean expandable;
+
+
+
+    public NowOrder(String sender, String recipient, String pear_kind, String pear_amount, String pear_box, String status, ArrayList<String> recipient_addr, Boolean expandable) {
+        this.sender = sender;
+        this.recipient = recipient;
+        this.pear_kind = pear_kind;
+        this.pear_amount = pear_amount;
+        this.pear_box = pear_box;
+        this.status = status;
+        this.recipient_addr = recipient_addr;
+        this.expandable = false;
+    }
 
     public NowOrder(){}
+
+    public Boolean getExpandable() {
+        return expandable;
+    }
+
+    public void setExpandable(Boolean expandable) {
+        this.expandable = expandable;
+    }
 
     public String getSender() {
         return sender;
@@ -41,5 +57,33 @@ public class NowOrder {
 
     public String getStatus() {
         return status;
+    }
+
+    public void setSender(String sender) {
+        this.sender = sender;
+    }
+
+    public void setRecipient(String recipient) {
+        this.recipient = recipient;
+    }
+
+    public void setPear_kind(String pear_kind) {
+        this.pear_kind = pear_kind;
+    }
+
+    public void setPear_amount(String pear_amount) {
+        this.pear_amount = pear_amount;
+    }
+
+    public void setPear_box(String pear_box) {
+        this.pear_box = pear_box;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public void setRecipient_addr(ArrayList<String> recipient_addr) {
+        this.recipient_addr = recipient_addr;
     }
 }
