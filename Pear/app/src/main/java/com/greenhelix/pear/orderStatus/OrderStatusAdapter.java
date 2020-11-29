@@ -92,6 +92,12 @@ public class OrderStatusAdapter extends FirestoreRecyclerAdapter<NowOrder, Order
     public OrderStatusAdapter(@NonNull FirestoreRecyclerOptions<NowOrder> options) {
         super(options);
     }
+    
+    //삭제 메서드 생성! reference에서 업데이트 사용가능하다! delete로 삭제명령 함
+    public void deleteItem(int position){
+        getSnapshots().getSnapshot(position).getReference().delete();
+    }
+
 
     public interface OnOrderClickListener {
         //내가 원하는 것으로 클릭시 정보를 가져온다. 여기서는 문서와 해당 인덱스를 가져온다.
