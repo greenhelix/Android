@@ -9,19 +9,7 @@ public class NowOrder {
     private Boolean expandable;
 
 
-
-    public NowOrder(String sender, String recipient, String pear_kind, String pear_amount, String pear_box, String status, ArrayList<String> recipient_addr, Boolean expandable) {
-        this.sender = sender;
-        this.recipient = recipient;
-        this.pear_kind = pear_kind;
-        this.pear_amount = pear_amount;
-        this.pear_box = pear_box;
-        this.status = status;
-        this.recipient_addr = recipient_addr;
-        this.expandable = false;
-    }
-
-    public NowOrder(){}
+    public NowOrder(){} //비어있는 constructor가 있어야함
 
     public Boolean getExpandable() {
         return expandable;
