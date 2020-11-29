@@ -25,13 +25,6 @@ public class OrderStatusAdapter extends FirestoreRecyclerAdapter<NowOrder, Order
     private static final String LOG_TAG = "ik";
     private OnOrderClickListener listener;
 
-    List<NowOrder> orderList;
-
-    //이부분은 어댑터 사용 액티비티에서 끌어다 쓴다.
-    public OrderStatusAdapter(@NonNull FirestoreRecyclerOptions<NowOrder> options) {
-        super(options);
-    }
-
     //가장 먼저, 화면에 넣을 값들을 설정해준다.
     public class OrdersStatusHolder extends RecyclerView.ViewHolder{
         TextView orderNum, senderName, recipientName, orderAddress, pearKinds, pearAmounts, pearBoxes, status;
@@ -63,20 +56,12 @@ public class OrderStatusAdapter extends FirestoreRecyclerAdapter<NowOrder, Order
                         //이렇게 선택하면, 문서 정보와 해당 인덱스를 holder를 통해서 설정해준다.
                         //이후, activity에서 이 메서드를 활용하여 원하는 값을 한다. ( 그냥 recyclerview의 경우 이것을 여기서 해도 되는데,
                         //firestore recyclerview는 이렇게 문서정보를 가져다가 하면 되는듯.. 방법은 있으나 내가 모르는것 같다.
+                        //listener.onItemClick(getSnapshots().getSnapshot(position), position);
                     //}
                 }
             });
         }
     }
-    public interface OnOrderClickListener {
-        //내가 원하는 것으로 클릭시 정보를 가져온다. 여기서는 문서와 해당 인덱스를 가져온다.
-        void onItemClick(DocumentSnapshot documentSnapshot, int position);
-    }
-    // 커스텀 마이징한것이다.
-    public void setOnCardClickListener(OnOrderClickListener listener){
-        this.listener = listener;
-    }
-
 
     //그 다음 데이터바구니에 있는 것들을 가져다 끌어온다.
     @Override
@@ -95,7 +80,7 @@ public class OrderStatusAdapter extends FirestoreRecyclerAdapter<NowOrder, Order
 
     }
 
-    //마지막으로 해당 레이아웃들을 연결 시켜주고 어댑터를 마쳐준다.
+    //마지막으로 해당 카드 레이아웃들을 연결 시켜주고 어댑터를 마쳐준다.
     @NonNull
     @Override
     public OrdersStatusHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -103,4 +88,17 @@ public class OrderStatusAdapter extends FirestoreRecyclerAdapter<NowOrder, Order
         return new OrdersStatusHolder(v);
     }
 
+    //이부분은 어댑터 사용 액티비티에서 끌어다 쓴다.
+    public OrderStatusAdapter(@NonNull FirestoreRecyclerOptions<NowOrder> options) {
+        super(options);
+    }
+
+    public interface OnOrderClickListener {
+        //내가 원하는 것으로 클릭시 정보를 가져온다. 여기서는 문서와 해당 인덱스를 가져온다.
+        void onItemClick(DocumentSnapshot documentSnapshot, int position);
+    }
+    // 커스텀 마이징한것이다.
+    public void setOnCardClickListener(OnOrderClickListener listener){
+        this.listener = listener;
+    }
 }

@@ -6,18 +6,8 @@ import java.util.ArrayList;
 public class NowOrder {
     private String sender, recipient, pear_kind, pear_amount, pear_box, status;
     private ArrayList<String> recipient_addr;
-    private Boolean expandable;
-
 
     public NowOrder(){} //비어있는 constructor가 있어야함
-
-    public Boolean getExpandable() {
-        return expandable;
-    }
-
-    public void setExpandable(Boolean expandable) {
-        this.expandable = expandable;
-    }
 
     public String getSender() {
         return sender;

@@ -4,31 +4,21 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.RelativeLayout;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
-import com.firebase.ui.firestore.paging.FirestorePagingAdapter;
 import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.greenhelix.pear.R;
-import com.greenhelix.pear.listShow.OrderListAdapter;
-
-import java.util.List;
 
 public class OrderStatusActivity extends AppCompatActivity {
     private static final String LOG_TAG = "ik";
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference orderRef = db.collection("pear_orders");
     private RecyclerView cycleOrderStatusView;
-
-    RelativeLayout expandLayout;
 
     //어댑터 생성했으면 여기에 추가
     private OrderStatusAdapter adapter;
@@ -51,9 +41,6 @@ public class OrderStatusActivity extends AppCompatActivity {
             }
         });
         btnDelete = findViewById(R.id.btn_status_complete_del);
-
-
-
     }//onCreate END
 
     private void setOrderStatusRecyclerView(){
@@ -77,9 +64,6 @@ public class OrderStatusActivity extends AppCompatActivity {
 //                NowOrder nowOrder = documentSnapshot.toObject(NowOrder.class);
 //                String id = documentSnapshot.getId();
 //                Log.d(LOG_TAG, "activity로 잘 넘어왔다.\n 현재 선택한 문서의 아이디는 " + id);
-//                assert nowOrder != null;
-//                boolean now = nowOrder.getExpandable();
-//                Log.d(LOG_TAG, "확장호출! \n 현재 확장유무는 " + now);
 //            }
 //        });
     }
