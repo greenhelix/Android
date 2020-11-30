@@ -4,7 +4,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-
     app:cardBackgroundColor="@color/white_color"
     app:cardElevation="3dp"
     app:cardCornerRadius="15dp"
@@ -137,49 +136,45 @@
         <RelativeLayout
             android:id="@+id/cardExpandableLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            >
 
                 <GridLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:rowCount="1"
-                    android:useDefaultMargins="true"
+                    android:columnCount="2"
                     >
 
                     <Button
                         android:id="@+id/btn_change_status1"
                         android:layout_width="wrap_content"
                         android:layout_height="30dp"
-                        android:layout_marginTop="30dp"
-                        android:background="@drawable/basic_btn_shape"
-                        android:backgroundTint="@color/status_color01"
+                        android:layout_marginEnd="30dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/status1"
                         android:text="@string/order_status_text01"
                         />
                     <Button
                         android:id="@+id/btn_change_status2"
                         android:layout_width="wrap_content"
                         android:layout_height="30dp"
-                        android:layout_marginTop="30dp"
-                        android:background="@drawable/basic_btn_shape"
-                        android:backgroundTint="@color/status_color02"
+                        android:background="@drawable/status2"
                         android:text="@string/order_status_text02"
                         />
                     <Button
                         android:id="@+id/btn_change_status3"
                         android:layout_width="wrap_content"
                         android:layout_height="30dp"
-                        android:layout_marginTop="30dp"
-                        android:background="@drawable/basic_btn_shape"
-                        android:backgroundTint="@color/status_color03"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/status3"
                         android:text="@string/order_status_text03"
                         />
                     <Button
                         android:id="@+id/btn_change_status4"
                         android:layout_width="wrap_content"
                         android:layout_height="30dp"
-                        android:layout_marginTop="30dp"
-                        android:background="@drawable/basic_btn_shape"
-                        android:backgroundTint="@color/status_color04"
+                        android:background="@drawable/status4"
                         android:text="@string/order_status_text04"
                         />
 

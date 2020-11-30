@@ -4,7 +4,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -15,21 +14,25 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.common.base.Joiner;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.greenhelix.pear.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class OrderStatusAdapter extends FirestoreRecyclerAdapter<NowOrder, OrderStatusAdapter.OrdersStatusHolder> {
     private static final String LOG_TAG = "ik";
-    private OnOrderClickListener listener;
-
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
     //가장 먼저, 화면에 넣을 값들을 설정해준다.
     public class OrdersStatusHolder extends RecyclerView.ViewHolder{
         TextView orderNum, senderName, recipientName, orderAddress, pearKinds, pearAmounts, pearBoxes, status;
         Boolean expandable = false;
+        LinearLayout linearLayout;
         RelativeLayout expandableLayout;
         Button status1;
         Button status2;
@@ -45,9 +48,10 @@ public class OrderStatusAdapter extends FirestoreRecyclerAdapter<NowOrder, Order
 
             status = v.findViewById(R.id.tv_status);
 
+            linearLayout = v.findViewById(R.id.cardBasicLayout);
             expandableLayout = v.findViewById(R.id.cardExpandableLayout);
             expandableLayout.setVisibility(View.GONE);
-            v.setOnClickListener(new View.OnClickListener() {
+            linearLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if(expandable){
@@ -72,44 +76,89 @@ public class OrderStatusAdapter extends FirestoreRecyclerAdapter<NowOrder, Order
             // 이것을 선택하면 해당 주문의 배송상태를 바꿔준다. 나열된 배송상태 리스트는 button이고, 이것을 클릭하면,
             // 현재 주문의 배송상태인 텍스트뷰가 색상과 글자가 바뀌면 된다.
 
+
             status1 = v.findViewById(R.id.btn_change_status1);
-            status2 = v.findViewById(R.id.btn_change_status2);
-            status3 = v.findViewById(R.id.btn_change_status3);
-            status4 = v.findViewById(R.id.btn_change_status4);
-            onClickStatus(status1);
-            onClickStatus(status2);
-            onClickStatus(status3);
-            onClickStatus(status4);
-
-
-        }
-        public void onClickStatus(final Button bt){
-            bt.setOnClickListener(new View.OnClickListener() {
+            status1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if(bt == status1){
-                        Log.d(LOG_TAG, "주문상태 변경 버튼1 이 눌렸어요");
-                        status.setText(status1.getText());
-                        status.setBackgroundResource(R.drawable.status1);
-                    }
-                    else if(bt == status2){
-                        Log.d(LOG_TAG, "주문상태 변경 버튼2 이 눌렸어요");
-                        status.setText(status2.getText());
-                        status.setBackgroundResource(R.drawable.status2);
-                    }
-                    else if(bt == status3){
-                        Log.d(LOG_TAG, "주문상태 변경 버튼3 이 눌렸어요");
-                        status.setText(status3.getText());
-                        status.setBackgroundResource(R.drawable.status3);
-                    }
-                    else if(bt == status4){
-                        Log.d(LOG_TAG, "주문상태 변경 버튼4 이 눌렸어요");
-                        status.setText(status4.getText());
-                        status.setBackgroundResource(R.drawable.status4);
-                    }
+                    String orderID = getSnapshots().getSnapshot(getAdapterPosition()).getId();
+                    final DocumentReference changeStat = db.collection("pear_orders").document(orderID);
+                    changeStat.update("status", status1.getText().toString())
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Log.d(LOG_TAG, "주문상태 변화\n 성공!");
+                            status.setBackgroundResource(R.drawable.status1);
+                            status.setText(status1.getText());
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.d(LOG_TAG, "주문상태 변화\n 실패!");
+                        }
+                    });
+
                 }
             });
+            status2 = v.findViewById(R.id.btn_change_status2);
+            status2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String orderID = getSnapshots().getSnapshot(getAdapterPosition()).getId();
+                    final DocumentReference changeStat = db.collection("pear_orders").document(orderID);
+                    changeStat.update("status", status2.getText().toString());
+                    status.setBackgroundResource(R.drawable.status2);
+                    status.setText(status2.getText());
+                }
+            });
+            status3 = v.findViewById(R.id.btn_change_status3);
+            status4 = v.findViewById(R.id.btn_change_status4);
+
         }
+//        public void onClickStatus(final Button bt){
+//            bt.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    String nowStatus = "";
+//                    String orderID = getSnapshots().getSnapshot(getAdapterPosition()).getId();
+//                    DocumentReference changeStat = db.collection("pear_orders").document(orderID);
+//                    if(bt == status1){
+//                        Log.d(LOG_TAG, "주문상태 변경 버튼1 이 눌렸어요");
+//                        nowStatus = status1.getText().toString();
+//                        Log.d(LOG_TAG, "주문상태는 ::" + nowStatus+ "\n 주문번호:: "+ orderID);
+//                        changeStat.update("status", nowStatus);
+//                        status.setText(status1.getText());
+//                        status.setBackgroundResource(R.drawable.status1);
+//                    }
+//                    else if(bt == status2){
+//                        Log.d(LOG_TAG, "주문상태 변경 버튼2 이 눌렸어요");
+//                        nowStatus = status2.getText().toString();
+//                        Log.d(LOG_TAG, "주문상태는 ::" + nowStatus+ "\n 주문번호:: "+ orderID);
+//                        changeStat.update("status", nowStatus);
+//                        status.setText(status2.getText());
+//                        status.setBackgroundResource(R.drawable.status2);
+//                    }
+//                    else if(bt == status3){
+//                        Log.d(LOG_TAG, "주문상태 변경 버튼3 이 눌렸어요");
+//                        nowStatus = status3.getText().toString();
+//                        Log.d(LOG_TAG, "주문상태는 ::" + nowStatus+ "\n 주문번호:: "+ orderID);
+//                        changeStat.update("status", nowStatus);
+//                        status.setText(status3.getText());
+//                        status.setBackgroundResource(R.drawable.status3);
+//                    }
+//                    else if(bt == status4){
+//                        Log.d(LOG_TAG, "주문상태 변경 버튼4 이 눌렸어요");
+//                        nowStatus = status4.getText().toString();
+//                        Log.d(LOG_TAG, "주문상태는 ::" + nowStatus+ "\n 주문번호:: "+ orderID);
+//                        changeStat.update("status", nowStatus);
+//
+//                    }
+//                    status.setText(bt.getText());
+//                    status.setBackgroundResource(R.drawable.bt);
+//                }
+//            });
+//        }
     }
 
     //그 다음 데이터바구니에 있는 것들을 가져다 끌어온다.
@@ -141,23 +190,8 @@ public class OrderStatusAdapter extends FirestoreRecyclerAdapter<NowOrder, Order
     public void deleteItem(int position){
         getSnapshots().getSnapshot(position).getReference().delete();
     }
-    public void changeStatus(int position){
-        String changeStatus = "";
-        getSnapshots().getSnapshot(position).getReference().update("status", changeStatus);
-    }
-
-
     //이부분은 어댑터 사용 액티비티에서 끌어다 쓴다.
     public OrderStatusAdapter(@NonNull FirestoreRecyclerOptions<NowOrder> options) {
         super(options);
-    }
-
-    public interface OnOrderClickListener {
-        //내가 원하는 것으로 클릭시 정보를 가져온다. 여기서는 문서와 해당 인덱스를 가져온다.
-        void onItemClick(DocumentSnapshot documentSnapshot, int position);
-    }
-    // 커스텀 마이징한것이다.
-    public void setOnCardClickListener(OnOrderClickListener listener){
-        this.listener = listener;
     }
 }
