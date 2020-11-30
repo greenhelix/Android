@@ -126,8 +126,7 @@
                 android:layout_height="40dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="5dp"
-                android:background="@drawable/basic_btn_shape"
-                android:backgroundTint="@color/status_color02"
+                android:background="@drawable/status1"
                 android:paddingTop="5dp"
                 android:textAlignment="center"
                 android:textSize="20dp"
@@ -148,6 +147,7 @@
                     >
 
                     <Button
+                        android:id="@+id/btn_change_status1"
                         android:layout_width="wrap_content"
                         android:layout_height="30dp"
                         android:layout_marginTop="30dp"
@@ -156,6 +156,7 @@
                         android:text="@string/order_status_text01"
                         />
                     <Button
+                        android:id="@+id/btn_change_status2"
                         android:layout_width="wrap_content"
                         android:layout_height="30dp"
                         android:layout_marginTop="30dp"
@@ -164,6 +165,7 @@
                         android:text="@string/order_status_text02"
                         />
                     <Button
+                        android:id="@+id/btn_change_status3"
                         android:layout_width="wrap_content"
                         android:layout_height="30dp"
                         android:layout_marginTop="30dp"
@@ -172,6 +174,7 @@
                         android:text="@string/order_status_text03"
                         />
                     <Button
+                        android:id="@+id/btn_change_status4"
                         android:layout_width="wrap_content"
                         android:layout_height="30dp"
                         android:layout_marginTop="30dp"

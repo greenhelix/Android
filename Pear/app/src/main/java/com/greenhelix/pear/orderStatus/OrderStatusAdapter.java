@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -30,6 +31,11 @@ public class OrderStatusAdapter extends FirestoreRecyclerAdapter<NowOrder, Order
         TextView orderNum, senderName, recipientName, orderAddress, pearKinds, pearAmounts, pearBoxes, status;
         Boolean expandable = false;
         RelativeLayout expandableLayout;
+        Button status1;
+        Button status2;
+        Button status3;
+        Button status4;
+
         public OrdersStatusHolder(View v){
             super(v);
             orderNum = v.findViewById(R.id.tv_status_orderNum);
@@ -38,6 +44,7 @@ public class OrderStatusAdapter extends FirestoreRecyclerAdapter<NowOrder, Order
             orderAddress = v.findViewById(R.id.tv_status_orderAddress);
 
             status = v.findViewById(R.id.tv_status);
+
             expandableLayout = v.findViewById(R.id.cardExpandableLayout);
             expandableLayout.setVisibility(View.GONE);
             v.setOnClickListener(new View.OnClickListener() {
@@ -58,6 +65,48 @@ public class OrderStatusAdapter extends FirestoreRecyclerAdapter<NowOrder, Order
                         //firestore recyclerview는 이렇게 문서정보를 가져다가 하면 되는듯.. 방법은 있으나 내가 모르는것 같다.
                         //listener.onItemClick(getSnapshots().getSnapshot(position), position);
                     //}
+                }
+            });
+
+            // 확장 레이아웃이 열리면, 배송상태의 버튼이 보인다.
+            // 이것을 선택하면 해당 주문의 배송상태를 바꿔준다. 나열된 배송상태 리스트는 button이고, 이것을 클릭하면,
+            // 현재 주문의 배송상태인 텍스트뷰가 색상과 글자가 바뀌면 된다.
+
+            status1 = v.findViewById(R.id.btn_change_status1);
+            status2 = v.findViewById(R.id.btn_change_status2);
+            status3 = v.findViewById(R.id.btn_change_status3);
+            status4 = v.findViewById(R.id.btn_change_status4);
+            onClickStatus(status1);
+            onClickStatus(status2);
+            onClickStatus(status3);
+            onClickStatus(status4);
+
+
+        }
+        public void onClickStatus(final Button bt){
+            bt.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(bt == status1){
+                        Log.d(LOG_TAG, "주문상태 변경 버튼1 이 눌렸어요");
+                        status.setText(status1.getText());
+                        status.setBackgroundResource(R.drawable.status1);
+                    }
+                    else if(bt == status2){
+                        Log.d(LOG_TAG, "주문상태 변경 버튼2 이 눌렸어요");
+                        status.setText(status2.getText());
+                        status.setBackgroundResource(R.drawable.status2);
+                    }
+                    else if(bt == status3){
+                        Log.d(LOG_TAG, "주문상태 변경 버튼3 이 눌렸어요");
+                        status.setText(status3.getText());
+                        status.setBackgroundResource(R.drawable.status3);
+                    }
+                    else if(bt == status4){
+                        Log.d(LOG_TAG, "주문상태 변경 버튼4 이 눌렸어요");
+                        status.setText(status4.getText());
+                        status.setBackgroundResource(R.drawable.status4);
+                    }
                 }
             });
         }
@@ -88,16 +137,20 @@ public class OrderStatusAdapter extends FirestoreRecyclerAdapter<NowOrder, Order
         return new OrdersStatusHolder(v);
     }
 
-    //이부분은 어댑터 사용 액티비티에서 끌어다 쓴다.
-    public OrderStatusAdapter(@NonNull FirestoreRecyclerOptions<NowOrder> options) {
-        super(options);
-    }
-    
     //삭제 메서드 생성! reference에서 업데이트 사용가능하다! delete로 삭제명령 함
     public void deleteItem(int position){
         getSnapshots().getSnapshot(position).getReference().delete();
     }
+    public void changeStatus(int position){
+        String changeStatus = "";
+        getSnapshots().getSnapshot(position).getReference().update("status", changeStatus);
+    }
 
+
+    //이부분은 어댑터 사용 액티비티에서 끌어다 쓴다.
+    public OrderStatusAdapter(@NonNull FirestoreRecyclerOptions<NowOrder> options) {
+        super(options);
+    }
 
     public interface OnOrderClickListener {
         //내가 원하는 것으로 클릭시 정보를 가져온다. 여기서는 문서와 해당 인덱스를 가져온다.
