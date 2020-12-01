@@ -76,21 +76,7 @@ public class OrderStatusActivity extends AppCompatActivity {
                 }
             }
         }).attachToRecyclerView(cycleOrderStatusView); //마지막에는 순환뷰에 적용
-
-
-        //보통은 해당 클릭리스너 만들면, this로 implement시켜서 사용하지만,
-        //커스텀을 한상태로 클릭 리스너를 만들었기 때문에 아래와 같이 사용한다.
-//        adapter.setOnCardClickListener(new OrderStatusAdapter.OnOrderClickListener() {
-//            @Override
-//            public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
-//                NowOrder nowOrder = documentSnapshot.toObject(NowOrder.class);//nowOrder로 정보 변이가능
-//                String id = documentSnapshot.getId(); //문서의 아이디 값 가져오기
-//                Log.d(LOG_TAG, "activity로 잘 넘어왔다.\n 현재 선택한 문서의 아이디는 " + id);
-//            }
-//        });
-        //adapter.setOnCardClickListener여기까지는 그대로 쳐주고, 그다음 부분()안에 올 곳이 adapter에서 정의한 커스텀 onclick메서드이다.
     }
-
     @Override
     protected void onStart() {
         super.onStart();
