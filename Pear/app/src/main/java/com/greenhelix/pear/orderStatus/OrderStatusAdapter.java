@@ -77,6 +77,7 @@ public class OrderStatusAdapter extends FirestoreRecyclerAdapter<NowOrder, Order
             statusChange(status4);
 
         }
+        //button클릭 시 색상 및 DB 값 변경 메서드
         public void statusChange(final Button btnStatus){
             btnStatus.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -127,6 +128,18 @@ public class OrderStatusAdapter extends FirestoreRecyclerAdapter<NowOrder, Order
         holder.senderName.setText(model.getSender());
         holder.recipientName.setText(model.getRecipient());
         holder.status.setText(model.getStatus());
+        if(model.getStatus().equals("준비 중")) {
+            holder.status.setBackgroundResource(R.drawable.status1);
+        }
+        else if(model.getStatus().equals("준비 완료")) {
+            holder.status.setBackgroundResource(R.drawable.status2);
+        }
+        else if(model.getStatus().equals("배송 중")) {
+            holder.status.setBackgroundResource(R.drawable.status3);
+        }
+        else if(model.getStatus().equals("완 료")) {
+            holder.status.setBackgroundResource(R.drawable.status4);
+        }
         List<String> tempAddress = model.getRecipient_addr();
         String address = Joiner.on("").join(tempAddress);
         holder.orderAddress.setText(address);
