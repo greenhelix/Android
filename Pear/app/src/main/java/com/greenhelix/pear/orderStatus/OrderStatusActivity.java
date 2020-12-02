@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.greenhelix.pear.R;
@@ -28,7 +27,7 @@ public class OrderStatusActivity extends AppCompatActivity {
     private OrderStatusAdapter adapter;
 
     Button btnDelete, btnMain;
-
+    Button filter1, filter2, filter3, filter4;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +44,15 @@ public class OrderStatusActivity extends AppCompatActivity {
             }
         });
         btnDelete = findViewById(R.id.btn_status_complete_del);
+        filter1 = findViewById(R.id.btn_filter_status1);
+        setFilter(filter1);
+        filter2 = findViewById(R.id.btn_filter_status2);
+        setFilter(filter2);
+        filter3 = findViewById(R.id.btn_filter_status3);
+        setFilter(filter3);
+        filter4 = findViewById(R.id.btn_filter_status4);
+        setFilter(filter4);
+
     }//onCreate END
 
     //모든 기능 여기 들감
@@ -77,6 +85,23 @@ public class OrderStatusActivity extends AppCompatActivity {
             }
         }).attachToRecyclerView(cycleOrderStatusView); //마지막에는 순환뷰에 적용
     }
+    public void setFilter(final Button btn){
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String s = btn.getText().toString();
+                Log.d(LOG_TAG, "필터링 "+s +"이 클릭되었습니다.");
+                Query query1 = orderRef.whereEqualTo("status", s);
+                FirestoreRecyclerOptions<NowOrder> option1 = new FirestoreRecyclerOptions.Builder<NowOrder>()
+                        .setQuery(query1, NowOrder.class)
+                        .build();
+
+                adapter.updateOptions(option1);
+
+            }
+        });
+    }
+
     @Override
     protected void onStart() {
         super.onStart();

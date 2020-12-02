@@ -214,7 +214,7 @@ public class SelectPearActivity extends AppCompatActivity {
         box = pearBox.getText().toString();
         Log.d(LOG_TAG, "배송상품 정보는 "+kind+", "+amount+","+box+" 입니다.");
         orderPear.put("pear_box", box);
-        orderPear.put("status", "준비중");
+        orderPear.put("status", "준비 중");
         pearOrderRef.document(ORDER_DOC+id).update(orderPear)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override

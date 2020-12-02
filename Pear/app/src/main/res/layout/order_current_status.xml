@@ -21,6 +21,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
+            android:id="@+id/btn_filter_status1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/order_status_text01"
@@ -28,6 +29,7 @@
             />
 
         <Button
+            android:id="@+id/btn_filter_status2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/order_status_text02"
@@ -35,6 +37,7 @@
             />
 
         <Button
+            android:id="@+id/btn_filter_status3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/order_status_text03"
@@ -42,6 +45,7 @@
             />
 
         <Button
+            android:id="@+id/btn_filter_status4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/order_status_text04"
