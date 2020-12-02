@@ -68,94 +68,39 @@ public class OrderStatusAdapter extends FirestoreRecyclerAdapter<NowOrder, Order
             });
 
             status1 = v.findViewById(R.id.btn_change_status1);
-            status1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    notifyItemChanged(getAdapterPosition());
-                    String orderID = getSnapshots().getSnapshot(getAdapterPosition()).getId();
-                    final DocumentReference changeStat = db.collection("pear_orders").document(orderID);
-                    changeStat.update("status", status1.getText().toString())
-                    .addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-                            status.setBackgroundResource(R.drawable.status1);
-                            status.setText(status1.getText());
-                            Log.d(LOG_TAG, "주문상태 변화\n 성공!::"+status.getText());
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Log.d(LOG_TAG, "주문상태 변화\n 실패!");
-                        }
-                    });
-
-                }
-            });
+            statusChange(status1);
             status2 = v.findViewById(R.id.btn_change_status2);
-            status2.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    notifyItemChanged(getAdapterPosition());
-                    String orderID = getSnapshots().getSnapshot(getAdapterPosition()).getId();
-                    final DocumentReference changeStat = db.collection("pear_orders").document(orderID);
-                    changeStat.update("status", status2.getText().toString())
-                            .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void aVoid) {
-                                    status.setBackgroundResource(R.drawable.status2);
-                                    status.setText(status2.getText());
-                                    Log.d(LOG_TAG, "주문상태 변화\n 성공!::"+status.getText());
-                                }
-                            })
-                            .addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    Log.d(LOG_TAG, "주문상태 변화\n 실패!");
-                                }
-                            });
-
-                }
-            });
+            statusChange(status2);
             status3 = v.findViewById(R.id.btn_change_status3);
-            status3.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    notifyItemChanged(getAdapterPosition());
-                    String orderID = getSnapshots().getSnapshot(getAdapterPosition()).getId();
-                    final DocumentReference changeStat = db.collection("pear_orders").document(orderID);
-                    changeStat.update("status", status3.getText().toString())
-                            .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void aVoid) {
-
-                                    status.setBackgroundResource(R.drawable.status3);
-                                    status.setText(status3.getText());
-                                    Log.d(LOG_TAG, "주문상태 변화\n 성공!::"+status.getText());
-                                }
-                            })
-                            .addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    Log.d(LOG_TAG, "주문상태 변화\n 실패!");
-                                }
-                            });
-
-                }
-            });
+            statusChange(status3);
             status4 = v.findViewById(R.id.btn_change_status4);
-            status4.setOnClickListener(new View.OnClickListener() {
+            statusChange(status4);
+
+        }
+        public void statusChange(final Button btnStatus){
+            btnStatus.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    notifyItemChanged(getAdapterPosition());
+                    notifyItemChanged(getAdapterPosition()); //이게 있어야 잘 바뀜
                     String orderID = getSnapshots().getSnapshot(getAdapterPosition()).getId();
                     final DocumentReference changeStat = db.collection("pear_orders").document(orderID);
-                    changeStat.update("status", status4.getText().toString())
+                    changeStat.update("status", btnStatus.getText().toString())
                             .addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
-                                    status.setBackgroundResource(R.drawable.status4);
-                                    status.setText(status4.getText());
+                                    if(btnStatus == status1) {
+                                        status.setBackgroundResource(R.drawable.status1);
+                                    }
+                                    else if(btnStatus == status2) {
+                                        status.setBackgroundResource(R.drawable.status2);
+                                    }
+                                    else if(btnStatus == status3) {
+                                        status.setBackgroundResource(R.drawable.status3);
+                                    }
+                                    else if(btnStatus == status4) {
+                                        status.setBackgroundResource(R.drawable.status4);
+                                    }
+                                    status.setText(btnStatus.getText());
                                     Log.d(LOG_TAG, "주문상태 변화\n 성공!::"+status.getText());
                                 }
                             })
@@ -168,7 +113,6 @@ public class OrderStatusAdapter extends FirestoreRecyclerAdapter<NowOrder, Order
 
                 }
             });
-
         }
     }
 
@@ -188,6 +132,8 @@ public class OrderStatusAdapter extends FirestoreRecyclerAdapter<NowOrder, Order
         holder.orderAddress.setText(address);
 
     }
+
+
 
     //마지막으로 해당 카드 레이아웃들을 연결 시켜주고 어댑터를 마쳐준다.
     @NonNull

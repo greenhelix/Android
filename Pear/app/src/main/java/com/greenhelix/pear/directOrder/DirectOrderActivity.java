@@ -120,27 +120,3 @@ public class DirectOrderActivity extends AppCompatActivity {
     }//activity result END
 
 }// DirectOrderActivity class END
-
-/*//////////////////////*/
-
-//
-//    public void onActivityResult(int requestCode, int resultCode, Intent intent)
-//    {
-//        super.onActivityResult(requestCode, resultCode, intent);
-//        switch (requestCode) {
-//            case SEARCH_ADDRESS_ACTIVITY:
-//                if (resultCode == RESULT_OK) {
-//                    String data = intent.getExtras().getString("data");
-//                    if (data != null) {
-//                        et_address.setText(data);
-//                    }
-//                }
-//                break;
-//        }
-//    }
-
-
-
-
-
-

@@ -55,7 +55,7 @@ public class OrderStatusActivity extends AppCompatActivity {
 
     }//onCreate END
 
-    //모든 기능 여기 들감
+    //초기 순환뷰 기능 여기 들감
     private void setOrderStatusRecyclerView(){
         Query query = orderRef.orderBy("sender", Query.Direction.DESCENDING);
         FirestoreRecyclerOptions<NowOrder> option = new FirestoreRecyclerOptions.Builder<NowOrder>()
@@ -85,6 +85,8 @@ public class OrderStatusActivity extends AppCompatActivity {
             }
         }).attachToRecyclerView(cycleOrderStatusView); //마지막에는 순환뷰에 적용
     }
+
+    //필터링 버튼 메서드  query를 생성하고 option에 반영한뒤, update를 해주면 된다.
     public void setFilter(final Button btn){
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
