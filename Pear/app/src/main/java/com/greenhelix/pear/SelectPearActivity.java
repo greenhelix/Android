@@ -17,8 +17,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -215,7 +217,9 @@ public class SelectPearActivity extends AppCompatActivity {
         Log.d(LOG_TAG, "배송상품 정보는 "+kind+", "+amount+","+box+" 입니다.");
         orderPear.put("pear_box", box);
         orderPear.put("status", "준비 중");
-        pearOrderRef.document(ORDER_DOC+id).update(orderPear)
+
+        pearOrderRef.document(ORDER_DOC+id)
+                .update(orderPear)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {

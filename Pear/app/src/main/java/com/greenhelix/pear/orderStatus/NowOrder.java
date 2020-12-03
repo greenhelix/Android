@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 // 클라우드 DB 에서 주문정보를 가져오는 바구니! order와 큰차이 없다.
 public class NowOrder {
-    private String sender, recipient, pear_kind, pear_amount, pear_box, status, recipient_tel, sender_tel;
+    private String sender, recipient, pear_kind, pear_amount, pear_box, status, recipient_tel, sender_tel, user;
     private ArrayList<String> recipient_addr;
 
     public NowOrder(){} //비어있는 constructor가 있어야함
@@ -17,6 +17,14 @@ public class NowOrder {
         this.pear_box = pear_box;
         this.status = status;
         this.recipient_addr = recipient_addr;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
     }
 
     public String getRecipient_tel() {

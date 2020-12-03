@@ -91,6 +91,7 @@ public class OrderStatusActivity extends AppCompatActivity {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             adapter.deleteItem(position);
+                            Log.d(LOG_TAG, "삭제되었습니다." + adapter.getSnapshots().getSnapshot(position).getString("user"));
                         }
                     }).setNegativeButton("아니오", new DialogInterface.OnClickListener() {
                         @Override
@@ -121,24 +122,7 @@ public class OrderStatusActivity extends AppCompatActivity {
             }
         });
     }
-//    AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getApplicationContext());
-//        dialogBuilder.setTitle("정말 삭제하시겠습니까?");
-//        dialogBuilder.setMessage("삭제 주문을 확인하셨습니까?");
-//        dialogBuilder.setPositiveButton("확인",
-//                new DialogInterface.OnClickListener() {
-//        @Override
-//        public void onClick(DialogInterface dialog, int which) {
-//            Toast.makeText(getApplicationContext(), "삭제완료!", Toast.LENGTH_SHORT).show();
-//
-//        }
-//    });
-//        dialogBuilder.setNegativeButton("취소",
-//                new DialogInterface.OnClickListener() {
-//        @Override
-//        public void onClick(DialogInterface dialog, int which) {
-//            Toast.makeText(getApplicationContext(), "취소하였습니다.", Toast.LENGTH_SHORT).show();
-//        }
-//    });
+
     @Override
     protected void onStart() {
         super.onStart();

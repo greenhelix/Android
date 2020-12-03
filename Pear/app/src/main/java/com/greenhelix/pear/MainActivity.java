@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.greenhelix.pear.orderStatus.OrderStatusActivity;
 import com.skt.Tmap.TMapTapi;
 
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     Button btnMainChangeUser;
     private GoogleSignInClient client;
     private static final String LOG_TAG = "ik";
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
