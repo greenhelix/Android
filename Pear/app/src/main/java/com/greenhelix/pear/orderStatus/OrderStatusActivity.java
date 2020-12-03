@@ -1,9 +1,12 @@
 package com.greenhelix.pear.orderStatus;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -35,7 +38,6 @@ public class OrderStatusActivity extends AppCompatActivity {
         Log.d(LOG_TAG, "주문현황 화면 정상 OnCreate 되었습니다.");
 
         setOrderStatusRecyclerView();
-
         btnMain = findViewById(R.id.btn_status_go_main);
         btnMain.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,17 +72,33 @@ public class OrderStatusActivity extends AppCompatActivity {
         cycleOrderStatusView.setAdapter(adapter);
 
         // 주문 카드를 선택했을때, 모션값을 인식하고 그에 따른 삭제 명령을 주었다. onSwiped을 통해서 삭제를 시킴. 다른 방향을 제어하거나 명령을 바꿀수 있다.
-        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
             @Override
             public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
                 return false;
             }
 
             @Override
-            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+            public void onSwiped(@NonNull final RecyclerView.ViewHolder viewHolder, int direction){
+                Log.d(LOG_TAG, "삭제명령");
+                final int position = viewHolder.getAdapterPosition();
                 if(direction == ItemTouchHelper.LEFT){
-                    Log.d(LOG_TAG, "삭제명령");
-                    adapter.deleteItem(viewHolder.getAdapterPosition()); //해당 위치 position이 viewholder에 있는 해당 adaterposition이다.
+                    AlertDialog.Builder builder = new AlertDialog.Builder(OrderStatusActivity.this);
+                    builder.setTitle("AlertDialog Title");
+                    builder.setMessage("AlertDialog Content");
+
+                    builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            adapter.deleteItem(position);
+                        }
+                    }).setNegativeButton("아니오", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Toast.makeText(getApplicationContext(), "취소하였습니다.",Toast.LENGTH_SHORT).show();
+                            cycleOrderStatusView.setAdapter(adapter);
+                        }
+                    }).show();
                 }
             }
         }).attachToRecyclerView(cycleOrderStatusView); //마지막에는 순환뷰에 적용
@@ -103,7 +121,24 @@ public class OrderStatusActivity extends AppCompatActivity {
             }
         });
     }
-
+//    AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getApplicationContext());
+//        dialogBuilder.setTitle("정말 삭제하시겠습니까?");
+//        dialogBuilder.setMessage("삭제 주문을 확인하셨습니까?");
+//        dialogBuilder.setPositiveButton("확인",
+//                new DialogInterface.OnClickListener() {
+//        @Override
+//        public void onClick(DialogInterface dialog, int which) {
+//            Toast.makeText(getApplicationContext(), "삭제완료!", Toast.LENGTH_SHORT).show();
+//
+//        }
+//    });
+//        dialogBuilder.setNegativeButton("취소",
+//                new DialogInterface.OnClickListener() {
+//        @Override
+//        public void onClick(DialogInterface dialog, int which) {
+//            Toast.makeText(getApplicationContext(), "취소하였습니다.", Toast.LENGTH_SHORT).show();
+//        }
+//    });
     @Override
     protected void onStart() {
         super.onStart();

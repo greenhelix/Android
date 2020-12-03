@@ -31,6 +31,7 @@
                 android:paddingLeft="10dp"
                 android:text="주문번호"
                 android:textSize="15dp"
+                android:textColor="@color/head"
                 android:inputType="number"
                 />
 
@@ -48,6 +49,7 @@
                     android:layout_marginBottom="4dp"
                     android:text="주문자 :"
                     android:textSize="17dp"
+                    android:textColor="@color/head"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/tv_status_senderName"
                     app:layout_constraintHorizontal_bias="0.0"
@@ -63,6 +65,7 @@
                     android:layout_marginBottom="4dp"
                     android:text="아무개"
                     android:textSize="17dp"
+                    android:textColor="@color/head"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/tvNowSender"
                     app:layout_constraintTop_toTopOf="parent"
@@ -87,6 +90,7 @@
                     android:layout_marginStart="16dp"
                     android:text="받는사람 :"
                     android:textSize="17dp"
+                    android:textColor="@color/head"
                     app:layout_constraintStart_toEndOf="@+id/deliverImg2"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -99,6 +103,7 @@
                     android:paddingRight="10dp"
                     android:text="아무개"
                     android:textSize="17dp"
+                    android:textColor="@color/head"
                     app:layout_constraintStart_toEndOf="@+id/tvNowRecipient"
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -112,6 +117,7 @@
                 android:maxLength="20"
                 android:text="주소 예시 "
                 android:textSize="15dp"
+                android:textColor="@color/head"
                 android:maxLines="1"
                 />
 
@@ -134,6 +140,7 @@
                     android:text="@string/order_status_text01"
                     android:textAlignment="center"
                     android:textSize="20dp"
+                    android:textColor="@color/head"
                     />
             </GridLayout>
         </LinearLayout>
@@ -159,6 +166,7 @@
                         android:layout_marginBottom="10dp"
                         android:background="@drawable/status1"
                         android:text="@string/order_status_text01"
+                        android:textColor="@color/head"
                         />
                     <Button
                         android:id="@+id/btn_change_status2"
@@ -166,6 +174,7 @@
                         android:layout_height="30dp"
                         android:background="@drawable/status2"
                         android:text="@string/order_status_text02"
+                        android:textColor="@color/head"
                         />
                     <Button
                         android:id="@+id/btn_change_status3"
@@ -174,6 +183,7 @@
                         android:layout_marginBottom="10dp"
                         android:background="@drawable/status3"
                         android:text="@string/order_status_text03"
+                        android:textColor="@color/head"
                         />
                     <Button
                         android:id="@+id/btn_change_status4"
@@ -181,6 +191,7 @@
                         android:layout_height="30dp"
                         android:background="@drawable/status4"
                         android:text="@string/order_status_text04"
+                        android:textColor="@color/head"
                         />
 
                 </GridLayout>
