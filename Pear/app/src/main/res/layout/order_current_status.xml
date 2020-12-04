@@ -83,6 +83,22 @@
         />
 
     <Button
+        android:id="@+id/btn_status_export"
+        style="@style/bottom_btn_center_style"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/bottom_btn_shape"
+        android:text="내보내기"
+        android:onClick="exportCSV"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_status_go_main"
+        app:layout_constraintHorizontal_bias="0.483"
+        app:layout_constraintStart_toEndOf="@+id/btn_status_complete_del"
+        app:layout_constraintTop_toBottomOf="@+id/status_layout2"
+        />
+
+    <Button
         android:id="@+id/btn_status_go_main"
         style="@style/bottom_btn_next_style"
         android:layout_marginTop="17dp"

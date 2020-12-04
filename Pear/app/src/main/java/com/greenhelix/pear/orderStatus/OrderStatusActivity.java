@@ -1,8 +1,12 @@
 package com.greenhelix.pear.orderStatus;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.FileUriExposedException;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -11,6 +15,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.FileProvider;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,8 +25,13 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.greenhelix.pear.R;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 public class OrderStatusActivity extends AppCompatActivity {
-    private static final String LOG_TAG = "ik";
+    private static final String LOG_TAG = "ik", ERROR = "ikerror";
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference orderRef = db.collection("pear_orders");
     private RecyclerView cycleOrderStatusView;
@@ -29,7 +39,7 @@ public class OrderStatusActivity extends AppCompatActivity {
     //어댑터 생성했으면 여기에 추가
     private OrderStatusAdapter adapter;
 
-    Button btnDelete, btnMain;
+    Button btnDelete, btnMain, btnExport;
     Button filter1, filter2, filter3, filter4;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -54,7 +64,7 @@ public class OrderStatusActivity extends AppCompatActivity {
         setFilter(filter3);
         filter4 = findViewById(R.id.btn_filter_status4);
         setFilter(filter4);
-
+        btnExport = findViewById(R.id.btn_status_export);
     }//onCreate END
 
     //초기 순환뷰 기능 여기 들감
@@ -121,6 +131,35 @@ public class OrderStatusActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    //유투브 베이스로 먼저 진행
+    public void exportCSV(View view){
+        String testData = "이게 데이터";
+
+        try{
+            //file저장하는 부분
+            FileOutputStream exportStream = openFileOutput("파일명.csv", Context.MODE_PRIVATE);
+            exportStream.write(testData.getBytes());
+            exportStream.close();
+
+            //export하는 부분
+            Context context = getApplicationContext();
+            File filelocation = new File(getFilesDir(), "파일명.csv");
+            Uri exportpath = FileProvider.getUriForFile(context, "com.greenhelix.pear.fileprovider", filelocation);
+            Intent exportIntent = new Intent(Intent.ACTION_SEND); //인텐트 action_send의미 찾아볼것
+            exportIntent.setType("text/csv");
+            exportIntent.putExtra(Intent.EXTRA_SUBJECT, "Data");
+            exportIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            exportIntent.putExtra(Intent.EXTRA_STREAM, exportpath);
+            startActivity(Intent.createChooser(exportIntent, "Send mail"));
+            Log.d(LOG_TAG, "파일 내보내기 완료");
+
+        }catch (FileUriExposedException | FileNotFoundException e ){
+            Log.d(ERROR, "파일 이상 \n"+ e.toString());
+        } catch (IOException f) {
+            Log.d(ERROR, "파일안써짐 \n"+ f.toString());
+        }
     }
 
     @Override
