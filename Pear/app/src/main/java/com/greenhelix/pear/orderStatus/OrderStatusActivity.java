@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.FileUriExposedException;
 import android.util.Log;
 import android.view.View;
@@ -139,13 +140,19 @@ public class OrderStatusActivity extends AppCompatActivity {
 
         try{
             //file저장하는 부분
-            FileOutputStream exportStream = openFileOutput("파일명.csv", Context.MODE_PRIVATE);
+            FileOutputStream exportStream = openFileOutput("export1.csv", Context.MODE_PRIVATE);
             exportStream.write(testData.getBytes());
             exportStream.close();
-
-            //export하는 부분
+            File exportDir = getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS);
+            File exportDoc = File.createTempFile(
+                    testData,
+                    ".csv",
+                    exportDir
+            );
+            Log.d(LOG_TAG, "파일 내보내기 완료");
+//            export하는 부분
             Context context = getApplicationContext();
-            File filelocation = new File(getFilesDir(), "파일명.csv");
+            File filelocation = new File(getFilesDir(), "export1.csv");
             Uri exportpath = FileProvider.getUriForFile(context, "com.greenhelix.pear.fileprovider", filelocation);
             Intent exportIntent = new Intent(Intent.ACTION_SEND); //인텐트 action_send의미 찾아볼것
             exportIntent.setType("text/csv");

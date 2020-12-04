@@ -2,5 +2,5 @@
 <paths xmlns:android="http://schemas.android.com/apk/res/android">
     <external-path
         name="path_export_csv"
-        path="Android/data/com.greenhelix.pear/files/export/csv"/>
+        path="Android/data/com.greenhelix.pear/files/Documents"/>
 </paths>
