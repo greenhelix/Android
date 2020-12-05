@@ -26,9 +26,11 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.greenhelix.pear.R;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 
 public class OrderStatusActivity extends AppCompatActivity {
@@ -134,33 +136,37 @@ public class OrderStatusActivity extends AppCompatActivity {
         });
     }
 
-    //유투브 베이스로 먼저 진행
     public void exportCSV(View view){
-        String testData = "이게 데이터";
+        //파일경로를 먼저 설정
+        File storageDir = getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS); //기본 루트에, 공식폴더형태로 해줄수 있음 이거는 document폴더 생성
+        Log.d(LOG_TAG, "파일 경로는??? \n"+ storageDir.toString());
+        //try catch문을 먼저 작성.
+        try {
+            /*파일만드기 파트*/
+            File test = File.createTempFile("export", ".csv", storageDir); // 파일명, 형태, 파일경로 를 설정해준다.
+            FileWriter testWrite = new FileWriter(test); // 파일에 데이터를 넣어줄 도구 끄낸다.(도구를 사용할 해당 파일 명시해야한다.)
+            BufferedWriter writer = new BufferedWriter(testWrite); // 도구를 사용할 도화지 같은 공간을 만들어준다.
 
-        try{
-            //file저장하는 부분
-            FileOutputStream exportStream = openFileOutput("export1.csv", Context.MODE_PRIVATE);
-            exportStream.write(testData.getBytes());
-            exportStream.close();
-            File exportDir = getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS);
-            File exportDoc = File.createTempFile(
-                    testData,
-                    ".csv",
-                    exportDir
-            );
-            Log.d(LOG_TAG, "파일 내보내기 완료");
-//            export하는 부분
-            Context context = getApplicationContext();
-            File filelocation = new File(getFilesDir(), "export1.csv");
-            Uri exportpath = FileProvider.getUriForFile(context, "com.greenhelix.pear.fileprovider", filelocation);
-            Intent exportIntent = new Intent(Intent.ACTION_SEND); //인텐트 action_send의미 찾아볼것
-            exportIntent.setType("text/csv");
-            exportIntent.putExtra(Intent.EXTRA_SUBJECT, "Data");
-            exportIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            exportIntent.putExtra(Intent.EXTRA_STREAM, exportpath);
-            startActivity(Intent.createChooser(exportIntent, "Send mail"));
-            Log.d(LOG_TAG, "파일 내보내기 완료");
+            for(int i = 0; i<5; i++){
+                writer.write("\n"+String.valueOf(i)+","+String.valueOf(i*i));  // 원하는 데이터를 string형태로 ,을 포함하여 원하는 형식으로 넣어준다.
+            }
+            // 입력이 끝나면, 도구와 도화지를 그만 꺼준다.
+            writer.close();
+            testWrite.close();
+
+            /* 파일생성완료되었으니, 공유파트*/
+            Uri exportUri = FileProvider.getUriForFile(getApplicationContext(),
+                    "com.greenhelix.pear.fileprovider", test); // 파일을 uri형태로 변환해준다. fileprovider 경로는 한곳으로 정해두면된다.(상단의 파일경로가 바꿔주는 거임)
+
+            // intent를 통해서 데이터 파일을 보내준다. intent의 속성과 옵션을 설정해준다.
+            Intent fileIntent = new Intent(Intent.ACTION_SEND); // 공유화면을 열어준다.(메일, 드라이버 등등)
+            fileIntent.setType("text/csv"); //?/
+            fileIntent.putExtra(Intent.EXTRA_SUBJECT, "혁규농원 주문목록입니다!"); // 메일 작성시 메일 제목
+            fileIntent.putExtra(Intent.EXTRA_TEXT, "주문정보 파일을 확인하세요. ^^! "); // 메일 작성시 메일 내용
+            fileIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION); // uri 허가권
+
+            fileIntent.putExtra(Intent.EXTRA_STREAM, exportUri); // 파일 uri를 넣어준다.
+            startActivity(Intent.createChooser(fileIntent, "주문정보를 내보냅니다.")); // intent를 실행해주면서, 공유창 상단에 제목을 보여준다.
 
         }catch (FileUriExposedException | FileNotFoundException e ){
             Log.d(ERROR, "파일 이상 \n"+ e.toString());

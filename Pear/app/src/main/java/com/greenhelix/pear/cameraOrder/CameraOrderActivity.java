@@ -116,6 +116,7 @@ public class CameraOrderActivity extends AppCompatActivity {
     private File createImageFile() throws IOException {
         // Create an image file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd").format(new Date());
+
         String imageFileName = "텍스트인식" + timeStamp + "_";
         File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
         File image = File.createTempFile(
@@ -145,7 +146,7 @@ public class CameraOrderActivity extends AppCompatActivity {
             // Continue only if the File was successfully created
             if (photoFile != null) {
                 photoURI = FileProvider.getUriForFile(this,
-                        "com.greenhelix.pear",
+                        "com.greenhelix.pear.fileprovider",
                         photoFile);
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                 startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
@@ -153,31 +154,3 @@ public class CameraOrderActivity extends AppCompatActivity {
         }
     }
 }
-//카메라권한이 있는 경우 카메라를 불러서 사진을 찍는다. 그리고 인텐트를 통해서 사진정보를 onActivityResult으로 보낸다.
-/*근본적으로 이 메서드는 미리보기!이미지를 위해 있는 간단한 메서드이다. */
-//    private void dispatchTakePictureIntent() {
-//        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-//        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-//            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
-//        }
-//    }
-//static final int REQUEST_IMAGE_CAPTURE = 1;//미리보기용인데 필요업음
-//            imageBitmap = (Bitmap) data.getExtras().get("data"); //이건 순전히 미리보기 이미지라 비트맵으로 가져와서 화질 구린거다.
-//            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-//            imageBitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-//            imageArray = stream.toByteArray();
-//            imageURI = data.getExtras().get;
-//            Log.d(LOG_TAG,"이미지 비트맵: "+imageBitmap.toString());
-//            Log.d(LOG_TAG,"이미지 비트맵: "+imageArray.toString());
-
-//public byte[] getBytes(InputStream inputStream) throws IOException {
-//    ByteArrayOutputStream byteBuffer = new ByteArrayOutputStream();
-//    int bufferSize = 1024;
-//    byte[] buffer = new byte[bufferSize];
-//
-//    int len = 0;
-//    while ((len = inputStream.read(buffer)) != -1) {
-//        byteBuffer.write(buffer, 0, len);
-//    }
-//    return byteBuffer.toByteArray();
-//}
