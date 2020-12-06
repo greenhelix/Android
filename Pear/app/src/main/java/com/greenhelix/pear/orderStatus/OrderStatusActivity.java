@@ -1,7 +1,6 @@
 package com.greenhelix.pear.orderStatus;
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -29,7 +28,6 @@ import com.greenhelix.pear.R;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -68,6 +66,7 @@ public class OrderStatusActivity extends AppCompatActivity {
         filter4 = findViewById(R.id.btn_filter_status4);
         setFilter(filter4);
         btnExport = findViewById(R.id.btn_status_export);
+
     }//onCreate END
 
     //초기 순환뷰 기능 여기 들감
@@ -85,7 +84,7 @@ public class OrderStatusActivity extends AppCompatActivity {
         cycleOrderStatusView.setAdapter(adapter);
 
         // 주문 카드를 선택했을때, 모션값을 인식하고 그에 따른 삭제 명령을 주었다. onSwiped을 통해서 삭제를 시킴. 다른 방향을 제어하거나 명령을 바꿀수 있다.
-        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
             @Override
             public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
                 return false;
@@ -93,22 +92,44 @@ public class OrderStatusActivity extends AppCompatActivity {
 
             @Override
             public void onSwiped(@NonNull final RecyclerView.ViewHolder viewHolder, int direction){
-                Log.d(LOG_TAG, "삭제명령");
+                Log.d(LOG_TAG, "스와이프하였습니다.");
                 final int position = viewHolder.getAdapterPosition();
                 if(direction == ItemTouchHelper.LEFT){
                     AlertDialog.Builder builder = new AlertDialog.Builder(OrderStatusActivity.this);
-                    builder.setTitle("AlertDialog Title");
-                    builder.setMessage("AlertDialog Content");
+                    builder.setTitle("알림");
+                    builder.setMessage("해당 주문을 삭제하시겠습니까? \n 삭제하면 주문을 복구할 수 없습니다.");
 
-                    builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                    builder.setPositiveButton("예", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             adapter.deleteItem(position);
                             Log.d(LOG_TAG, "삭제되었습니다." + adapter.getSnapshots().getSnapshot(position).getString("user"));
+                            Toast.makeText(getApplicationContext(), "삭제완료",Toast.LENGTH_SHORT).show();
                         }
                     }).setNegativeButton("아니오", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
+                            Toast.makeText(getApplicationContext(), "삭제를 취소하였습니다.",Toast.LENGTH_SHORT).show();
+                            cycleOrderStatusView.setAdapter(adapter);
+                        }
+                    }).show();
+                }else if(direction == ItemTouchHelper.RIGHT){
+                    AlertDialog.Builder builder = new AlertDialog.Builder(OrderStatusActivity.this);
+                    builder.setTitle("알림");
+                    builder.setMessage("주문 수정화면으로 이동하시겠습니까?");
+
+                    builder.setPositiveButton("예", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            //수정화면으로 이동
+                            Log.d(LOG_TAG, "수정화면으로 이동합니다.");
+                            Intent modifyOrderIntent = new Intent(OrderStatusActivity.this, OrderStatusInfo.class);
+
+                        }
+                    }).setNegativeButton("아니오", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Log.d(LOG_TAG, "수정취소하였습니다.");
                             Toast.makeText(getApplicationContext(), "취소하였습니다.",Toast.LENGTH_SHORT).show();
                             cycleOrderStatusView.setAdapter(adapter);
                         }

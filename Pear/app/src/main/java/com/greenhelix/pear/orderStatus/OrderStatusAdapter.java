@@ -143,7 +143,6 @@ public class OrderStatusAdapter extends FirestoreRecyclerAdapter<NowOrder, Order
         List<String> tempAddress = model.getRecipient_addr();
         String address = Joiner.on("").join(tempAddress);
         holder.orderAddress.setText(address);
-
     }
 
 

@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/greenBackground"
-    tools:context=".directOrder.DirectOrderActivity"
     >
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/status_info_linear1"
@@ -18,11 +17,10 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         >
-<!--        app:layout_constraintTop_toBottomOf="@id/"-->
         <TextView
-            android:id="@+id/tv_direct_head"
+            android:id="@+id/tv_status_head"
             style="@style/headline_text"
-            android:text="@string/order_head_text"
+            android:text="@string/status_head_text"
             />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -40,7 +38,7 @@
         >
         <TextView
             android:id="@+id/tv_status_sender"
-            style="@style/headline_text2"
+            style="@style/headline_text3"
             android:text="@string/order_sender_text"
             />
         <EditText
@@ -71,7 +69,7 @@
         >
         <TextView
             android:id="@+id/tv_direct_sender_tel"
-            style="@style/headline_text2"
+            style="@style/headline_text3"
             android:text="@string/order_sender_tel_text"
             />
         <LinearLayout
@@ -144,7 +142,7 @@
         >
         <TextView
             android:id="@+id/tv_order_status_recipient"
-            style="@style/headline_text2"
+            style="@style/headline_text3"
             android:text="@string/order_recipient_text"
             />
         <EditText
@@ -175,7 +173,7 @@
         >
         <TextView
             android:id="@+id/tv_order_status_recipient_tel"
-            style="@style/headline_text2"
+            style="@style/headline_text3"
             android:text="@string/order_recipient_tel_text"
             />
 
@@ -252,7 +250,7 @@
             >
             <TextView
                 android:id="@+id/tv_status_address"
-                style="@style/headline_text2"
+                style="@style/headline_text3"
                 android:text="@string/order_address_text"
                 />
         </LinearLayout>

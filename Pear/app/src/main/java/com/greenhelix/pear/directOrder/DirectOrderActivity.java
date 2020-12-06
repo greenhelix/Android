@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -46,26 +45,26 @@ public class DirectOrderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_direct_info);
 
-        sender_name = (EditText) findViewById(R.id.et_direct_sender);
-        sender_tel1 = (EditText) findViewById(R.id.et_direct_sender_tel1);
-        sender_tel2 = (EditText) findViewById(R.id.et_direct_sender_tel2);
-        sender_tel3 = (EditText) findViewById(R.id.et_direct_sender_tel3);
-        recipient_name = (EditText) findViewById(R.id.et_direct_recipient);
-        recipient_tel1 = (EditText) findViewById(R.id.et_direct_recipient_tel1);
-        recipient_tel2 = (EditText) findViewById(R.id.et_direct_recipient_tel2);
-        recipient_tel3 = (EditText) findViewById(R.id.et_direct_recipient_tel3);
-        address_num = (EditText) findViewById(R.id.et_direct_address_num);
-        address_detail1 = (EditText) findViewById(R.id.et_direct_address_show);
-        address_detail2 = (EditText) findViewById(R.id.et_direct_address_detail);
-        direct_Next = (Button) findViewById(R.id.btn_direct_next);
-        direct_Before = (Button) findViewById(R.id.btn_direct_before);
+        sender_name = (EditText) findViewById(R.id.et_status_sender);
+        sender_tel1 = (EditText) findViewById(R.id.et_status_sender_tel1);
+        sender_tel2 = (EditText) findViewById(R.id.et_status_sender_tel2);
+        sender_tel3 = (EditText) findViewById(R.id.et_status_sender_tel3);
+        recipient_name = (EditText) findViewById(R.id.et_status_recipient);
+        recipient_tel1 = (EditText) findViewById(R.id.et_status_recipient_tel1);
+        recipient_tel2 = (EditText) findViewById(R.id.et_status_recipient_tel2);
+        recipient_tel3 = (EditText) findViewById(R.id.et_status_recipient_tel3);
+        address_num = (EditText) findViewById(R.id.et_status_address_num);
+        address_detail1 = (EditText) findViewById(R.id.et_status_address_show);
+        address_detail2 = (EditText) findViewById(R.id.et_status_address_detail);
+        direct_Next = (Button) findViewById(R.id.btn_status_next);
+        direct_Before = (Button) findViewById(R.id.btn_status_before);
         direct_Before.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
-        address_find = findViewById(R.id.btn_direct_address);
+        address_find = findViewById(R.id.btn_status_address);
         if (address_find != null) {
             address_find.setOnClickListener(new View.OnClickListener() {
                 @Override

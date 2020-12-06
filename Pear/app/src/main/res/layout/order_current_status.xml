@@ -107,4 +107,5 @@
         app:layout_constraintTop_toBottomOf="@+id/status_layout2"
         tools:ignore="MissingConstraints"
         />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
