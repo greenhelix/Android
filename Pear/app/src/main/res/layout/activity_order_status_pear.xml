@@ -211,7 +211,7 @@
 
 
     <Button
-        android:id="@+id/btn_pearSelctBefore"
+        android:id="@+id/btn_m_pearSelctBefore"
         style="@style/bottom_btn_before_style"
         android:background="@drawable/bottom_btn_shape"
         android:text="@string/before_btn_text"
@@ -219,7 +219,8 @@
         />
 
     <Button
-        android:id="@+id/btn_pearSelctAfter"
+        android:id="@+id/btn_m_pearSelctAfter"
+        android:onClick="pearModifyUpdateAndPass"
         style="@style/bottom_btn_next_style"
         android:background="@drawable/bottom_btn_shape"
         android:text="@string/modify_btn_text"

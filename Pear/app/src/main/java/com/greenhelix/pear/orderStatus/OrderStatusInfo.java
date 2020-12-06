@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -37,8 +38,8 @@ public class OrderStatusInfo extends AppCompatActivity {
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference orderRef = db.collection("pear_orders");
-    String id = "";
-    private static final int SEARCH_ADDRESS_ACTIVITY = 10000;
+    String id = ""; //db에서 문서 아이디 넣는 변수
+    private static final int SEARCH_ADDRESS_ACTIVITY = 10000; //주소찾기에 필요한코드
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,16 +55,25 @@ public class OrderStatusInfo extends AppCompatActivity {
         m_address_num = (EditText) findViewById(R.id.et_status_address_num);
         m_address_detail1 = (EditText) findViewById(R.id.et_status_address_show);
         m_address_detail2 = (EditText) findViewById(R.id.et_status_address_detail);
-        modifyDataShow(); //수정할 카드의 데이터를 표시해줍니다.
+        modifyDataShow(); //수정할 카드의 데이터를 표시해줍니다.(db에서 가져옴)
 
+        //수정완료 버튼 활성화
         modifyComplete = (Button) findViewById(R.id.btn_status_next);
         modifyComplete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //그냥 모든 텍스트값다 바꾼다.
                 modifyDataUpdate();
-                startActivity(new Intent(OrderStatusInfo.this, OrderStatusPear.class));
+                Intent modifyData = new Intent(OrderStatusInfo.this, OrderStatusPear.class);
+                if(id != null ){
+                    modifyData.putExtra("id", id);
+                    startActivity(modifyData);
+                }else{
+                    Toast.makeText(getApplicationContext(), "아이디값이 없어요!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
+        //되돌아가기
         modifyBefore = (Button) findViewById(R.id.btn_status_before);
         modifyBefore.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +81,7 @@ public class OrderStatusInfo extends AppCompatActivity {
                 finish();
             }
         });
+        //주소찾기 기능 구현
         modifyAddress = findViewById(R.id.btn_status_address);
         if (modifyAddress != null) {
             modifyAddress.setOnClickListener(new View.OnClickListener() {
@@ -85,6 +96,7 @@ public class OrderStatusInfo extends AppCompatActivity {
 
     }
 
+    // 현재 문서의 데이터 보여주기
     public void modifyDataShow(){
         final int position = getIntent().getExtras().getInt("position");
         id = getIntent().getExtras().getString("id");
@@ -145,6 +157,8 @@ public class OrderStatusInfo extends AppCompatActivity {
                         "recipient_addr", reAdr
                 );
     }
+
+    //주소찾기한 뒤 데이터 처리
     public void onActivityResult(int requestCode, int resultCode, Intent intent)
     {
         super.onActivityResult(requestCode, resultCode, intent);
