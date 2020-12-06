@@ -23,6 +23,7 @@ import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.greenhelix.pear.MainActivity;
 import com.greenhelix.pear.R;
 
 import java.io.BufferedWriter;
@@ -53,7 +54,7 @@ public class OrderStatusActivity extends AppCompatActivity {
         btnMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                startActivity(new Intent(OrderStatusActivity.this, MainActivity.class));
             }
         });
         btnDelete = findViewById(R.id.btn_status_complete_del);

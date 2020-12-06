@@ -68,6 +68,7 @@ public class OrderStatusInfo extends AppCompatActivity {
                 if(id != null ){
                     modifyData.putExtra("id", id);
                     startActivity(modifyData);
+
                 }else{
                     Toast.makeText(getApplicationContext(), "아이디값이 없어요!", Toast.LENGTH_SHORT).show();
                 }
@@ -111,13 +112,13 @@ public class OrderStatusInfo extends AppCompatActivity {
                 String recipient = documentSnapshot.getString("recipient");
                 m_recipient_name.setText(recipient);
                 String sender_tel = documentSnapshot.getString("sender_tel");
-                m_sender_tel1.setText(sender_tel.substring(0,4));
-                m_sender_tel2.setText(sender_tel.substring(3,6));
-                m_sender_tel3.setText(sender_tel.substring(6));
+                m_sender_tel1.setText(sender_tel.substring(0,3));
+                m_sender_tel2.setText(sender_tel.substring(3,7));
+                m_sender_tel3.setText(sender_tel.substring(7));
                 String recipient_tel = documentSnapshot.getString("recipient_tel");
                 m_recipient_tel1.setText(recipient_tel.substring(0,4));
-                m_recipient_tel2.setText(recipient_tel.substring(3,6));
-                m_recipient_tel3.setText(recipient_tel.substring(6));
+                m_recipient_tel2.setText(recipient_tel.substring(3,7));
+                m_recipient_tel3.setText(recipient_tel.substring(7));
                 List<String> recipient_addr = (List<String>) documentSnapshot.get("recipient_addr");
                 m_address_num.setText(recipient_addr.get(0));
                 m_address_detail1.setText(recipient_addr.get(1));

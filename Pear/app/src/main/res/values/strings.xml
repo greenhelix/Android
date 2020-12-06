@@ -1,7 +1,8 @@
 <resources>
     <!--login++++++++++++++++++++++++++++++++++++++++-->
-    <string name="app_name">Pear</string>
-    <string name="login_head">혁규 농원</string>
+    <string name="app_name">혁규</string>
+    <string name="login_head1">혁규 농원에 오신걸</string>
+    <string name="login_head2">환영합니다~!</string>
     <!--main+++++++++++++++++++++++++++++++++++++++++-->
     <string name="main_head_text01">반갑습니다!</string>
     <string name="main_head_text02">오늘은 %s 입니다.</string>

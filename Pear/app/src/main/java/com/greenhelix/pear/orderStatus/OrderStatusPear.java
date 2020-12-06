@@ -209,7 +209,7 @@ public class OrderStatusPear extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Toast.makeText(getApplicationContext(), "저장성공!",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "수정성공!",Toast.LENGTH_SHORT).show();
                         Log.d(LOG_TAG, "~~~~~~저장이 되었네요^^");
                     }
                 })
