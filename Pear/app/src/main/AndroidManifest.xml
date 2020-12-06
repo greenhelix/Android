@@ -1,49 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.greenhelix.pear" >
-    
-    <!--인터넷 허가-->
-    <uses-permission android:name="android.permission.INTERNET"/>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.greenhelix.pear">
+    <!-- 인터넷 허가 -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 카메라 허용 -->
+    <uses-permission
+        android:name="android.permission.CAMERA"
+        android:required="true" />
 
-    <!--카메라 허용-->
-    <uses-permission android:name="android.permission.CAMERA" android:required="true" />
-    <uses-feature android:name="android.hardware.camera" android:required="true" />
-
-    <!--저장권한 - 읽기 쓰기가 둘다 가능하다. write만써도 다 됨-->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" /> <!-- 저장권한 - 읽기 쓰기가 둘다 가능하다. write만써도 다 됨 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_sercurity_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:networkSecurityConfig="@xml/network_sercurity_config">
-        <activity android:name=".LoginActivity" android:screenOrientation="portrait">
+        android:theme="@style/AppTheme">
+        <activity android:name=".orderStatus.OrderStatusPear"></activity>
+        <activity
+            android:name=".LoginActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"  android:screenOrientation="portrait"/>
-        <activity android:name=".OrderKindActivity"  android:screenOrientation="portrait"/>
-        <activity android:name=".orderStatus.OrderStatusActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".orderStatus.OrderStatusInfo" android:screenOrientation="portrait"/>
-        <activity android:name=".cameraOrder.CameraOrderActivity"  android:screenOrientation="portrait"/>
-        <activity android:name=".cameraOrder.ImageML"  android:screenOrientation="portrait"/>
-
-        <activity android:name=".directOrder.DirectOrderActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".directOrder.DirectShow"  android:screenOrientation="portrait"/>
-
-        <activity android:name=".cloudDB.CloudStore"  android:screenOrientation="portrait"/>
-
-        <activity android:name=".SelectPearActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".listShow.OrderListActivity" android:screenOrientation="portrait"/>
-        <activity android:name=".server.AddressAPIkakao" android:screenOrientation="portrait"/>
-
-
-<!--        파일 제공자를 구성한다-->
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".OrderKindActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".orderStatus.OrderStatusActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".orderStatus.OrderStatusInfo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".cameraOrder.CameraOrderActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".cameraOrder.ImageML"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".directOrder.DirectOrderActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".directOrder.DirectShow"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".cloudDB.CloudStore"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SelectPearActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".listShow.OrderListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".server.AddressAPIkakao"
+            android:screenOrientation="portrait" /> <!-- 파일 제공자를 구성한다 -->
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.greenhelix.pear.fileprovider"
@@ -51,11 +73,8 @@
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_path"
-                />
+                android:resource="@xml/file_path" />
         </provider>
-
-
     </application>
 
 </manifest>

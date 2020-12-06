@@ -101,7 +101,7 @@
         <item name="android:layout_height">35dp</item>
         <item name="android:paddingLeft">10dp</item>
     </style>
-    <style name="status_input_tel_linear">
+    <style name="direct_input_tel_linear">
         <item name="android:layout_width">300dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:orientation">horizontal</item>

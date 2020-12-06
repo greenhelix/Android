@@ -113,7 +113,8 @@ public class OrderStatusActivity extends AppCompatActivity {
                             cycleOrderStatusView.setAdapter(adapter);
                         }
                     }).show();
-                }else if(direction == ItemTouchHelper.RIGHT){
+                }
+                else if(direction == ItemTouchHelper.RIGHT){
                     AlertDialog.Builder builder = new AlertDialog.Builder(OrderStatusActivity.this);
                     builder.setTitle("알림");
                     builder.setMessage("주문 수정화면으로 이동하시겠습니까?");
@@ -125,6 +126,11 @@ public class OrderStatusActivity extends AppCompatActivity {
                             Log.d(LOG_TAG, "수정화면으로 이동합니다.");
                             Intent modifyOrderIntent = new Intent(OrderStatusActivity.this, OrderStatusInfo.class);
 
+                            String id = adapter.getSnapshots().getSnapshot(position).getId();
+                            modifyOrderIntent.putExtra("position",position); //해당 주문 인덱스를 전달해준다.
+                            modifyOrderIntent.putExtra("id",id); //해당 주문 아이디를 전달해준다.
+                            Log.d(LOG_TAG, "보내는 position:: "+ position+ "\n보내는 아이디 :: "+ id);
+                            startActivity(modifyOrderIntent);
                         }
                     }).setNegativeButton("아니오", new DialogInterface.OnClickListener() {
                         @Override

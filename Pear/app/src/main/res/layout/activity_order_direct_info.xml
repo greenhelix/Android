@@ -9,7 +9,7 @@
     tools:context=".directOrder.DirectOrderActivity"
     >
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/status_info_linear1"
+        android:id="@+id/direct_info_linear1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -27,7 +27,7 @@
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/status_info_linear2"
+        android:id="@+id/direct_info_linear2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -36,15 +36,15 @@
         android:layout_marginStart="30dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/status_info_linear1"
+        app:layout_constraintTop_toBottomOf="@id/direct_info_linear1"
         >
         <TextView
-            android:id="@+id/tv_status_sender"
+            android:id="@+id/tv_direct_sender"
             style="@style/headline_text2"
             android:text="@string/order_sender_text"
             />
         <EditText
-            android:id="@+id/et_status_sender"
+            android:id="@+id/et_direct_sender"
             style="@style/input_text_300"
             android:layout_marginBottom="3dp"
             android:background="@drawable/basic_input_shape"
@@ -53,12 +53,12 @@
             android:text=""
             android:maxLength="5"
             android:singleLine="true"
-            android:nextFocusForward="@+id/et_status_sender_tel1"
+            android:nextFocusForward="@+id/et_direct_sender_tel1"
             />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/status_info_linear3"
+        android:id="@+id/direct_info_linear3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -67,7 +67,7 @@
         android:layout_marginStart="30dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/status_info_linear2"
+        app:layout_constraintTop_toBottomOf="@id/direct_info_linear2"
         >
         <TextView
             android:id="@+id/tv_direct_sender_tel"
@@ -75,12 +75,12 @@
             android:text="@string/order_sender_tel_text"
             />
         <LinearLayout
-            android:id="@+id/status_tel_linear"
-            style="@style/status_input_tel_linear"
+            android:id="@+id/direct_tel_linear"
+            style="@style/direct_input_tel_linear"
             >
 
             <EditText
-                android:id="@id/et_status_sender_tel1"
+                android:id="@id/et_direct_sender_tel1"
                 style="@style/input_text_85"
                 android:background="@drawable/basic_input_shape"
                 android:inputType="phone"
@@ -99,7 +99,7 @@
                 />
 
             <EditText
-                android:id="@+id/et_status_sender_tel2"
+                android:id="@+id/et_direct_sender_tel2"
                 style="@style/input_text_85"
                 android:background="@drawable/basic_input_shape"
                 android:inputType="phone"
@@ -118,12 +118,12 @@
                 />
 
             <EditText
-                android:id="@+id/et_status_sender_tel3"
+                android:id="@+id/et_direct_sender_tel3"
                 style="@style/input_text_85"
                 android:background="@drawable/basic_input_shape"
                 android:inputType="phone"
                 android:maxLength="4"
-                android:nextFocusForward="@id/et_status_recipient"
+                android:nextFocusForward="@id/et_direct_recipient"
                 android:singleLine="true"
                 />
 
@@ -131,7 +131,7 @@
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/status_info_linear4"
+        android:id="@+id/direct_info_linear4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -140,15 +140,15 @@
         android:layout_marginLeft="30dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/status_info_linear3"
+        app:layout_constraintTop_toBottomOf="@id/direct_info_linear3"
         >
         <TextView
-            android:id="@+id/tv_order_status_recipient"
+            android:id="@+id/tv_order_direct_recipient"
             style="@style/headline_text2"
             android:text="@string/order_recipient_text"
             />
         <EditText
-            android:id="@+id/et_status_recipient"
+            android:id="@+id/et_direct_recipient"
             style="@style/input_text_300"
             android:layout_marginTop="8dp"
             android:background="@drawable/basic_input_shape"
@@ -156,13 +156,13 @@
             android:inputType="textAutoComplete"
             android:maxLength="5"
             android:maxLines="1"
-            android:nextFocusForward="@id/et_status_recipient_tel1"
+            android:nextFocusForward="@id/et_direct_recipient_tel1"
             android:singleLine="true"
             />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/status_info_linear5"
+        android:id="@+id/direct_info_linear5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -171,22 +171,22 @@
         android:layout_marginStart="30dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/status_info_linear4"
+        app:layout_constraintTop_toBottomOf="@id/direct_info_linear4"
         >
         <TextView
-            android:id="@+id/tv_order_status_recipient_tel"
+            android:id="@+id/tv_order_direct_recipient_tel"
             style="@style/headline_text2"
             android:text="@string/order_recipient_tel_text"
             />
 
 
         <LinearLayout
-            android:id="@+id/status_tel_linear2"
-            style="@style/status_input_tel_linear"
+            android:id="@+id/direct_tel_linear2"
+            style="@style/direct_input_tel_linear"
             >
 
             <EditText
-                android:id="@+id/et_status_recipient_tel1"
+                android:id="@+id/et_direct_recipient_tel1"
                 style="@style/input_text_85"
                 android:background="@drawable/basic_input_shape"
                 android:maxLength="3"
@@ -204,7 +204,7 @@
                 />
 
             <EditText
-                android:id="@+id/et_status_recipient_tel2"
+                android:id="@+id/et_direct_recipient_tel2"
                 style="@style/input_text_85"
                 android:background="@drawable/basic_input_shape"
                 android:inputType="phone"
@@ -222,12 +222,12 @@
                 />
 
             <EditText
-                android:id="@+id/et_status_recipient_tel3"
+                android:id="@+id/et_direct_recipient_tel3"
                 style="@style/input_text_85"
                 android:background="@drawable/basic_input_shape"
                 android:inputType="phone"
                 android:maxLength="4"
-                android:nextFocusForward="@id/et_status_address_num"
+                android:nextFocusForward="@id/et_direct_address_num"
                 />
 
         </LinearLayout>
@@ -236,7 +236,7 @@
 
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/status_info_linear6"
+        android:id="@+id/direct_info_linear6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -245,33 +245,33 @@
         android:layout_marginStart="30dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/status_info_linear5"
+        app:layout_constraintTop_toBottomOf="@id/direct_info_linear5"
         >
         <LinearLayout
-            style="@style/status_input_tel_linear"
+            style="@style/direct_input_tel_linear"
             >
             <TextView
-                android:id="@+id/tv_status_address"
+                android:id="@+id/tv_direct_address"
                 style="@style/headline_text2"
                 android:text="@string/order_address_text"
                 />
         </LinearLayout>
         <LinearLayout
-            style="@style/status_input_tel_linear"
+            style="@style/direct_input_tel_linear"
             >
             <EditText
-                android:id="@+id/et_status_address_num"
+                android:id="@+id/et_direct_address_num"
                 style="@style/input_text_85"
                 android:layout_marginBottom="8dp"
                 android:background="@drawable/basic_input_shape"
                 android:inputType="number"
                 android:maxLength="10"
-                android:nextFocusForward="@id/btn_status_address"
+                android:nextFocusForward="@id/btn_direct_address"
                 android:singleLine="true"
                 />
 
             <Button
-                android:id="@+id/btn_status_address"
+                android:id="@+id/btn_direct_address"
                 android:layout_width="105dp"
                 android:layout_height="35dp"
                 android:layout_marginStart="15dp"
@@ -283,17 +283,17 @@
         </LinearLayout>
 
         <EditText
-            android:id="@+id/et_status_address_show"
+            android:id="@+id/et_direct_address_show"
             style="@style/input_text_300"
             android:layout_marginBottom="8dp"
             android:background="@drawable/basic_input_shape"
             android:inputType="text"
-            android:nextFocusForward="@id/et_status_address_detail"
+            android:nextFocusForward="@id/et_direct_address_detail"
             android:singleLine="true"
             />
 
         <EditText
-            android:id="@+id/et_status_address_detail"
+            android:id="@+id/et_direct_address_detail"
             style="@style/input_text_300"
             android:background="@drawable/basic_input_shape"
             android:singleLine="true"
@@ -302,7 +302,7 @@
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/status_info_linear7"
+        android:id="@+id/direct_info_linear7"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -310,10 +310,10 @@
         android:gravity="start"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/status_info_linear6"
+        app:layout_constraintTop_toBottomOf="@id/direct_info_linear6"
         >
         <Button
-            android:id="@+id/btn_status_before"
+            android:id="@+id/btn_direct_before"
             android:layout_width="100dp"
             android:layout_height="40dp"
             android:layout_marginEnd="130dp"
@@ -324,7 +324,7 @@
             />
 
         <Button
-            android:id="@+id/btn_status_next"
+            android:id="@+id/btn_direct_next"
             android:layout_width="100dp"
             android:layout_height="40dp"
             android:textStyle="bold"

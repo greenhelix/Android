@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/greenBackground"
+    tools:context = ".orderStatus.OrderStatusPear"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/pear_kind_head_text"
+            android:textSize="30dp" />
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:columnCount="3"
+
+            >
+            <Button
+                android:id="@+id/btn_m_pearKind1"
+                android:layout_width="100dp"
+                android:layout_height="55dp"
+                android:background="@drawable/basic_btn_shape"
+                android:backgroundTint="@color/pear_btn_color"
+                android:layout_margin="4sp"
+                android:text="@string/pear_kind_01_text"
+                android:textSize="20dp"
+                android:enabled="true"
+                />
+            <Button
+                android:id="@+id/btn_m_pearKind2"
+                android:layout_width="100dp"
+                android:layout_height="55dp"
+                android:background="@drawable/basic_btn_shape"
+                android:backgroundTint="@color/pear_btn_color"
+                android:layout_margin="4sp"
+                android:text="@string/pear_kind_02_text"
+                android:textSize="20dp"
+                />
+            <Button
+                android:id="@+id/btn_m_pearKind3"
+                android:layout_width="100dp"
+                android:layout_height="55dp"
+                android:background="@drawable/basic_btn_shape"
+                android:backgroundTint="@color/pear_btn_color"
+                android:layout_margin="4sp"
+                android:text="@string/pear_kind_03_text"
+                android:textSize="20dp"
+                />
+            <Button
+                android:id="@+id/btn_m_pearKind4"
+                android:layout_width="100dp"
+                android:layout_height="55dp"
+                android:background="@drawable/basic_btn_shape"
+                android:backgroundTint="@color/pear_btn_color"
+                android:layout_margin="4sp"
+                android:text="@string/pear_kind_04_text"
+                android:textSize="20dp"
+                />
+            <Button
+                android:id="@+id/btn_m_pearKind5"
+                android:layout_width="100dp"
+                android:layout_height="55dp"
+                android:background="@drawable/basic_btn_shape"
+                android:backgroundTint="@color/pear_btn_color"
+                android:layout_margin="4sp"
+                android:text="@string/pear_kind_05_text"
+                android:textSize="20dp"
+                />
+            <Button
+                android:id="@+id/btn_m_pearKind6"
+                android:layout_width="100dp"
+                android:layout_height="55dp"
+                android:background="@drawable/basic_btn_shape"
+                android:backgroundTint="@color/pear_btn_color"
+                android:layout_margin="4sp"
+                android:text="@string/pear_kind_06_text"
+                android:textSize="20dp"
+                />
+
+
+        </GridLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/pear_amount_head_text"
+            android:textSize="30dp" />
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:columnCount="3"
+            >
+            <Button
+                android:id="@+id/btn_m_pearAmount1"
+                android:layout_width="100dp"
+                android:layout_height="55dp"
+                android:background="@drawable/basic_btn_shape"
+                android:backgroundTint="@color/amount_btn_color"
+                android:layout_margin="4sp"
+                android:text="@string/pear_amount_01_text"
+                android:textSize="20dp"
+                />
+            <Button
+                android:id="@+id/btn_m_pearAmount2"
+                android:layout_width="100dp"
+                android:layout_height="55dp"
+                android:background="@drawable/basic_btn_shape"
+                android:backgroundTint="@color/amount_btn_color"
+                android:layout_margin="4sp"
+                android:text="@string/pear_amount_02_text"
+                android:textSize="20dp"
+                />
+            <Button
+                android:id="@+id/btn_m_pearAmount3"
+                android:layout_width="100dp"
+                android:layout_height="55dp"
+                android:background="@drawable/basic_btn_shape"
+                android:backgroundTint="@color/amount_btn_color"
+                android:layout_margin="4sp"
+                android:text="@string/pear_amount_03_text"
+                android:textSize="20dp"
+                />
+            <Button
+                android:id="@+id/btn_m_pearAmount4"
+                android:layout_width="100dp"
+                android:layout_height="55dp"
+                android:background="@drawable/basic_btn_shape"
+                android:backgroundTint="@color/amount_btn_color"
+                android:layout_margin="4sp"
+                android:text="@string/pear_amount_04_text"
+                android:textSize="20dp"
+                />
+            <Button
+                android:id="@+id/btn_m_pearAmount5"
+                android:layout_width="100dp"
+                android:layout_height="55dp"
+                android:background="@drawable/basic_btn_shape"
+                android:backgroundTint="@color/amount_btn_color"
+                android:layout_margin="4sp"
+                android:text="@string/pear_amount_05_text"
+                android:textSize="20dp"
+                />
+            <Button
+                android:id="@+id/btn_m_pearAmount6"
+                android:layout_width="100dp"
+                android:layout_height="55dp"
+                android:background="@drawable/basic_btn_shape"
+                android:backgroundTint="@color/amount_btn_color"
+                android:layout_margin="4sp"
+                android:text="@string/pear_amount_06_text"
+                android:textSize="20dp"
+                />
+        </GridLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/box_amount_head_text"
+            android:textSize="30dp" />
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:useDefaultMargins="true"
+            >
+
+            <EditText
+                android:id="@+id/et_m_pearBox"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:textSize="40dp"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:background="@drawable/basic_input_shape"
+                android:backgroundTint="@color/grey_btn_color"
+                android:inputType="number"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="0"
+                android:layout_column="1"
+                android:text="@string/box_amount_unit_text"
+                android:layout_gravity="center_vertical"
+                android:textSize="30dp" />
+
+
+        </GridLayout>
+
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btn_pearSelctBefore"
+        style="@style/bottom_btn_before_style"
+        android:background="@drawable/bottom_btn_shape"
+        android:text="@string/before_btn_text"
+        tools:ignore="MissingConstraints"
+        />
+
+    <Button
+        android:id="@+id/btn_pearSelctAfter"
+        style="@style/bottom_btn_next_style"
+        android:background="@drawable/bottom_btn_shape"
+        android:text="@string/modify_btn_text"
+        tools:ignore="MissingConstraints"
+        />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

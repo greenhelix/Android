@@ -5,8 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/greenBackground"
     tools:context=".orderStatus.OrderStatusInfo"
+    android:background="@color/greenBackground"
     >
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/status_info_linear1"
@@ -39,7 +39,7 @@
         >
         <TextView
             android:id="@+id/tv_status_sender"
-            style="@style/headline_text3"
+            style="@style/headline_text2"
             android:text="@string/order_sender_text"
             />
         <EditText
@@ -69,13 +69,13 @@
         app:layout_constraintTop_toBottomOf="@id/status_info_linear2"
         >
         <TextView
-            android:id="@+id/tv_direct_sender_tel"
-            style="@style/headline_text3"
+            android:id="@+id/tv_status_sender_tel"
+            style="@style/headline_text2"
             android:text="@string/order_sender_tel_text"
             />
         <LinearLayout
             android:id="@+id/status_tel_linear"
-            style="@style/status_input_tel_linear"
+            style="@style/direct_input_tel_linear"
             >
 
             <EditText
@@ -143,7 +143,7 @@
         >
         <TextView
             android:id="@+id/tv_order_status_recipient"
-            style="@style/headline_text3"
+            style="@style/headline_text2"
             android:text="@string/order_recipient_text"
             />
         <EditText
@@ -174,14 +174,14 @@
         >
         <TextView
             android:id="@+id/tv_order_status_recipient_tel"
-            style="@style/headline_text3"
+            style="@style/headline_text2"
             android:text="@string/order_recipient_tel_text"
             />
 
 
         <LinearLayout
             android:id="@+id/status_tel_linear2"
-            style="@style/status_input_tel_linear"
+            style="@style/direct_input_tel_linear"
             >
 
             <EditText
@@ -247,16 +247,16 @@
         app:layout_constraintTop_toBottomOf="@id/status_info_linear5"
         >
         <LinearLayout
-            style="@style/status_input_tel_linear"
+            style="@style/direct_input_tel_linear"
             >
             <TextView
                 android:id="@+id/tv_status_address"
-                style="@style/headline_text3"
+                style="@style/headline_text2"
                 android:text="@string/order_address_text"
                 />
         </LinearLayout>
         <LinearLayout
-            style="@style/status_input_tel_linear"
+            style="@style/direct_input_tel_linear"
             >
             <EditText
                 android:id="@+id/et_status_address_num"
@@ -300,6 +300,7 @@
             />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
+
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/status_info_linear7"
         android:layout_width="match_parent"
@@ -329,9 +330,8 @@
             android:textStyle="bold"
             android:textColor="@color/head"
             android:background="@drawable/bottom_btn_shape"
-            android:text="@string/after_btn_text"
-            android:onClick="showData"
+            android:text="@string/modify_btn_text"
+            android:onClick="modifyDataCheck"
             />
-
     </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.constraintlayout.widget.ConstraintLayout>
