@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/greenBackground"
-    tools:context = ".SelectPearActivity"
+    tools:context = ".selectPear.SelectPearActivity"
     >
 
     <LinearLayout

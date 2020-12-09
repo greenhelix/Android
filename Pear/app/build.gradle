@@ -54,6 +54,7 @@ dependencies {
     implementation 'androidx.camera:camera-camera2:1.0.0-beta11'
     implementation files('libs\\com.skt.Tmap_1.66.jar')
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.preference:preference:1.1.1'
 //    기타
     testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

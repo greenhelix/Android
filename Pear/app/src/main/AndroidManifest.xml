@@ -20,7 +20,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".orderStatus.OrderStatusPear"></activity>
+        <activity
+            android:name=".settingPear.SettingsActivity"
+            android:label="@string/title_activity_settings"></activity>
+        <activity android:name=".staticPear.StaticActivity" />
+        <activity android:name=".orderStatus.OrderStatusPear" />
         <activity
             android:name=".LoginActivity"
             android:screenOrientation="portrait">
@@ -58,7 +62,7 @@
             android:name=".cloudDB.CloudStore"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".SelectPearActivity"
+            android:name=".selectPear.SelectPearActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".listShow.OrderListActivity"

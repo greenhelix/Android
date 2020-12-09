@@ -17,8 +17,6 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.greenhelix.pear.R;
-import com.greenhelix.pear.SelectPearActivity;
-import com.greenhelix.pear.listShow.OrderListActivity;
 
 import java.util.HashMap;
 import java.util.Map;

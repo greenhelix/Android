@@ -14,6 +14,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.greenhelix.pear.orderStatus.OrderStatusActivity;
+import com.greenhelix.pear.settingPear.SettingsActivity;
+import com.greenhelix.pear.staticPear.StaticActivity;
 import com.skt.Tmap.TMapTapi;
 
 import java.text.SimpleDateFormat;
@@ -94,6 +96,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //통계
+        btnMainOrderStatic = findViewById(R.id.btn_main_static);
+        btnMainOrderStatic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(LOG_TAG, "통계 버튼이 정상적으로 눌렸습니다.");
+                startActivity(new Intent(MainActivity.this, StaticActivity.class));
+            }
+        });
+
         //사용자 전환
         btnMainChangeUser =findViewById(R.id.btn_main_change_user);
         btnMainChangeUser.setOnClickListener(new View.OnClickListener() {
@@ -102,6 +114,16 @@ public class MainActivity extends AppCompatActivity {
                 FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(MainActivity.this , LoginActivity.class));
                 finish();
+            }
+        });
+
+        //설정
+        btnMainOrderSetting = findViewById(R.id.btn_main_setting);
+        btnMainOrderSetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(LOG_TAG, "설정 버튼이 정상적으로 눌렸습니다.");
+                startActivity(new Intent(MainActivity.this, SettingsActivity.class));
             }
         });
     }// onCreate END

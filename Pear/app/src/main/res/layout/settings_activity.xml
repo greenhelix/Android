@@ -1,0 +1,17 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <FrameLayout
+        android:id="@+id/settings"
+        android:layout_width="match_parent"
+        android:layout_height="600sp" />
+    <Button
+        android:id="@+id/btn_settingBefore"
+        android:text="@string/before_btn_text"
+        style="@style/bottom_btn_before_style"
+        android:background="@drawable/bottom_btn_shape"
+        />
+</LinearLayout>
