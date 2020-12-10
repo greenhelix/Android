@@ -14,12 +14,17 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
+
     <Button
         android:id="@+id/btn_staticBefore"
-        android:text="@string/before_btn_text"
         style="@style/bottom_btn_before_style"
         android:background="@drawable/bottom_btn_shape"
-        />
+        android:text="@string/before_btn_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.877"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.943" />
 </androidx.constraintlayout.widget.ConstraintLayout>
