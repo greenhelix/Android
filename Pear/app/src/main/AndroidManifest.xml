@@ -20,9 +20,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".CustomerActivity"></activity>
         <activity
             android:name=".settingPear.SettingsActivity"
-            android:label="@string/title_activity_settings"></activity>
+            android:label="@string/title_activity_settings" />
         <activity android:name=".staticPear.StaticActivity" />
         <activity android:name=".orderStatus.OrderStatusPear" />
         <activity

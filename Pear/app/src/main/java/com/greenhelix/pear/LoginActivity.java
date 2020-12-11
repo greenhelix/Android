@@ -17,6 +17,8 @@ import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.Response;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
@@ -24,6 +26,8 @@ import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -35,6 +39,7 @@ public class LoginActivity extends AppCompatActivity {
     private int SIGNINCODE = 1;
     private static final String LOG_TAG = "ik";
     private AuthCredential authCredential;
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,15 +124,52 @@ public class LoginActivity extends AppCompatActivity {
      이쪽에서 intent에 원하는 정보를 따로 담아서 보내는 것으로 하여 화면이동을 원할히 한다.
      고객로그인의 경우 구분할 수 있는 통로역할*/
     private void updateUI(FirebaseUser fUser){
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
-        if (fUser != null){
-            String personEmail = account.getEmail();
-            Intent access = new Intent(LoginActivity.this, MainActivity.class);
-            startActivity(access);
-            Log.d(LOG_TAG, "현재 로그인 이메일"+ personEmail);
-            finish();
-        }
+        final GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
 
+        if (fUser != null){
+            final String personEmail = account.getEmail();
+            Log.d(LOG_TAG, "현재 이메일 ::"+personEmail);
+            //로그인 된 계정이 운영자 컬렉션안의 문서에 해당되면 운영자 화면으로 이동한다.
+            db.collection("manager").document("manager1")
+                    .get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                @Override
+                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                    if(documentSnapshot.get("admin1").toString().equals(personEmail)){
+                        Log.d(LOG_TAG, "이메일확인:: "+personEmail);
+                        Intent access = new Intent(LoginActivity.this, MainActivity.class);
+                        startActivity(access);
+                        finish();
+                    }else if(documentSnapshot.get("admin2").toString().equals(personEmail)){
+                        Log.d(LOG_TAG, "이메일확인:: "+personEmail);
+                        Intent access = new Intent(LoginActivity.this, MainActivity.class);
+                        startActivity(access);
+                        finish();
+                    }
+
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Log.d(LOG_TAG, "틀렸습니다. 로그인실패");
+                }
+            });
+
+            db.collection("customer").document("user1")
+                    .update("email", personEmail)
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Log.d(LOG_TAG, "이메일확인:: "+personEmail+ "\n 고객입니다.");
+                            Intent access = new Intent(LoginActivity.this, CustomerActivity.class);
+                            startActivity(access);
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Log.d(LOG_TAG, "고객 등록 실패");
+                }
+            });
+        }
     }
 
 }
