@@ -45,11 +45,13 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        Log.d(LOG_TAG, "onCreate start");
         // 각 변수별 할당
         signInButton = findViewById(R.id.btn_google_login);
-        //signOutButton = findViewById(R.id.btn_google_logout);
+        //파이어베이스
         fAuth = FirebaseAuth.getInstance();
+
+        // request에서 default_web_client_id 이부분 직접 실행해야 나옴.
         final GoogleSignInOptions googleOpt = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
@@ -65,7 +67,20 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
         signOutButton = findViewById(R.id.btn_logout);
+        signOutButton.setVisibility(View.INVISIBLE);
     } //onCreate END
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(LOG_TAG, "onStop start");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(LOG_TAG, "onResume start");
+    }
 
     private void signIn(){
         Intent signInIntent = client.getSignInIntent();
@@ -73,11 +88,13 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void signOut(View v){
+        //구글 로그인 계정 아예 제거하는 메서드임
         client.signOut()
                 .addOnCompleteListener(this, new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        Log.d(LOG_TAG, "찐짜 로그아웃??");
+                        Toast.makeText(getApplicationContext(), "로그아웃 완료", Toast.LENGTH_SHORT).show();
+                        Log.d(LOG_TAG, "로그아웃 되었습니다.");
                     }
                 });
     }
@@ -87,11 +104,13 @@ public class LoginActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == SIGNINCODE){
+            Log.d(LOG_TAG, "1. signIn start");
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             handleSignInResult(task);
         }
     }
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask){
+        Log.d(LOG_TAG, "2. handleSignInResult start");
         try{
             GoogleSignInAccount acc = completedTask.getResult(ApiException.class);
             FirebaseGoogleAuth(acc);
@@ -103,6 +122,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void FirebaseGoogleAuth(GoogleSignInAccount acct){
+        Log.d(LOG_TAG, "3. FirebaseGoogleAuth start");
         authCredential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
         fAuth.signInWithCredential(authCredential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
@@ -110,7 +130,7 @@ public class LoginActivity extends AppCompatActivity {
                 if(task.isSuccessful()){
                     FirebaseUser user = fAuth.getCurrentUser();
                     updateUI(user);
-                    Toast.makeText(LoginActivity.this,"성공 FirebaseGoogleAuth",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this,"FirebaseGoogleAuth",Toast.LENGTH_SHORT).show();
                 }else{
                     updateUI(null);
                     Toast.makeText(LoginActivity.this,"실패 FirebaseGoogleAuth",Toast.LENGTH_SHORT).show();
@@ -125,7 +145,7 @@ public class LoginActivity extends AppCompatActivity {
      고객로그인의 경우 구분할 수 있는 통로역할*/
     private void updateUI(FirebaseUser fUser){
         final GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
-
+        Log.d(LOG_TAG, "4. updateUI start");
         if (fUser != null){
             final String personEmail = account.getEmail();
             Log.d(LOG_TAG, "현재 이메일 ::"+personEmail);
@@ -154,21 +174,21 @@ public class LoginActivity extends AppCompatActivity {
                 }
             });
 
-            db.collection("customer").document("user1")
-                    .update("email", personEmail)
-                    .addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-                            Log.d(LOG_TAG, "이메일확인:: "+personEmail+ "\n 고객입니다.");
-                            Intent access = new Intent(LoginActivity.this, CustomerActivity.class);
-                            startActivity(access);
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Log.d(LOG_TAG, "고객 등록 실패");
-                }
-            });
+//            db.collection("customer").document("user1")
+//                    .update("email", personEmail)
+//                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+//                        @Override
+//                        public void onSuccess(Void aVoid) {
+//                            Log.d(LOG_TAG, "이메일확인:: "+personEmail+ "\n 고객입니다.");
+//                            Intent access = new Intent(LoginActivity.this, CustomerActivity.class);
+//                            startActivity(access);
+//                        }
+//                    }).addOnFailureListener(new OnFailureListener() {
+//                @Override
+//                public void onFailure(@NonNull Exception e) {
+//                    Log.d(LOG_TAG, "고객 등록 실패");
+//                }
+//            });
         }
     }
 
