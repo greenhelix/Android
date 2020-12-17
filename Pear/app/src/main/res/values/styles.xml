@@ -113,7 +113,7 @@
     </style>
 <!--로그인화면 버튼 양식-->
     <style name="btn_loginView_style">
-        <item name="android:layout_width">265dp</item>
+        <item name="android:layout_width">150dp</item>
         <item name="android:layout_height">45dp</item>
         <item name="android:layout_marginStart">64dp</item>
         <item name="android:layout_marginTop">20dp</item>

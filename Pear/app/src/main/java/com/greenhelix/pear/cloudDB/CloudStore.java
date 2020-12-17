@@ -19,6 +19,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.greenhelix.pear.R;
 import com.greenhelix.pear.selectPear.SelectPearActivity;
@@ -128,7 +129,7 @@ public class CloudStore extends AppCompatActivity {
         GoogleSignInAccount userInfo = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
         Log.d(LOG_TAG, "유저정보? :: "+ userInfo + "\n toString())) "+ userInfo.toString());
 
-        orderInfo.put("user", "개발자");
+        orderInfo.put("user",  FirebaseAuth.getInstance().getUid());
         String time = new SimpleDateFormat("yyMMddHHmm").format(Calendar.getInstance().getTime());
         db.collection("pear_orders").document(ORDER_DOC+time)
                 .set(orderInfo)

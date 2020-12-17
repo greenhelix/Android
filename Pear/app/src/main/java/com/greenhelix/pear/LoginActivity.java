@@ -29,12 +29,15 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.Objects;
+
 public class LoginActivity extends AppCompatActivity {
 
     // xml 버튼 할당
     private SignInButton signInButton;
     private Button signOutButton;
     private GoogleSignInClient client;
+    private GoogleSignInAccount acc;
     private FirebaseAuth fAuth;
     private int SIGNINCODE = 1;
     private static final String LOG_TAG = "ik";
@@ -67,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
         signOutButton = findViewById(R.id.btn_logout);
-        signOutButton.setVisibility(View.INVISIBLE);
+
     } //onCreate END
 
     @Override
@@ -93,8 +96,8 @@ public class LoginActivity extends AppCompatActivity {
                 .addOnCompleteListener(this, new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        Toast.makeText(getApplicationContext(), "로그아웃 완료", Toast.LENGTH_SHORT).show();
-                        Log.d(LOG_TAG, "로그아웃 되었습니다.");
+                        Toast.makeText(getApplicationContext(), "로그인 정보 초기화 완료 \n 로그인 버튼을 눌러주세요.", Toast.LENGTH_SHORT).show();
+                        Log.d(LOG_TAG, "다른 계정으로 로그인가능.");
                     }
                 });
     }
@@ -112,8 +115,10 @@ public class LoginActivity extends AppCompatActivity {
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask){
         Log.d(LOG_TAG, "2. handleSignInResult start");
         try{
-            GoogleSignInAccount acc = completedTask.getResult(ApiException.class);
-            FirebaseGoogleAuth(acc);
+            acc = completedTask.getResult(ApiException.class);
+            if (acc != null) {
+                FirebaseGoogleAuth(acc);
+            }
             Toast.makeText(LoginActivity.this,"로그인 성공", Toast.LENGTH_SHORT).show();
         }catch (ApiException e){
             FirebaseGoogleAuth(null);
@@ -123,20 +128,24 @@ public class LoginActivity extends AppCompatActivity {
 
     private void FirebaseGoogleAuth(GoogleSignInAccount acct){
         Log.d(LOG_TAG, "3. FirebaseGoogleAuth start");
-        authCredential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
-        fAuth.signInWithCredential(authCredential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
-                    FirebaseUser user = fAuth.getCurrentUser();
-                    updateUI(user);
-                    Toast.makeText(LoginActivity.this,"FirebaseGoogleAuth",Toast.LENGTH_SHORT).show();
-                }else{
-                    updateUI(null);
-                    Toast.makeText(LoginActivity.this,"실패 FirebaseGoogleAuth",Toast.LENGTH_SHORT).show();
+        if(acct == null){
+            Log.d(LOG_TAG, "로그인정보가 없습니다.");
+        }else {
+            authCredential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
+            fAuth.signInWithCredential(authCredential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (task.isSuccessful()) {
+                        FirebaseUser user = fAuth.getCurrentUser();
+                        updateUI(user);
+                        Toast.makeText(LoginActivity.this, "FirebaseGoogleAuth", Toast.LENGTH_SHORT).show();
+                    } else {
+                        updateUI(null);
+                        Toast.makeText(LoginActivity.this, "실패 FirebaseGoogleAuth", Toast.LENGTH_SHORT).show();
+                    }
                 }
-            }
-        });
+            });
+        }
     }
 
 
@@ -144,26 +153,28 @@ public class LoginActivity extends AppCompatActivity {
      이쪽에서 intent에 원하는 정보를 따로 담아서 보내는 것으로 하여 화면이동을 원할히 한다.
      고객로그인의 경우 구분할 수 있는 통로역할*/
     private void updateUI(FirebaseUser fUser){
-        final GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
         Log.d(LOG_TAG, "4. updateUI start");
         if (fUser != null){
-            final String personEmail = account.getEmail();
-            Log.d(LOG_TAG, "현재 이메일 ::"+personEmail);
+            final String personEmail = fUser.getEmail();
+            Log.d(LOG_TAG, "현재 이메일 ::"+personEmail+"\n IdToken::"+ fUser.getUid());
             //로그인 된 계정이 운영자 컬렉션안의 문서에 해당되면 운영자 화면으로 이동한다.
             db.collection("manager").document("manager1")
                     .get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                 @Override
                 public void onSuccess(DocumentSnapshot documentSnapshot) {
-                    if(documentSnapshot.get("admin1").toString().equals(personEmail)){
-                        Log.d(LOG_TAG, "이메일확인:: "+personEmail);
-                        Intent access = new Intent(LoginActivity.this, MainActivity.class);
-                        startActivity(access);
-                        finish();
-                    }else if(documentSnapshot.get("admin2").toString().equals(personEmail)){
-                        Log.d(LOG_TAG, "이메일확인:: "+personEmail);
-                        Intent access = new Intent(LoginActivity.this, MainActivity.class);
-                        startActivity(access);
-                        finish();
+                    if (personEmail != null) {
+                        //관리자는 많이 없으니 이걸로 관리한다.
+                        if(personEmail.equals(documentSnapshot.get("admin1"))){
+                            Log.d(LOG_TAG, "이메일확인완료 관리자1입니다.");
+                            Intent access = new Intent(LoginActivity.this, MainActivity.class);
+                            startActivity(access);
+                            finish();
+                        }else if(personEmail.equals(documentSnapshot.get("admin2"))){
+                            Log.d(LOG_TAG, "이메일확인완료 관리자2입니다.");
+                            Intent access = new Intent(LoginActivity.this, MainActivity.class);
+                            startActivity(access);
+                            finish();
+                        }
                     }
 
                 }

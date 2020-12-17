@@ -78,6 +78,7 @@
 
     <!-- 설정화면 Titles -->
     <string name="setting_header1">로그인 정보</string>
+    <string name="login_otherID">다른 계정으로</string>
     <string name="setting_header2">설정</string>
 
     <!-- Messages Preferences -->
