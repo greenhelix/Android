@@ -149,16 +149,14 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
-/*   로그인 확정을 loginactivity에서 완료하고
-     이쪽에서 intent에 원하는 정보를 따로 담아서 보내는 것으로 하여 화면이동을 원할히 한다.
-     고객로그인의 경우 구분할 수 있는 통로역할*/
+
     private void updateUI(FirebaseUser fUser){
         Log.d(LOG_TAG, "4. updateUI start");
         if (fUser != null){
             final String personEmail = fUser.getEmail();
             Log.d(LOG_TAG, "현재 이메일 ::"+personEmail+"\n IdToken::"+ fUser.getUid());
             //로그인 된 계정이 운영자 컬렉션안의 문서에 해당되면 운영자 화면으로 이동한다.
-            db.collection("manager").document("manager1")
+            db.collection("manager").document("admin")
                     .get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                 @Override
                 public void onSuccess(DocumentSnapshot documentSnapshot) {
@@ -179,27 +177,15 @@ public class LoginActivity extends AppCompatActivity {
 
                 }
             }).addOnFailureListener(new OnFailureListener() {
+                //관리자 계정이 아니라면 고객이니, 고객화면으로 이동해주면된다.
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    Log.d(LOG_TAG, "틀렸습니다. 로그인실패");
+                    Log.d(LOG_TAG, "고객입니다.");
+                    Intent access = new Intent(LoginActivity.this, CustomerActivity.class);
+                    startActivity(access);
                 }
             });
 
-//            db.collection("customer").document("user1")
-//                    .update("email", personEmail)
-//                    .addOnSuccessListener(new OnSuccessListener<Void>() {
-//                        @Override
-//                        public void onSuccess(Void aVoid) {
-//                            Log.d(LOG_TAG, "이메일확인:: "+personEmail+ "\n 고객입니다.");
-//                            Intent access = new Intent(LoginActivity.this, CustomerActivity.class);
-//                            startActivity(access);
-//                        }
-//                    }).addOnFailureListener(new OnFailureListener() {
-//                @Override
-//                public void onFailure(@NonNull Exception e) {
-//                    Log.d(LOG_TAG, "고객 등록 실패");
-//                }
-//            });
         }
     }
 

@@ -17,6 +17,7 @@ public class CustomerActivity extends AppCompatActivity {
         btnCustomerBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //로그인화면으로 다시 이동한다. 
                 finish();
             }
         });
