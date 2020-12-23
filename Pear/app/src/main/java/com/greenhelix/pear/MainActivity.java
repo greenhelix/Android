@@ -49,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
         Log.d(LOG_TAG, "포맷한 날짜 = "+date);
         TextView mainDate = (TextView) findViewById(R.id.tv_main_head2);
         mainDate.setText(String.format(getString(R.string.main_head_text02),date));
-
         final TMapTapi tmaptapi = new TMapTapi(this);
         tmaptapi.setSKTMapAuthentication ("l7xx67178473a0134850bb0610927c9ba539");
 
@@ -89,8 +88,6 @@ public class MainActivity extends AppCompatActivity {
                     tmapOpen.setType("text/*");
                     Intent shareIntent = Intent.createChooser(tmapOpen, null);
                     startActivity(shareIntent);
-
-
                 }catch (Exception e){
                     String url = "market://details?id=com.skt.tmap.ku";
                     Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
@@ -130,6 +127,4 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }// onCreate END
-
-
 }

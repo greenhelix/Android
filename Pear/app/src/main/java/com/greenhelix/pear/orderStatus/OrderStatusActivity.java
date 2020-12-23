@@ -20,9 +20,13 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.greenhelix.pear.MainActivity;
 import com.greenhelix.pear.R;
 
@@ -31,6 +35,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Objects;
 
 public class OrderStatusActivity extends AppCompatActivity {
     private static final String LOG_TAG = "ik", ERROR = "ikerror";
@@ -173,10 +178,28 @@ public class OrderStatusActivity extends AppCompatActivity {
             /*파일만드기 파트*/
             File test = File.createTempFile("export", ".csv", storageDir); // 파일명, 형태, 파일경로 를 설정해준다.
             FileWriter testWrite = new FileWriter(test); // 파일에 데이터를 넣어줄 도구 끄낸다.(도구를 사용할 해당 파일 명시해야한다.)
-            BufferedWriter writer = new BufferedWriter(testWrite); // 도구를 사용할 도화지 같은 공간을 만들어준다.
+            final BufferedWriter writer = new BufferedWriter(testWrite); // 도구를 사용할 도화지 같은 공간을 만들어준다.
 
+            Query exQuery = orderRef.whereEqualTo("status", true);
+            exQuery.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    if(task.isSuccessful()){
+                        for(QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())){
+                            try {
+                                writer.write(document.getId() +"," + document.getData());
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                                Log.d(LOG_TAG, e.toString());
+                            }
+                        }
+                    }
+                }
+            });
             for(int i = 0; i<5; i++){
+
                 writer.write("\n"+String.valueOf(i)+","+String.valueOf(i*i));  // 원하는 데이터를 string형태로 ,을 포함하여 원하는 형식으로 넣어준다.
+
             }
             // 입력이 끝나면, 도구와 도화지를 그만 꺼준다.
             writer.close();
