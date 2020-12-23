@@ -159,48 +159,49 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void onSuccess(DocumentSnapshot documentSnapshot) {
                     if (personEmail != null) {
-                        //관리자는 많이 없으니 이걸로 관리한다.
-                        for (int i = 1; i < 10; i++) {
-                            if (personEmail.equals(documentSnapshot.get("admin" + i))) {
-                                if (i == 1) {
-                                    Log.d(LOG_TAG, "이메일 확인완료 개발자 입니다.");
-                                } else {
-                                    Log.d(LOG_TAG, "이메일 확인완료 관리자" + i + " 입니다.");
-                                }
-                                Intent access = new Intent(LoginActivity.this, MainActivity.class);
-                                startActivity(access);
-                                finish();
-                                break;
-                            }else{
-                                Log.d(LOG_TAG, "고객 입니다.");
-                                Intent access = new Intent(LoginActivity.this, CustomerActivity.class);
-                                startActivity(access);
-                                break;
-                            }
-
+                        if(personEmail.equals(documentSnapshot.get("admin1"))){
+                            Log.d(LOG_TAG, "이메일 확인완료 개발자 입니다.");
+                            Intent access = new Intent(LoginActivity.this, MainActivity.class);
+                            startActivity(access);
+                            finish();
+                        }else if(personEmail.equals(documentSnapshot.get("admin2"))){
+                            Log.d(LOG_TAG, "이메일 확인완료 관리자1 입니다.");
+                            Intent access = new Intent(LoginActivity.this, MainActivity.class);
+                            startActivity(access);
+                            finish();
+                        }else if(personEmail.equals(documentSnapshot.get("admin3"))){
+                            Log.d(LOG_TAG, "이메일 확인완료 관리자2 입니다.");
+                            Intent access = new Intent(LoginActivity.this, MainActivity.class);
+                            startActivity(access);
+                            finish();
+                        }else{
+                            Log.d(LOG_TAG, "고객 입니다.");
+                            Intent access = new Intent(LoginActivity.this, CustomerActivity.class);
+                            startActivity(access);
                         }
+                        //관리자는 많이 없으니 이걸로 관리한다.
+//                        for (int i = 1; i < 10; i++) {
+//                            if (personEmail.equals(documentSnapshot.get("admin" + i))) {
+//                                if (i == 1) {
+//                                    Log.d(LOG_TAG, "이메일 확인완료 개발자 입니다.");
+//                                } else {
+//                                    Log.d(LOG_TAG, "이메일 확인완료 관리자" + (i-1) + " 입니다.");
+//                                }
+//                                Intent access = new Intent(LoginActivity.this, MainActivity.class);
+//                                startActivity(access);
+//                                finish();
+//                                break;
+//                            }else{
+//                                Log.d(LOG_TAG, "고객 입니다.");
+//                                Intent access = new Intent(LoginActivity.this, CustomerActivity.class);
+//                                startActivity(access);
+//                                break;
+//                            }
+//
+//                        }
                     }
 
-//                        if(personEmail.equals(documentSnapshot.get("admin1"))){
-//                            Log.d(LOG_TAG, "이메일 확인완료 개발자 입니다.");
-//                            Intent access = new Intent(LoginActivity.this, MainActivity.class);
-//                            startActivity(access);
-//                            finish();
-//                        }else if(personEmail.equals(documentSnapshot.get("admin2"))){
-//                            Log.d(LOG_TAG, "이메일 확인완료 관리자1 입니다.");
-//                            Intent access = new Intent(LoginActivity.this, MainActivity.class);
-//                            startActivity(access);
-//                            finish();
-//                        }else if(personEmail.equals(documentSnapshot.get("admin3"))){
-//                            Log.d(LOG_TAG, "이메일 확인완료 관리자2 입니다.");
-//                            Intent access = new Intent(LoginActivity.this, MainActivity.class);
-//                            startActivity(access);
-//                            finish();
-//                        }else{
-//                            Log.d(LOG_TAG, "고객 입니다.");
-//                            Intent access = new Intent(LoginActivity.this, CustomerActivity.class);
-//                            startActivity(access);
-//                        }
+//
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 //관리자 계정이 아니라면 고객이니, 고객화면으로 이동해주면된다.
