@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.greenhelix.pear">
-    <!-- 인터넷 허가 -->
+
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <uses-feature android:name="android.hardware.type.watch" /> <!-- 인터넷 허가 -->
     <uses-permission android:name="android.permission.INTERNET" /> <!-- 카메라 허용 -->
     <uses-permission
         android:name="android.permission.CAMERA"
@@ -20,21 +23,37 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CustomerActivity"></activity>
-        <activity
-            android:name=".settingPear.SettingsActivity"
-            android:label="@string/title_activity_settings" />
-        <activity android:name=".staticPear.StaticActivity" />
-        <activity android:name=".orderStatus.OrderStatusPear" />
-        <activity
-            android:name=".LoginActivity"
-            android:screenOrientation="portrait">
+        <uses-library
+            android:name="com.google.android.wearable"
+            android:required="true" />
+        <!--
+               Set to true if your app is Standalone, that is, it does not require the handheld
+               app to run.
+        -->
+        <meta-data
+            android:name="com.google.android.wearable.standalone"
+            android:value="true" />
+
+        <activity android:name=".Intro"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".LoginActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".CustomerActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".settingPear.SettingsActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/title_activity_settings" />
+        <activity android:name=".staticPear.StaticActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".orderStatus.OrderStatusPear"
+            android:screenOrientation="portrait"/>
+
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait" />
