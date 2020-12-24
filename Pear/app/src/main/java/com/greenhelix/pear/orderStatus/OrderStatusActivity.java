@@ -178,9 +178,8 @@ public class OrderStatusActivity extends AppCompatActivity {
     public void exportCSV(View view){
         //파일경로를 먼저 설정
         File storageDir = getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS); //기본 루트에, 공식폴더형태로 해줄수 있음 이거는 document폴더 생성
-        Log.d(LOG_TAG, "파일 경로 ::  \n"+ storageDir.toString());
+//        Log.d(LOG_TAG, "파일 경로 ::  \n"+ storageDir.toString());
         //try catch문을 먼저 작성.
-
         try {
             /*파일만드기 파트*/
             File test = File.createTempFile("export", ".csv", storageDir); // 파일명, 형태, 파일경로 를 설정해준다.
@@ -188,13 +187,14 @@ public class OrderStatusActivity extends AppCompatActivity {
             final BufferedWriter writer = new BufferedWriter(testWrite); // 도구를 사용할 도화지 같은 공간을 만들어준다.
             Log.d(LOG_TAG, "파일 생성 ::");
             final List<String> data = new ArrayList<String>();
+            /*완전 중요한 부분, Cloud FireStore 에서 데이터를 가져다 어떻게 내보내는지 잘 봐야함.*/
             orderRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
                     if(task.isSuccessful()){
                         for(QueryDocumentSnapshot document : task.getResult()){
                             List<String> addr = (List<String>) document.get("recipient_addr");
-                            Log.d(LOG_TAG, document.getId() + "->" + document.getData());
+//                            Log.d(LOG_TAG, document.getId() + "->" + document.getData());
                             // 주문자/받는사람 정보
                             data.add((String) document.get("sender"));
                             data.add((String) document.get("sender_tel"));
@@ -211,17 +211,19 @@ public class OrderStatusActivity extends AppCompatActivity {
 //                            Log.d(LOG_TAG, "data : "+ data );
                             try{
                                 // 보낸사람,받는사람,받는이 주소,배송 상품  작성
+                                /* 예외처리 중요! 안하면 안됨.*/
                                 writer.write(
                                     data.get(0)+","+data.get(1)
                                     +","+data.get(2)+","+data.get(3)
                                     +","+data.get(4)+","+data.get(5)+","+data.get(6)
                                     +","+data.get(7)+","+data.get(8)+","+data.get(9)
-                                    +"\n");
+                                    +"\n");//한줄띄어야 표로 완성
                             }catch (IOException e){
                                 Log.d(LOG_TAG, "Error:: "+e.toString());
                             }
-                            data.clear();
+                            data.clear(); //데이터 클리어!
                         }
+                        //wirter꺼주는 양식!
                         if (writer != null) {
                             try {
                                 writer.close() ;
@@ -234,7 +236,8 @@ public class OrderStatusActivity extends AppCompatActivity {
                         Log.d(LOG_TAG, "error", task.getException());
                     }
                 }
-            });
+            });//중요한부분끝!
+            
             /* 파일생성완료되었으니, 공유파트*/
             Uri exportUri = FileProvider.getUriForFile(getApplicationContext(),
                     "com.greenhelix.pear.fileprovider", test); // 파일을 uri형태로 변환해준다. fileprovider 경로는 한곳으로 정해두면된다.(상단의 파일경로가 바꿔주는 거임)

@@ -77,9 +77,9 @@
     <string name="title_activity_settings">SettingsActivity</string>
 
     <!-- 설정화면 Titles -->
-    <string name="setting_header1">로그인 정보</string>
+    <string name="setting_header1">사용자 정보</string>
     <string name="login_otherID">다른 계정으로</string>
-    <string name="setting_header2">설정</string>
+    <string name="setting_header2">앱 정보</string>
 
     <!-- Messages Preferences -->
     <string name="login_header1">현재 로그인 계정</string>

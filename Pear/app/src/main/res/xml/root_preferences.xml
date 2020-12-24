@@ -1,37 +1,63 @@
 <!--설정화면 레이아웃을 설정하는 xml공간이다.-->
-<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <PreferenceCategory app:title="@string/setting_header1">
 
-        <EditTextPreference
+    <PreferenceCategory app:title="@string/setting_header1"
+
+        >
+
+        <Preference
             app:key="signature"
-            app:title="@string/login_header1"
-            app:useSimpleSummaryProvider="true" />
+            app:title="로그인 계정"
+            app:summary=""
+           />
+        <Preference
+            app:key="rank"
+            app:title="권한"
+            app:summary=""
+            />
 
-        <ListPreference
-            app:defaultValue="reply"
-            app:entries="@array/reply_entries"
-            app:entryValues="@array/reply_values"
-            app:key="reply"
-            app:title="@string/reply_title"
-            app:useSimpleSummaryProvider="true" />
-
+    </PreferenceCategory>
+    <PreferenceCategory
+        app:title="안내 사항"
+        >
+        <Preference
+            app:key="notice"
+            app:title="공지사항"
+            app:summary="안녕하세요. 개발자 GreenHelix 입니다."
+            >
+            <intent android:action="android.intent.action.VIEW"
+                android:data="https://pear-57581.web.app/noticePear"
+                />
+        </Preference>
     </PreferenceCategory>
 
     <PreferenceCategory app:title="@string/setting_header2">
 
-        <SwitchPreferenceCompat
-            app:key="sync"
-            app:title="@string/sync_title" />
+        <Preference
+            app:key="version"
+            app:title="앱 버전 (2020.12 기준)"
+            app:summary="1.0.1"
+            />
+        <Preference
+            app:key="developer"
+            app:title="개발자 :: GreenHelix"
+            app:summary="사이트 바로 가기"
+            >
+            <intent android:action="android.intent.action.VIEW"
+                android:data="https://greenhelix.tistory.com/"
+                />
+        </Preference>
+        <Preference
+            app:key="personalData"
+            app:title="개인정보 처리방침"
+            app:summary="확인하고 싶다면 클릭하세요."
+            >
 
-        <SwitchPreferenceCompat
-            app:dependency="sync"
-            app:key="attachment"
-            app:summaryOff="@string/attachment_summary_off"
-            app:summaryOn="@string/attachment_summary_on"
-            app:title="@string/attachment_title" />
-
-
+            <intent android:action="android.intent.action.VIEW"
+                android:data="https://pear-57581.web.app/privacypolicy"
+                />
+        </Preference>
     </PreferenceCategory>
-
 </PreferenceScreen>

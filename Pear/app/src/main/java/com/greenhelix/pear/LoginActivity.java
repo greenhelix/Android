@@ -69,7 +69,7 @@ public class LoginActivity extends AppCompatActivity {
                 signIn();
             }
         });
-        signOutButton = findViewById(R.id.btn_logout);
+        Button signOutButton = findViewById(R.id.btn_logout);
 
     } //onCreate END
 
@@ -171,6 +171,16 @@ public class LoginActivity extends AppCompatActivity {
                             finish();
                         }else if(personEmail.equals(documentSnapshot.get("admin3"))){
                             Log.d(LOG_TAG, "이메일 확인완료 관리자2 입니다.");
+                            Intent access = new Intent(LoginActivity.this, MainActivity.class);
+                            startActivity(access);
+                            finish();
+                        }else if(personEmail.equals(documentSnapshot.get("admin4"))){
+                            Log.d(LOG_TAG, "이메일 확인완료 관리자3 입니다.");
+                            Intent access = new Intent(LoginActivity.this, MainActivity.class);
+                            startActivity(access);
+                            finish();
+                        }else if(personEmail.equals(documentSnapshot.get("admin5"))){
+                            Log.d(LOG_TAG, "이메일 확인완료 관리자4 입니다.");
                             Intent access = new Intent(LoginActivity.this, MainActivity.class);
                             startActivity(access);
                             finish();
