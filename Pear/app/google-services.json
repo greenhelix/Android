@@ -15,6 +15,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "1030408306869-8ls8kjuui6kckodon493fn96frf332rl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.greenhelix.pear",
+            "certificate_hash": "a588a0c1df0cf7b2c274156cb0dea4f4a5775eed"
+          }
+        },
+        {
+          "client_id": "1030408306869-efbh7u6nhgm8tdg1tfjlrge26e8o9ep7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.greenhelix.pear",
+            "certificate_hash": "8c0254a771775e7359044f93ef07f7003b724eb2"
+          }
+        },
+        {
           "client_id": "1030408306869-grao3vkofd1s8kfakg1l7bv8c3gqioc6.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

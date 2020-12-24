@@ -117,10 +117,12 @@ public class LoginActivity extends AppCompatActivity {
         try{
             acc = completedTask.getResult(ApiException.class);
             if (acc != null) {
+                Log.d(LOG_TAG, "구글 로그인 pass");
                 FirebaseGoogleAuth(acc);
             }
             Toast.makeText(LoginActivity.this,"로그인 성공", Toast.LENGTH_SHORT).show();
         }catch (ApiException e){
+            Log.d(LOG_TAG, "구글 로그인 fail"+e.toString());
             FirebaseGoogleAuth(null);
             Toast.makeText(LoginActivity.this,"로그인 실패", Toast.LENGTH_SHORT).show();
         }

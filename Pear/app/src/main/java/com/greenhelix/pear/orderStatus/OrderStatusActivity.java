@@ -245,7 +245,7 @@ public class OrderStatusActivity extends AppCompatActivity {
             // intent를 통해서 데이터 파일을 보내준다. intent의 속성과 옵션을 설정해준다.
             Intent fileIntent = new Intent(Intent.ACTION_SEND); // 공유화면을 열어준다.(메일, 드라이버 등등)
             fileIntent.setType("text/csv"); //?/
-            fileIntent.putExtra(Intent.EXTRA_SUBJECT, "혁규농원 주문목록입니다!"); // 메일 작성시 메일 제목
+            fileIntent.putExtra(Intent.EXTRA_SUBJECT, "혁규 농원 주문현황 입니다!"); // 메일 작성시 메일 제목
             fileIntent.putExtra(Intent.EXTRA_TEXT, "주문정보 파일을 확인하세요. ^^! "); // 메일 작성시 메일 내용
             fileIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION); // uri 허가권
 
