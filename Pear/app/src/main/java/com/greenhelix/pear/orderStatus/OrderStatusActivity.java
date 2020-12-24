@@ -37,6 +37,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -179,44 +180,61 @@ public class OrderStatusActivity extends AppCompatActivity {
         File storageDir = getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS); //기본 루트에, 공식폴더형태로 해줄수 있음 이거는 document폴더 생성
         Log.d(LOG_TAG, "파일 경로 ::  \n"+ storageDir.toString());
         //try catch문을 먼저 작성.
-        final ArrayList<String> data = new ArrayList<String>();
+
         try {
             /*파일만드기 파트*/
             File test = File.createTempFile("export", ".csv", storageDir); // 파일명, 형태, 파일경로 를 설정해준다.
-            FileWriter testWrite = new FileWriter(test); // 파일에 데이터를 넣어줄 도구 끄낸다.(도구를 사용할 해당 파일 명시해야한다.)
+            final FileWriter testWrite = new FileWriter(test); // 파일에 데이터를 넣어줄 도구 끄낸다.(도구를 사용할 해당 파일 명시해야한다.)
             final BufferedWriter writer = new BufferedWriter(testWrite); // 도구를 사용할 도화지 같은 공간을 만들어준다.
             Log.d(LOG_TAG, "파일 생성 ::");
-
+            final List<String> data = new ArrayList<String>();
             orderRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
                     if(task.isSuccessful()){
                         for(QueryDocumentSnapshot document : task.getResult()){
-                            ArrayList<String> addr = (ArrayList<String>) document.get("recipient_addr");
+                            List<String> addr = (List<String>) document.get("recipient_addr");
                             Log.d(LOG_TAG, document.getId() + "->" + document.getData());
-                            data.add((String) Objects.requireNonNull(document.get("sender")));
-                            data.add(Objects.requireNonNull(document.get("sender_tel")).toString());
-                            data.add(Objects.requireNonNull(document.get("recipient")).toString());
-                            data.add(Objects.requireNonNull(document.get("recipient_tel")).toString());
+                            // 주문자/받는사람 정보
+                            data.add((String) document.get("sender"));
+                            data.add((String) document.get("sender_tel"));
+                            data.add((String) document.get("recipient"));
+                            data.add((String) document.get("recipient_tel"));
+                            // 받는사람 주소
                             data.add(addr.get(0));
                             data.add(addr.get(1));
                             data.add(addr.get(2));
+                            // 배송상품
+                            data.add((String) document.get("pear_kind"));
+                            data.add((String) document.get("pear_amount"));
+                            data.add((String) document.get("pear_box"));
+//                            Log.d(LOG_TAG, "data : "+ data );
+                            try{
+                                // 보낸사람,받는사람,받는이 주소,배송 상품  작성
+                                writer.write(
+                                    data.get(0)+","+data.get(1)
+                                    +","+data.get(2)+","+data.get(3)
+                                    +","+data.get(4)+","+data.get(5)+","+data.get(6)
+                                    +","+data.get(7)+","+data.get(8)+","+data.get(9)
+                                    +"\n");
+                            }catch (IOException e){
+                                Log.d(LOG_TAG, "Error:: "+e.toString());
+                            }
+                            data.clear();
+                        }
+                        if (writer != null) {
+                            try {
+                                writer.close() ;
+                                testWrite.close();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                         }
                     }else{
                         Log.d(LOG_TAG, "error", task.getException());
                     }
                 }
             });
-//            for(int i = 0; i<5; i++){
-//
-//                writer.write("\n"+String.valueOf(i)+","+String.valueOf(i*i));  // 원하는 데이터를 string형태로 ,을 포함하여 원하는 형식으로 넣어준다.
-//
-//            }
-            Log.d(LOG_TAG, "데이터 : "+ String.join(",", data));
-            // 입력이 끝나면, 도구와 도화지를 그만 꺼준다.
-            writer.close();
-            testWrite.close();
-
             /* 파일생성완료되었으니, 공유파트*/
             Uri exportUri = FileProvider.getUriForFile(getApplicationContext(),
                     "com.greenhelix.pear.fileprovider", test); // 파일을 uri형태로 변환해준다. fileprovider 경로는 한곳으로 정해두면된다.(상단의 파일경로가 바꿔주는 거임)
