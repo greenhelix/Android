@@ -18,9 +18,10 @@
     <string name="order_kind_btn_text01">직접 입력</string>
     <string name="order_kind_btn_text02">카메라 입력</string>
     <!--order+++++++++++++++++++++++++++++++++++++++-->
-    <string name="order_head_text">주문자 정보 입력</string>
+    <string name="order_head_text1">보낸 사람 정보 입력</string>
+    <string name="order_head_text2">받는 사람 정보 입력</string>
     <string name="status_head_text">주문자 정보 수정</string>
-    <string name="order_sender_text">보낸 사람 </string>
+    <string name="order_sender_text">보내는 사람 </string>
     <string name="order_sender_tel_text">보내는 사람 연락처</string>
     <string name="order_recipient_text">받는 사람 </string>
     <string name="order_recipient_tel_text">받는 사람 연락처</string>

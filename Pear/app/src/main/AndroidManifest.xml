@@ -2,11 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.greenhelix.pear">
 
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-
-    <!-- 인터넷 허가 -->
-    <uses-permission android:name="android.permission.INTERNET" />
-    <!-- 카메라 허용 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- 인터넷 허가 -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 카메라 허용 -->
     <uses-permission
         android:name="android.permission.CAMERA"
         android:required="true" />
@@ -24,27 +21,31 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".Intro"
-            android:screenOrientation="portrait" >
+        <activity
+            android:name=".Intro"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".CustomerActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".settingPear.SettingsActivity"
-            android:screenOrientation="portrait"
-            android:label="@string/title_activity_settings" />
-        <activity android:name=".staticPear.StaticActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".orderStatus.OrderStatusPear"
-            android:screenOrientation="portrait"/>
-
+        <activity
+            android:name=".LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CustomerActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".settingPear.SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".staticPear.StaticActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".orderStatus.OrderStatusPear"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait" />
@@ -63,8 +64,10 @@
         <activity
             android:name=".cameraOrder.ImageML"
             android:screenOrientation="portrait" />
+        <activity android:name=".directOrder.DirectSenderActivity"
+            android:screenOrientation="portrait" />
         <activity
-            android:name=".directOrder.DirectOrderActivity"
+            android:name=".directOrder.DirectRecipientActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".directOrder.DirectShow"
@@ -93,8 +96,7 @@
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-2822639842722514~8041756912"
-            />
+            android:value="ca-app-pub-2822639842722514~8041756912" />
     </application>
 
 </manifest>

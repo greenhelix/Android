@@ -10,7 +10,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.greenhelix.pear.cameraOrder.CameraOrderActivity;
-import com.greenhelix.pear.directOrder.DirectOrderActivity;
+import com.greenhelix.pear.directOrder.DirectRecipientActivity;
+import com.greenhelix.pear.directOrder.DirectSenderActivity;
 
 /*주문 형태 선택 화면 */
 public class OrderKindActivity extends AppCompatActivity {
@@ -33,7 +34,7 @@ public class OrderKindActivity extends AppCompatActivity {
         btnOrderDirect.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent move1 = new Intent(getApplicationContext(), DirectOrderActivity.class);
+                Intent move1 = new Intent(getApplicationContext(), DirectSenderActivity.class);
                 startActivity(move1);
             }
         });

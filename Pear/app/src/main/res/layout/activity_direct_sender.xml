@@ -5,11 +5,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context=".directOrder.DirectSenderActivity"
     android:background="@color/greenBackground"
-    tools:context=".directOrder.DirectOrderActivity"
     >
+
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/direct_info_linear1"
+        android:id="@+id/direct_info_sender_linear1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -18,16 +19,16 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         >
-<!--        app:layout_constraintTop_toBottomOf="@id/"-->
+        <!--        app:layout_constraintTop_toBottomOf="@id/"-->
         <TextView
             android:id="@+id/tv_direct_head"
             style="@style/headline_text"
-            android:text="@string/order_head_text"
+            android:text="@string/order_head_text1"
             />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/direct_info_linear2"
+        android:id="@+id/direct_info_sender_linear2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -36,7 +37,7 @@
         android:layout_marginStart="30dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/direct_info_linear1"
+        app:layout_constraintTop_toBottomOf="@id/direct_info_sender_linear1"
         >
         <TextView
             android:id="@+id/tv_direct_sender"
@@ -58,7 +59,7 @@
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/direct_info_linear3"
+        android:id="@+id/direct_info_sender_linear3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -67,7 +68,7 @@
         android:layout_marginStart="30dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/direct_info_linear2"
+        app:layout_constraintTop_toBottomOf="@id/direct_info_sender_linear2"
         >
         <TextView
             android:id="@+id/tv_direct_sender_tel"
@@ -131,111 +132,6 @@
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/direct_info_linear4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:gravity="start"
-        android:orientation="vertical"
-        android:layout_marginLeft="30dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/direct_info_linear3"
-        >
-        <TextView
-            android:id="@+id/tv_order_direct_recipient"
-            style="@style/headline_text2"
-            android:text="@string/order_recipient_text"
-            />
-        <EditText
-            android:id="@+id/et_direct_recipient"
-            style="@style/input_text_300"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/basic_input_shape"
-            android:hint="이름을 적어주세요."
-            android:inputType="textAutoComplete"
-            android:maxLength="5"
-            android:maxLines="1"
-            android:nextFocusForward="@id/et_direct_recipient_tel1"
-            android:singleLine="true"
-            />
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/direct_info_linear5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:gravity="start"
-        android:orientation="vertical"
-        android:layout_marginStart="30dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/direct_info_linear4"
-        >
-        <TextView
-            android:id="@+id/tv_order_direct_recipient_tel"
-            style="@style/headline_text2"
-            android:text="@string/order_recipient_tel_text"
-            />
-
-
-        <LinearLayout
-            android:id="@+id/direct_tel_linear2"
-            style="@style/direct_input_tel_linear"
-            >
-
-            <EditText
-                android:id="@+id/et_direct_recipient_tel1"
-                style="@style/input_text_85"
-                android:background="@drawable/basic_input_shape"
-                android:maxLength="3"
-                android:inputType="phone"
-                android:imeOptions="actionNext"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:text="ㅡ"
-                android:textSize="15dp"
-                />
-
-            <EditText
-                android:id="@+id/et_direct_recipient_tel2"
-                style="@style/input_text_85"
-                android:background="@drawable/basic_input_shape"
-                android:inputType="phone"
-                android:maxLength="4"
-                android:imeOptions="actionNext"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:text="ㅡ"
-                android:textSize="15dp"
-                />
-
-            <EditText
-                android:id="@+id/et_direct_recipient_tel3"
-                style="@style/input_text_85"
-                android:background="@drawable/basic_input_shape"
-                android:inputType="phone"
-                android:maxLength="4"
-                android:nextFocusForward="@id/et_direct_address_num"
-                />
-
-        </LinearLayout>
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-    <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/direct_info_linear6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -245,7 +141,7 @@
         android:layout_marginStart="30dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/direct_info_linear5"
+        app:layout_constraintTop_toBottomOf="@id/direct_info_sender_linear3"
         >
         <LinearLayout
             style="@style/direct_input_tel_linear"
@@ -271,7 +167,7 @@
                 />
 
             <Button
-                android:id="@+id/btn_direct_address"
+                android:id="@+id/btn_sender_direct_address"
                 android:layout_width="105dp"
                 android:layout_height="35dp"
                 android:layout_marginStart="15dp"
@@ -302,7 +198,7 @@
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/direct_info_linear7"
+        android:id="@+id/direct_info_sender_linear7"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -313,7 +209,7 @@
         app:layout_constraintTop_toBottomOf="@id/direct_info_linear6"
         >
         <Button
-            android:id="@+id/btn_direct_before"
+            android:id="@+id/btn_direct_sender_before"
             android:layout_width="100dp"
             android:layout_height="40dp"
             android:layout_marginEnd="130dp"
@@ -324,14 +220,14 @@
             />
 
         <Button
-            android:id="@+id/btn_direct_next"
+            android:id="@+id/btn_direct_sender_next"
             android:layout_width="100dp"
             android:layout_height="40dp"
             android:textStyle="bold"
             android:textColor="@color/head"
             android:background="@drawable/bottom_btn_shape"
             android:text="@string/after_btn_text"
-            android:onClick="showData"
+            android:onClick="senderData"
             />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
