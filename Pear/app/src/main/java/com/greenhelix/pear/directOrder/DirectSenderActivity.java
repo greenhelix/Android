@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -68,15 +69,15 @@ public class DirectSenderActivity extends AppCompatActivity {
         senderInfo.add(senderAddress1.getText().toString());
         senderInfo.add(senderAddress2.getText().toString());
         senderInfo.add(senderAddress3.getText().toString());
-        Log.d(LOG_TAG,"sender ::"+senderInfo);
+        Log.d(LOG_TAG,"데이터1 : sender ::"+senderInfo);
         Intent directSenderData = new Intent(DirectSenderActivity.this, DirectRecipientActivity.class);
         directSenderData.putExtra("sender", (Serializable) senderInfo);
 
-        if(sender_name == null){
+        if(TextUtils.isEmpty(sender_name.getText().toString())){
             Toast.makeText(getApplicationContext(), "이름을 입력해주세요.", Toast.LENGTH_SHORT).show();
-        }else if(sender_tel1 == null || sender_tel2 == null || sender_tel3 == null){
+        }else if(TextUtils.isEmpty(sender_tel1.getText().toString()) || TextUtils.isEmpty(sender_tel2.getText().toString()) || TextUtils.isEmpty(sender_tel3.getText().toString())){
             Toast.makeText(getApplicationContext(), "전화번호를 입력해주세요.", Toast.LENGTH_SHORT).show();
-        }else if(senderAddress1 == null || senderAddress2 == null || senderAddress3 == null){
+        }else if(TextUtils.isEmpty(senderAddress1.getText().toString()) || TextUtils.isEmpty(senderAddress2.getText().toString()) || TextUtils.isEmpty(senderAddress3.getText().toString())){
             Toast.makeText(getApplicationContext(), "주소를 다 입력해주세요.", Toast.LENGTH_SHORT).show();
         }else{
             startActivity(directSenderData);

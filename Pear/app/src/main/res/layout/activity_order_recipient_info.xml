@@ -27,110 +27,6 @@
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/direct_info_linear2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:gravity="start"
-        android:orientation="vertical"
-        android:layout_marginStart="30dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/direct_info_linear1"
-        >
-        <TextView
-            android:id="@+id/tv_direct_sender"
-            style="@style/headline_text2"
-            android:text="@string/order_sender_text"
-            />
-        <EditText
-            android:id="@+id/et_direct_sender"
-            style="@style/input_text_300"
-            android:layout_marginBottom="3dp"
-            android:background="@drawable/basic_input_shape"
-            android:hint="이름을 적어주세요."
-            android:inputType="textAutoComplete"
-            android:text=""
-            android:maxLength="5"
-            android:singleLine="true"
-            android:nextFocusForward="@+id/et_direct_sender_tel1"
-            />
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/direct_info_linear3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:gravity="start"
-        android:orientation="vertical"
-        android:layout_marginStart="30dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/direct_info_linear2"
-        >
-        <TextView
-            android:id="@+id/tv_direct_sender_tel"
-            style="@style/headline_text2"
-            android:text="@string/order_sender_tel_text"
-            />
-        <LinearLayout
-            android:id="@+id/direct_tel_linear"
-            style="@style/direct_input_tel_linear"
-            >
-
-            <EditText
-                android:id="@id/et_direct_sender_tel1"
-                style="@style/input_text_85"
-                android:background="@drawable/basic_input_shape"
-                android:inputType="phone"
-                android:maxLength="3"
-                android:singleLine="true"
-                android:imeOptions="actionNext"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:text="ㅡ"
-                android:textSize="15dp"
-                />
-
-            <EditText
-                android:id="@+id/et_direct_sender_tel2"
-                style="@style/input_text_85"
-                android:background="@drawable/basic_input_shape"
-                android:inputType="phone"
-                android:maxLength="4"
-                android:singleLine="true"
-                android:imeOptions="actionNext"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:text="ㅡ"
-                android:textSize="15dp"
-                />
-
-            <EditText
-                android:id="@+id/et_direct_sender_tel3"
-                style="@style/input_text_85"
-                android:background="@drawable/basic_input_shape"
-                android:inputType="phone"
-                android:maxLength="4"
-                android:nextFocusForward="@id/et_direct_recipient"
-                android:singleLine="true"
-                />
-
-        </LinearLayout>
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/direct_info_linear4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -140,7 +36,7 @@
         android:layout_marginLeft="30dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/direct_info_linear3"
+        app:layout_constraintTop_toBottomOf="@id/direct_info_linear1"
         >
         <TextView
             android:id="@+id/tv_order_direct_recipient"

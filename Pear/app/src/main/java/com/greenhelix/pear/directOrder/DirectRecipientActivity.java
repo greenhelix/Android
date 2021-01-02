@@ -2,6 +2,7 @@ package com.greenhelix.pear.directOrder;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -24,11 +25,7 @@ public class DirectRecipientActivity extends AppCompatActivity {
 
     private static final String LOG_TAG = "ik";
     private static final int SEARCH_ADDRESS_ACTIVITY = 10000;
-//    EditText sender_tel1;
     EditText recipient_tel1;
-//    EditText sender_name;
-//    EditText sender_tel2;
-//    EditText sender_tel3;
     EditText recipient_name;
     EditText recipient_tel2;
     EditText recipient_tel3;
@@ -46,10 +43,6 @@ public class DirectRecipientActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_recipient_info);
 
-//        sender_name = (EditText) findViewById(R.id.et_direct_sender);
-//        sender_tel1 = (EditText) findViewById(R.id.et_direct_sender_tel1);
-//        sender_tel2 = (EditText) findViewById(R.id.et_direct_sender_tel2);
-//        sender_tel3 = (EditText) findViewById(R.id.et_direct_sender_tel3);
         recipient_name = (EditText) findViewById(R.id.et_direct_recipient);
         recipient_tel1 = (EditText) findViewById(R.id.et_direct_recipient_tel1);
         recipient_tel2 = (EditText) findViewById(R.id.et_direct_recipient_tel2);
@@ -92,19 +85,19 @@ public class DirectRecipientActivity extends AppCompatActivity {
         recipientList.add(address_detail2.getText().toString());
 
         //주문 정보 데이터 확인
-        Log.d(LOG_TAG,"sender ::"+senderList);
-        Log.d(LOG_TAG,"recipient ::"+recipientList);
+        Log.d(LOG_TAG,"데이터2 확인 sender ::"+senderList);
+        Log.d(LOG_TAG,"데이터2 확인 recipient ::"+recipientList);
 
         //정보 합치기
         Intent directData = new Intent(DirectRecipientActivity.this, DirectShow.class);
         directData.putExtra("sender", (Serializable) senderList);
         directData.putExtra("recipient", (Serializable) recipientList);
 
-        if(recipient_name == null){
+        if(TextUtils.isEmpty(recipient_name.getText().toString())){
             Toast.makeText(getApplicationContext(), "이름을 입력해주세요.", Toast.LENGTH_SHORT).show();
-        }else if(recipient_tel1 == null || recipient_tel2 == null || recipient_tel3 == null){
+        }else if(TextUtils.isEmpty(recipient_tel1.getText().toString())  || TextUtils.isEmpty(recipient_tel2.getText().toString())  || TextUtils.isEmpty(recipient_tel3.getText().toString())){
             Toast.makeText(getApplicationContext(), "전화번호를 입력해주세요.", Toast.LENGTH_SHORT).show();
-        }else if(address_detail2 == null || address_detail1 == null || address_num == null){
+        }else if(TextUtils.isEmpty(address_num.getText().toString())  || TextUtils.isEmpty(address_detail1.getText().toString())  || TextUtils.isEmpty(address_detail2.getText().toString())){
             Toast.makeText(getApplicationContext(), "주소를 다 입력해주세요.", Toast.LENGTH_SHORT).show();
         }else{
             startActivity(directData);

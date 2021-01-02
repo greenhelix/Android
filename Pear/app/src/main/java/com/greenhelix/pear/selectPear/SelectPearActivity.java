@@ -207,6 +207,7 @@ public class SelectPearActivity extends AppCompatActivity {
         orderPear.put("pear_box", box);
         orderPear.put("status", "준비 중");
 
+        // update가 기존 있는 문서 수정하여 올리는 기능
         pearOrderRef.document(ORDER_DOC+id)
                 .update(orderPear)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {

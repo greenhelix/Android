@@ -7,35 +7,35 @@
     android:background="@color/greenBackground"
     tools:context=".directOrder.DirectShow">
 
+    <!--    <Button-->
+<!--        android:id="@+id/btn_click"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:layout_marginBottom="32dp"-->
+<!--        android:text="SHOW!DATA"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.498"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/tv_test_show1"-->
+<!--        />-->
     <TextView
-        android:id="@+id/tv_test_show"
+        android:id="@+id/tv_test_show1"
         android:layout_width="331dp"
         android:layout_height="521dp"
         android:layout_marginTop="50dp"
         android:background="@color/head"
-        android:maxLines="10"
+        android:maxLines="20"
         android:text=""
         android:textColor="#FFFFFF"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/btn_click"
+        app:layout_constraintBottom_toTopOf="@+id/btn_direct_result_before"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.812" />
+        app:layout_constraintVertical_bias="0.0" />
 
-    <Button
-        android:id="@+id/btn_click"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="32dp"
-        android:text="SHOW!DATA"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_test_show"
-        />
     <Button
         android:id="@+id/btn_direct_result_before"
         style="@style/bottom_btn_before_style"
@@ -45,7 +45,7 @@
         />
     <Button
         android:id="@+id/btn_direct_result_next"
-        style="@style/bottom_btn_next_style"
+        style="@style/long_btn_style"
         android:background="@drawable/bottom_btn_shape"
         android:text="@string/after_btn_text"
         tools:ignore="MissingConstraints"
