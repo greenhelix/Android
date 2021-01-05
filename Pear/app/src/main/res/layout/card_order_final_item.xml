@@ -22,12 +22,11 @@
         <TextView
             android:id="@+id/tv_list_orderNum"
             android:layout_width="match_parent"
-            android:layout_height="20dp"
+            android:layout_height="10dp"
             android:layout_marginTop="5dp"
-            android:paddingLeft="10dp"
-            android:textSize="15dp"
             android:inputType="number"
-            />
+            android:paddingLeft="10dp"
+            android:textSize="15dp" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -121,7 +120,7 @@
                 android:layout_height="40dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="5dp"
-                android:background="@color/pear_btn_color"
+                android:background="@drawable/basic_btn_shape"
                 android:paddingTop="5dp"
                 android:textAlignment="center"
                 android:textSize="20dp"
@@ -134,7 +133,7 @@
                 android:layout_height="40dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="5dp"
-                android:background="@color/swipe_color"
+                android:background="@drawable/basic_btn_shape"
                 android:paddingTop="5dp"
                 android:textAlignment="center"
                 android:textSize="20dp"
@@ -147,7 +146,7 @@
                 android:layout_height="40dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="5dp"
-                android:background="@color/white_color"
+                android:background="@drawable/basic_btn_shape"
                 android:paddingTop="5dp"
                 android:textAlignment="center"
                 android:textSize="20dp"

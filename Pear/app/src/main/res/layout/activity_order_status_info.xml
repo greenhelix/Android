@@ -8,6 +8,7 @@
     tools:context=".orderStatus.OrderStatusInfo"
     android:background="@color/greenBackground"
     >
+
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/status_info_linear1"
         android:layout_width="match_parent"
@@ -25,284 +26,341 @@
             />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/status_info_linear2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:gravity="start"
-        android:orientation="vertical"
-        android:layout_marginStart="30dp"
+    <ScrollView
+        android:id="@+id/allScroll"
+        android:layout_width="388dp"
+        android:layout_height="556dp"
+        app:layout_constraintBottom_toTopOf="@id/status_info_linear8"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/status_info_linear1"
-        >
-        <TextView
-            android:id="@+id/tv_status_sender"
-            style="@style/headline_text2"
-            android:text="@string/order_sender_text"
-            />
-        <EditText
-            android:id="@+id/et_status_sender"
-            style="@style/input_text_300"
-            android:layout_marginBottom="3dp"
-            android:background="@drawable/basic_input_shape"
-            android:hint="이름을 적어주세요."
-            android:inputType="textAutoComplete"
-            android:text=""
-            android:maxLength="5"
-            android:singleLine="true"
-            android:nextFocusForward="@+id/et_status_sender_tel1"
-            />
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/status_info_linear3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:gravity="start"
-        android:orientation="vertical"
-        android:layout_marginStart="30dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/status_info_linear2"
-        >
-        <TextView
-            android:id="@+id/tv_status_sender_tel"
-            style="@style/headline_text2"
-            android:text="@string/order_sender_tel_text"
-            />
-        <LinearLayout
-            android:id="@+id/status_tel_linear"
-            style="@style/direct_input_tel_linear"
-            >
-
-            <EditText
-                android:id="@id/et_status_sender_tel1"
-                style="@style/input_text_85"
-                android:background="@drawable/basic_input_shape"
-                android:inputType="phone"
-                android:maxLength="3"
-                android:singleLine="true"
-                android:imeOptions="actionNext"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:text="ㅡ"
-                android:textSize="15dp"
-                />
-
-            <EditText
-                android:id="@+id/et_status_sender_tel2"
-                style="@style/input_text_85"
-                android:background="@drawable/basic_input_shape"
-                android:inputType="phone"
-                android:maxLength="4"
-                android:singleLine="true"
-                android:imeOptions="actionNext"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:text="ㅡ"
-                android:textSize="15dp"
-                />
-
-            <EditText
-                android:id="@+id/et_status_sender_tel3"
-                style="@style/input_text_85"
-                android:background="@drawable/basic_input_shape"
-                android:inputType="phone"
-                android:maxLength="4"
-                android:nextFocusForward="@id/et_status_recipient"
-                android:singleLine="true"
-                />
-
-        </LinearLayout>
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/status_info_linear4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:gravity="start"
-        android:orientation="vertical"
-        android:layout_marginLeft="30dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/status_info_linear3"
-        >
-        <TextView
-            android:id="@+id/tv_order_status_recipient"
-            style="@style/headline_text2"
-            android:text="@string/order_recipient_text"
-            />
-        <EditText
-            android:id="@+id/et_status_recipient"
-            style="@style/input_text_300"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/basic_input_shape"
-            android:hint="이름을 적어주세요."
-            android:inputType="textAutoComplete"
-            android:maxLength="5"
-            android:maxLines="1"
-            android:nextFocusForward="@id/et_status_recipient_tel1"
-            android:singleLine="true"
-            />
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/status_info_linear5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:gravity="start"
-        android:orientation="vertical"
-        android:layout_marginStart="30dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/status_info_linear4"
-        >
-        <TextView
-            android:id="@+id/tv_order_status_recipient_tel"
-            style="@style/headline_text2"
-            android:text="@string/order_recipient_tel_text"
-            />
-
+        app:layout_constraintTop_toBottomOf="@id/status_info_linear1">
 
         <LinearLayout
-            android:id="@+id/status_tel_linear2"
-            style="@style/direct_input_tel_linear"
-            >
+            android:id="@+id/allLinear"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/status_info_linear1">
 
-            <EditText
-                android:id="@+id/et_status_recipient_tel1"
-                style="@style/input_text_85"
-                android:background="@drawable/basic_input_shape"
-                android:maxLength="3"
-                android:inputType="phone"
-                android:imeOptions="actionNext"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/status_info_linear2"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:text="ㅡ"
-                android:textSize="15dp"
-                />
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="20dp"
+                android:gravity="start"
+                android:orientation="vertical"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/status_info_linear1">
 
-            <EditText
-                android:id="@+id/et_status_recipient_tel2"
-                style="@style/input_text_85"
-                android:background="@drawable/basic_input_shape"
-                android:inputType="phone"
-                android:maxLength="4"
-                android:imeOptions="actionNext"
-                />
+                <TextView
+                    android:id="@+id/tv_status_sender"
+                    style="@style/headline_text2"
+                    android:text="@string/order_sender_text" />
 
-            <TextView
-                android:layout_width="wrap_content"
+                <EditText
+                    android:id="@+id/et_status_sender"
+                    style="@style/input_text_300"
+                    android:layout_marginBottom="3dp"
+                    android:background="@drawable/basic_input_shape"
+                    android:hint="이름을 적어주세요."
+                    android:inputType="textAutoComplete"
+                    android:maxLength="5"
+                    android:nextFocusForward="@+id/et_status_sender_tel1"
+                    android:singleLine="true"
+                    android:text="" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/status_info_linear3"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:text="ㅡ"
-                android:textSize="15dp"
-                />
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:gravity="start"
+                android:orientation="vertical"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/status_info_linear2">
 
-            <EditText
-                android:id="@+id/et_status_recipient_tel3"
-                style="@style/input_text_85"
-                android:background="@drawable/basic_input_shape"
-                android:inputType="phone"
-                android:maxLength="4"
-                android:nextFocusForward="@id/et_status_address_num"
-                />
+                <TextView
+                    android:id="@+id/tv_status_sender_tel"
+                    style="@style/headline_text2"
+                    android:text="@string/order_sender_tel_text" />
 
+                <LinearLayout
+                    android:id="@+id/status_tel_linear"
+                    style="@style/direct_input_tel_linear">
+
+                    <EditText
+                        android:id="@id/et_status_sender_tel1"
+                        style="@style/input_text_85"
+                        android:background="@drawable/basic_input_shape"
+                        android:imeOptions="actionNext"
+                        android:inputType="phone"
+                        android:maxLength="3"
+                        android:singleLine="true" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:text="ㅡ"
+                        android:textSize="15dp" />
+
+                    <EditText
+                        android:id="@+id/et_status_sender_tel2"
+                        style="@style/input_text_85"
+                        android:background="@drawable/basic_input_shape"
+                        android:imeOptions="actionNext"
+                        android:inputType="phone"
+                        android:maxLength="4"
+                        android:singleLine="true" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:text="ㅡ"
+                        android:textSize="15dp" />
+
+                    <EditText
+                        android:id="@+id/et_status_sender_tel3"
+                        style="@style/input_text_85"
+                        android:background="@drawable/basic_input_shape"
+                        android:inputType="phone"
+                        android:maxLength="4"
+                        android:nextFocusForward="@id/et_status_recipient"
+                        android:singleLine="true" />
+
+                </LinearLayout>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/status_info_linear4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:gravity="start"
+                android:orientation="vertical"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/status_info_linear5">
+
+                <LinearLayout style="@style/direct_input_tel_linear">
+
+                    <TextView
+                        android:id="@+id/tv_status_sender_address"
+                        style="@style/headline_text2"
+                        android:text="@string/order_address_text" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/direct_input_tel_linear">
+
+                    <EditText
+                        android:id="@+id/et_status_sender_address_num"
+                        style="@style/input_text_85"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/basic_input_shape"
+                        android:inputType="number"
+                        android:maxLength="10"
+                        android:nextFocusForward="@id/btn_status_address"
+                        android:singleLine="true" />
+
+                    <Button
+                        android:id="@+id/btn_status_sender_address"
+                        android:layout_width="105dp"
+                        android:layout_height="35dp"
+                        android:layout_marginStart="15dp"
+                        android:background="@drawable/basic_input_shape"
+                        android:backgroundTint="@color/white_color"
+                        android:text="주소 검색"
+                        android:textSize="15dp" />
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/et_status_sender_address_show"
+                    style="@style/input_text_300"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/basic_input_shape"
+                    android:inputType="text"
+                    android:nextFocusForward="@id/et_status_address_detail"
+                    android:singleLine="true" />
+
+                <EditText
+                    android:id="@+id/et_status_sender_address_detail"
+                    style="@style/input_text_300"
+                    android:background="@drawable/basic_input_shape"
+                    android:inputType="text"
+                    android:singleLine="true" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/status_info_linear5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                android:gravity="start"
+                android:orientation="vertical"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/status_info_linear3">
+
+                <TextView
+                    android:id="@+id/tv_order_status_recipient"
+                    style="@style/headline_text2"
+                    android:text="@string/order_recipient_text" />
+
+                <EditText
+                    android:id="@+id/et_status_recipient"
+                    style="@style/input_text_300"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/basic_input_shape"
+                    android:hint="이름을 적어주세요."
+                    android:inputType="textAutoComplete"
+                    android:maxLength="5"
+                    android:maxLines="1"
+                    android:nextFocusForward="@id/et_status_recipient_tel1"
+                    android:singleLine="true" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/status_info_linear6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:gravity="start"
+                android:orientation="vertical"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/status_info_linear4">
+
+                <TextView
+                    android:id="@+id/tv_order_status_recipient_tel"
+                    style="@style/headline_text2"
+                    android:text="@string/order_recipient_tel_text" />
+
+
+                <LinearLayout
+                    android:id="@+id/status_tel_linear2"
+                    style="@style/direct_input_tel_linear">
+
+                    <EditText
+                        android:id="@+id/et_status_recipient_tel1"
+                        style="@style/input_text_85"
+                        android:background="@drawable/basic_input_shape"
+                        android:imeOptions="actionNext"
+                        android:inputType="phone"
+                        android:maxLength="3" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:text="ㅡ"
+                        android:textSize="15dp" />
+
+                    <EditText
+                        android:id="@+id/et_status_recipient_tel2"
+                        style="@style/input_text_85"
+                        android:background="@drawable/basic_input_shape"
+                        android:imeOptions="actionNext"
+                        android:inputType="phone"
+                        android:maxLength="4" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:text="ㅡ"
+                        android:textSize="15dp" />
+
+                    <EditText
+                        android:id="@+id/et_status_recipient_tel3"
+                        style="@style/input_text_85"
+                        android:background="@drawable/basic_input_shape"
+                        android:inputType="phone"
+                        android:maxLength="4"
+                        android:nextFocusForward="@id/et_status_address_num" />
+
+                </LinearLayout>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/status_info_linear7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="30dp"
+                android:gravity="start"
+                android:orientation="vertical"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/status_info_linear5">
+
+                <LinearLayout style="@style/direct_input_tel_linear">
+
+                    <TextView
+                        android:id="@+id/tv_status_address"
+                        style="@style/headline_text2"
+                        android:text="@string/order_address_text" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/direct_input_tel_linear">
+
+                    <EditText
+                        android:id="@+id/et_status_address_num"
+                        style="@style/input_text_85"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/basic_input_shape"
+                        android:inputType="number"
+                        android:maxLength="10"
+                        android:nextFocusForward="@id/btn_status_address"
+                        android:singleLine="true" />
+
+                    <Button
+                        android:id="@+id/btn_status_address"
+                        android:layout_width="105dp"
+                        android:layout_height="35dp"
+                        android:layout_marginStart="15dp"
+                        android:background="@drawable/basic_input_shape"
+                        android:backgroundTint="@color/white_color"
+                        android:text="주소 검색"
+                        android:textSize="15dp" />
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/et_status_address_show"
+                    style="@style/input_text_300"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/basic_input_shape"
+                    android:inputType="text"
+                    android:nextFocusForward="@id/et_status_address_detail"
+                    android:singleLine="true" />
+
+                <EditText
+                    android:id="@+id/et_status_address_detail"
+                    style="@style/input_text_300"
+                    android:background="@drawable/basic_input_shape"
+                    android:inputType="text"
+                    android:singleLine="true" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
         </LinearLayout>
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-
+    </ScrollView>
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/status_info_linear6"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:gravity="start"
-        android:orientation="vertical"
-        android:layout_marginStart="30dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/status_info_linear5"
-        >
-        <LinearLayout
-            style="@style/direct_input_tel_linear"
-            >
-            <TextView
-                android:id="@+id/tv_status_address"
-                style="@style/headline_text2"
-                android:text="@string/order_address_text"
-                />
-        </LinearLayout>
-        <LinearLayout
-            style="@style/direct_input_tel_linear"
-            >
-            <EditText
-                android:id="@+id/et_status_address_num"
-                style="@style/input_text_85"
-                android:layout_marginBottom="8dp"
-                android:background="@drawable/basic_input_shape"
-                android:inputType="number"
-                android:maxLength="10"
-                android:nextFocusForward="@id/btn_status_address"
-                android:singleLine="true"
-                />
-
-            <Button
-                android:id="@+id/btn_status_address"
-                android:layout_width="105dp"
-                android:layout_height="35dp"
-                android:layout_marginStart="15dp"
-                android:background="@drawable/basic_input_shape"
-                android:backgroundTint="@color/white_color"
-                android:text="주소 검색"
-                android:textSize="15dp"
-                />
-        </LinearLayout>
-
-        <EditText
-            android:id="@+id/et_status_address_show"
-            style="@style/input_text_300"
-            android:layout_marginBottom="8dp"
-            android:background="@drawable/basic_input_shape"
-            android:inputType="text"
-            android:nextFocusForward="@id/et_status_address_detail"
-            android:singleLine="true"
-            />
-
-        <EditText
-            android:id="@+id/et_status_address_detail"
-            style="@style/input_text_300"
-            android:background="@drawable/basic_input_shape"
-            android:singleLine="true"
-            android:inputType="text"
-            />
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/status_info_linear7"
+        android:id="@+id/status_info_linear8"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -310,7 +368,7 @@
         android:gravity="start"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/status_info_linear6"
+        app:layout_constraintTop_toBottomOf="@id/allScroll"
         >
         <Button
             android:id="@+id/btn_status_before"
@@ -331,7 +389,6 @@
             android:textColor="@color/head"
             android:background="@drawable/bottom_btn_shape"
             android:text="@string/modify_btn_text"
-            android:onClick="modifyDataCheck"
             />
     </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.constraintlayout.widget.ConstraintLayout>

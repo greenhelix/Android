@@ -73,7 +73,7 @@
             android:name=".directOrder.DirectShow"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".cloudDB.CloudStore"
+            android:name=".cameraOrder.CameraShow"
             android:screenOrientation="portrait" />
         <activity
             android:name=".selectPear.SelectPearActivity"

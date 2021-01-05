@@ -26,6 +26,7 @@ import java.util.List;
 public class OrderStatusInfo extends AppCompatActivity {
     private static final String LOG_TAG = "ik", ERROR = "ikerror";
     EditText m_sender_name, m_sender_tel1, m_sender_tel2, m_sender_tel3;
+    EditText s_address_num, s_address_detail1, s_address_detail2;
     EditText m_recipient_name,m_recipient_tel1, m_recipient_tel2, m_recipient_tel3;
     EditText m_address_num, m_address_detail1, m_address_detail2;
 
@@ -45,6 +46,10 @@ public class OrderStatusInfo extends AppCompatActivity {
         m_sender_tel1 = (EditText) findViewById(R.id.et_status_sender_tel1);
         m_sender_tel2 = (EditText) findViewById(R.id.et_status_sender_tel2);
         m_sender_tel3 = (EditText) findViewById(R.id.et_status_sender_tel3);
+        s_address_num = (EditText) findViewById(R.id.et_status_sender_address_num);
+        s_address_detail1 = (EditText) findViewById(R.id.et_status_sender_address_show);
+        s_address_detail2 = (EditText) findViewById(R.id.et_status_sender_address_detail);
+
         m_recipient_name = (EditText) findViewById(R.id.et_status_recipient);
         m_recipient_tel1 = (EditText) findViewById(R.id.et_status_recipient_tel1);
         m_recipient_tel2 = (EditText) findViewById(R.id.et_status_recipient_tel2);
@@ -65,7 +70,6 @@ public class OrderStatusInfo extends AppCompatActivity {
                 if(id != null ){
                     modifyData.putExtra("id", id);
                     startActivity(modifyData);
-
                 }else{
                     Toast.makeText(getApplicationContext(), "아이디값이 없어요!", Toast.LENGTH_SHORT).show();
                 }
@@ -104,14 +108,20 @@ public class OrderStatusInfo extends AppCompatActivity {
                 .get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() { //get 가져오기
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
+                // 보내는 사람 정보 수정
                 String sender = documentSnapshot.getString("sender");
                 m_sender_name.setText(sender);
-                String recipient = documentSnapshot.getString("recipient");
-                m_recipient_name.setText(recipient);
                 String sender_tel = documentSnapshot.getString("sender_tel");
                 m_sender_tel1.setText(sender_tel.substring(0,3));
                 m_sender_tel2.setText(sender_tel.substring(3,7));
                 m_sender_tel3.setText(sender_tel.substring(7));
+                List<String> sender_addr = (List<String>) documentSnapshot.get("sender_addr");
+                s_address_num.setText(sender_addr.get(0));
+                s_address_detail1.setText(sender_addr.get(1));
+                s_address_detail2.setText(sender_addr.get(2));
+                // 받는 사람 정보 수정
+                String recipient = documentSnapshot.getString("recipient");
+                m_recipient_name.setText(recipient);
                 String recipient_tel = documentSnapshot.getString("recipient_tel");
                 m_recipient_tel1.setText(recipient_tel.substring(0,4));
                 m_recipient_tel2.setText(recipient_tel.substring(3,7));
@@ -131,10 +141,15 @@ public class OrderStatusInfo extends AppCompatActivity {
     }
 
     public void modifyDataUpdate(){
+        /*데이터를 잘 포장해서 데이터베이스로 보내는 부분이다.*/
         m_senderList.add(m_sender_name.getText().toString());
         m_senderList.add(m_sender_tel1.getText().toString());
         m_senderList.add(m_sender_tel2.getText().toString());
         m_senderList.add(m_sender_tel3.getText().toString());
+        m_senderList.add(s_address_num.getText().toString());
+        m_senderList.add(s_address_detail1.getText().toString());
+        m_senderList.add(s_address_detail2.getText().toString());
+
         m_recipientList.add(m_recipient_name.getText().toString());
         m_recipientList.add(m_recipient_tel1.getText().toString());
         m_recipientList.add(m_recipient_tel2.getText().toString());
@@ -143,20 +158,29 @@ public class OrderStatusInfo extends AppCompatActivity {
         m_recipientList.add(m_address_detail1.getText().toString());
         m_recipientList.add(m_address_detail2.getText().toString());
 
+        // 주소값 배열리스트로 따로 담아서 보낸다. 배열형태로 받아야 하기 때문이다. ( Firebase에서 배열로 설정해놔서임)
+        ArrayList<String> seAdr = new ArrayList<>();
         ArrayList<String> reAdr = new ArrayList<>();
+        seAdr.add(m_senderList.get(4));
+        seAdr.add(m_senderList.get(5));
+        seAdr.add(m_senderList.get(6));
         reAdr.add(m_recipientList.get(4));
         reAdr.add(m_recipientList.get(5));
         reAdr.add(m_recipientList.get(6));
+        /*                                                       */
+
+        // 실질적으로 데이터 베이스에 업데이트 시키는 부분이다.
         orderRef.document(id)
                 .update("sender", m_senderList.get(0),
                         "sender_tel", m_senderList.get(1)+m_senderList.get(2)+m_senderList.get(3),
+                        "sender_addr", seAdr,
                         "recipient", m_recipientList.get(0),
                         "recipient_tel", m_recipientList.get(1)+m_recipientList.get(2)+m_recipientList.get(3),
                         "recipient_addr", reAdr
                 );
     }
 
-    //주소찾기한 뒤 데이터 처리
+    //주소찾기 한 뒤 데이터 처리
     public void onActivityResult(int requestCode, int resultCode, Intent intent)
     {
         super.onActivityResult(requestCode, resultCode, intent);

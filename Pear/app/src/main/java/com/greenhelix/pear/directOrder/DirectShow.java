@@ -11,15 +11,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.greenhelix.pear.R;
-import com.greenhelix.pear.cloudDB.CloudStore;
 import com.greenhelix.pear.selectPear.SelectPearActivity;
 
 import java.text.SimpleDateFormat;
@@ -140,7 +137,7 @@ public class DirectShow extends AppCompatActivity {
         });
     }
 }
-//                Intent directData = new Intent(DirectShow.this, CloudStore.class);
+//                Intent directData = new Intent(DirectShow.this, CameraShow.class);
 //                directData.putExtra("direct_sender", senderData);
 //                directData.putExtra("direct_recipient", recipientData);
 //                startActivity(directData);

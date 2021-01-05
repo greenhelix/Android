@@ -1,4 +1,4 @@
-package com.greenhelix.pear.cloudDB;
+package com.greenhelix.pear.cameraOrder;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -36,7 +36,7 @@ import java.util.Map;
 2. 카메라 주문
 주문내역이 이쪽으로 모여야 함.*/
 
-public class CloudStore extends AppCompatActivity {
+public class CameraShow extends AppCompatActivity {
 
     private static final String LOG_TAG = "ik";
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -149,7 +149,7 @@ public class CloudStore extends AppCompatActivity {
                     }
                 });
         //인텐트
-        Intent next = new Intent(CloudStore.this, SelectPearActivity.class);
+        Intent next = new Intent(CameraShow.this, SelectPearActivity.class);
         next.putExtra("index",time);
         startActivity(next);
     }

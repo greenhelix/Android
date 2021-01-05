@@ -105,7 +105,9 @@ public class OrderStatusActivity extends AppCompatActivity {
             @Override
             public void onSwiped(@NonNull final RecyclerView.ViewHolder viewHolder, int direction){
                 Log.d(LOG_TAG, "스와이프하였습니다.");
+                // 선택한 카드의 위치 저장해두고
                 final int position = viewHolder.getAdapterPosition();
+                // 왼쪽 스와이프를 한 경우
                 if(direction == ItemTouchHelper.LEFT){
                     AlertDialog.Builder builder = new AlertDialog.Builder(OrderStatusActivity.this);
                     builder.setTitle("알림");
@@ -126,6 +128,7 @@ public class OrderStatusActivity extends AppCompatActivity {
                         }
                     }).show();
                 }
+                // 오른쪽 스와이프를 한 경우
                 else if(direction == ItemTouchHelper.RIGHT){
                     AlertDialog.Builder builder = new AlertDialog.Builder(OrderStatusActivity.this);
                     builder.setTitle("알림");
@@ -134,7 +137,6 @@ public class OrderStatusActivity extends AppCompatActivity {
                     builder.setPositiveButton("예", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            //수정화면으로 이동
                             Log.d(LOG_TAG, "수정화면으로 이동합니다.");
                             Intent modifyOrderIntent = new Intent(OrderStatusActivity.this, OrderStatusInfo.class);
 
