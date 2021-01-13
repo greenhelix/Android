@@ -195,30 +195,35 @@ public class OrderStatusActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<QuerySnapshot> task) {
                     if(task.isSuccessful()){
                         for(QueryDocumentSnapshot document : task.getResult()){
+                            List<String> s_addr = (List<String>) document.get("sender_addr");
                             List<String> addr = (List<String>) document.get("recipient_addr");
 //                            Log.d(LOG_TAG, document.getId() + "->" + document.getData());
-                            // 주문자/받는사람 정보
-                            data.add((String) document.get("sender"));
-                            data.add((String) document.get("sender_tel"));
-                            data.add((String) document.get("recipient"));
-                            data.add((String) document.get("recipient_tel"));
-                            // 받는사람 주소
-                            data.add(addr.get(0));
-                            data.add(addr.get(1));
-                            data.add(addr.get(2));
+                            // 주문자
+                            data.add((String) document.get("sender"));          //0
+                            data.add((String) document.get("sender_tel"));      //1
+                            data.add(s_addr.get(0));                            //2
+                            data.add(s_addr.get(1));                            //3
+                            data.add(s_addr.get(2));                            //4
+                            // 받는사람
+                            data.add((String) document.get("recipient"));       //5
+                            data.add((String) document.get("recipient_tel"));   //6
+                            data.add(addr.get(0));                              //7
+                            data.add(addr.get(1));                              //8
+                            data.add(addr.get(2));                              //9
                             // 배송상품
-                            data.add((String) document.get("pear_kind"));
-                            data.add((String) document.get("pear_amount"));
-                            data.add((String) document.get("pear_box"));
-//                            Log.d(LOG_TAG, "data : "+ data );
+                            data.add((String) document.get("pear_kind"));       //10
+                            data.add((String) document.get("pear_amount"));     //11
+                            data.add((String) document.get("pear_box"));        //12
+//                          Log.d(LOG_TAG, "data : "+ data );
                             try{
                                 // 보낸사람,받는사람,받는이 주소,배송 상품  작성
                                 /* 예외처리 중요! 안하면 안됨.*/
                                 writer.write(
                                     data.get(0)+","+data.get(1)
-                                    +","+data.get(2)+","+data.get(3)
-                                    +","+data.get(4)+","+data.get(5)+","+data.get(6)
+                                    +","+data.get(2)+","+data.get(3)+","+data.get(4)
+                                    +","+data.get(5)+","+data.get(6)
                                     +","+data.get(7)+","+data.get(8)+","+data.get(9)
+                                    +","+data.get(10)+","+data.get(11)+","+data.get(12)
                                     +"\n");//한줄띄어야 표로 완성
                             }catch (IOException e){
                                 Log.d(LOG_TAG, "Error:: "+e.toString());
