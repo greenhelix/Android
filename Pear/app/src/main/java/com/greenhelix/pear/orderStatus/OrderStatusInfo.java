@@ -116,9 +116,13 @@ public class OrderStatusInfo extends AppCompatActivity {
                 m_sender_tel2.setText(sender_tel.substring(3,7));
                 m_sender_tel3.setText(sender_tel.substring(7));
                 List<String> sender_addr = (List<String>) documentSnapshot.get("sender_addr");
-                s_address_num.setText(sender_addr.get(0));
-                s_address_detail1.setText(sender_addr.get(1));
-                s_address_detail2.setText(sender_addr.get(2));
+                if(sender_addr != null){
+                    s_address_num.setText(sender_addr.get(0));
+                    s_address_detail1.setText(sender_addr.get(1));
+                    s_address_detail2.setText(sender_addr.get(2));
+                }else{
+                    Toast.makeText(getApplicationContext(),"보낸사람 주소가 비어있습니다.", Toast.LENGTH_SHORT).show();
+                }
                 // 받는 사람 정보 수정
                 String recipient = documentSnapshot.getString("recipient");
                 m_recipient_name.setText(recipient);

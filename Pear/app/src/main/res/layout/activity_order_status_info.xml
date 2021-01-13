@@ -28,8 +28,8 @@
 
     <ScrollView
         android:id="@+id/allScroll"
-        android:layout_width="388dp"
-        android:layout_height="556dp"
+        android:layout_width="405dp"
+        android:layout_height="504dp"
         app:layout_constraintBottom_toTopOf="@id/status_info_linear8"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
