@@ -1,8 +1,11 @@
 package com.greenhelix.pear;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -41,6 +44,22 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Log.d(LOG_TAG, "메인종료 확인");
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setTitle("알림");
+        builder.setMessage("정말 종료하시겠습니까?");
+        builder.setPositiveButton("종료", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Log.d(LOG_TAG," 종료 합니다.");
+                ActivityCompat.finishAffinity(MainActivity.this);
+            }
+        }).setNegativeButton("아니요.", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Log.d(LOG_TAG,"유지합니다.");
+
+            }
+        }).show();
     }
 
     @Override
