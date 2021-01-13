@@ -22,6 +22,11 @@ public class OrderKindActivity extends AppCompatActivity {
     private static final String LOG_TAG = "ik";
 
     @Override
+    public void onBackPressed() {
+        Log.d(LOG_TAG, "주문형태 선택 종료 확인");
+    }
+
+    @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_kind);
@@ -50,6 +55,9 @@ public class OrderKindActivity extends AppCompatActivity {
         btnOrderBefore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent goMain = new Intent(getApplication(), MainActivity.class);
+                goMain.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(goMain);
                 finish();
             }
         });

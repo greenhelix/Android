@@ -19,6 +19,7 @@ import androidx.core.content.FileProvider;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -35,13 +36,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 
 public class OrderStatusActivity extends AppCompatActivity {
     private static final String LOG_TAG = "ik", ERROR = "ikerror";
@@ -54,6 +50,12 @@ public class OrderStatusActivity extends AppCompatActivity {
 
     Button btnDelete, btnMain, btnExport;
     Button filter1, filter2, filter3, filter4;
+
+    @Override
+    public void onBackPressed() {
+        Log.d(LOG_TAG, "주문현황 종료 확인");
+    }
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,7 +67,10 @@ public class OrderStatusActivity extends AppCompatActivity {
         btnMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(OrderStatusActivity.this, MainActivity.class));
+                Intent goMain = new Intent(getApplication(), MainActivity.class);
+                goMain.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(goMain);
+                finish();
             }
         });
         btnDelete = findViewById(R.id.btn_status_complete_del);

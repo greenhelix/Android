@@ -39,6 +39,11 @@ public class MainActivity extends AppCompatActivity {
     private static final String LOG_TAG = "ik";
 
     @Override
+    public void onBackPressed() {
+        Log.d(LOG_TAG, "메인종료 확인");
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -60,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.d(LOG_TAG, "직접주문 버튼이 정상적으로 눌렸습니다.");
                 Intent account = new Intent(MainActivity.this, OrderKindActivity.class);
                 startActivity(account);
+                finish();
             }
         });
 
@@ -71,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.d(LOG_TAG, "주문현황 버튼이 정상적으로 눌렸습니다.");
                 Intent statusGo = new Intent(MainActivity.this, OrderStatusActivity.class);
                 startActivity(statusGo);
+                finish();
             }
         });
 
