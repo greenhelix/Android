@@ -51,7 +51,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Log.d(LOG_TAG," 종료 합니다.");
-                ActivityCompat.finishAffinity(MainActivity.this);
+                ActivityCompat.finishAffinity(MainActivity.this); // 해당 액티비티 종료
+                System.exit(0); //앱 완전 종료
             }
         }).setNegativeButton("아니요.", new DialogInterface.OnClickListener() {
             @Override

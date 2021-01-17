@@ -1,5 +1,6 @@
 package com.greenhelix.pear.cameraOrder;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,7 +14,9 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -21,6 +24,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.greenhelix.pear.MainActivity;
 import com.greenhelix.pear.R;
 import com.greenhelix.pear.selectPear.SelectPearActivity;
 
@@ -48,6 +52,26 @@ public class CameraShow extends AppCompatActivity {
     Boolean isItDirect = false;
     Button goSelectPear;
     Button goBefore;
+    @Override
+    public void onBackPressed() {
+        Log.d(LOG_TAG, "카메라 정보확인 화면 종료 확인");
+        AlertDialog.Builder builder = new AlertDialog.Builder(CameraShow.this);
+        builder.setTitle("알림");
+        builder.setMessage("정말 종료하시겠습니까?");
+        builder.setPositiveButton("종료", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Log.d(LOG_TAG," 종료 합니다.");
+                ActivityCompat.finishAffinity(CameraShow.this);
+            }
+        }).setNegativeButton("아니요.", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Log.d(LOG_TAG,"유지합니다.");
+
+            }
+        }).show();
+    }
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

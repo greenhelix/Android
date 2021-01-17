@@ -1,5 +1,6 @@
 package com.greenhelix.pear;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,7 +9,10 @@ import android.widget.Button;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -43,7 +47,27 @@ public class LoginActivity extends AppCompatActivity {
     private static final String LOG_TAG = "ik";
     private AuthCredential authCredential;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    @Override
+    public void onBackPressed() {
+        Log.d(LOG_TAG, "로그인화면 종료 확인");
+        AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+        builder.setTitle("알림");
+        builder.setMessage("정말 종료하시겠습니까?");
+        builder.setPositiveButton("종료", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Log.d(LOG_TAG," 종료 합니다.");
+                ActivityCompat.finishAffinity(LoginActivity.this);
+                System.exit(0); //앱 완전 종료
+            }
+        }).setNegativeButton("아니요.", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Log.d(LOG_TAG,"유지합니다.");
 
+            }
+        }).show();
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

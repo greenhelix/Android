@@ -1,6 +1,7 @@
 package com.greenhelix.pear.cameraOrder;
 
 import android.Manifest;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -15,11 +16,13 @@ import android.widget.ImageView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 
+import com.greenhelix.pear.MainActivity;
 import com.greenhelix.pear.R;
 
 import java.io.File;
@@ -38,7 +41,26 @@ public class CameraOrderActivity extends AppCompatActivity {
     static final int REQUEST_TAKE_PHOTO = 2;
     private static final String LOG_TAG = "ik";
     private static final String URI_IMAGE = "URIImage";
+    @Override
+    public void onBackPressed() {
+        Log.d(LOG_TAG, "카메라주문입력 화면 종료 확인");
+        AlertDialog.Builder builder = new AlertDialog.Builder(CameraOrderActivity.this);
+        builder.setTitle("알림");
+        builder.setMessage("정말 종료하시겠습니까?");
+        builder.setPositiveButton("종료", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Log.d(LOG_TAG," 종료 합니다.");
+                ActivityCompat.finishAffinity(CameraOrderActivity.this);
+            }
+        }).setNegativeButton("아니요.", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Log.d(LOG_TAG,"유지합니다.");
 
+            }
+        }).show();
+    }
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

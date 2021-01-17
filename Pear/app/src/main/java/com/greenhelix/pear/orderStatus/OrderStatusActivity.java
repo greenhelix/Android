@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.FileUriExposedException;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.FileProvider;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -30,6 +32,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.greenhelix.pear.MainActivity;
 import com.greenhelix.pear.R;
+import com.greenhelix.pear.directOrder.DirectRecipientActivity;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -51,11 +54,39 @@ public class OrderStatusActivity extends AppCompatActivity {
     Button btnDelete, btnMain, btnExport;
     Button filter1, filter2, filter3, filter4;
 
+
+    boolean doubleBackToExitPressedOnce = false;
     @Override
     public void onBackPressed() {
         Log.d(LOG_TAG, "주문현황 종료 확인");
-    }
+        if(doubleBackToExitPressedOnce){
+            androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(OrderStatusActivity.this);
+            builder.setTitle("알림");
+            builder.setMessage("정말 종료하시겠습니까?");
+            builder.setPositiveButton("종료", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Log.d(LOG_TAG," 종료 합니다.");
+                    ActivityCompat.finishAffinity(OrderStatusActivity.this);
+                }
+            }).setNegativeButton("아니요.", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Log.d(LOG_TAG,"유지합니다.");
 
+                }
+            }).show();
+            return;
+        }
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "뒤로버튼을 한번더 누르면 종료됩니다.", Toast.LENGTH_SHORT).show();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce = false;
+            }
+        }, 2000);
+    }
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
