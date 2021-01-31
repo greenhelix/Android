@@ -154,4 +154,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }// onCreate END
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(LOG_TAG, "onResume start");
+    }
 }

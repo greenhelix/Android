@@ -103,12 +103,6 @@ public class LoginActivity extends AppCompatActivity {
         Log.d(LOG_TAG, "onStop start");
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.d(LOG_TAG, "onResume start");
-    }
-
     private void signIn(){
         Intent signInIntent = client.getSignInIntent();
         startActivityForResult(signInIntent, SIGNINCODE);
