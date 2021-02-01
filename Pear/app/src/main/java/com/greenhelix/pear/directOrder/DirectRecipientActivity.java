@@ -76,6 +76,13 @@ public class DirectRecipientActivity extends AppCompatActivity {
             }
         }, 2000);
     }
+
+    @Override
+    protected void onResume() {
+        recipientList = new ArrayList<>();
+        super.onResume();
+    }
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

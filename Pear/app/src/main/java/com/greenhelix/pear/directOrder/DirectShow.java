@@ -72,6 +72,8 @@ public class DirectShow extends AppCompatActivity {
             }
         }, 2000);
     }
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,6 +101,7 @@ public class DirectShow extends AppCompatActivity {
         tvShow.append("받는 사람 주소 :"+recipientData.get(5)+"\n");
         tvShow.append("받는 사람 상세주소 :"+recipientData.get(6)+"\n");
 
+        //이전 버튼
         btnResultBefore = (Button) findViewById(R.id.btn_direct_result_before);
         btnResultBefore.setOnClickListener(new View.OnClickListener() {
             @Override

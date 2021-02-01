@@ -1,9 +1,7 @@
 package com.greenhelix.pear.directOrder;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,11 +12,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import com.greenhelix.pear.MainActivity;
 import com.greenhelix.pear.R;
 import com.greenhelix.pear.server.AddressAPIkakao;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +28,7 @@ public class DirectSenderActivity extends AppCompatActivity {
     Button direct_sender_next, direct_sender_before;
     Button address_find_sender;
     boolean doubleBackToExitPressedOnce = false;
+
     @Override
     public void onBackPressed() {
         Log.d(LOG_TAG, "받는사람 정보입력 종료 확인");
@@ -64,6 +60,13 @@ public class DirectSenderActivity extends AppCompatActivity {
             }
         }, 2000);
     }
+
+    @Override
+    protected void onResume() {
+        senderInfo = new ArrayList<>();
+        super.onResume();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
