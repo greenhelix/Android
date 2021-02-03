@@ -88,12 +88,3 @@ public class CustomerActivity extends AppCompatActivity {
         Log.d(LOG_TAG, "onResume start");
     }
 }
-// 주문정보를 확인해서, 선택시, 해당 주소를 가져와서 위도와 경도 구해오는 스니펫
-// 이것을 이용해서, tmap으로 해당 주소와 위도 경도를 보내면, 경로 탐색을 시작한다.
-    /*Geocoder g = new Geocoder(this);
-        try{List<Address> adr = null;
-        adr = g.getFromLocationName(recipientData.get(5),1);
-        Log.d(LOG_TAG, "this : "+adr.toString());
-        }catch (IOException e){
-        Log.d(LOG_TAG, "except error IO");
-        }*/
