@@ -11,7 +11,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
@@ -20,14 +19,13 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.greenhelix.pear.MainActivity;
 import com.greenhelix.pear.R;
 import com.greenhelix.pear.selectPear.SelectPearActivity;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class DirectShow extends AppCompatActivity {
@@ -176,7 +174,3 @@ public class DirectShow extends AppCompatActivity {
         });
     }
 }
-//                Intent directData = new Intent(DirectShow.this, CameraShow.class);
-//                directData.putExtra("direct_sender", senderData);
-//                directData.putExtra("direct_recipient", recipientData);
-//                startActivity(directData);

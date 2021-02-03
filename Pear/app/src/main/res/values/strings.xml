@@ -13,6 +13,9 @@
     <string name="main_btn_text04">직접 배달</string>
     <string name="main_btn_text05">설 정</string>
     <string name="main_btn_text06">사용자 전환</string>
+    <!--customer+++++++++++++++++++++++++++++++++++++++++-->
+    <string name="customer_head_text01">어서오세요.</string>
+    <string name="customer_head_text02">혁규농원입니다.</string>
     <!--order kind++++++++++++++++++++++++++++++++++-->
     <string name="order_kind_head_text01">주문 형태 선택</string>
     <string name="order_kind_btn_text01">직접 입력</string>

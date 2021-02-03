@@ -84,7 +84,7 @@ public class OrderKindActivity extends AppCompatActivity {
                 startActivity(move2);
             }
         });
-
+        // 이전
         btnOrderBefore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

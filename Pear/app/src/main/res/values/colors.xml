@@ -5,6 +5,7 @@
     <color name="colorPrimaryDark">#9DD1A5</color>
     <color name="colorAccent">#03DAC5</color>
     <color name="greenBackground">#9DD1A5</color>
+    <color name="yellowBackground">#FBEE75</color>
     <color name="pearBackground">#F8E3A3</color>
     <color name="white_color">#ffffffff</color>
     <color name="green_btn_color">#23DA66</color>

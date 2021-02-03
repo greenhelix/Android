@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -11,10 +13,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.greenhelix.pear.orderStatus.OrderStatusActivity;
+import com.greenhelix.pear.settingPear.SettingsActivity;
 
 public class CustomerActivity extends AppCompatActivity {
-    Button btnCustomerBack;
+    Button btnCustomerSetting, btnCustomerChangeUser, btnCustomerOrderWrite;
     boolean doubleBackToExitPressedOnce = false;
     private static final String LOG_TAG = "ik";
     @Override
@@ -53,13 +57,43 @@ public class CustomerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer);
 
-        btnCustomerBack = findViewById(R.id.btn_customer_main_before);
-        btnCustomerBack.setOnClickListener(new View.OnClickListener() {
+
+
+        // user change
+        btnCustomerChangeUser= findViewById(R.id.btn_customer_change_user);
+        btnCustomerChangeUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //로그인화면으로 다시 이동한다. 
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(CustomerActivity.this , LoginActivity.class));
                 finish();
             }
         });
+
+        // setting
+        btnCustomerSetting = findViewById(R.id.btn_customer_setting);
+        btnCustomerSetting.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Log.d(LOG_TAG, "고객 설정 버튼이 정상적으로 눌렸습니다.");
+            startActivity(new Intent(CustomerActivity.this, SettingsActivity.class));
+        }
+    });
+    }// onCreate END
+
+    //come back customer main screen
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(LOG_TAG, "onResume start");
     }
 }
+// 주문정보를 확인해서, 선택시, 해당 주소를 가져와서 위도와 경도 구해오는 스니펫
+// 이것을 이용해서, tmap으로 해당 주소와 위도 경도를 보내면, 경로 탐색을 시작한다.
+    /*Geocoder g = new Geocoder(this);
+        try{List<Address> adr = null;
+        adr = g.getFromLocationName(recipientData.get(5),1);
+        Log.d(LOG_TAG, "this : "+adr.toString());
+        }catch (IOException e){
+        Log.d(LOG_TAG, "except error IO");
+        }*/

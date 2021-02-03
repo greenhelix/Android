@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
                 try{
                     Intent tmapOpen = getPackageManager().getLaunchIntentForPackage("com.skt.tmap.ku");
                     tmapOpen.setAction(Intent.ACTION_SEND);
-                    tmapOpen.putExtra(Intent.EXTRA_TEXT, tmaptapi.invokeSearchPortal("혁규농원"));
+                    tmapOpen.putExtra(Intent.EXTRA_TEXT, tmaptapi.invokeRoute("혁규농원",0,0));
                     tmapOpen.setType("text/*");
                     Intent shareIntent = Intent.createChooser(tmapOpen, null);
                     startActivity(shareIntent);
@@ -133,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //사용자 전환
+        // user change
         btnMainChangeUser =findViewById(R.id.btn_main_change_user);
         btnMainChangeUser.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -144,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //설정
+        // setting
         btnMainOrderSetting = findViewById(R.id.btn_main_setting);
         btnMainOrderSetting.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -154,6 +154,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }// onCreate END
+
+    // come back main screen
     @Override
     protected void onResume() {
         super.onResume();
