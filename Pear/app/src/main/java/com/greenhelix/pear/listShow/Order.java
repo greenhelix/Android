@@ -1,7 +1,5 @@
 package com.greenhelix.pear.listShow;
 
-import android.util.Log;
-
 import java.util.ArrayList;
 
 //데이터를 담아주는 바구니를 형성하여 가져오는 클래스이다.
