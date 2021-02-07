@@ -24,10 +24,11 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.greenhelix.pear.R;
+import com.greenhelix.pear.listShow.Order;
 
 import java.util.List;
 
-public class OrderStatusAdapter extends FirestoreRecyclerAdapter<NowOrder, OrderStatusAdapter.OrdersStatusHolder> {
+public class OrderStatusAdapter extends FirestoreRecyclerAdapter<Order, OrderStatusAdapter.OrdersStatusHolder> {
     private static final String LOG_TAG = "ik";
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     //가장 먼저, 화면에 넣을 값들을 설정해준다.
@@ -119,7 +120,7 @@ public class OrderStatusAdapter extends FirestoreRecyclerAdapter<NowOrder, Order
 
     //그 다음 데이터바구니에 있는 것들을 가져다 끌어온다.
     @Override
-    protected void onBindViewHolder(@NonNull OrdersStatusHolder holder, int position, @NonNull NowOrder model) {
+    protected void onBindViewHolder(@NonNull OrdersStatusHolder holder, int position, @NonNull Order model) {
 
         /*해당 주문의 문서의 스냅샷 가져올 수 있다.!!*/
         String id = getSnapshots().getSnapshot(position).getId();
@@ -160,7 +161,7 @@ public class OrderStatusAdapter extends FirestoreRecyclerAdapter<NowOrder, Order
         getSnapshots().getSnapshot(position).getReference().delete();
     }
     //이부분은 어댑터 사용 액티비티에서 끌어다 쓴다.
-    public OrderStatusAdapter(@NonNull FirestoreRecyclerOptions<NowOrder> options) {
+    public OrderStatusAdapter(@NonNull FirestoreRecyclerOptions<Order> options) {
         super(options);
     }
 }

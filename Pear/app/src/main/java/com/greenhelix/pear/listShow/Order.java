@@ -11,7 +11,7 @@ import java.util.ArrayList;
 /*이 곳에서 파라미터 명을 정확히 같은것을 써서 넣어줘야한다. 변수 형태도 정확히 써주어야 어댑터로 제대로 이동된다.*/
 public class Order {
     private static final String LOG_TAG = "ik";
-    private String sender, recipient, pear_kind, pear_amount, pear_box;
+    private String sender, recipient, pear_kind, pear_amount, pear_box, status;
     private ArrayList<String> recipient_addr;
 
 
@@ -40,5 +40,9 @@ public class Order {
 
     public String getPear_box() {
         return pear_box;
+    }
+
+    public String getStatus() {
+        return status;
     }
 }
