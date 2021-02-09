@@ -24,11 +24,10 @@ import com.greenhelix.pear.directOrder.DirectSenderActivity;
 
 /*카드가 띄어지는 리스트 공간*/
 public class OrderListActivity extends AppCompatActivity {
-    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private final FirebaseFirestore db = FirebaseFirestore.getInstance();
     //해당 콜렉션참고를 위해 원할한 경로를 설정을 참고로 만들어줘야함.
-    private CollectionReference orderRef = db.collection("pear_orders");
+    private final CollectionReference orderRef = db.collection("pear_orders");
     private OrderListAdapter adapter;
-    private RecyclerView recyclerOrderView;
     Button btnFinalUpload, btnFinalBefore;
     private static final String LOG_TAG = "ik";
     boolean doubleBackToExitPressedOnce = false;
@@ -100,7 +99,7 @@ public class OrderListActivity extends AppCompatActivity {
         adapter = new OrderListAdapter(opt);
 
         //순환 뷰에 xml틀을 박아주고, 매니저를 튼후, 어댑터의 생명을 넣어주면 끝이다.
-        recyclerOrderView = findViewById(R.id.recycler_order_list);
+        RecyclerView recyclerOrderView = findViewById(R.id.recycler_order_list);
         recyclerOrderView.setLayoutManager(new LinearLayoutManager(this));
         recyclerOrderView.setHasFixedSize(true);
         recyclerOrderView.setAdapter(adapter);

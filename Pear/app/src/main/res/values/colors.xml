@@ -19,7 +19,7 @@
     <color name="amount_btn_color">#72DAE8</color>
     <color name="amount_btn_color_off">#9DC3C8</color>
     <color name="grey_btn_color">#D9DCD9</color>
-    <color name="text_white">#ffffffff</color>
+    <color name="text_white">#ffffff</color>
     <color name="swipe_color">#2196F3</color>
     <color name="order_status_background">#2D3871</color>
 

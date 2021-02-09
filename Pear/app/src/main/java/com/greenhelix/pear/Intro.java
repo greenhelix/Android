@@ -20,7 +20,7 @@ public class Intro extends Activity {
                 Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(intent);
             }
-        }, 1000);
+        }, 500);
     }
 
     @Override

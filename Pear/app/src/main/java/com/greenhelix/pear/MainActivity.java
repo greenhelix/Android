@@ -21,6 +21,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.greenhelix.pear.deliver.DeliverOrderActivity;
 import com.greenhelix.pear.orderStatus.OrderStatusActivity;
 import com.greenhelix.pear.settingPear.SettingsActivity;
 import com.greenhelix.pear.staticPear.StaticActivity;
@@ -74,8 +75,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d(LOG_TAG, "포맷한 날짜 = "+date);
         TextView mainDate = (TextView) findViewById(R.id.tv_main_head2);
         mainDate.setText(String.format(getString(R.string.main_head_text02),date));
-        final TMapTapi tmaptapi = new TMapTapi(this);
-        tmaptapi.setSKTMapAuthentication ("l7xx67178473a0134850bb0610927c9ba539");
+
 
         //주문입력
         btnMainOrderWrite = findViewById(R.id.btn_main_order_write);
@@ -107,30 +107,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d(LOG_TAG, "직접배달 버튼이 정상적으로 눌렸습니다.");
-                //티맵 패키지명을 가져와서, 인텐트를 통해 해당 앱을 켜준다.
-                try{
-                    Intent tmapOpen = getPackageManager().getLaunchIntentForPackage("com.skt.tmap.ku");
-                    tmapOpen.setAction(Intent.ACTION_SEND);
-                    tmapOpen.putExtra(Intent.EXTRA_TEXT, tmaptapi.invokeRoute("혁규농원",0,0));
-                    tmapOpen.setType("text/*");
-                    Intent shareIntent = Intent.createChooser(tmapOpen, null);
-                    startActivity(shareIntent);
-                }catch (Exception e){
-                    String url = "market://details?id=com.skt.tmap.ku";
-                    Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                    startActivity(i);
-                }
+                Intent checkOrder = new Intent(getApplication(), DeliverOrderActivity.class);
+                startActivity(checkOrder);
+                finish();
             }
         });
-        // 주문정보를 확인해서, 선택시, 해당 주소를 가져와서 위도와 경도 구해오는 스니펫
-        // 이것을 이용해서, tmap으로 해당 주소와 위도 경도를 보내면, 경로 탐색을 시작한다.
-        /*Geocoder g = new Geocoder(this);
-            try{List<Address> adr = null;
-            adr = g.getFromLocationName(recipientData.get(5),1);
-            Log.d(LOG_TAG, "this : "+adr.toString());
-            }catch (IOException e){
-            Log.d(LOG_TAG, "except error IO");
-            }*/
 
         //통계
         btnMainOrderStatic = findViewById(R.id.btn_main_static);

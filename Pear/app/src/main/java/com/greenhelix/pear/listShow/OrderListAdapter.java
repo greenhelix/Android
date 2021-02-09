@@ -36,6 +36,7 @@ public class OrderListAdapter extends FirestoreRecyclerAdapter<Order, OrderListA
         holder.orderAddress.setText(address);
 
     }
+
     @NonNull
     @Override //xml 틀을 가져와서 onCreate해준다.
     public OrdersHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -43,7 +44,7 @@ public class OrderListAdapter extends FirestoreRecyclerAdapter<Order, OrderListA
         return new OrdersHolder(v);
     }
 
-    public class OrdersHolder extends RecyclerView.ViewHolder{
+    public static class OrdersHolder extends RecyclerView.ViewHolder{
         //holder쪽에서 해당 xml의 값들을 연결해두고 기다린다.
         TextView orderNum, senderName, recipientName, orderAddress, pearKinds, pearAmounts, pearBoxes;
         public OrdersHolder(View v){

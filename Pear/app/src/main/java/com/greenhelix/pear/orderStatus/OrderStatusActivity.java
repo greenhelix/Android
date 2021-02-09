@@ -45,46 +45,16 @@ import java.util.List;
 
 public class OrderStatusActivity extends AppCompatActivity {
     private static final String LOG_TAG = "ik", ERROR = "ikerror";
-    private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private CollectionReference orderRef = db.collection("pear_orders");
+    private final FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private final CollectionReference orderRef = db.collection("pear_orders");
     private RecyclerView cycleOrderStatusView;
-    //어댑터 생성했으면 여기에 추가
     private OrderStatusAdapter adapter;
     Button btnDelete, btnMain, btnExport;
     Button filter1, filter2, filter3, filter4;
 
     boolean doubleBackToExitPressedOnce = false;
-    @Override
-    public void onBackPressed() {
-        Log.d(LOG_TAG, "주문현황 종료 확인");
-        if(doubleBackToExitPressedOnce){
-            androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(OrderStatusActivity.this);
-            builder.setTitle("알림");
-            builder.setMessage("정말 종료하시겠습니까?");
-            builder.setPositiveButton("종료", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    Log.d(LOG_TAG," 종료 합니다.");
-                    ActivityCompat.finishAffinity(OrderStatusActivity.this);
-                }
-            }).setNegativeButton("아니요.", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    Log.d(LOG_TAG,"유지합니다.");
 
-                }
-            }).show();
-            return;
-        }
-        this.doubleBackToExitPressedOnce = true;
-        Toast.makeText(this, "뒤로버튼을 한번더 누르면 종료됩니다.", Toast.LENGTH_SHORT).show();
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                doubleBackToExitPressedOnce = false;
-            }
-        }, 2000);
-    }
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -128,8 +98,6 @@ public class OrderStatusActivity extends AppCompatActivity {
         cycleOrderStatusView.setLayoutManager(new LinearLayoutManager(this));
         cycleOrderStatusView.setHasFixedSize(true);
         cycleOrderStatusView.setAdapter(adapter);
-
-
 
         // 주문 카드를 선택했을때, 모션값을 인식하고 그에 따른 삭제 명령을 주었다. onSwiped을 통해서 삭제를 시킴. 다른 방향을 제어하거나 명령을 바꿀수 있다.
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
@@ -303,6 +271,39 @@ public class OrderStatusActivity extends AppCompatActivity {
     }
 
     @Override
+    public void onBackPressed() {
+        Log.d(LOG_TAG, "주문현황 종료 확인");
+        if(doubleBackToExitPressedOnce){
+            androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(OrderStatusActivity.this);
+            builder.setTitle("알림");
+            builder.setMessage("정말 종료하시겠습니까?");
+            builder.setPositiveButton("종료", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Log.d(LOG_TAG," 종료 합니다.");
+                    ActivityCompat.finishAffinity(OrderStatusActivity.this);
+                }
+            }).setNegativeButton("아니요.", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Log.d(LOG_TAG,"유지합니다.");
+
+                }
+            }).show();
+            return;
+        }
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "뒤로버튼을 한번더 누르면 종료됩니다.", Toast.LENGTH_SHORT).show();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce = false;
+            }
+        }, 2000);
+    }
+
+    /*이 부분 빼먹으면 절대 안나옴 무조건 들어가 있어야 한다.*/
+    @Override
     protected void onStart() {
         super.onStart();
         adapter.startListening();
@@ -313,4 +314,5 @@ public class OrderStatusActivity extends AppCompatActivity {
         super.onStop();
         adapter.stopListening();
     }
+    /* -------------------------------------------------  */
 }

@@ -105,7 +105,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".deliver.deliverOrderActivity"
+            android:name=".deliver.DeliverOrderActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" /> <!-- 파일 제공자를 구성한다 -->
         <provider
