@@ -107,6 +107,7 @@
                     app:layout_constraintStart_toEndOf="@+id/tvNowRecipient"
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
+
             <TextView
                 android:id="@+id/tv_status_orderAddress"
                 android:layout_width="match_parent"
@@ -121,6 +122,7 @@
                 android:maxLines="1"
                 />
 
+<!--주문 상태 버튼 양식-->
             <GridLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -143,6 +145,7 @@
                     android:textColor="@color/head"
                     />
             </GridLayout>
+
         </LinearLayout>
     <!--확장되는 UI를 연관 레이아웃에 넣어준다.-->
         <RelativeLayout

@@ -22,8 +22,8 @@ import com.greenhelix.pear.MainActivity;
 import com.greenhelix.pear.R;
 import com.greenhelix.pear.directOrder.DirectSenderActivity;
 
+/*카드가 띄어지는 리스트 공간*/
 public class OrderListActivity extends AppCompatActivity {
-    /*레이아웃매니저를 통해서 카드들과 그 안에 있는 데이터들을 원하는 화면에 쫘악 띄어준다.*/
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     //해당 콜렉션참고를 위해 원할한 경로를 설정을 참고로 만들어줘야함.
     private CollectionReference orderRef = db.collection("pear_orders");

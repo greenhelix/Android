@@ -21,6 +21,7 @@ import com.greenhelix.pear.R;
 import java.util.HashMap;
 import java.util.Map;
 
+/*주문정보 수정화면 2*/
 public class OrderStatusPear extends AppCompatActivity {
     private static final String LOG_TAG = "ik", ERROR = "ikerror";
     private FirebaseFirestore db = FirebaseFirestore.getInstance();

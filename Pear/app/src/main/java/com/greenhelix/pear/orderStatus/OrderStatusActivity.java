@@ -33,6 +33,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.greenhelix.pear.MainActivity;
 import com.greenhelix.pear.R;
 import com.greenhelix.pear.directOrder.DirectRecipientActivity;
+import com.greenhelix.pear.listShow.Order;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -47,13 +48,10 @@ public class OrderStatusActivity extends AppCompatActivity {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference orderRef = db.collection("pear_orders");
     private RecyclerView cycleOrderStatusView;
-
     //어댑터 생성했으면 여기에 추가
     private OrderStatusAdapter adapter;
-
     Button btnDelete, btnMain, btnExport;
     Button filter1, filter2, filter3, filter4;
-
 
     boolean doubleBackToExitPressedOnce = false;
     @Override
@@ -120,8 +118,8 @@ public class OrderStatusActivity extends AppCompatActivity {
     //초기 순환뷰 기능 여기 들감
     private void setOrderStatusRecyclerView(){
         Query query = orderRef.orderBy("sender", Query.Direction.DESCENDING);
-        FirestoreRecyclerOptions<NowOrder> option = new FirestoreRecyclerOptions.Builder<NowOrder>()
-                .setQuery(query, NowOrder.class)
+        FirestoreRecyclerOptions<Order> option = new FirestoreRecyclerOptions.Builder<Order>()
+                .setQuery(query, Order.class)
                 .build();
 
         adapter = new OrderStatusAdapter(option);
@@ -130,6 +128,8 @@ public class OrderStatusActivity extends AppCompatActivity {
         cycleOrderStatusView.setLayoutManager(new LinearLayoutManager(this));
         cycleOrderStatusView.setHasFixedSize(true);
         cycleOrderStatusView.setAdapter(adapter);
+
+
 
         // 주문 카드를 선택했을때, 모션값을 인식하고 그에 따른 삭제 명령을 주었다. onSwiped을 통해서 삭제를 시킴. 다른 방향을 제어하거나 명령을 바꿀수 있다.
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
@@ -203,8 +203,8 @@ public class OrderStatusActivity extends AppCompatActivity {
                 String s = btn.getText().toString();
                 Log.d(LOG_TAG, "필터링 "+s +"이 클릭되었습니다.");
                 Query query1 = orderRef.whereEqualTo("status", s);
-                FirestoreRecyclerOptions<NowOrder> option1 = new FirestoreRecyclerOptions.Builder<NowOrder>()
-                        .setQuery(query1, NowOrder.class)
+                FirestoreRecyclerOptions<Order> option1 = new FirestoreRecyclerOptions.Builder<Order>()
+                        .setQuery(query1, Order.class)
                         .build();
 
                 adapter.updateOptions(option1);

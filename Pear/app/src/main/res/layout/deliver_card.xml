@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="@color/white_color"
+    app:cardElevation="3dp"
+    app:cardCornerRadius="15dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginTop="10dp"
+    tools:context=".deliver.DeliverOrderAdapter">
+
+    <LinearLayout
+        android:id="@+id/cardDeliverLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:id="@+id/tvDeliverOrderNum"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_marginTop="5dp"
+            android:paddingLeft="10dp"
+            android:text="주문번호"
+            android:textSize="15dp"
+            android:textColor="@color/head"
+            android:inputType="number"
+            />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvNowSender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="주문자 :"
+                android:textSize="17dp"
+                android:textColor="@color/head"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tv_status_senderName"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/tvDeliverSenderName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginBottom="4dp"
+                android:text="아무개"
+                android:textSize="17dp"
+                android:textColor="@color/head"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tvNowSender"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <ImageView
+                android:id="@+id/deliverImg2"
+                android:layout_width="35dp"
+                android:layout_height="21dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="1dp"
+                android:src="@drawable/ic_baseline_send_20"
+                app:layout_constraintStart_toEndOf="@+id/tvDeliverSenderName"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+            <TextView
+                android:id="@+id/tvDeliverRecipient"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="받는사람 :"
+                android:textSize="17dp"
+                android:textColor="@color/head"
+                app:layout_constraintStart_toEndOf="@+id/deliverImg2"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvDeliverRecipientName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="2dp"
+                android:paddingRight="10dp"
+                android:text="아무개"
+                android:textSize="17dp"
+                android:textColor="@color/head"
+                app:layout_constraintStart_toEndOf="@+id/tvDeliverRecipient"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/tvDeliverOrderAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:maxLength="20"
+            android:text="주소 예시 "
+            android:textSize="15dp"
+            android:textColor="@color/head"
+            android:maxLines="1"
+            />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

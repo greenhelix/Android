@@ -7,7 +7,7 @@
     android:background="@color/greenBackground"
     tools:context=".orderStatus.OrderStatusActivity">
 
-
+<!--배송 상태 나타내는 버튼 부분-->
     <GridLayout
         android:id="@+id/status_layout1"
         android:layout_width="wrap_content"
@@ -55,6 +55,7 @@
 
     </GridLayout>
 
+<!--주문의 현황을 확인하는 리스트-->
     <RelativeLayout
         android:id="@+id/status_layout2"
         android:layout_width="match_parent"
@@ -69,9 +70,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-
     </RelativeLayout>
 
+<!--완료는 제거하는 버튼-->
     <Button
         android:id="@+id/btn_status_complete_del"
         style="@style/bottom_btn_before_style"
@@ -81,7 +82,7 @@
         app:layout_constraintTop_toBottomOf="@+id/status_layout2"
         tools:ignore="MissingConstraints"
         />
-
+<!--내보내기 버튼-->
     <Button
         android:id="@+id/btn_status_export"
         style="@style/bottom_btn_center_style"
@@ -98,6 +99,7 @@
         app:layout_constraintTop_toBottomOf="@+id/status_layout2"
         />
 
+<!--메인화면이동버튼-->
     <Button
         android:id="@+id/btn_status_go_main"
         style="@style/bottom_btn_next_style"

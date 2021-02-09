@@ -37,8 +37,8 @@
 
         <Preference
             app:key="version"
-            app:title="앱 버전 (2020.12 기준)"
-            app:summary="1.0.1"
+            app:title="앱 버전 (2021.02 기준)"
+            app:summary="1.0.2"
             />
         <Preference
             app:key="developer"

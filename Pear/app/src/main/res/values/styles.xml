@@ -78,6 +78,12 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">15dp</item>
     </style>
+    <style name="main_long_btn_style">
+        <item name="android:layout_width">300dp</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">20dp</item>
+    </style>
     <style name="round_btn_style">
         <item name="android:layout_width">120dp</item>
         <item name="android:layout_height">match_parent</item>

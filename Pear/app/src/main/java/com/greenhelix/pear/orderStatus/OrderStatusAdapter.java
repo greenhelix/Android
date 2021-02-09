@@ -1,6 +1,5 @@
 package com.greenhelix.pear.orderStatus;
 
-import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,38 +8,33 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.common.base.Joiner;
-import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.greenhelix.pear.R;
 import com.greenhelix.pear.listShow.Order;
 
 import java.util.List;
 
+/*주문 현황 - 어댑터 - 카드 양식 컨트롤*/
 public class OrderStatusAdapter extends FirestoreRecyclerAdapter<Order, OrderStatusAdapter.OrdersStatusHolder> {
+
     private static final String LOG_TAG = "ik";
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
+
     //가장 먼저, 화면에 넣을 값들을 설정해준다.
     public class OrdersStatusHolder extends RecyclerView.ViewHolder{
         TextView orderNum, senderName, recipientName, orderAddress, pearKinds, pearAmounts, pearBoxes, status;
         Boolean expandable = false;
         LinearLayout linearLayout;
         RelativeLayout expandableLayout;
-        Button status1;
-        Button status2;
-        Button status3;
-        Button status4;
+        Button status1, status2, status3, status4;
 
         public OrdersStatusHolder(View v){
             super(v);
@@ -54,9 +48,11 @@ public class OrderStatusAdapter extends FirestoreRecyclerAdapter<Order, OrderSta
             linearLayout = v.findViewById(R.id.cardBasicLayout);
             expandableLayout = v.findViewById(R.id.cardExpandableLayout);
             expandableLayout.setVisibility(View.GONE);
+            // 카드 상단 터치시 카드 화면 확장 시키기
             linearLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    // 기본 카드 양식에서 원하는 부분을 보였다 안보였다 하는 기능이다.
                     if(expandable){
                         expandable = false;
                         expandableLayout.setVisibility(View.GONE);
@@ -146,8 +142,6 @@ public class OrderStatusAdapter extends FirestoreRecyclerAdapter<Order, OrderSta
         holder.orderAddress.setText(address);
     }
 
-
-
     //마지막으로 해당 카드 레이아웃들을 연결 시켜주고 어댑터를 마쳐준다.
     @NonNull
     @Override
@@ -160,6 +154,7 @@ public class OrderStatusAdapter extends FirestoreRecyclerAdapter<Order, OrderSta
     public void deleteItem(int position){
         getSnapshots().getSnapshot(position).getReference().delete();
     }
+
     //이부분은 어댑터 사용 액티비티에서 끌어다 쓴다.
     public OrderStatusAdapter(@NonNull FirestoreRecyclerOptions<Order> options) {
         super(options);

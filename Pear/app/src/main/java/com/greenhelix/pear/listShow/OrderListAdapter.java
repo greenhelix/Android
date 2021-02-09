@@ -12,12 +12,7 @@ import com.google.common.base.Joiner;
 import com.greenhelix.pear.R;
 import java.util.List;
 
-
-/*
-firestore 부르는 곳이 아니다. 여기는 카드에 실어줄 데이터를 정의해주고, xml과 order DAO와 연동을 해주는
-다리와 같은 느낌의 코드 말그대로 어댑터이다. 통로라고 생각하자(여기서 데이터의 모습을 바꿔줄 수 있다)
-*/
-
+/*단순히 데이터를 가져오는 카드 양식 어댑터*/
 public class OrderListAdapter extends FirestoreRecyclerAdapter<Order, OrderListAdapter.OrdersHolder> {
 
     public OrderListAdapter(@NonNull FirestoreRecyclerOptions<Order> options) {
