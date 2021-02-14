@@ -4,20 +4,19 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
-import android.net.Uri;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.Toast;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -27,6 +26,7 @@ import com.greenhelix.pear.R;
 import com.greenhelix.pear.listShow.Order;
 import com.skt.Tmap.TMapTapi;
 
+import java.io.IOException;
 import java.util.List;
 
 public class DeliverOrderActivity extends AppCompatActivity {
@@ -37,13 +37,16 @@ public class DeliverOrderActivity extends AppCompatActivity {
     private DeliverOrderAdapter adapter;
     Button btnDeliverBefore, btnDeliverStart;
     private Boolean isClick = true;
+    private List<String> deliver_addr;
+    TMapTapi tmaptapi = new TMapTapi(this);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_deliver_order);
         Log.d(LOG_TAG, "배달 주문확인화면  정상 OnCreate 되었습니다.");
-
+        tmaptapi.setSKTMapAuthentication("l7xx67178473a0134850bb0610927c9ba539");
         setDeliverOrderRecyclerView();
 
         btnDeliverBefore = findViewById(R.id.btn_deliver_before);
@@ -62,6 +65,39 @@ public class DeliverOrderActivity extends AppCompatActivity {
         btnDeliverStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d(LOG_TAG, "완료버튼에 들어온 주소값. \n" + deliver_addr.get(1));
+                List<Address> adr = null; // List<Address> 형태로 받아야함.
+                Geocoder g = new Geocoder(getApplicationContext());
+                try{
+                    // getFromLocationName은 지명-> 좌표 
+                    // getFromLocation 은 좌표 -> 지명
+                    adr = g.getFromLocationName(deliver_addr.get(1),1);
+                    Log.d(LOG_TAG, "좌표 확인... : "+adr.get(0).getLatitude()+", "+adr.get(0).getLongitude());
+                }catch (IOException e){
+                    Log.d(LOG_TAG, "except error IO");
+                }
+
+                float lat = (float) adr.get(0).getLatitude();
+                float lon = (float) adr.get(0).getLongitude();
+
+                try{
+
+
+//                    Intent tmapOpen = getPackageManager().getLaunchIntentForPackage("com.skt.tmap.ku");
+                    tmaptapi.invokeNavigate(deliver_addr.get(1),lat,lon,0,false);
+//                    tmapOpen.setAction(Intent.ACTION_SEND);
+//                    tmapOpen.putExtra(Intent.EXTRA_TEXT, );
+//                    tmapOpen.setType("text/*");
+//                    Intent shareIntent = Intent.createChooser(tmapOpen, null);
+//                    startActivity(tmapOpen);
+                }catch (Exception e){
+                    String url = "market://details?id=com.skt.tmap.ku";
+//                    Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                    Log.d(LOG_TAG, "예외발생, 네비게이션 안켜짐");
+//                    startActivity(i);
+                }
+                // 주문정보를 확인해서, 선택시, 해당 주소를 가져와서 위도와 경도 구해오는 스니펫
+                // 이것을 이용해서, tmap으로 해당 주소와 위도 경도를 보내면, 경로 탐색을 시작한다.
 
 
             }
@@ -84,24 +120,39 @@ public class DeliverOrderActivity extends AppCompatActivity {
         cycleOrderDeliverView.setHasFixedSize(true);
         cycleOrderDeliverView.setAdapter(adapter);
 
+
         cycleOrderDeliverView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
             @Override
             public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
 
                 View child = rv.findChildViewUnder(e.getX(), e.getY());
                 int position = rv.getChildAdapterPosition(child);
-
-                if(isClick){
+                Log.d(LOG_TAG, "위치는: "+ position);
+                if(isClick) {
                     child.setBackgroundColor(Color.parseColor("#72DAE8"));
+                    final List<String> test_addr = (List<String>) adapter.getSnapshots().getSnapshot(position).get("recipient_addr");
+                    Log.d(LOG_TAG, "주소값을 가져왔습니다. \n" + test_addr);
                     isClick = false;
-//                    holder.deliverLinear.setBackgroundColor(Color.parseColor("#72DAE8"));
+                    AlertDialog.Builder builder = new AlertDialog.Builder(DeliverOrderActivity.this);
+                    builder.setTitle("알림");
+                    builder.setMessage("해당 주소가 맞습니까?");
+                    builder.setPositiveButton("예", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Toast.makeText(getApplicationContext(), "배송지 좌표를 저장하였습니다.. \n 완료를 눌러주세요..",Toast.LENGTH_SHORT).show();
+                            deliver_addr = test_addr;
+                        }
+                    }).setNegativeButton("아니오", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Toast.makeText(getApplicationContext(), "취소하였습니다.",Toast.LENGTH_SHORT).show();
+                        }
+                    }).show();
                 }else{
                     child.setBackgroundColor(Color.parseColor("#ffffff"));
-//                    holder.deliverLinear.setBackgroundColor(Color.parseColor("#ffffff"));
                     isClick = true;
                 }
-                List<String> test_addr = (List<String>) adapter.getSnapshots().getSnapshot(position).get("recipient_addr");
-                Log.d(LOG_TAG, "주소값을 가져왔습니다. \n" + test_addr);
+
                 // true로 바꿔줘야 한번 누르면 한번 불러온다.
                 return true;
             }
@@ -117,29 +168,7 @@ public class DeliverOrderActivity extends AppCompatActivity {
             }
         });
 
-//                Log.d(LOG_TAG, "배달주문 내역 확인.");
-//                Log.d(LOG_TAG, "배달주문 주소:?");
-//                try{
-//                    Intent tmapOpen = getPackageManager().getLaunchIntentForPackage("com.skt.tmap.ku");
-//                    tmapOpen.setAction(Intent.ACTION_SEND);
-//                    tmapOpen.putExtra(Intent.EXTRA_TEXT, tmaptapi.invokeRoute("혁규농원",0,0));
-//                    tmapOpen.setType("text/*");
-//                    Intent shareIntent = Intent.createChooser(tmapOpen, null);
-//                    startActivity(shareIntent);
-//                }catch (Exception e){
-//                    String url = "market://details?id=com.skt.tmap.ku";
-//                    Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-//                    startActivity(i);
-//                }
-                // 주문정보를 확인해서, 선택시, 해당 주소를 가져와서 위도와 경도 구해오는 스니펫
-                // 이것을 이용해서, tmap으로 해당 주소와 위도 경도를 보내면, 경로 탐색을 시작한다.
-                    /*Geocoder g = new Geocoder(this);
-                try{List<Address> adr = null;
-                adr = g.getFromLocationName(recipientData.get(5),1);
-                Log.d(LOG_TAG, "this : "+adr.toString());
-                }catch (IOException e){
-                Log.d(LOG_TAG, "except error IO");
-                }*/
+
     }
 
     @Override

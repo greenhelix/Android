@@ -62,6 +62,7 @@ public class OrderStatusActivity extends AppCompatActivity {
         Log.d(LOG_TAG, "주문현황 화면 정상 OnCreate 되었습니다.");
 
         setOrderStatusRecyclerView();
+
         btnMain = findViewById(R.id.btn_status_go_main);
         btnMain.setOnClickListener(new View.OnClickListener() {
             @Override

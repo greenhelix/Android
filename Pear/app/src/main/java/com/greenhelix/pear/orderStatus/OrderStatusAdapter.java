@@ -156,6 +156,7 @@ public class OrderStatusAdapter extends FirestoreRecyclerAdapter<Order, OrderSta
                 }
             });
         }
+
     }
 
     //삭제 메서드 생성! reference에서 업데이트 사용가능하다! delete로 삭제명령 함

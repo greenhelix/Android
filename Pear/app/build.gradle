@@ -55,6 +55,7 @@ dependencies {
     implementation files('libs/com.skt.Tmap_1.66.jar')
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.preference:preference-ktx:1.1.1'
+    implementation files('libs\\com.skt.Tmap_1.67.jar')
 
 //    기타
     testImplementation 'junit:junit:4.13.1'
