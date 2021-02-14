@@ -1,8 +1,10 @@
 package com.greenhelix.pear.deliver;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,17 +21,17 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.greenhelix.pear.R;
 import com.greenhelix.pear.listShow.Order;
 
+import java.io.Serializable;
 import java.util.List;
 
 public class DeliverOrderAdapter extends FirestoreRecyclerAdapter<Order, DeliverOrderAdapter.DeliverOrderHolder> {
 
     private static final String LOG_TAG = "ik";
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private Boolean isClick = true;
+
     public DeliverOrderAdapter(@NonNull FirestoreRecyclerOptions<Order> options){
         super(options);
     }
-
     @Override
     public void onBindViewHolder(@NonNull final DeliverOrderHolder holder, final int position, @NonNull final Order model) {
         /*카드에 들어가는 정보의 모음*/
@@ -41,22 +43,6 @@ public class DeliverOrderAdapter extends FirestoreRecyclerAdapter<Order, Deliver
         holder.senderName.setText(model.getSender());
         holder.recipientName.setText(model.getRecipient());
         holder.orderAddress.setText(address);
-        holder.deliverLinear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //해당 주문의 배경을 바꿔서 클릭상태로 만들어준다.
-                if(isClick){
-                    holder.deliverLinear.setBackgroundColor(Color.parseColor("#72DAE8"));
-                    Log.d(LOG_TAG, "정보가져오기 :"+ tempAddress);
-                    Log.d(LOG_TAG, "위치 :"+ position);
-                    isClick = false;
-                }else{
-                    holder.deliverLinear.setBackgroundColor(Color.parseColor("#ffffff"));
-                    isClick = true;
-                }
-                Context context = v.getContext();
-            }
-        });
     }
 
     @NonNull
@@ -80,19 +66,6 @@ public class DeliverOrderAdapter extends FirestoreRecyclerAdapter<Order, Deliver
             recipientName = v.findViewById(R.id.tvDeliverRecipientName);
             orderAddress = v.findViewById(R.id.tvDeliverOrderAddress);
 
-            //배달 주문 확인에서 해당 카드를 선택하면 정보를 네비게이션으로 보내는 부분
-//            deliverLinear.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    Boolean isClick = true;
-//                    //해당 주문의 배경을 바꿔서 클릭상태로 만들어준다.
-//                    if(isClick){
-//                        deliverLinear.setBackgroundColor(Color.parseColor("#72DAE8"));
-//                        isClick = false;
-//                    }
-//
-//                }
-//            });
         } // DeliverOrderHolder END
     } // class DeliverOrderHolder END
 }

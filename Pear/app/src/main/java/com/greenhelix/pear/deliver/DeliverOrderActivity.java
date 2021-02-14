@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -26,6 +27,8 @@ import com.greenhelix.pear.R;
 import com.greenhelix.pear.listShow.Order;
 import com.skt.Tmap.TMapTapi;
 
+import java.util.List;
+
 public class DeliverOrderActivity extends AppCompatActivity {
     private static final String LOG_TAG = "ik", ERROR = "ikerror";
     private final FirebaseFirestore firebaseDB = FirebaseFirestore.getInstance();
@@ -33,6 +36,7 @@ public class DeliverOrderActivity extends AppCompatActivity {
     private RecyclerView cycleOrderDeliverView;
     private DeliverOrderAdapter adapter;
     Button btnDeliverBefore, btnDeliverStart;
+    private Boolean isClick = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +57,16 @@ public class DeliverOrderActivity extends AppCompatActivity {
             }
         });
 
+        // 완료후 네비게이션 실행
+        btnDeliverStart = findViewById(R.id.btn_deliver_complete);
+        btnDeliverStart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+            }
+        });
+
     }
 
     private void setDeliverOrderRecyclerView(){
@@ -69,6 +83,39 @@ public class DeliverOrderActivity extends AppCompatActivity {
         cycleOrderDeliverView.setLayoutManager(new LinearLayoutManager(this));
         cycleOrderDeliverView.setHasFixedSize(true);
         cycleOrderDeliverView.setAdapter(adapter);
+
+        cycleOrderDeliverView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+            @Override
+            public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
+
+                View child = rv.findChildViewUnder(e.getX(), e.getY());
+                int position = rv.getChildAdapterPosition(child);
+
+                if(isClick){
+                    child.setBackgroundColor(Color.parseColor("#72DAE8"));
+                    isClick = false;
+//                    holder.deliverLinear.setBackgroundColor(Color.parseColor("#72DAE8"));
+                }else{
+                    child.setBackgroundColor(Color.parseColor("#ffffff"));
+//                    holder.deliverLinear.setBackgroundColor(Color.parseColor("#ffffff"));
+                    isClick = true;
+                }
+                List<String> test_addr = (List<String>) adapter.getSnapshots().getSnapshot(position).get("recipient_addr");
+                Log.d(LOG_TAG, "주소값을 가져왔습니다. \n" + test_addr);
+                // true로 바꿔줘야 한번 누르면 한번 불러온다.
+                return true;
+            }
+
+            @Override
+            public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
+
+            }
+
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
+            }
+        });
 
 //                Log.d(LOG_TAG, "배달주문 내역 확인.");
 //                Log.d(LOG_TAG, "배달주문 주소:?");

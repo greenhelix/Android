@@ -30,6 +30,16 @@
         android:layout_marginTop="17dp"
         android:background="@drawable/bottom_btn_shape"
         android:text="@string/before_btn_text"
+        app:layout_constraintTop_toBottomOf="@+id/deliver_layout1"
+        tools:ignore="MissingConstraints"
+        />
+    <Button
+        android:id="@+id/btn_deliver_complete"
+        style="@style/bottom_btn_next_style"
+        android:layout_marginTop="17dp"
+        android:background="@drawable/bottom_btn_shape"
+        android:text="@string/complete_btn_text"
+        app:layout_constraintTop_toBottomOf="@+id/deliver_layout1"
         tools:ignore="MissingConstraints"
         />
 
