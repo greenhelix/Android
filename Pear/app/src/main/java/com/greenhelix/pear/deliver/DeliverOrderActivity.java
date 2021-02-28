@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -25,7 +26,6 @@ import com.greenhelix.pear.MainActivity;
 import com.greenhelix.pear.R;
 import com.greenhelix.pear.listShow.Order;
 import com.skt.Tmap.TMapTapi;
-
 import java.io.IOException;
 import java.util.List;
 
@@ -38,15 +38,16 @@ public class DeliverOrderActivity extends AppCompatActivity {
     Button btnDeliverBefore, btnDeliverStart;
     private Boolean isClick = true;
     private List<String> deliver_addr;
-    TMapTapi tmaptapi = new TMapTapi(this);
+    private TMapTapi tmaptapi;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        tmaptapi = new TMapTapi(this);
         setContentView(R.layout.activity_deliver_order);
         Log.d(LOG_TAG, "배달 주문확인화면  정상 OnCreate 되었습니다.");
-        tmaptapi.setSKTMapAuthentication("l7xx67178473a0134850bb0610927c9ba539");
+
         setDeliverOrderRecyclerView();
 
         btnDeliverBefore = findViewById(R.id.btn_deliver_before);
@@ -60,6 +61,8 @@ public class DeliverOrderActivity extends AppCompatActivity {
             }
         });
 
+
+
         // 완료후 네비게이션 실행
         btnDeliverStart = findViewById(R.id.btn_deliver_complete);
         btnDeliverStart.setOnClickListener(new View.OnClickListener() {
@@ -68,8 +71,9 @@ public class DeliverOrderActivity extends AppCompatActivity {
                 Log.d(LOG_TAG, "완료버튼에 들어온 주소값. \n" + deliver_addr.get(1));
                 List<Address> adr = null; // List<Address> 형태로 받아야함.
                 Geocoder g = new Geocoder(getApplicationContext());
+
                 try{
-                    // getFromLocationName은 지명-> 좌표 
+                    // getFromLocationName은 지명-> 좌표
                     // getFromLocation 은 좌표 -> 지명
                     adr = g.getFromLocationName(deliver_addr.get(1),1);
                     Log.d(LOG_TAG, "좌표 확인... : "+adr.get(0).getLatitude()+", "+adr.get(0).getLongitude());
@@ -81,29 +85,45 @@ public class DeliverOrderActivity extends AppCompatActivity {
                 float lon = (float) adr.get(0).getLongitude();
 
                 try{
-
-
-//                    Intent tmapOpen = getPackageManager().getLaunchIntentForPackage("com.skt.tmap.ku");
-                    tmaptapi.invokeNavigate(deliver_addr.get(1),lat,lon,0,false);
-//                    tmapOpen.setAction(Intent.ACTION_SEND);
-//                    tmapOpen.putExtra(Intent.EXTRA_TEXT, );
-//                    tmapOpen.setType("text/*");
-//                    Intent shareIntent = Intent.createChooser(tmapOpen, null);
-//                    startActivity(tmapOpen);
-                }catch (Exception e){
-                    String url = "market://details?id=com.skt.tmap.ku";
-//                    Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                    Log.d(LOG_TAG, "예외발생, 네비게이션 안켜짐");
-//                    startActivity(i);
+                    new TmapApiConnectTask().execute();
+                }catch (NullPointerException e){
+                    Log.d(LOG_TAG, "예외처리"+e);
                 }
-                // 주문정보를 확인해서, 선택시, 해당 주소를 가져와서 위도와 경도 구해오는 스니펫
-                // 이것을 이용해서, tmap으로 해당 주소와 위도 경도를 보내면, 경로 탐색을 시작한다.
-
-
+                tmaptapi.invokeNavigate(deliver_addr.get(1),lat,lon,0,false);
             }
         });
-
     }
+
+    //비동기 작업 - 티맵연결
+    private class TmapApiConnectTask extends AsyncTask<String, Boolean, Boolean>{
+        @Override
+        protected Boolean doInBackground(String... strings) {
+            final boolean[] result = {true};
+            tmaptapi= new TMapTapi(getApplicationContext());
+            tmaptapi.setSKTMapAuthentication(getString(R.string.tmap_appkey));
+            tmaptapi.setOnAuthenticationListener(new TMapTapi.OnAuthenticationListenerCallback() {
+                @Override
+                public void SKTMapApikeySucceed() {
+                    result[0] = true;
+                    Log.d(LOG_TAG, "연동 성공");
+                }
+
+                @Override
+                public void SKTMapApikeyFailed(String s) {
+                    result[0]= false;
+                    Log.d(LOG_TAG, "연동 실패");
+                }
+            });
+
+            return result[0];
+        }
+
+        @Override
+        protected void onPostExecute(Boolean aBoolean) {
+            super.onPostExecute(aBoolean);
+        }
+    }
+
 
     private void setDeliverOrderRecyclerView(){
 

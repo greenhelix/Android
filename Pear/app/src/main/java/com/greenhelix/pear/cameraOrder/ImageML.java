@@ -1,5 +1,6 @@
 package com.greenhelix.pear.cameraOrder;
 
+import android.graphics.Point;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,6 +25,7 @@ import com.google.firebase.ml.vision.text.FirebaseVisionTextRecognizer;
 import com.greenhelix.pear.R;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.Arrays;
 
 public class ImageML extends AppCompatActivity  {
@@ -53,7 +55,6 @@ public class ImageML extends AppCompatActivity  {
             @Override
             public void onClick(View v) {
                 resultShow.setText(re);
-                Log.d(LOG_TAG, "글자 잘 가져옴  " + re);
             }
         });
 
@@ -83,7 +84,7 @@ public class ImageML extends AppCompatActivity  {
         // 파이어베이스 텍스트인식 옵션을 주는 곳이다. 여기서 한글인식을 설정하는듯
         FirebaseVisionCloudTextRecognizerOptions txtOptions = new FirebaseVisionCloudTextRecognizerOptions.Builder()
                 .setLanguageHints(Arrays.asList("ko","안녕"))
-                .setModelType(2)
+                .setModelType(2)  //DENSE_MODEL 작고 밀집된 글자를 잘 인식하는 모드이다. 큰글자는 모드 1을 쓴다.
                 .build();
         // 파이어베이스 인식기를 선언해준다.
         FirebaseVisionTextRecognizer detector = FirebaseVision.getInstance()
@@ -91,17 +92,27 @@ public class ImageML extends AppCompatActivity  {
 
         Log.d(LOG_TAG,"처리중 -------->"+image+"처리중...."+detector);
         // 비트맵 이미지를 프로세스 돌리고 잘 작동하는지 확인.
-        Task<FirebaseVisionText> result = detector.processImage(image)
+        final Task<FirebaseVisionText> result = detector.processImage(image)
                 .addOnSuccessListener(new OnSuccessListener<FirebaseVisionText>() {
                     @Override
                     public void onSuccess(FirebaseVisionText firebaseVisionText) {
                         Log.d(LOG_TAG,"텍스트인식기 정상가동");
+                        String resultText = firebaseVisionText.getText();
+                        Log.d(LOG_TAG, "전체입니다.\n"+ resultText);
+                        re = resultText;
                         for(FirebaseVisionText.TextBlock block : firebaseVisionText.getTextBlocks()) {
                             //그래픽으로 묶어주는 모습보여준는것?
                             String text = block.getText();
-                            Log.d(LOG_TAG, "문단 :  "+text);
-                            re += text;
+
+//                            for (FirebaseVisionText.Line line : block.getLines()) {
+//                                Log.d(LOG_TAG, "줄 :  "+line.getText());
+//
+//                                for (FirebaseVisionText.Element element : line.getElements()) {
+//                                    Log.d(LOG_TAG, "단어 :  "+element.getText());
+//                                }//요소
+//                            }//라인
                         }//블록
+
                     }//성공시
                 })
                 .addOnFailureListener(
@@ -114,36 +125,3 @@ public class ImageML extends AppCompatActivity  {
 
     }
 }
-//    private int degreesToFirebaseRotation(int degrees) {
-//        switch (degrees) {
-//            case 0:
-//                return FirebaseVisionImageMetadata.ROTATION_0;
-//            case 90:
-//                return FirebaseVisionImageMetadata.ROTATION_90;
-//            case 180:
-//                return FirebaseVisionImageMetadata.ROTATION_180;
-//            case 270:
-//                return FirebaseVisionImageMetadata.ROTATION_270;
-//            default:
-//                throw new IllegalArgumentException(
-//                        "Rotation must be 0, 90, 180, or 270.");
-//        }
-//    }
-//    @Override
-//    @androidx.camera.core.ExperimentalGetImage
-//    public void analyze(ImageProxy image, int degrees) {
-//        if (image == null || image.getImage() == null) {
-//            return;
-//        }
-//        Image mediaImage = image.getImage();
-//        int rotation = degreesToFirebaseRotation(degrees);
-//        FirebaseVisionImage fbimage =
-//                FirebaseVisionImage.fromMediaImage(mediaImage, rotation);
-//    }
-//for (FirebaseVisionText.Line line : block.getLines()) {
-//                                Log.d(LOG_TAG, "줄 :  "+line.getText());
-//
-//                                for (FirebaseVisionText.Element element : line.getElements()) {
-//                                    Log.d(LOG_TAG, "단어 :  "+element.getText());
-//                                }//요소
-//                            }//라인

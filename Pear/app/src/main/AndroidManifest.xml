@@ -20,7 +20,7 @@
         android:networkSecurityConfig="@xml/network_sercurity_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true">
-        <activity android:name=".deliver.DeliverOrderAdapter"></activity>
+
         <activity
             android:name=".Intro"
             android:screenOrientation="portrait"
