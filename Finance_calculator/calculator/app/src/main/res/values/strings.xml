@@ -1,0 +1,26 @@
+<resources>
+    <!-- 여기는 모든 문자 관련 리소스를 모아두는 곳-->
+    <string name="app_name">Calculator</string>
+    <string name="calBtnClear">AC</string>
+    <string name="calBtnPlusMinus">+/-</string>
+    <string name="calBtnSubstract">%</string>
+    <string name="calBtnDivide">/</string>
+    <string name="calBtnSeven">7</string>
+    <string name="calBtnEight">8</string>
+    <string name="calBtnNine">9</string>
+    <string name="calBtnMultiple">*</string>
+    <string name="calBtnFour">4</string>
+    <string name="calBtnFive">5</string>
+    <string name="calBtnSix">6</string>
+    <string name="calBtnMinus">-</string>
+    <string name="calBtnOne">1</string>
+    <string name="calBtnTwo">2</string>
+    <string name="calBtnThree">3</string>
+    <string name="calBtnPlus">+</string>
+    <string name="calBtnZero">0</string>
+    <string name="calBtnDecimal">.</string>
+    <string name="calBtnEqual">=</string>
+    <string name="menu">메뉴</string>
+    <string name= "calculator">계산기</string>
+    <string name= "settings">설정</string>
+</resources>

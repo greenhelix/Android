@@ -1,0 +1,72 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    xmlns:dist="http://schemas.android.com/apk/distribution"
+4    package="greenhelix.androidproject.calculator"
+5    android:versionCode="1"
+6    android:versionName="1.0" >
+7
+8    <uses-sdk
+9        android:minSdkVersion="23"
+9-->D:\4_Project\Android\Project\calculator\app\src\main\AndroidManifest.xml
+10        android:targetSdkVersion="29" />
+10-->D:\4_Project\Android\Project\calculator\app\src\main\AndroidManifest.xml
+11
+12    <dist:module dist:instant="true" />
+12-->D:\4_Project\Android\Project\calculator\app\src\main\AndroidManifest.xml:6:5-40
+12-->D:\4_Project\Android\Project\calculator\app\src\main\AndroidManifest.xml:6:18-37
+13
+14    <application
+14-->D:\4_Project\Android\Project\calculator\app\src\main\AndroidManifest.xml:8:5-26:19
+15        android:allowBackup="true"
+15-->D:\4_Project\Android\Project\calculator\app\src\main\AndroidManifest.xml:9:9-35
+16        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+16-->[androidx.core:core:1.1.0] C:\Users\dlrgh\.gradle\caches\transforms-2\files-2.1\e9dab9c67c1ee3668e0bbf86c6d8cbd8\core-1.1.0\AndroidManifest.xml:24:18-86
+17        android:debuggable="true"
+18        android:icon="@mipmap/icon_calculator"
+18-->D:\4_Project\Android\Project\calculator\app\src\main\AndroidManifest.xml:10:9-47
+19        android:label="@string/app_name"
+19-->D:\4_Project\Android\Project\calculator\app\src\main\AndroidManifest.xml:11:9-41
+20        android:roundIcon="@mipmap/icon_calculator_round"
+20-->D:\4_Project\Android\Project\calculator\app\src\main\AndroidManifest.xml:12:9-58
+21        android:supportsRtl="true"
+21-->D:\4_Project\Android\Project\calculator\app\src\main\AndroidManifest.xml:13:9-35
+22        android:testOnly="true"
+23        android:theme="@style/AppTheme" >
+23-->D:\4_Project\Android\Project\calculator\app\src\main\AndroidManifest.xml:14:9-40
+24        <activity
+24-->D:\4_Project\Android\Project\calculator\app\src\main\AndroidManifest.xml:15:9-16:57
+25            android:name="greenhelix.androidproject.calculator.MainActivity"
+25-->D:\4_Project\Android\Project\calculator\app\src\main\AndroidManifest.xml:15:19-47
+26            android:label="@string/app_name" />
+26-->D:\4_Project\Android\Project\calculator\app\src\main\AndroidManifest.xml:16:13-45
+27        <activity
+27-->D:\4_Project\Android\Project\calculator\app\src\main\AndroidManifest.xml:18:9-24:20
+28            android:name="greenhelix.androidproject.calculator.IntroActivity"
+28-->D:\4_Project\Android\Project\calculator\app\src\main\AndroidManifest.xml:18:19-48
+29            android:label="@string/app_name" >
+29-->D:\4_Project\Android\Project\calculator\app\src\main\AndroidManifest.xml:19:13-45
+30            <intent-filter>
+30-->D:\4_Project\Android\Project\calculator\app\src\main\AndroidManifest.xml:20:13-23:29
+31                <action android:name="android.intent.action.MAIN" />
+31-->D:\4_Project\Android\Project\calculator\app\src\main\AndroidManifest.xml:21:17-69
+31-->D:\4_Project\Android\Project\calculator\app\src\main\AndroidManifest.xml:21:25-66
+32
+33                <category android:name="android.intent.category.LAUNCHER" />
+33-->D:\4_Project\Android\Project\calculator\app\src\main\AndroidManifest.xml:22:17-77
+33-->D:\4_Project\Android\Project\calculator\app\src\main\AndroidManifest.xml:22:27-74
+34            </intent-filter>
+35        </activity>
+36
+37        <provider
+37-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\dlrgh\.gradle\caches\transforms-2\files-2.1\3c03e0805bdfd6180afbf0af0c9cd9a0\lifecycle-process-2.1.0\AndroidManifest.xml:23:9-27:43
+38            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
+38-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\dlrgh\.gradle\caches\transforms-2\files-2.1\3c03e0805bdfd6180afbf0af0c9cd9a0\lifecycle-process-2.1.0\AndroidManifest.xml:24:13-79
+39            android:authorities="greenhelix.androidproject.calculator.lifecycle-process"
+39-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\dlrgh\.gradle\caches\transforms-2\files-2.1\3c03e0805bdfd6180afbf0af0c9cd9a0\lifecycle-process-2.1.0\AndroidManifest.xml:25:13-69
+40            android:exported="false"
+40-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\dlrgh\.gradle\caches\transforms-2\files-2.1\3c03e0805bdfd6180afbf0af0c9cd9a0\lifecycle-process-2.1.0\AndroidManifest.xml:26:13-37
+41            android:multiprocess="true" />
+41-->[androidx.lifecycle:lifecycle-process:2.1.0] C:\Users\dlrgh\.gradle\caches\transforms-2\files-2.1\3c03e0805bdfd6180afbf0af0c9cd9a0\lifecycle-process-2.1.0\AndroidManifest.xml:27:13-40
+42    </application>
+43
+44</manifest>

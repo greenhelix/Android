@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_navigation"
+    app:startDestination="@+id/navigation_calculator">
+
+    <fragment
+        android:id="@+id/navigation_list"
+        android:name="greenhelix.androidproject.calculator.ui.listshow.ListShowFragment"
+        android:label="@string/menu"
+        tools:layout = "@layout/fragment_listshow"
+        />
+    <fragment
+        android:id="@+id/navigation_calculator"
+        android:name="greenhelix.androidproject.calculator.ui.calculator.CalculatorFragment"
+        android:label="@string/calculator"
+        tools:layout = "@layout/fragment_calculator"
+        />
+    <fragment
+        android:id="@+id/navigation_settings"
+        android:name="greenhelix.androidproject.calculator.ui.settings.SettingsFragment"
+        android:label="@string/settings"
+        tools:layout = "@layout/fragment_settings"
+        />
+</navigation>

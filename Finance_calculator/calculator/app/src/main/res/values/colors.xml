@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 여기는 모든 색상 관련 리소스를 모아두는 곳-->
+    <color name="colorPrimary">#2196F3</color>
+    <color name="colorPrimaryDark">#2196F3</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="icon_calculator_background">#2196F3</color>
+    <color name="calculator_showText">#ffffff</color>
+    <color name="calculator_btnpressOn">#4D8CBE</color>
+</resources>

@@ -1,0 +1,33 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="greenhelix.androidproject.calculator.test" >
+4
+5    <uses-sdk
+5-->D:\4_Project\Android\Project\calculator\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger5588731070912093568.xml:5:5-74
+6        android:minSdkVersion="23"
+6-->D:\4_Project\Android\Project\calculator\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger5588731070912093568.xml:5:15-41
+7        android:targetSdkVersion="29" />
+7-->D:\4_Project\Android\Project\calculator\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger5588731070912093568.xml:5:42-71
+8
+9    <instrumentation
+9-->D:\4_Project\Android\Project\calculator\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger5588731070912093568.xml:11:5-15:86
+10        android:name="androidx.test.runner.AndroidJUnitRunner"
+10-->D:\4_Project\Android\Project\calculator\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger5588731070912093568.xml:11:22-76
+11        android:functionalTest="false"
+11-->D:\4_Project\Android\Project\calculator\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger5588731070912093568.xml:14:22-52
+12        android:handleProfiling="false"
+12-->D:\4_Project\Android\Project\calculator\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger5588731070912093568.xml:13:22-53
+13        android:label="Tests for greenhelix.androidproject.calculator"
+13-->D:\4_Project\Android\Project\calculator\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger5588731070912093568.xml:15:22-84
+14        android:targetPackage="greenhelix.androidproject.calculator" />
+14-->D:\4_Project\Android\Project\calculator\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger5588731070912093568.xml:12:22-82
+15
+16    <application android:debuggable="true" >
+16-->D:\4_Project\Android\Project\calculator\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger5588731070912093568.xml:7:5-9:19
+16-->D:\4_Project\Android\Project\calculator\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger5588731070912093568.xml:7:18-43
+17        <uses-library android:name="android.test.runner" />
+17-->D:\4_Project\Android\Project\calculator\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger5588731070912093568.xml:8:9-60
+17-->D:\4_Project\Android\Project\calculator\app\build\intermediates\tmp\manifest\androidTest\debug\manifestMerger5588731070912093568.xml:8:23-57
+18    </application>
+19
+20</manifest>

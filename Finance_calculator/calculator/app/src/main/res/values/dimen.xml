@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 여기는 모든 사이즈 관련 리소스를 모아두는 곳-->
+    <dimen name="calculator_numBtn_size">30dp</dimen>
+    <dimen name="calculator_operBtn_size">60dp</dimen>
+</resources>
