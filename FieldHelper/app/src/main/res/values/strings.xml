@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Field Helper</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_data_show">DataShow</string>
+</resources>
