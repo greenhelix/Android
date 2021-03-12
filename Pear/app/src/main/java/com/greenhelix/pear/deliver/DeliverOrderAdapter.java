@@ -56,7 +56,7 @@ public class DeliverOrderAdapter extends FirestoreRecyclerAdapter<Order, Deliver
     public class DeliverOrderHolder extends RecyclerView.ViewHolder{
         TextView deliverNum , senderName , recipientName, orderAddress;
         LinearLayout deliverLinear;
-
+        Boolean checker = false;
         public DeliverOrderHolder(View v){
             super(v);
 
@@ -66,6 +66,20 @@ public class DeliverOrderAdapter extends FirestoreRecyclerAdapter<Order, Deliver
             recipientName = v.findViewById(R.id.tvDeliverRecipientName);
             orderAddress = v.findViewById(R.id.tvDeliverOrderAddress);
 
+
+//            deliverLinear.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    if(checker){
+//                        v.setBackgroundColor(v.getResources().getColor(R.color.colorAccent, null));
+//                        checker = false;
+//                    }else{
+//                        v.setBackgroundColor(v.getResources().getColor(R.color.white_color, null));
+//                        checker = true;
+//                    }
+//                    Log.d(LOG_TAG, "카드가 어댑터에서 onclick 되었다.");
+//                }
+//            });
         } // DeliverOrderHolder END
     } // class DeliverOrderHolder END
 }
