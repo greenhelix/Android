@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.AsyncTask;
@@ -28,6 +27,7 @@ import com.greenhelix.pear.listShow.Order;
 import com.skt.Tmap.TMapTapi;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class DeliverOrderActivity extends AppCompatActivity {
@@ -46,6 +46,7 @@ public class DeliverOrderActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         tmaptapi = new TMapTapi(this);
+        tmaptapi.setSKTMapAuthentication ("l7xx4e573e36ddcc414290a5e9198525ed36");
         setContentView(R.layout.activity_deliver_order);
         Log.d(LOG_TAG, "배달 주문확인화면  정상 OnCreate 되었습니다.");
 
@@ -70,60 +71,35 @@ public class DeliverOrderActivity extends AppCompatActivity {
         btnDeliverStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(LOG_TAG, "완료버튼에 들어온 주소값. \n" + deliver_addr.get(1));
+                Log.d(LOG_TAG, "완료버튼에 들어온 주소값.");
+                Log.d(LOG_TAG,"목적지:"+ deliver_addr.get(1));
                 List<Address> adr = null; // List<Address> 형태로 받아야함.
+                //주소명으로 좌표찾기 위해서는 geocoder를 불러와야한다.
                 Geocoder g = new Geocoder(getApplicationContext());
 
+                // 주소 출발지, 도착지 다 적는다.  출발지는 혁규농원 고정
+                HashMap<String, String> pathInfo = new HashMap<>();
+
                 try{
-                    // getFromLocationName은 지명-> 좌표
-                    // getFromLocation 은 좌표 -> 지명
-                    adr = g.getFromLocationName(deliver_addr.get(1),1);
-                    Log.d(LOG_TAG, "좌표 확인... : "+adr.get(0).getLatitude()+", "+adr.get(0).getLongitude());
+                    adr = g.getFromLocationName(deliver_addr.get(1),1); // 도착지 주소로 좌표 가져오기
+                    pathInfo.put("rGoName", deliver_addr.get(1)); //도착지
+                    pathInfo.put("rGoY", String.valueOf(adr.get(0).getLatitude())); //Y부터 넣어준다.
+                    pathInfo.put("rGoX", String.valueOf(adr.get(0).getLongitude())); //X값
+                    // 출발지 정보 - 현재위치로 변경 가능하다. Geocoder를 활용하면된다.
+                    pathInfo.put("rStName","혁규농원");
+                    pathInfo.put("rStY", "37.69667672191368");
+                    pathInfo.put("rStX", "127.12651783206553");
+
+                    Log.d(LOG_TAG, "좌표 확인... : "+adr.get(0).getLatitude()+", "+adr.get(0).getLongitude()+"\n");
+                    Log.d(LOG_TAG, "출발지: 혁규농원");
+                    Log.d(LOG_TAG, "좌표 확인... : 37.69667672191368, 27.12651783206553");
                 }catch (IOException e){
                     Log.d(LOG_TAG, "except error IO");
                 }
-
-                float lat = (float) adr.get(0).getLatitude();
-                float lon = (float) adr.get(0).getLongitude();
-
-                try{
-                    new TmapApiConnectTask().execute();
-                }catch (NullPointerException e){
-                    Log.d(LOG_TAG, "예외처리"+e);
-                }
-                tmaptapi.invokeNavigate(deliver_addr.get(1),lat,lon,0,false);
+                tmaptapi.invokeRoute(pathInfo);
+                Log.d(LOG_TAG, "네이게이션 이동.. 길찾기 완료!");
             }
         });
-    }
-
-    //비동기 작업 - 티맵연결
-    private class TmapApiConnectTask extends AsyncTask<String, Boolean, Boolean>{
-        @Override
-        protected Boolean doInBackground(String... strings) {
-            final boolean[] result = {true};
-            tmaptapi= new TMapTapi(getApplicationContext());
-            tmaptapi.setSKTMapAuthentication(getString(R.string.tmap_appkey));
-            tmaptapi.setOnAuthenticationListener(new TMapTapi.OnAuthenticationListenerCallback() {
-                @Override
-                public void SKTMapApikeySucceed() {
-                    result[0] = true;
-                    Log.d(LOG_TAG, "연동 성공");
-                }
-
-                @Override
-                public void SKTMapApikeyFailed(String s) {
-                    result[0]= false;
-                    Log.d(LOG_TAG, "연동 실패");
-                }
-            });
-
-            return result[0];
-        }
-
-        @Override
-        protected void onPostExecute(Boolean aBoolean) {
-            super.onPostExecute(aBoolean);
-        }
     }
 
 
@@ -185,18 +161,15 @@ public class DeliverOrderActivity extends AppCompatActivity {
                 return true;
             }
 
+            //지우면 안됨.
             @Override
             public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
-
             }
-
+            //지우면 안됨.
             @Override
             public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
-
             }
         });
-
-
     }
 
     @Override
