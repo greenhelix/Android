@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.content.DialogInterface;
@@ -41,7 +42,6 @@ public class DeliverOrderActivity extends AppCompatActivity {
     private List<String> deliver_addr;
     private TMapTapi tmaptapi;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,13 +64,12 @@ public class DeliverOrderActivity extends AppCompatActivity {
             }
         });
 
-
-
         // 완료후 네비게이션 실행
         btnDeliverStart = findViewById(R.id.btn_deliver_complete);
         btnDeliverStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                deliver_addr = getIntent().getExtras().getStringArrayList("navi_info");
                 Log.d(LOG_TAG, "완료버튼에 들어온 주소값.");
                 Log.d(LOG_TAG,"목적지:"+ deliver_addr.get(1));
                 List<Address> adr = null; // List<Address> 형태로 받아야함.
@@ -102,7 +101,6 @@ public class DeliverOrderActivity extends AppCompatActivity {
         });
     }
 
-
     private void setDeliverOrderRecyclerView(){
 
         Query query = deliverRef.orderBy("sender", Query.Direction.DESCENDING);
@@ -118,58 +116,7 @@ public class DeliverOrderActivity extends AppCompatActivity {
         cycleOrderDeliverView.setHasFixedSize(true);
         cycleOrderDeliverView.setAdapter(adapter);
 
-        // 주문 선택 이벤트 발생
-        cycleOrderDeliverView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
 
-            @Override
-            public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
-                isClick = true;
-
-                final View child = rv.findChildViewUnder(e.getX(), e.getY());
-                int position = rv.getChildAdapterPosition(child);
-                Log.d(LOG_TAG, "위치는: "+ position);
-                if(isClick) {
-                    child.setBackgroundResource(R.drawable.deliver_true);
-                    final List<String> test_addr = (List<String>) adapter.getSnapshots().getSnapshot(position).get("recipient_addr");
-                    Log.d(LOG_TAG, "주소값을 가져왔습니다. \n" + test_addr);
-                    AlertDialog.Builder builder = new AlertDialog.Builder(DeliverOrderActivity.this);
-                    builder.setTitle("알림");
-                    builder.setMessage("해당 주소가 맞습니까?");
-                    builder.setPositiveButton("예", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            Toast.makeText(getApplicationContext(), "배송지 좌표를 저장하였습니다.. \n 완료를 눌러주세요..",Toast.LENGTH_SHORT).show();
-                            deliver_addr = test_addr;
-                        }
-                    }).setNegativeButton("아니오", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            Toast.makeText(getApplicationContext(), "취소하였습니다.",Toast.LENGTH_SHORT).show();
-                            deliver_addr = new ArrayList<String>();
-                            Log.d(LOG_TAG, "주소값을 비웠다"+deliver_addr);
-                            child.setBackgroundResource(R.drawable.deliver_false);
-                            isClick = false;
-
-                        }
-                    }).show();
-                }else{
-                    child.setBackgroundResource(R.drawable.deliver_false);
-                    isClick = false;
-                }
-
-                // true로 바꿔줘야 한번 누르면 한번 불러온다.
-                return true;
-            }
-
-            //지우면 안됨.
-            @Override
-            public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
-            }
-            //지우면 안됨.
-            @Override
-            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
-            }
-        });
     }
 
     @Override

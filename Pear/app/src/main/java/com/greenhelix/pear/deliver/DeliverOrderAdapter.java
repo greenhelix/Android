@@ -2,6 +2,7 @@ package com.greenhelix.pear.deliver;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Parcelable;
@@ -12,7 +13,10 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
@@ -22,6 +26,8 @@ import com.greenhelix.pear.R;
 import com.greenhelix.pear.listShow.Order;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class DeliverOrderAdapter extends FirestoreRecyclerAdapter<Order, DeliverOrderAdapter.DeliverOrderHolder> {
@@ -57,6 +63,7 @@ public class DeliverOrderAdapter extends FirestoreRecyclerAdapter<Order, Deliver
         TextView deliverNum , senderName , recipientName, orderAddress;
         LinearLayout deliverLinear;
         Boolean checker = false;
+        List<String> deliver_addr = new ArrayList<>();
         public DeliverOrderHolder(View v){
             super(v);
 
@@ -67,19 +74,44 @@ public class DeliverOrderAdapter extends FirestoreRecyclerAdapter<Order, Deliver
             orderAddress = v.findViewById(R.id.tvDeliverOrderAddress);
 
 
-//            deliverLinear.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    if(checker){
-//                        v.setBackgroundColor(v.getResources().getColor(R.color.colorAccent, null));
-//                        checker = false;
-//                    }else{
-//                        v.setBackgroundColor(v.getResources().getColor(R.color.white_color, null));
-//                        checker = true;
-//                    }
-//                    Log.d(LOG_TAG, "카드가 어댑터에서 onclick 되었다.");
-//                }
-//            });
+            deliverLinear.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(final View v) {
+                    if(checker){
+
+                        v.setBackgroundResource(R.drawable.deliver_true);
+                        final ArrayList<String> test_addr =(ArrayList<String>) getSnapshots().getSnapshot(getAdapterPosition()).get("recipient_addr");
+                        Log.d(LOG_TAG, "주소값을 가져왔습니다. \n" + test_addr);
+
+                        AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+                        builder.setTitle("알림");
+                        builder.setMessage("해당 주소가 맞습니까?");
+                        builder.setPositiveButton("예", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Toast.makeText(v.getContext(),"배송지 좌표를 저장하였습니다.. \n 완료를 눌러주세요..",Toast.LENGTH_SHORT).show();
+                                deliver_addr = test_addr;
+                                Intent test = new Intent(v.getContext(), DeliverOrderActivity.class);
+                                test.putExtra("navi_info", (Serializable) deliver_addr);
+                                v.getContext().startActivity(test);
+                            }
+                        }).setNegativeButton("아니오", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Toast.makeText(v.getContext(), "취소하였습니다.",Toast.LENGTH_SHORT).show();
+                                deliver_addr = new ArrayList<String>();
+                                Log.d(LOG_TAG, "주소값을 비웠다"+deliver_addr);
+                                v.setBackgroundResource(R.drawable.deliver_false);
+                            }
+                        }).show();
+                        checker = false;
+                    }else{
+                        v.setBackgroundResource(R.drawable.deliver_false);
+                        checker = true;
+                    }
+                    Log.d(LOG_TAG, "카드가 어댑터에서 onclick 되었다.");
+                }
+            });
         } // DeliverOrderHolder END
     } // class DeliverOrderHolder END
 }
