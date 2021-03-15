@@ -46,7 +46,7 @@ public class DeliverOrderActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         tmaptapi = new TMapTapi(this);
-        tmaptapi.setSKTMapAuthentication ("l7xx4e573e36ddcc414290a5e9198525ed36");
+        tmaptapi.setSKTMapAuthentication (getString(R.string.tmap_api_key));
         setContentView(R.layout.activity_deliver_order);
         Log.d(LOG_TAG, "배달 주문확인화면  정상 OnCreate 되었습니다.");
 

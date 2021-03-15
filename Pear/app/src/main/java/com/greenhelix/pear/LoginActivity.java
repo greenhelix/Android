@@ -37,9 +37,7 @@ import java.util.Objects;
 
 public class LoginActivity extends AppCompatActivity {
 
-    // xml 버튼 할당
     private SignInButton signInButton;
-    private Button signOutButton;
     private GoogleSignInClient client;
     private GoogleSignInAccount acc;
     private FirebaseAuth fAuth;
@@ -47,6 +45,7 @@ public class LoginActivity extends AppCompatActivity {
     private static final String LOG_TAG = "ik";
     private AuthCredential authCredential;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
+
     @Override
     public void onBackPressed() {
         Log.d(LOG_TAG, "로그인화면 종료 확인");
@@ -58,7 +57,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 Log.d(LOG_TAG," 종료 합니다.");
                 ActivityCompat.finishAffinity(LoginActivity.this);
-                System.exit(0); //앱 완전 종료
+                System.exit(0);
             }
         }).setNegativeButton("아니요.", new DialogInterface.OnClickListener() {
             @Override
@@ -73,23 +72,18 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         Log.d(LOG_TAG, "onCreate start");
-        // 각 변수별 할당
         signInButton = findViewById(R.id.btn_google_login);
-        //파이어베이스
         fAuth = FirebaseAuth.getInstance();
 
-        // request에서 default_web_client_id 이부분 직접 실행해야 나옴.
         final GoogleSignInOptions googleOpt = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
         client = GoogleSignIn.getClient(this, googleOpt);
 
-        // 버튼 클릭 활성화g
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //로그인 버튼 클릭시 활성화 메서드
                 signIn();
             }
         });
@@ -109,7 +103,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void signOut(View v){
-        //구글 로그인 계정 아예 제거하는 메서드임
         client.signOut()
                 .addOnCompleteListener(this, new OnCompleteListener<Void>() {
                     @Override
@@ -119,7 +112,6 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 });
     }
-
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -220,9 +212,7 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "구글 로그인이 필요합니다.", Toast.LENGTH_SHORT).show();
                 }
             });
-
         }
     }
-
 }
 
