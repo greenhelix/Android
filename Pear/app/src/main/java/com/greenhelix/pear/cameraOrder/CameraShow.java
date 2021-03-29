@@ -40,7 +40,7 @@ import java.util.Map;
 2. 카메라 주문
 주문내역이 이쪽으로 모여야 함.*/
 
-public class CameraShow extends AppCompatActivity {
+public class  CameraShow extends AppCompatActivity {
 
     private static final String LOG_TAG = "ik";
     private FirebaseFirestore db = FirebaseFirestore.getInstance();

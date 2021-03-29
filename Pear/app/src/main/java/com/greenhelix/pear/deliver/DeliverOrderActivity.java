@@ -1,23 +1,19 @@
 package com.greenhelix.pear.deliver;
 
-import androidx.annotation.NonNull;
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -27,7 +23,6 @@ import com.greenhelix.pear.R;
 import com.greenhelix.pear.listShow.Order;
 import com.skt.Tmap.TMapTapi;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -35,10 +30,8 @@ public class DeliverOrderActivity extends AppCompatActivity {
     private static final String LOG_TAG = "ik", ERROR = "ikerror";
     private final FirebaseFirestore firebaseDB = FirebaseFirestore.getInstance();
     private final CollectionReference deliverRef = firebaseDB.collection("pear_orders");
-    private RecyclerView cycleOrderDeliverView;
     private DeliverOrderAdapter adapter;
     Button btnDeliverBefore, btnDeliverStart;
-    private Boolean isClick = false;
     private List<String> deliver_addr;
     private TMapTapi tmaptapi;
 
@@ -111,7 +104,7 @@ public class DeliverOrderActivity extends AppCompatActivity {
 
         adapter = new DeliverOrderAdapter(opt);
 
-        cycleOrderDeliverView = findViewById(R.id.deliver_order_list);
+        RecyclerView cycleOrderDeliverView = findViewById(R.id.deliver_order_list);
         cycleOrderDeliverView.setLayoutManager(new LinearLayoutManager(this));
         cycleOrderDeliverView.setHasFixedSize(true);
         cycleOrderDeliverView.setAdapter(adapter);

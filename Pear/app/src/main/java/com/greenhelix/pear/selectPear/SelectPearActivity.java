@@ -9,20 +9,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.greenhelix.pear.R;
 import com.greenhelix.pear.listShow.OrderListActivity;
-import com.greenhelix.pear.orderStatus.OrderStatusActivity;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -32,7 +29,6 @@ public class SelectPearActivity extends AppCompatActivity {
     private static final String LOG_TAG = "ik";
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference pearOrderRef = db.collection("pear_orders");
-//    private DocumentReference ordersRef = db.collection("pear_orders");
     private static final String ORDER_DOC = "direct";
     Button pearKind1, pearKind2, pearKind3, pearKind4, pearKind5, pearKind6;
     Button pearAmount1 ,pearAmount2,pearAmount3,pearAmount4,pearAmount5,pearAmount6;
@@ -40,6 +36,7 @@ public class SelectPearActivity extends AppCompatActivity {
     Button pearBefore, pearAfter;
     String kind, amount, box;
     boolean doubleBackToExitPressedOnce = false;
+
     @Override
     public void onBackPressed() {
         Log.d(LOG_TAG, "배선택화면 종료 확인");

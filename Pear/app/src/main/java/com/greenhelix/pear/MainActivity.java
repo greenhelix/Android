@@ -34,13 +34,13 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String LOG_TAG = "ik";
     Button btnMainOrderWrite;
     Button btnMainOrderStatus;
     Button btnMainOrderStatic;
     Button btnMainOrderDirect;
     Button btnMainOrderSetting;
     Button btnMainChangeUser;
-    private static final String LOG_TAG = "ik";
 
     @Override
     public void onBackPressed() {

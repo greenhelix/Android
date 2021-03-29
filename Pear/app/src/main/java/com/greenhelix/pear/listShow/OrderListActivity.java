@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -20,17 +19,16 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.greenhelix.pear.MainActivity;
 import com.greenhelix.pear.R;
-import com.greenhelix.pear.directOrder.DirectSenderActivity;
 
 /*카드가 띄어지는 리스트 공간*/
 public class OrderListActivity extends AppCompatActivity {
+    private static final String LOG_TAG = "ik";
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
-    //해당 콜렉션참고를 위해 원할한 경로를 설정을 참고로 만들어줘야함.
     private final CollectionReference orderRef = db.collection("pear_orders");
     private OrderListAdapter adapter;
     Button btnFinalUpload, btnFinalBefore;
-    private static final String LOG_TAG = "ik";
     boolean doubleBackToExitPressedOnce = false;
+
     @Override
     public void onBackPressed() {
         Log.d(LOG_TAG, "주문리스트 확인화면 종료 확인");

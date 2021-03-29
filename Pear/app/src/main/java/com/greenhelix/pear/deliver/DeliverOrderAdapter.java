@@ -1,20 +1,14 @@
 package com.greenhelix.pear.deliver;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
-import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,10 +18,8 @@ import com.google.common.base.Joiner;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.greenhelix.pear.R;
 import com.greenhelix.pear.listShow.Order;
-
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class DeliverOrderAdapter extends FirestoreRecyclerAdapter<Order, DeliverOrderAdapter.DeliverOrderHolder> {
