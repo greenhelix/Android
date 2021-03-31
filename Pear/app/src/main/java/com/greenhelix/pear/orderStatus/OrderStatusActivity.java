@@ -192,7 +192,7 @@ public class OrderStatusActivity extends AppCompatActivity {
             File test = File.createTempFile("export", ".csv", storageDir); // 파일명, 형태, 파일경로 를 설정해준다.
             final FileWriter testWrite = new FileWriter(test); // 파일에 데이터를 넣어줄 도구 끄낸다.(도구를 사용할 해당 파일 명시해야한다.)
             final BufferedWriter writer = new BufferedWriter(testWrite); // 도구를 사용할 도화지 같은 공간을 만들어준다.
-            Log.d(LOG_TAG, "파일 생성 ::");
+            Log.d(LOG_TAG, "파일 생성 ");
             final List<String> data = new ArrayList<String>();
             /* 완전 중요한 부분, Cloud FireStore 에서 데이터를 가져다 어떻게 내보내는지 잘 봐야함. */
             orderRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -227,7 +227,8 @@ public class OrderStatusActivity extends AppCompatActivity {
                                         + "," + data.get(4) + "," + data.get(5) + "," + data.get(6) + "," + data.get(7)
                                         + "," + data.get(8) + "," + data.get(9) + "," + data.get(10) + ","
                                         + data.get(11) + "," + data.get(12) + "\n");// 한줄띄어야 표로 완성
-                            } catch (IOException e) {
+                            } catch (IOException | NullPointerException e) {
+                                Toast.makeText(OrderStatusActivity.this, "정보가 없습니다.", Toast.LENGTH_SHORT).show();
                                 Log.d(LOG_TAG, "Error:: " + e.toString());
                             }
                             data.clear(); // 데이터 클리어!
@@ -312,6 +313,12 @@ public class OrderStatusActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         adapter.stopListening();
+    }
+
+    @Override
+    protected void onResume() {
+        Toast.makeText(getApplicationContext(),"완료", Toast.LENGTH_SHORT).show();
+        super.onResume();
     }
     /* ------------------------------------------------- */
 }

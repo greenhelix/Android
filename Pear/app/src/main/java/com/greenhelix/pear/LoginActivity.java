@@ -150,10 +150,10 @@ public class LoginActivity extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         FirebaseUser user = fAuth.getCurrentUser();
                         updateUI(user);
-                        Toast.makeText(LoginActivity.this, "FirebaseGoogleAuth", Toast.LENGTH_SHORT).show();
+                        Log.d(LOG_TAG, "파이어베이스 인증 성공");
                     } else {
                         updateUI(null);
-                        Toast.makeText(LoginActivity.this, "실패 FirebaseGoogleAuth", Toast.LENGTH_SHORT).show();
+                        Log.d(LOG_TAG, "파이어베이스 인증 실패");
                     }
                 }
             });
@@ -173,6 +173,7 @@ public class LoginActivity extends AppCompatActivity {
                     if (personEmail != null) {
                         if(personEmail.equals(documentSnapshot.get("admin1"))){
                             Log.d(LOG_TAG, "이메일 확인완료 개발자 입니다.");
+                            Toast.makeText(LoginActivity.this,"관리자", Toast.LENGTH_SHORT).show();
                             Intent access = new Intent(LoginActivity.this, MainActivity.class);
                             startActivity(access);
                             finish();
@@ -198,6 +199,7 @@ public class LoginActivity extends AppCompatActivity {
                             finish();
                         }else{
                             Log.d(LOG_TAG, "고객 입니다.");
+                            Toast.makeText(LoginActivity.this,"고객", Toast.LENGTH_SHORT).show();
                             Intent access = new Intent(LoginActivity.this, CustomerActivity.class);
                             startActivity(access);
                             finish();
