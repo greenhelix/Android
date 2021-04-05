@@ -12,14 +12,11 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
-import com.greenhelix.pear.MainActivity;
 import com.greenhelix.pear.R;
-import com.greenhelix.pear.orderStatus.OrderStatusActivity;
-import com.greenhelix.pear.server.AddressAPIkakao;
+import com.greenhelix.pear.server.AddressAPI;
 
 
 import java.io.Serializable;
@@ -109,7 +106,7 @@ public class DirectRecipientActivity extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                Intent i = new Intent(DirectRecipientActivity.this, AddressAPIkakao.class);
+                Intent i = new Intent(DirectRecipientActivity.this, AddressAPI.class);
                 startActivityForResult(i, SEARCH_ADDRESS_ACTIVITY);
             }
         });

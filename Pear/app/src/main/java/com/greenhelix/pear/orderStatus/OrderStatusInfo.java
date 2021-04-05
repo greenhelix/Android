@@ -17,7 +17,7 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.greenhelix.pear.R;
-import com.greenhelix.pear.server.AddressAPIkakao;
+import com.greenhelix.pear.server.AddressAPI;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -90,7 +90,7 @@ public class OrderStatusInfo extends AppCompatActivity {
                 @Override
                 public void onClick(View v)
                 {
-                    Intent i = new Intent(OrderStatusInfo.this, AddressAPIkakao.class);
+                    Intent i = new Intent(OrderStatusInfo.this, AddressAPI.class);
                     startActivityForResult(i, SEARCH_ADDRESS_ACTIVITY);
                 }
             });

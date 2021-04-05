@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    tools:context=".server.AddressAPIkakao">
+    tools:context=".server.AddressAPI">
 
     <WebView
         android:id="@+id/wv_adr_api"

@@ -101,7 +101,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".server.AddressAPIkakao"
+            android:name=".server.AddressAPI"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity

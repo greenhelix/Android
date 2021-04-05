@@ -32,9 +32,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.greenhelix.pear.MainActivity;
 import com.greenhelix.pear.R;
-import com.greenhelix.pear.directOrder.DirectRecipientActivity;
 import com.greenhelix.pear.listShow.Order;
-
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;

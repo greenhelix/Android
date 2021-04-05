@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.greenhelix.pear.R;
 
-public class AddressAPIkakao extends AppCompatActivity {
+public class AddressAPI extends AppCompatActivity {
 
     private WebView addressApiView;
 
@@ -42,7 +42,6 @@ public class AddressAPIkakao extends AppCompatActivity {
                 addressApiView.loadUrl("javascript:sample2_execDaumPostcode();");
             }
         });
-//        addressApiView.loadUrl("http://192.168.0.5:3000/addressAPI.html");
         addressApiView.loadUrl("https://pear-57581.web.app/addressAPI");
     }
 }
