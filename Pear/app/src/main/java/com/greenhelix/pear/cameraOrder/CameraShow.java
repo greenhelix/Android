@@ -52,26 +52,7 @@ public class  CameraShow extends AppCompatActivity {
     Boolean isItDirect = false;
     Button goSelectPear;
     Button goBefore;
-    @Override
-    public void onBackPressed() {
-        Log.d(LOG_TAG, "카메라 정보확인 화면 종료 확인");
-        AlertDialog.Builder builder = new AlertDialog.Builder(CameraShow.this);
-        builder.setTitle("알림");
-        builder.setMessage("정말 종료하시겠습니까?");
-        builder.setPositiveButton("종료", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Log.d(LOG_TAG," 종료 합니다.");
-                ActivityCompat.finishAffinity(CameraShow.this);
-            }
-        }).setNegativeButton("아니요.", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Log.d(LOG_TAG,"유지합니다.");
 
-            }
-        }).show();
-    }
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -178,4 +159,24 @@ public class  CameraShow extends AppCompatActivity {
         startActivity(next);
     }
 
+    @Override
+    public void onBackPressed() {
+        Log.d(LOG_TAG, "카메라 정보확인 화면 종료 확인");
+        AlertDialog.Builder builder = new AlertDialog.Builder(CameraShow.this);
+        builder.setTitle("알림");
+        builder.setMessage("정말 종료하시겠습니까?");
+        builder.setPositiveButton("종료", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Log.d(LOG_TAG," 종료 합니다.");
+                ActivityCompat.finishAffinity(CameraShow.this);
+            }
+        }).setNegativeButton("아니요.", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Log.d(LOG_TAG,"유지합니다.");
+
+            }
+        }).show();
+    }
 }
