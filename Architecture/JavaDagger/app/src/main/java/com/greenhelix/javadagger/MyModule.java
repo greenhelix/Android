@@ -1,6 +1,9 @@
 package com.greenhelix.javadagger;
 
 import androidx.annotation.Nullable;
+
+import javax.inject.Named;
+
 import dagger.Module;
 import dagger.Provides;
 /* 모듈은 컴포넌트에 의존성을 제공하는 역할 */
@@ -20,5 +23,18 @@ public class MyModule {
     @Nullable
     Integer provideInteger(){
         return null;
+    }
+
+
+    /*Named라는 한정자 어노테이션을 활용하면, 같은 반환형이여도 구분하여 사용이 가능하다.*/
+    @Provides
+    @Named("hello")
+    String provideHello(){
+        return "Hello!!";
+    }
+    @Provides
+    @Named("world")
+    String provideWorld(){
+        return "World!@!";
     }
 }

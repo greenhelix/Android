@@ -6,7 +6,6 @@ import dagger.MembersInjector;
 
 /* Dagger - (컴포넌트, 모듈, 객체 등의 관계) == (컨테이너) or (오브젝트 그래프) or (그래프) */
 
-
 @Component(modules = MyModule.class)
 // 조건1. 최소한 하나의 추상적 메서드를 가져야한다.
 // 조건2. 메서드의 파라미터와 반환형은 규칙을 엄격히 따라야 한다.

@@ -9,7 +9,7 @@ public class PersonB {
     private int age;
     
     @Inject  // 메서드 주입
-    public  void setAge(int age){
+    public void setAge(int age){
         this.age = age;
     }
 
