@@ -4,20 +4,24 @@ import androidx.annotation.Nullable;
 import dagger.Component;
 import dagger.MembersInjector;
 
+/* Dagger - (컴포넌트, 모듈, 객체 등의 관계) == (컨테이너) or (오브젝트 그래프) or (그래프) */
+
+
 @Component(modules = MyModule.class)
+// 조건1. 최소한 하나의 추상적 메서드를 가져야한다.
+// 조건2. 메서드의 파라미터와 반환형은 규칙을 엄격히 따라야 한다.
 public interface MyComponent {
+    /*(1유형) 프로비전 메서드 (파라미터가 없다.) Provision methods */
     String getString();
 
-    @Nullable  // 이표시를 안하면 null로 리턴이 불가능
+    // int를 가져오는 모듈 함수에서 nullable을 어노테이션 했으므로 여기도 마찬가지로 해줘야 한다.
+    @Nullable
     Integer getInteger();
 
+    /*(2유형) 멤버-인젝션 메서드 (파라미터가 있다.) Member-injection methods */
+    // 일반적인 방법
     void inject(MyClass myClass);
+
+    // 멤버-인젝션이지만 파라미터 없이 하는 방법. 단, 반환형의 타입을 선언해주어야 한다.<MyClass>같이
     MembersInjector<MyClass> getInjector();
 }
-
-// 컴포넌트는 바인딩된 모듈로부터 오브젝트 그래프를 생성하는 핵심적인 역할이다.
-// @Component 어노테이션은 Interface 나 abstract추상 클래스에서만 볼 수 있다.
-
-// Component의 속성은 두가지이다.
-// 1. modules   :  다른 모듈을 가져와서 써야하기 때문에 대부분은 이걸 쓴다.
-// 2. dependencies : 이것은 다른 component를 가져와야 하는 경우(의존)해야하는 경우 쓴다.
