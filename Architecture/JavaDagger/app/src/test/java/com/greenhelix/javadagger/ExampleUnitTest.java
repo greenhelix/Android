@@ -3,6 +3,13 @@ package com.greenhelix.javadagger;
 import com.greenhelix.javadagger.lazy.Counter;
 import com.greenhelix.javadagger.lazy.CounterComponent;
 import com.greenhelix.javadagger.lazy.DaggerCounterComponent;
+import com.greenhelix.javadagger.multibind.Animal;
+import com.greenhelix.javadagger.multibind.DaggerMapComponent;
+import com.greenhelix.javadagger.multibind.DaggerMapKeyComponent;
+import com.greenhelix.javadagger.multibind.DaggerSetComponent;
+import com.greenhelix.javadagger.multibind.Foo;
+import com.greenhelix.javadagger.multibind.MapComponent;
+import com.greenhelix.javadagger.multibind.MapKeyComponent;
 
 import org.junit.Test;
 import dagger.MembersInjector;
@@ -108,5 +115,42 @@ public class ExampleUnitTest {
         DaggerMyComponent.create().inject(myClass);
         System.out.println(myClass.getStrHello());
         System.out.println(myClass.getStrWorld());
+    }
+/*
+   MultiBinding : Set같은 객체를 주입하기 위해서는 아래와 같이 한다.
+                                                                */
+    @Test
+    public void testMultibindingSet(){
+        Foo foo = new Foo();
+        DaggerSetComponent.create().inject(foo);
+        foo.print();
+    }
+/*
+   MultiBinding : Map같은 객체를 주입하기 위해서는 아래와 같이 한다.
+   Map은 key가 필요하다. @StringKey @ClassKey @IntKey @LongKey
+                                                                */
+    @Test
+    public void testMultibindingMap(){
+        MapComponent component = DaggerMapComponent.create();
+        long value = component.getLongsByString().get("foo");
+        String str = component.getStringsByClass().get(Foo.class);
+
+        System.out.println(value);
+        System.out.println(str);
+
+    }
+/*
+   MultiBinding : 사용자가 직접 @어노테이션을 정의하고 활용할 수 있다.
+                                                                */
+    @Test
+    public void testCustomMapKey(){
+        MapKeyComponent component = DaggerMapKeyComponent.create();
+        String cat = component.getStringsByAnimal().get(Animal.CAT);
+        String dog = component.getStringsByAnimal().get(Animal.DOG);
+        String number = component.getStringsByNumber().get(Float.class);
+
+        System.out.println(cat);
+        System.out.println(dog);
+        System.out.println(number);
     }
 }
