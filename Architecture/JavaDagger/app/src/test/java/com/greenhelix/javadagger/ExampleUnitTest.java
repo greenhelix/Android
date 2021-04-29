@@ -4,14 +4,20 @@ import com.greenhelix.javadagger.lazy.Counter;
 import com.greenhelix.javadagger.lazy.CounterComponent;
 import com.greenhelix.javadagger.lazy.DaggerCounterComponent;
 import com.greenhelix.javadagger.multibind.Animal;
+import com.greenhelix.javadagger.multibind.ChildComponent;
 import com.greenhelix.javadagger.multibind.DaggerMapComponent;
 import com.greenhelix.javadagger.multibind.DaggerMapKeyComponent;
+import com.greenhelix.javadagger.multibind.DaggerParentComponent;
 import com.greenhelix.javadagger.multibind.DaggerSetComponent;
 import com.greenhelix.javadagger.multibind.Foo;
 import com.greenhelix.javadagger.multibind.MapComponent;
 import com.greenhelix.javadagger.multibind.MapKeyComponent;
+import com.greenhelix.javadagger.multibind.ParentComponent;
 
 import org.junit.Test;
+
+import java.util.Iterator;
+
 import dagger.MembersInjector;
 
 public class ExampleUnitTest {
@@ -152,5 +158,31 @@ public class ExampleUnitTest {
         System.out.println(cat);
         System.out.println(dog);
         System.out.println(number);
+    }
+/*
+   MultiBinding : 상속된 서브 컴포넌트의 멀티 바인딩
+   서브 컴포넌트에서 Set이나 Map이 멀티 바인딩 된 상태로 물려받을 수 있다.
+   서브 컴포넌트가 부모 컴포넌트로부터 멀티 바인드된 의존성을 그대로 가져온다.
+                                                                        */
+    @Test
+    public void testMultibiningWithSubcomponent(){
+        ParentComponent parentComp = DaggerParentComponent.create();
+        ChildComponent childComp = parentComp.childCompBuilder().build();
+
+        System.out.println("List set in Parent");
+
+        // Iterator 은 컬렉션에 있는 값들을 읽어오는 함수
+        Iterator itr = parentComp.strings().iterator();
+
+        while(itr.hasNext()){
+            System.out.println(itr.next());
+        }
+        System.out.println("List set in Child");
+
+        itr = childComp.strings().iterator();
+        // Chile모듈과 Parent모듈에 있는 값을 둘다 가져온다.
+        while(itr.hasNext()){
+            System.out.println(itr.next());
+        }
     }
 }
