@@ -32,7 +32,9 @@ class ServiceLocator(applicationContext: Context) {
         AppDatabase::class.java,
         "logging.db"
     ).build()
-
+    // 공개 필드로 존재하는데, ServiceLocator가 호출 될 때마다
+    // 항상 동일한 LoggerLocalDataSource 인스턴스를 반환한다.
+    // 이를 '인스턴스 범위를 컨테이너로 지정했다' 합니다.
     val loggerLocalDataSource = LoggerLocalDataSource(logsDatabase.logDao())
 
     fun provideDateFormatter() = DateFormatter()

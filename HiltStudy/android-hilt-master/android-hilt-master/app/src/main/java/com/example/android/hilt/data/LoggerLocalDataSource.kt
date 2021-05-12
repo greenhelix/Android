@@ -20,11 +20,16 @@ import android.os.Handler
 import android.os.Looper
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
+import javax.inject.Inject
 
 /**
  * Data manager class that handles data manipulation between the database and the UI.
  */
-class LoggerLocalDataSource(private val logDao: LogDao) {
+// LogsFragment에서 인스턴스를 제공하는데 이 필드들이 여기서 온다.
+// @Inject constructor(매개변수 들) 을 추가하여 hilt가 인스턴스 제공방법을 알게 해준다.
+// Hilt는 DateFormatter, LoggerLocalDataSource 의 인스턴스를 제공하는 방법을 알게 되었다.
+// 이를 '결합'이라고 한다.
+class LoggerLocalDataSource @Inject constructor(private val logDao: LogDao) {
 
     private val executorService: ExecutorService = Executors.newFixedThreadPool(4)
     private val mainThreadHandler by lazy {
