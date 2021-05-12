@@ -11,7 +11,7 @@ import dagger.hilt.android.internal.managers.ApplicationComponentManager
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Singleton
 
-@InstallIn(ApplicationComponentManager::class)
+@InstallIn(ApplicationComponent::class)
 @Module
 object DatabaseModule {
 
@@ -29,4 +29,8 @@ object DatabaseModule {
     fun provideLogDao(database: AppDatabase): LogDao{
         return database.logDao()
     }
+}
+
+class ApplicationComponent {
+
 }

@@ -18,8 +18,7 @@ package com.example.android.hilt
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
-
-// serviceLocator 인스턴스를 앱의 수명주기에 연결된 컨테이너 추가하려면 아래의 어노테이션을 붙인다.
+// serviceLocator 인스턴스를
 @HiltAndroidApp
 class LogApplication : Application() {
     // 인스턴스 생성
