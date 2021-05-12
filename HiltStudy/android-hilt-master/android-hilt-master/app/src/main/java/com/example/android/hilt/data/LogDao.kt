@@ -23,6 +23,7 @@ import androidx.room.Query
 /**
  * Data access object to query the database.
  */
+// 인터페이스는 Inject가 못달린다. 컴포넌트니깐 당여하다.
 @Dao
 interface LogDao {
 

@@ -21,6 +21,7 @@ import android.os.Looper
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import javax.inject.Inject
+import javax.inject.Singleton
 
 /**
  * Data manager class that handles data manipulation between the database and the UI.
@@ -29,6 +30,9 @@ import javax.inject.Inject
 // @Inject constructor(매개변수 들) 을 추가하여 hilt가 인스턴스 제공방법을 알게 해준다.
 // Hilt는 DateFormatter, LoggerLocalDataSource 의 인스턴스를 제공하는 방법을 알게 되었다.
 // 이를 '결합'이라고 한다.
+
+// 앱 컨테이너에서 항사 동일한 인스턴스를 제고하려면, 이 주석을 추가해야한다. (@Singleton)
+@Singleton
 class LoggerLocalDataSource @Inject constructor(private val logDao: LogDao) {
 
     private val executorService: ExecutorService = Executors.newFixedThreadPool(4)
