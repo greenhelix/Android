@@ -1,12 +1,19 @@
 package com.bignerdranch.android.geoquiz
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+
+// 클래스 밖에 선언한 변수를 "최상위 수준 속성"이라고 한다.
+// 1. 특정 클래스의 인스턴스를 생성하지 않고 바로 사용할 수 있으므로 app실행동안 속성값을 계속 보존해야 할 때 사용한다.
+// 2. app 전체에서 사용하는 상수를 정의할 때 사용한다. 여기서는 상수로 활용한다.
+
+private const val IK = "main"
 
 class MainActivity : AppCompatActivity() {
 
@@ -34,6 +41,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        Log.d(IK, "onCreate called")
 
         trueButton = findViewById(R.id.true_button)
         falseButton = findViewById(R.id.false_button)
@@ -67,6 +75,31 @@ class MainActivity : AppCompatActivity() {
         updateQuestion()
 
     } // oncreate
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d(IK, "onDestroy() called")
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.d(IK, "onStart() called")
+    }
+    override fun onStop() {
+        super.onStop()
+        Log.d(IK, "onStop() called")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d(IK, "onResume() called")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d(IK, "onPause() called")
+    }
+
+
 
     private fun updateQuestion(){
         val questionTextResId = questionBank[currentIndex].textResId
