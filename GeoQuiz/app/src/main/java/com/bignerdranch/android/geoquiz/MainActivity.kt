@@ -3,6 +3,7 @@ package com.bignerdranch.android.geoquiz
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -15,7 +16,8 @@ class MainActivity : AppCompatActivity() {
     // 2. 두 속성이 컴파일 시점에서 초기화 될 수 없기 때문이다.
     private lateinit var trueButton : Button
     private lateinit var falseButton : Button
-    private lateinit var nextButton : Button
+    private lateinit var nextButton : ImageButton
+    private lateinit var previousButton : ImageButton
     private lateinit var questionTextView : TextView
 
     private val questionBank = listOf(
@@ -37,6 +39,7 @@ class MainActivity : AppCompatActivity() {
         falseButton = findViewById(R.id.false_button)
         nextButton = findViewById(R.id.next_button)
         questionTextView = findViewById(R.id.question_text_view)
+        previousButton = findViewById(R.id.previous_button)
 
         trueButton.setOnClickListener { view: View ->
             checkAnswer(true)
@@ -46,6 +49,18 @@ class MainActivity : AppCompatActivity() {
         }
         nextButton.setOnClickListener {
             currentIndex = (currentIndex + 1) % questionBank.size
+            updateQuestion()
+        }
+        questionTextView.setOnClickListener { view:View ->
+            currentIndex = (currentIndex + 1) % questionBank.size
+            updateQuestion()
+        }
+        previousButton.setOnClickListener { view:View ->
+            currentIndex = if(currentIndex != 0){
+                (currentIndex - 1) % questionBank.size
+            } else{
+                questionBank.size-1
+            }
             updateQuestion()
         }
 
