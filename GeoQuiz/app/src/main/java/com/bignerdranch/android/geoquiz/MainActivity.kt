@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var nextButton : ImageButton
     private lateinit var previousButton : ImageButton
     private lateinit var questionTextView : TextView
+    private lateinit var checker : MutableList<Int>
 
     private val questionBank = listOf(
         Question(R.string.question_australia, true),
@@ -37,11 +38,12 @@ class MainActivity : AppCompatActivity() {
     )
     private var currentIndex = 0
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         Log.d(IK, "onCreate called")
+        checker = mutableListOf(1,1,1,1,1,1)
 
         trueButton = findViewById(R.id.true_button)
         falseButton = findViewById(R.id.false_button)
@@ -55,14 +57,12 @@ class MainActivity : AppCompatActivity() {
         falseButton.setOnClickListener { view:View ->
             checkAnswer(false)
         }
+
         nextButton.setOnClickListener {
             currentIndex = (currentIndex + 1) % questionBank.size
             updateQuestion()
         }
-        questionTextView.setOnClickListener { view:View ->
-            currentIndex = (currentIndex + 1) % questionBank.size
-            updateQuestion()
-        }
+
         previousButton.setOnClickListener { view:View ->
             currentIndex = if(currentIndex != 0){
                 (currentIndex - 1) % questionBank.size
@@ -72,9 +72,14 @@ class MainActivity : AppCompatActivity() {
             updateQuestion()
         }
 
-        updateQuestion()
+        questionTextView.setOnClickListener { view:View ->
+            currentIndex = (currentIndex + 1) % questionBank.size
+            updateQuestion()
+        }
 
+        updateQuestion()
     } // oncreate
+
     override fun onDestroy() {
         super.onDestroy()
         Log.d(IK, "onDestroy() called")
@@ -99,9 +104,14 @@ class MainActivity : AppCompatActivity() {
         Log.d(IK, "onPause() called")
     }
 
-
-
     private fun updateQuestion(){
+        if(checker[currentIndex]==0){
+            trueButton.visibility = View.GONE
+            falseButton.visibility = View.GONE
+        }else{
+            trueButton.visibility = View.VISIBLE
+            falseButton.visibility = View.VISIBLE
+        }
         val questionTextResId = questionBank[currentIndex].textResId
         questionTextView.setText(questionTextResId)
     }
@@ -114,5 +124,8 @@ class MainActivity : AppCompatActivity() {
             R.string.incorrect_toast
         }
         Toast.makeText(this, messageResId, Toast.LENGTH_SHORT).show()
+        if(messageResId == R.string.correct_toast){
+            checker[currentIndex] = 0
+        }
     }
 }
