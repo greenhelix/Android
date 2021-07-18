@@ -1,5 +1,7 @@
 package com.bignerdranch.android.geoquiz
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -16,6 +18,7 @@ import androidx.lifecycle.ViewModelProvider
 
 private const val IK = "main"
 private const val KEY_INDEX = "index"
+private const val REQUEST_CODE_CHEAT = 0
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,6 +28,7 @@ class MainActivity : AppCompatActivity() {
     // 2. 두 속성이 컴파일 시점에서 초기화 될 수 없기 때문이다.
     private lateinit var trueButton : Button
     private lateinit var falseButton : Button
+    private lateinit var cheatButton : Button
     private lateinit var nextButton : ImageButton
     private lateinit var previousButton : ImageButton
     private lateinit var questionTextView : TextView
@@ -40,30 +44,31 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // savedInstanceState에 값이 있다면, 키와 그 값을 0 지정하고, 없다면, 그냥 0으로 지정한다.
         val currentIndex = savedInstanceState?.getInt(KEY_INDEX, 0)?: 0
         quizViewModel.currentIndex = currentIndex
-        // 뷰모델을 oncreate에서 생성해도 되지만, 독맂벅으로 선언후 사용하는게 더 났다.
-        // 현재 활동과 연관된 뷰모델제공자 인스턴스를 생성하고 반환한다.
-//        val provider: ViewModelProvider = ViewModelProvider(this)
-        // quiz뷰모델 인스턴스를 반환한다.
-//        val quizViewModel = provider.get(QuizViewModel::class.java)
-//      이렇게 한줄로 작성가능하다.
-//      ViewModelProvider(this).get(QuizViewModel::class.java)
-//        Log.d(IK, "Got a QuizViewModel: $quizViewModel")
 
         Log.d(IK, "onCreate called")
 
         trueButton = findViewById(R.id.true_button)
         falseButton = findViewById(R.id.false_button)
         nextButton = findViewById(R.id.next_button)
+        cheatButton = findViewById(R.id.cheat_button)
         questionTextView = findViewById(R.id.question_text_view)
         previousButton = findViewById(R.id.previous_button)
 
-        trueButton.setOnClickListener { view: View ->
+        trueButton.setOnClickListener {
             checkAnswer(true)
         }
-        falseButton.setOnClickListener { view:View ->
+        falseButton.setOnClickListener {
             checkAnswer(false)
+        }
+
+        cheatButton.setOnClickListener {
+            // Cheatactivity에 동반객체로 함수로 만들었기 때문에 간편하게 사용이 가능하다.
+            val answerIsTrue = quizViewModel.currentQuestionAnswer
+            val intent = CheatActivity.newIntent(this@MainActivity, answerIsTrue)
+            startActivityForResult(intent, REQUEST_CODE_CHEAT)
         }
 
         nextButton.setOnClickListener {
@@ -71,17 +76,29 @@ class MainActivity : AppCompatActivity() {
             updateQuestion()
         }
 
-        previousButton.setOnClickListener { view:View ->
+        previousButton.setOnClickListener {
             quizViewModel.moveToBefore()
             updateQuestion()
         }
 
-        questionTextView.setOnClickListener { view:View ->
+        questionTextView.setOnClickListener {
             quizViewModel.moveToNext()
             updateQuestion()
         }
         updateQuestion()
     } // oncreate
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if(resultCode != Activity.RESULT_OK){
+            return
+        }
+
+        if(requestCode== REQUEST_CODE_CHEAT ){
+            quizViewModel.isCheater = data?.getBooleanExtra(EXTRA_ANSWER_IS_SHOWN, false)?: false
+        }
+    }
 
     private fun updateQuestion(){
         if (quizViewModel.checker()){
@@ -98,15 +115,18 @@ class MainActivity : AppCompatActivity() {
 
     private fun checkAnswer(userAnswer: Boolean){
         val correctAnswer = quizViewModel.currentQuestionAnswer
-        val messageResId = if (userAnswer == correctAnswer){
-            R.string.correct_toast
-        }else{
-            R.string.incorrect_toast
+        val messageResId = when{
+            quizViewModel.isCheater -> R.string.judgment_toast
+            userAnswer == correctAnswer -> R.string.correct_toast
+            else -> R.string.incorrect_toast
         }
+
         Toast.makeText(this, messageResId, Toast.LENGTH_SHORT).show()
+
         if(messageResId == R.string.correct_toast){
             quizViewModel.checker[quizViewModel.currentIndex]= 0
         }
+
     }
 
     override fun onDestroy() {
@@ -137,6 +157,7 @@ class MainActivity : AppCompatActivity() {
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         Log.d(IK, "onSaveInstanceState")
+        // Bundle인 outState에  key, value 형태로 저장
         outState.putInt(KEY_INDEX, quizViewModel.currentIndex)
     }
 }//END

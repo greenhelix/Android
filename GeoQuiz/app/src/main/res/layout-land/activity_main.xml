@@ -41,28 +41,31 @@
 
     </LinearLayout>
 
-    <LinearLayout
+    <Button
+        android:id="@+id/cheat_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
-        >
+        android:layout_gravity="bottom|center_horizontal"
+        android:text="@string/cheat_button"
+        android:backgroundTint="@color/material_on_surface_emphasis_medium"
+        />
 
-        <ImageButton
-            android:id="@+id/previous_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/arrow_left"
-            android:layout_marginEnd="10dp"
-            android:contentDescription="@string/previous_button"
-            />
+    <ImageButton
+        android:id="@+id/previous_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|start"
+        android:src="@drawable/arrow_left"
+        android:layout_marginEnd="10dp"
+        android:contentDescription="@string/previous_button"
+        />
 
-        <ImageButton
-            android:id="@+id/next_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/arrow_right"
-            android:contentDescription="@string/next_button"
-            />
-
-    </LinearLayout>
+    <ImageButton
+        android:id="@+id/next_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:src="@drawable/arrow_right"
+        android:contentDescription="@string/next_button"
+        />
 </FrameLayout>

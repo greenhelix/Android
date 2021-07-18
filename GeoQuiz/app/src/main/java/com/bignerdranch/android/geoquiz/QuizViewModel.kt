@@ -7,6 +7,7 @@ private const val IK = "QuizViewModel"
 class QuizViewModel :ViewModel(){
     // 외부 클래스에서 이 currentIndex를 사용할 수 있도록 private를 지워준다.
     var currentIndex = 0
+    var isCheater = true
     var checker : MutableList<Int> = mutableListOf(1,1,1,1,1,1)
 
     private val questionBank = listOf(
