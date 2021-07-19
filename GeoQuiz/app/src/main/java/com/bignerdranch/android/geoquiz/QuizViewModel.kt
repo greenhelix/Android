@@ -1,5 +1,6 @@
 package com.bignerdranch.android.geoquiz
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 
 private const val IK = "QuizViewModel"
@@ -7,8 +8,9 @@ private const val IK = "QuizViewModel"
 class QuizViewModel :ViewModel(){
     // 외부 클래스에서 이 currentIndex를 사용할 수 있도록 private를 지워준다.
     var currentIndex = 0
-    var isCheater = true
+    var isCheater = false
     var checker : MutableList<Int> = mutableListOf(1,1,1,1,1,1)
+    var cheatChecker : MutableList<Int> = mutableListOf(1,1,1,1,1,1)
 
     private val questionBank = listOf(
         Question(R.string.question_australia, true),
@@ -31,6 +33,11 @@ class QuizViewModel :ViewModel(){
         }
         return false
     }
+    fun cheatCheck(index : Int) : Boolean{
+        cheatChecker[index] = 0
+        Log.d(IK, "now Cheat $cheatChecker, $currentIndex")
+        return true
+    }
 
     fun moveToNext(){
         currentIndex = (currentIndex + 1) % questionBank.size
@@ -42,16 +49,6 @@ class QuizViewModel :ViewModel(){
             questionBank.size-1
         }
     }
-
-//    init {
-//        Log.d(IK, "ViewModel instance created")
-//    }
-//
-//    // 뷰모델 인스턴스가 소멸되기 전에 호출된다.
-//    override fun onCleared() {
-//        super.onCleared()
-//        Log.d(IK, "ViewModel instance about to be destroyed")
-//    }
 
 
 }

@@ -44,9 +44,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // savedInstanceState에 값이 있다면, 키와 그 값을 0 지정하고, 없다면, 그냥 0으로 지정한다.
-        val currentIndex = savedInstanceState?.getInt(KEY_INDEX, 0)?: 0
-        quizViewModel.currentIndex = currentIndex
+//        savedInstanceState에 값이 있다면, 키와 그 값을 0 지정하고, 없다면, 그냥 0으로 지정한다.
+//        val currentIndex = savedInstanceState?.getInt(KEY_INDEX, 0)?: 0
+//        val currentIndex = quizViewModel.currentIndex
 
         Log.d(IK, "onCreate called")
 
@@ -69,6 +69,8 @@ class MainActivity : AppCompatActivity() {
             val answerIsTrue = quizViewModel.currentQuestionAnswer
             val intent = CheatActivity.newIntent(this@MainActivity, answerIsTrue)
             startActivityForResult(intent, REQUEST_CODE_CHEAT)
+
+            quizViewModel.cheatCheck(quizViewModel.currentIndex)
         }
 
         nextButton.setOnClickListener {
@@ -92,11 +94,17 @@ class MainActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if(resultCode != Activity.RESULT_OK){
+            quizViewModel.isCheater = true
             return
         }
 
         if(requestCode== REQUEST_CODE_CHEAT ){
-            quizViewModel.isCheater = data?.getBooleanExtra(EXTRA_ANSWER_IS_SHOWN, false)?: false
+            quizViewModel.isCheater = data?.getBooleanExtra(EXTRA_ANSWER_IS_SHOWN, true)?: false
+            if (quizViewModel.isCheater){
+                Log.d(IK, "now isCheater? ${quizViewModel.isCheater}, ${quizViewModel.cheatChecker}")
+                quizViewModel.cheatCheck(quizViewModel.currentIndex)
+            }
+
         }
     }
 
@@ -116,7 +124,7 @@ class MainActivity : AppCompatActivity() {
     private fun checkAnswer(userAnswer: Boolean){
         val correctAnswer = quizViewModel.currentQuestionAnswer
         val messageResId = when{
-            quizViewModel.isCheater -> R.string.judgment_toast
+            quizViewModel.cheatChecker[quizViewModel.currentIndex] == 0 -> R.string.judgment_toast
             userAnswer == correctAnswer -> R.string.correct_toast
             else -> R.string.incorrect_toast
         }
